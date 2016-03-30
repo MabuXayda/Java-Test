@@ -1,0 +1,4 @@
+1	dien_thoai,smartphone,mobilephone
+2	laptop
+3	may_tinh_bang,tablet
+4	may_in

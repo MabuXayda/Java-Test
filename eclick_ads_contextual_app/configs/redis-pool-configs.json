@@ -1,0 +1,24 @@
+{
+	redisArticleTopics : {
+		host : "127.0.0.1",
+		port : 6379
+	},
+	redisPubSubEclick : {
+		host : "127.0.0.1",
+		port : 6380
+	},
+	redisPubSubSoHoa : {
+		host : "127.0.0.1",
+		port : 6381
+	},
+    
+	maxActive : 3000,
+	maxIdle : 20,
+	minIdle : 2,
+	maxWait : 5000;
+	numTestsPerEvictionRun : 10,
+	testOnBorrow : false,
+	testOnReturn : false,
+	testWhileIdle : false,
+	timeBetweenEvictionRunsMillis : 60000
+}

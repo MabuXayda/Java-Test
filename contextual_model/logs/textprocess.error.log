@@ -1,0 +1,24 @@
+[ERROR] main com.fpt.dm.contextual.IntegratedContextProcess 10 Dec 2015 10:02:10,847 - java.io.FileNotFoundException: D:\Projects Eclipse\beta_project\contextual_model\resources\lda_model\LDA2HumanTopicsMapping (The system cannot find the path specified)
+[ERROR] main com.fpt.dm.contextual.lda.GibbsSamplingLDATopicMatching 10 Dec 2015 10:02:10,953 - Can't load model data
+java.io.FileNotFoundException: D:\Projects Eclipse\beta_project\contextual_model\resources\lda_model\wordmap (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at com.fpt.dm.contextual.lda.GibbsSamplingLDATopicMatching.loadWords(GibbsSamplingLDATopicMatching.java:41)
+	at com.fpt.dm.contextual.lda.GibbsSamplingLDATopicMatching.loadModel(GibbsSamplingLDATopicMatching.java:75)
+	at com.fpt.dm.contextual.lda.GibbsSamplingLDATopicMatching.<init>(GibbsSamplingLDATopicMatching.java:36)
+	at com.fpt.dm.contextual.IntegratedContextProcess.<init>(IntegratedContextProcess.java:54)
+	at com.fpt.dm.contextual.IntegratedContextProcess.getInstance(IntegratedContextProcess.java:37)
+	at com.fpt.fo.models.contextual.join.UrlProcessing.<init>(UrlProcessing.java:67)
+	at com.fpt.fo.models.contextual.join.UrlProcessing.main(UrlProcessing.java:38)
+[ERROR] main com.fpt.fo.models.contextual.join.UrlProcessing 10 Dec 2015 10:02:11,765 - this is ANOTHER error
+[ERROR] main com.fpt.fo.models.contextual.join.UrlProcessing 10 Dec 2015 10:04:34,755 - this is ANOTHER error
+[ERROR] main com.fpt.fo.models.contextual.join.UrlProcessing 10 Dec 2015 11:09:12,045 - this is ANOTHER error
+[ERROR] main com.fpt.fo.models.contextual.join.UrlProcessing 10 Dec 2015 11:12:42,576 - this is ANOTHER error
+[ERROR] main com.fpt.fo.models.contextual.join.UrlProcessing 10 Dec 2015 11:14:12,574 - this is ANOTHER error
+[ERROR] main com.fpt.fo.models.contextual.join.UrlProcessing 22 Dec 2015 11:56:53,755 - this is ANOTHER error
+[ERROR] main com.fpt.fo.models.contextual.join.UrlProcessing 22 Dec 2015 12:01:22,883 - this is ANOTHER error
+[ERROR] main com.fpt.fo.models.contextual.join.UrlProcessing 24 Dec 2015 11:56:01,669 - this is ANOTHER error
+[ERROR] main com.fpt.fo.models.contextual.join.UrlProcessing 30 Dec 2015 14:21:38,481 - this is ANOTHER error

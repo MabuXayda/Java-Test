@@ -1,0 +1,96 @@
+[ERROR] main com.fpt.dm.contextual.IntegratedContextProcess 10 Dec 2015 10:02:10,847 - java.io.FileNotFoundException: D:\Projects Eclipse\beta_project\contextual_model\resources\lda_model\LDA2HumanTopicsMapping (The system cannot find the path specified)
+[ERROR] main com.fpt.dm.contextual.lda.GibbsSamplingLDATopicMatching 10 Dec 2015 10:02:10,953 - Can't load model data
+java.io.FileNotFoundException: D:\Projects Eclipse\beta_project\contextual_model\resources\lda_model\wordmap (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at com.fpt.dm.contextual.lda.GibbsSamplingLDATopicMatching.loadWords(GibbsSamplingLDATopicMatching.java:41)
+	at com.fpt.dm.contextual.lda.GibbsSamplingLDATopicMatching.loadModel(GibbsSamplingLDATopicMatching.java:75)
+	at com.fpt.dm.contextual.lda.GibbsSamplingLDATopicMatching.<init>(GibbsSamplingLDATopicMatching.java:36)
+	at com.fpt.dm.contextual.IntegratedContextProcess.<init>(IntegratedContextProcess.java:54)
+	at com.fpt.dm.contextual.IntegratedContextProcess.getInstance(IntegratedContextProcess.java:37)
+	at com.fpt.fo.models.contextual.join.UrlProcessing.<init>(UrlProcessing.java:67)
+	at com.fpt.fo.models.contextual.join.UrlProcessing.main(UrlProcessing.java:38)
+[ERROR] main com.fpt.fo.models.contextual.join.UrlProcessing 10 Dec 2015 10:02:11,765 - this is ANOTHER error
+[INFO] main com.fpt.dm.contextual.lda.GibbsSamplingLDATopicMatching 10 Dec 2015 10:04:01,656 - Start initEstimatedModel
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 10:04:29,201 - finished loading ads Assignments
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 10:04:29,233 - Loading word 
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 10:04:29,287 - finised loading word 
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 10:04:29,287 - Model loaded:
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 10:04:29,287 - 	alpha:0.5
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 10:04:29,287 - 	beta:0.1
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 10:04:29,287 - 	M:0
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 10:04:29,287 - 	V:62444
+[ERROR] main com.fpt.fo.models.contextual.join.UrlProcessing 10 Dec 2015 10:04:34,755 - this is ANOTHER error
+[INFO] main com.fpt.dm.contextual.lda.GibbsSamplingLDATopicMatching 10 Dec 2015 11:08:29,112 - Start initEstimatedModel
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:09:07,217 - finished loading ads Assignments
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:09:07,257 - Loading word 
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:09:07,299 - finised loading word 
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:09:07,299 - Model loaded:
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:09:07,299 - 	alpha:0.5
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:09:07,300 - 	beta:0.1
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:09:07,300 - 	M:0
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:09:07,300 - 	V:62444
+[ERROR] main com.fpt.fo.models.contextual.join.UrlProcessing 10 Dec 2015 11:09:12,045 - this is ANOTHER error
+[INFO] main com.fpt.dm.contextual.lda.GibbsSamplingLDATopicMatching 10 Dec 2015 11:12:16,007 - Start initEstimatedModel
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:12:38,426 - finished loading ads Assignments
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:12:38,443 - Loading word 
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:12:38,487 - finised loading word 
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:12:38,487 - Model loaded:
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:12:38,488 - 	alpha:0.5
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:12:38,489 - 	beta:0.1
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:12:38,489 - 	M:0
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:12:38,489 - 	V:62444
+[ERROR] main com.fpt.fo.models.contextual.join.UrlProcessing 10 Dec 2015 11:12:42,576 - this is ANOTHER error
+[INFO] main com.fpt.dm.contextual.lda.GibbsSamplingLDATopicMatching 10 Dec 2015 11:13:51,292 - Start initEstimatedModel
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:14:08,722 - finished loading ads Assignments
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:14:08,723 - Loading word 
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:14:08,763 - finised loading word 
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:14:08,763 - Model loaded:
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:14:08,763 - 	alpha:0.5
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:14:08,763 - 	beta:0.1
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:14:08,763 - 	M:0
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 10 Dec 2015 11:14:08,763 - 	V:62444
+[ERROR] main com.fpt.fo.models.contextual.join.UrlProcessing 10 Dec 2015 11:14:12,574 - this is ANOTHER error
+[INFO] main com.fpt.dm.contextual.lda.GibbsSamplingLDATopicMatching 22 Dec 2015 11:56:10,423 - Start initEstimatedModel
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 22 Dec 2015 11:56:48,661 - finished loading ads Assignments
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 22 Dec 2015 11:56:48,704 - Loading word 
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 22 Dec 2015 11:56:48,759 - finised loading word 
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 22 Dec 2015 11:56:48,759 - Model loaded:
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 22 Dec 2015 11:56:48,759 - 	alpha:0.5
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 22 Dec 2015 11:56:48,759 - 	beta:0.1
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 22 Dec 2015 11:56:48,759 - 	M:0
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 22 Dec 2015 11:56:48,759 - 	V:62444
+[ERROR] main com.fpt.fo.models.contextual.join.UrlProcessing 22 Dec 2015 11:56:53,755 - this is ANOTHER error
+[INFO] main com.fpt.dm.contextual.lda.GibbsSamplingLDATopicMatching 22 Dec 2015 12:00:56,277 - Start initEstimatedModel
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 22 Dec 2015 12:01:18,918 - finished loading ads Assignments
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 22 Dec 2015 12:01:18,928 - Loading word 
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 22 Dec 2015 12:01:18,967 - finised loading word 
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 22 Dec 2015 12:01:18,967 - Model loaded:
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 22 Dec 2015 12:01:18,968 - 	alpha:0.5
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 22 Dec 2015 12:01:18,968 - 	beta:0.1
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 22 Dec 2015 12:01:18,968 - 	M:0
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 22 Dec 2015 12:01:18,968 - 	V:62444
+[ERROR] main com.fpt.fo.models.contextual.join.UrlProcessing 22 Dec 2015 12:01:22,883 - this is ANOTHER error
+[INFO] main com.fpt.dm.contextual.lda.GibbsSamplingLDATopicMatching 24 Dec 2015 11:55:32,956 - Start initEstimatedModel
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 24 Dec 2015 11:55:57,297 - finished loading ads Assignments
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 24 Dec 2015 11:55:57,327 - Loading word 
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 24 Dec 2015 11:55:57,367 - finised loading word 
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 24 Dec 2015 11:55:57,367 - Model loaded:
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 24 Dec 2015 11:55:57,367 - 	alpha:0.5
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 24 Dec 2015 11:55:57,367 - 	beta:0.1
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 24 Dec 2015 11:55:57,367 - 	M:0
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 24 Dec 2015 11:55:57,367 - 	V:62444
+[ERROR] main com.fpt.fo.models.contextual.join.UrlProcessing 24 Dec 2015 11:56:01,669 - this is ANOTHER error
+[INFO] main com.fpt.dm.contextual.lda.GibbsSamplingLDATopicMatching 30 Dec 2015 14:21:13,038 - Start initEstimatedModel
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 30 Dec 2015 14:21:34,057 - finished loading ads Assignments
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 30 Dec 2015 14:21:34,197 - Loading word 
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 30 Dec 2015 14:21:34,263 - finised loading word 
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 30 Dec 2015 14:21:34,263 - Model loaded:
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 30 Dec 2015 14:21:34,263 - 	alpha:0.5
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 30 Dec 2015 14:21:34,263 - 	beta:0.1
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 30 Dec 2015 14:21:34,263 - 	M:0
+[INFO] main com.fpt.dm.contextual.lda.LDAModel 30 Dec 2015 14:21:34,263 - 	V:62444
+[ERROR] main com.fpt.fo.models.contextual.join.UrlProcessing 30 Dec 2015 14:21:38,481 - this is ANOTHER error
