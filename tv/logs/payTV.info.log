@@ -1,0 +1,1414 @@
+[INFO] main InfoLog 27 Apr 2016 11:00:36 - ===> Done file: fbox-2016-02-11.txt
+[INFO] main InfoLog 27 Apr 2016 11:00:36 - ===> Count: 36688975 | CountNV: 46538 | CountError: 1046 | Time: 404643
+[INFO] main InfoLog 27 Apr 2016 11:05:41 - ===> Done file: fbox-2016-02-03.txt
+[INFO] main InfoLog 27 Apr 2016 11:05:41 - ===> Count: 37851750 | CountNV: 81904 | CountError: 1035 | Time: 304057
+[INFO] main InfoLog 27 Apr 2016 11:08:57 - ===> Done file: fbox-2016-02-02.txt
+[INFO] main InfoLog 27 Apr 2016 11:08:57 - ===> Count: 24127885 | CountNV: 41493 | CountError: 735 | Time: 196216
+[INFO] main InfoLog 27 Apr 2016 11:14:20 - ===> Done file: fbox-2016-02-05.txt
+[INFO] main InfoLog 27 Apr 2016 11:14:20 - ===> Count: 38749364 | CountNV: 75992 | CountError: 1117 | Time: 323248
+[INFO] main InfoLog 27 Apr 2016 11:21:03 - ===> Done file: fbox-2016-02-07.txt
+[INFO] main InfoLog 27 Apr 2016 11:21:03 - ===> Count: 43852520 | CountNV: 60803 | CountError: 1149 | Time: 403399
+[INFO] main InfoLog 27 Apr 2016 11:26:58 - ===> Done file: fbox-2016-02-06.txt
+[INFO] main InfoLog 27 Apr 2016 11:26:58 - ===> Count: 39190727 | CountNV: 60764 | CountError: 872 | Time: 354736
+[INFO] main InfoLog 27 Apr 2016 11:33:09 - ===> Done file: fbox-2016-02-08.txt
+[INFO] main InfoLog 27 Apr 2016 11:33:09 - ===> Count: 39762287 | CountNV: 50682 | CountError: 1032 | Time: 371326
+[INFO] main InfoLog 27 Apr 2016 11:39:19 - ===> Done file: fbox-2016-02-09.txt
+[INFO] main InfoLog 27 Apr 2016 11:39:19 - ===> Count: 37176940 | CountNV: 49348 | CountError: 840 | Time: 369958
+[INFO] main InfoLog 27 Apr 2016 11:45:32 - ===> Done file: fbox-2016-02-10.txt
+[INFO] main InfoLog 27 Apr 2016 11:45:32 - ===> Count: 36747796 | CountNV: 47558 | CountError: 985 | Time: 373056
+[INFO] main InfoLog 27 Apr 2016 11:59:20 - ===> Done file: fbox-2016-02-04.txt
+[INFO] main InfoLog 27 Apr 2016 11:59:20 - ===> Count: 38987485 | CountNV: 75077 | CountError: 1026 | Time: 827447
+[INFO] main InfoLog 27 Apr 2016 13:21:13 - ===> Done file: fbox-2016-02-19.txt
+[INFO] main InfoLog 27 Apr 2016 13:21:13 - ===> Count: 35937049 | CountNV: 65985 | CountError: 794 | Time: 354466
+[INFO] main InfoLog 27 Apr 2016 16:53:35 - ===> Done file: fbox-2016-03-31_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 16:53:35 - ===> Count: 39063544 | CountNV: 70115 | CountError: 0 | Time: 423100
+[INFO] main InfoLog 27 Apr 2016 17:03:41 - ===> Done file: fbox-2016-03-06_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 17:03:41 - ===> Count: 42990509 | CountNV: 63949 | CountError: 0 | Time: 595664
+[INFO] main InfoLog 27 Apr 2016 17:14:09 - ===> Done file: fbox-2016-03-05_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 17:14:09 - ===> Count: 43655602 | CountNV: 71726 | CountError: 0 | Time: 603334
+[INFO] main InfoLog 27 Apr 2016 17:24:09 - ===> Done file: fbox-2016-03-07_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 17:24:09 - ===> Count: 35695906 | CountNV: 61060 | CountError: 0 | Time: 573680
+[INFO] main InfoLog 27 Apr 2016 17:34:34 - ===> Done file: fbox-2016-03-25_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 17:34:34 - ===> Count: 37979214 | CountNV: 66727 | CountError: 0 | Time: 599788
+[INFO] main InfoLog 27 Apr 2016 17:44:41 - ===> Done file: fbox-2016-03-20_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 17:44:41 - ===> Count: 43674215 | CountNV: 64078 | CountError: 0 | Time: 582230
+[INFO] main InfoLog 27 Apr 2016 17:54:35 - ===> Done file: fbox-2016-03-27_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 17:54:35 - ===> Count: 42640494 | CountNV: 63334 | CountError: 0 | Time: 565046
+[INFO] main InfoLog 27 Apr 2016 18:02:59 - ===> Done file: fbox-2016-03-04_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 18:02:59 - ===> Count: 36632688 | CountNV: 60611 | CountError: 0 | Time: 479645
+[INFO] main InfoLog 27 Apr 2016 18:11:31 - ===> Done file: fbox-2016-03-21_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 18:11:31 - ===> Count: 36193948 | CountNV: 61050 | CountError: 0 | Time: 483418
+[INFO] main InfoLog 27 Apr 2016 18:20:02 - ===> Done file: fbox-2016-03-24_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 18:20:02 - ===> Count: 38077814 | CountNV: 63349 | CountError: 0 | Time: 480397
+[INFO] main InfoLog 27 Apr 2016 18:28:06 - ===> Done file: fbox-2016-03-10_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 18:28:06 - ===> Count: 36114661 | CountNV: 65231 | CountError: 0 | Time: 450590
+[INFO] main InfoLog 27 Apr 2016 18:36:27 - ===> Done file: fbox-2016-03-23_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 18:36:27 - ===> Count: 36964368 | CountNV: 63958 | CountError: 0 | Time: 469435
+[INFO] main InfoLog 27 Apr 2016 18:45:00 - ===> Done file: fbox-2016-03-29_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 18:45:00 - ===> Count: 36923875 | CountNV: 65771 | CountError: 0 | Time: 481265
+[INFO] main InfoLog 27 Apr 2016 18:53:21 - ===> Done file: fbox-2016-03-28_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 18:53:21 - ===> Count: 36268940 | CountNV: 60395 | CountError: 0 | Time: 471337
+[INFO] main InfoLog 27 Apr 2016 19:01:36 - ===> Done file: fbox-2016-03-17_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 19:01:36 - ===> Count: 36708758 | CountNV: 71991 | CountError: 0 | Time: 461258
+[INFO] main InfoLog 27 Apr 2016 19:09:36 - ===> Done file: fbox-2016-03-22_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 19:09:36 - ===> Count: 35315344 | CountNV: 61626 | CountError: 2 | Time: 445271
+[INFO] main InfoLog 27 Apr 2016 19:17:47 - ===> Done file: fbox-2016-03-15_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 19:17:47 - ===> Count: 35938347 | CountNV: 62940 | CountError: 0 | Time: 455038
+[INFO] main InfoLog 27 Apr 2016 19:27:19 - ===> Done file: fbox-2016-03-26_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 19:27:19 - ===> Count: 41802509 | CountNV: 67205 | CountError: 0 | Time: 540241
+[INFO] main InfoLog 27 Apr 2016 19:36:47 - ===> Done file: fbox-2016-03-13_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 19:36:47 - ===> Count: 43502769 | CountNV: 64606 | CountError: 0 | Time: 536365
+[INFO] main InfoLog 27 Apr 2016 19:45:37 - ===> Done file: fbox-2016-03-18_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 19:45:37 - ===> Count: 36926349 | CountNV: 63267 | CountError: 0 | Time: 497251
+[INFO] main InfoLog 27 Apr 2016 19:53:31 - ===> Done file: fbox-2016-03-16_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 19:53:31 - ===> Count: 36574557 | CountNV: 67957 | CountError: 0 | Time: 453688
+[INFO] main InfoLog 27 Apr 2016 20:01:39 - ===> Done file: fbox-2016-03-01_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 20:01:39 - ===> Count: 35242551 | CountNV: 60842 | CountError: 0 | Time: 453097
+[INFO] main InfoLog 27 Apr 2016 20:09:58 - ===> Done file: fbox-2016-03-02_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 20:09:58 - ===> Count: 35039957 | CountNV: 57753 | CountError: 0 | Time: 465687
+[INFO] main InfoLog 27 Apr 2016 20:18:12 - ===> Done file: fbox-2016-03-03_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 20:18:12 - ===> Count: 35362414 | CountNV: 62646 | CountError: 0 | Time: 464625
+[INFO] main InfoLog 27 Apr 2016 20:26:30 - ===> Done file: fbox-2016-03-30_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 20:26:30 - ===> Count: 36812571 | CountNV: 66406 | CountError: 0 | Time: 471437
+[INFO] main InfoLog 27 Apr 2016 20:34:56 - ===> Done file: fbox-2016-03-08_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 20:34:56 - ===> Count: 36769381 | CountNV: 59198 | CountError: 0 | Time: 470654
+[INFO] main InfoLog 27 Apr 2016 20:43:42 - ===> Done file: fbox-2016-03-09_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 20:43:42 - ===> Count: 36899680 | CountNV: 67310 | CountError: 0 | Time: 490907
+[INFO] main InfoLog 27 Apr 2016 20:52:18 - ===> Done file: fbox-2016-03-11_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 20:52:18 - ===> Count: 36463648 | CountNV: 66409 | CountError: 0 | Time: 484618
+[INFO] main InfoLog 27 Apr 2016 21:02:23 - ===> Done file: fbox-2016-03-19_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 21:02:23 - ===> Count: 43990477 | CountNV: 67988 | CountError: 0 | Time: 572811
+[INFO] main InfoLog 27 Apr 2016 21:10:36 - ===> Done file: fbox-2016-03-14_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 21:10:36 - ===> Count: 35668326 | CountNV: 61398 | CountError: 0 | Time: 463493
+[INFO] main InfoLog 27 Apr 2016 21:20:16 - ===> Done file: fbox-2016-03-12_parsed.csv
+[INFO] main InfoLog 27 Apr 2016 21:20:16 - ===> Count: 41973176 | CountNV: 69160 | CountError: 0 | Time: 550702
+[ERROR] main InfoLog 28 Apr 2016 14:19:07 - Done: fbox-2016-02-05_parsed.csv | Count: 38097969 | Time: 193764
+[ERROR] main InfoLog 28 Apr 2016 14:20:42 - Done: fbox-2016-02-02_parsed.csv | Count: 23737481 | Time: 95794
+[ERROR] main InfoLog 28 Apr 2016 14:23:55 - Done: fbox-2016-02-04_parsed.csv | Count: 38069553 | Time: 192303
+[ERROR] main InfoLog 28 Apr 2016 14:26:27 - Done: fbox-2016-02-03_parsed.csv | Count: 36973034 | Time: 152604
+[ERROR] main InfoLog 28 Apr 2016 14:30:20 - Done: fbox-2016-02-07_parsed.csv | Count: 43173750 | Time: 232223
+[ERROR] main InfoLog 28 Apr 2016 14:33:45 - Done: fbox-2016-02-08_parsed.csv | Count: 39223898 | Time: 205561
+[ERROR] main InfoLog 28 Apr 2016 14:37:05 - Done: fbox-2016-02-06_parsed.csv | Count: 38587728 | Time: 200054
+[INFO] main InfoLog 28 Apr 2016 15:57:20 - Done support file: fbox-2016-03-12_parsed.csv | Count: 41973177 | Time: 58138
+[INFO] main InfoLog 28 Apr 2016 15:58:22 - Done support file: fbox-2016-03-06_parsed.csv | Count: 42990510 | Time: 62273
+[INFO] main InfoLog 28 Apr 2016 15:59:18 - Done support file: fbox-2016-03-15_parsed.csv | Count: 35938348 | Time: 56333
+[INFO] main InfoLog 28 Apr 2016 15:59:57 - Done support file: fbox-2016-03-19_parsed.csv | Count: 43990478 | Time: 38293
+[INFO] main InfoLog 28 Apr 2016 16:00:29 - Done support file: fbox-2016-03-08_parsed.csv | Count: 36769382 | Time: 32303
+[INFO] main InfoLog 28 Apr 2016 16:01:01 - Done support file: fbox-2016-03-16_parsed.csv | Count: 36574558 | Time: 31655
+[INFO] main InfoLog 28 Apr 2016 16:01:57 - Done support file: fbox-2016-03-29_parsed.csv | Count: 36923876 | Time: 56076
+[INFO] main InfoLog 28 Apr 2016 16:02:26 - Done support file: fbox-2016-03-02_parsed.csv | Count: 35039958 | Time: 29381
+[INFO] main InfoLog 28 Apr 2016 16:03:21 - Done support file: fbox-2016-03-24_parsed.csv | Count: 38077815 | Time: 54634
+[INFO] main InfoLog 28 Apr 2016 16:04:15 - Done support file: fbox-2016-03-23_parsed.csv | Count: 36964369 | Time: 53946
+[INFO] main InfoLog 28 Apr 2016 16:05:14 - Done support file: fbox-2016-03-27_parsed.csv | Count: 42640495 | Time: 58996
+[INFO] main InfoLog 28 Apr 2016 16:06:03 - Done support file: fbox-2016-03-07_parsed.csv | Count: 35695907 | Time: 48828
+[INFO] main InfoLog 28 Apr 2016 16:06:34 - Done support file: fbox-2016-03-11_parsed.csv | Count: 36463649 | Time: 31263
+[INFO] main InfoLog 28 Apr 2016 16:07:40 - Done support file: fbox-2016-03-26_parsed.csv | Count: 41802510 | Time: 65829
+[INFO] main InfoLog 28 Apr 2016 16:08:32 - Done support file: fbox-2016-03-21_parsed.csv | Count: 36193949 | Time: 52297
+[INFO] main InfoLog 28 Apr 2016 16:09:02 - Done support file: fbox-2016-03-01_parsed.csv | Count: 35242552 | Time: 30439
+[INFO] main InfoLog 28 Apr 2016 16:09:33 - Done support file: fbox-2016-03-14_parsed.csv | Count: 35668327 | Time: 30995
+[INFO] main InfoLog 28 Apr 2016 16:10:29 - Done support file: fbox-2016-03-17_parsed.csv | Count: 36708759 | Time: 55278
+[INFO] main InfoLog 28 Apr 2016 16:10:58 - Done support file: fbox-2016-03-03_parsed.csv | Count: 35362415 | Time: 29543
+[INFO] main InfoLog 28 Apr 2016 16:11:31 - Done support file: fbox-2016-03-30_parsed.csv | Count: 36812572 | Time: 32943
+[INFO] main InfoLog 28 Apr 2016 16:12:28 - Done support file: fbox-2016-03-25_parsed.csv | Count: 37979215 | Time: 57049
+[INFO] main InfoLog 28 Apr 2016 16:13:33 - Done support file: fbox-2016-03-22_parsed.csv | Count: 35315345 | Time: 64366
+[INFO] main InfoLog 28 Apr 2016 16:14:19 - Done support file: fbox-2016-03-18_parsed.csv | Count: 36926350 | Time: 46874
+[INFO] main InfoLog 28 Apr 2016 16:15:15 - Done support file: fbox-2016-03-28_parsed.csv | Count: 36268941 | Time: 56087
+[INFO] main InfoLog 28 Apr 2016 16:16:15 - Done support file: fbox-2016-03-05_parsed.csv | Count: 43655603 | Time: 59174
+[INFO] main InfoLog 28 Apr 2016 16:17:11 - Done support file: fbox-2016-03-10_parsed.csv | Count: 36114662 | Time: 56361
+[INFO] main InfoLog 28 Apr 2016 16:18:03 - Done support file: fbox-2016-03-04_parsed.csv | Count: 36632689 | Time: 51861
+[INFO] main InfoLog 28 Apr 2016 16:19:04 - Done support file: fbox-2016-03-13_parsed.csv | Count: 43502770 | Time: 61129
+[INFO] main InfoLog 28 Apr 2016 16:19:54 - Done support file: fbox-2016-03-31_parsed.csv | Count: 39063545 | Time: 49753
+[INFO] main InfoLog 28 Apr 2016 16:20:59 - Done support file: fbox-2016-03-20_parsed.csv | Count: 43674216 | Time: 65347
+[INFO] main InfoLog 28 Apr 2016 16:21:30 - Done support file: fbox-2016-03-09_parsed.csv | Count: 36899681 | Time: 30949
+[INFO] main InfoLog 29 Apr 2016 08:50:07 - Done: fbox-2016-02-05_parsed.csv | Count: 38097969 | Count error: 0 | Time: 45800
+[INFO] main InfoLog 29 Apr 2016 08:50:49 - Done: fbox-2016-02-25_parsed.csv | Count: 35175096 | Count error: 0 | Time: 42212
+[INFO] main InfoLog 29 Apr 2016 08:51:27 - Done: fbox-2016-02-17_parsed.csv | Count: 33906870 | Count error: 0 | Time: 38321
+[INFO] main InfoLog 29 Apr 2016 08:52:08 - Done: fbox-2016-02-18_parsed.csv | Count: 34038184 | Count error: 0 | Time: 40712
+[INFO] main InfoLog 29 Apr 2016 08:52:47 - Done: fbox-2016-02-15_parsed.csv | Count: 34889046 | Count error: 0 | Time: 39340
+[INFO] main InfoLog 29 Apr 2016 08:53:09 - Done: fbox-2016-02-02_parsed.csv | Count: 23737481 | Count error: 0 | Time: 21705
+[INFO] main InfoLog 29 Apr 2016 08:53:56 - Done: fbox-2016-02-04_parsed.csv | Count: 38069553 | Count error: 0 | Time: 46637
+[INFO] main InfoLog 29 Apr 2016 08:54:35 - Done: fbox-2016-02-03_parsed.csv | Count: 36973034 | Count error: 0 | Time: 38811
+[INFO] main InfoLog 29 Apr 2016 08:55:12 - Done: fbox-2016-02-29_parsed.csv | Count: 34134640 | Count error: 0 | Time: 37453
+[INFO] main InfoLog 29 Apr 2016 08:55:55 - Done: fbox-2016-02-16_parsed.csv | Count: 33996938 | Count error: 0 | Time: 43010
+[INFO] main InfoLog 29 Apr 2016 08:56:44 - Done: fbox-2016-02-20_parsed.csv | Count: 39873695 | Count error: 0 | Time: 48715
+[INFO] main InfoLog 29 Apr 2016 08:57:28 - Done: fbox-2016-02-12_parsed.csv | Count: 38103023 | Count error: 0 | Time: 44209
+[INFO] main InfoLog 29 Apr 2016 08:58:09 - Done: fbox-2016-02-26_parsed.csv | Count: 37082558 | Count error: 0 | Time: 41398
+[INFO] main InfoLog 29 Apr 2016 08:58:51 - Done: fbox-2016-02-23_parsed.csv | Count: 34923543 | Count error: 0 | Time: 41473
+[INFO] main InfoLog 29 Apr 2016 09:00:34 - Done: fbox-2016-02-09_parsed.csv | Count: 36659119 | Count error: 0 | Time: 103639
+[INFO] main InfoLog 29 Apr 2016 09:01:32 - Done: fbox-2016-02-10_parsed.csv | Count: 36235576 | Count error: 0 | Time: 57069
+[INFO] main InfoLog 29 Apr 2016 09:02:34 - Done: fbox-2016-02-07_parsed.csv | Count: 43173750 | Count error: 0 | Time: 62104
+[INFO] main InfoLog 29 Apr 2016 09:03:20 - Done: fbox-2016-02-14_parsed.csv | Count: 39820079 | Count error: 0 | Time: 46189
+[INFO] main InfoLog 29 Apr 2016 09:04:00 - Done: fbox-2016-02-24_parsed.csv | Count: 35226143 | Count error: 0 | Time: 39712
+[INFO] main InfoLog 29 Apr 2016 09:04:52 - Done: fbox-2016-02-13_parsed.csv | Count: 40544292 | Count error: 0 | Time: 52169
+[INFO] main InfoLog 29 Apr 2016 09:05:51 - Done: fbox-2016-02-11_parsed.csv | Count: 36163877 | Count error: 0 | Time: 59035
+[INFO] main InfoLog 29 Apr 2016 09:06:39 - Done: fbox-2016-02-27_parsed.csv | Count: 40134100 | Count error: 0 | Time: 48289
+[INFO] main InfoLog 29 Apr 2016 09:07:06 - Done: fbox-2016-02-21_parsed.csv | Count: 22748739 | Count error: 0 | Time: 26718
+[INFO] main InfoLog 29 Apr 2016 09:07:44 - Done: fbox-2016-02-22_parsed.csv | Count: 34075050 | Count error: 0 | Time: 37930
+[INFO] main InfoLog 29 Apr 2016 09:08:31 - Done: fbox-2016-02-28_parsed.csv | Count: 41180850 | Count error: 0 | Time: 47328
+[INFO] main InfoLog 29 Apr 2016 09:09:16 - Done: fbox-2016-02-08_parsed.csv | Count: 39223898 | Count error: 0 | Time: 45460
+[INFO] main InfoLog 29 Apr 2016 09:09:59 - Done: fbox-2016-02-06_parsed.csv | Count: 38587728 | Count error: 0 | Time: 42114
+[INFO] main InfoLog 29 Apr 2016 09:10:38 - Done: fbox-2016-02-19_parsed.csv | Count: 35353316 | Count error: 0 | Time: 39187
+[INFO] main InfoLog 29 Apr 2016 09:14:46 - Done: fbox-2016-02-05_parsed.csv | Count: 38097969 | Count error: 0 | Time: 93865
+[INFO] main InfoLog 29 Apr 2016 09:16:05 - Done: fbox-2016-02-25_parsed.csv | Count: 35175096 | Count error: 0 | Time: 78847
+[INFO] main InfoLog 29 Apr 2016 09:17:21 - Done: fbox-2016-02-17_parsed.csv | Count: 33906870 | Count error: 0 | Time: 75983
+[INFO] main InfoLog 29 Apr 2016 09:18:58 - Done: fbox-2016-02-18_parsed.csv | Count: 34038184 | Count error: 0 | Time: 96793
+[INFO] main InfoLog 29 Apr 2016 09:20:19 - Done: fbox-2016-02-15_parsed.csv | Count: 34889046 | Count error: 0 | Time: 81103
+[INFO] main InfoLog 29 Apr 2016 11:36:56 - Done count ItemId + LogId: fbox-2016-02-05_parsed.csv | Count: 38097969 | Count error: 0 | Time: 58619
+[INFO] main InfoLog 29 Apr 2016 11:37:50 - Done count ItemId + LogId: fbox-2016-02-25_parsed.csv | Count: 35175096 | Count error: 0 | Time: 54898
+[INFO] main InfoLog 29 Apr 2016 11:38:53 - Done count ItemId + LogId: fbox-2016-02-17_parsed.csv | Count: 33906870 | Count error: 0 | Time: 62211
+[INFO] main InfoLog 29 Apr 2016 11:39:48 - Done count ItemId + LogId: fbox-2016-02-18_parsed.csv | Count: 34038184 | Count error: 0 | Time: 55400
+[INFO] main InfoLog 29 Apr 2016 11:40:49 - Done count ItemId + LogId: fbox-2016-02-15_parsed.csv | Count: 34889046 | Count error: 0 | Time: 60925
+[INFO] main InfoLog 29 Apr 2016 11:41:23 - Done count ItemId + LogId: fbox-2016-02-02_parsed.csv | Count: 23737481 | Count error: 0 | Time: 33703
+[INFO] main InfoLog 29 Apr 2016 11:49:51 - Done count ItemId + LogId: fbox-2016-02-04_parsed.csv | Count: 38069553 | Count error: 0 | Time: 508754
+[INFO] main InfoLog 29 Apr 2016 12:00:46 - Done count ItemId + LogId: fbox-2016-02-03_parsed.csv | Count: 36973034 | Count error: 0 | Time: 654956
+[INFO] main InfoLog 29 Apr 2016 12:18:03 - Done count ItemId + LogId: fbox-2016-02-29_parsed.csv | Count: 34134640 | Count error: 0 | Time: 1036314
+[INFO] main InfoLog 29 Apr 2016 13:40:35 - Done count ItemId + LogId: fbox-2016-02-05_parsed.csv | Count: 38097969 | Count error: 0 | Time: 63076
+[INFO] main InfoLog 29 Apr 2016 13:41:29 - Done count ItemId + LogId: fbox-2016-02-25_parsed.csv | Count: 35175096 | Count error: 0 | Time: 54427
+[INFO] main InfoLog 29 Apr 2016 13:43:26 - Done count ItemId + LogId: fbox-2016-02-05_parsed.csv | Count: 38097969 | Count error: 0 | Time: 61760
+[INFO] main InfoLog 29 Apr 2016 13:44:24 - Done count ItemId + LogId: fbox-2016-02-25_parsed.csv | Count: 35175096 | Count error: 0 | Time: 58375
+[INFO] main InfoLog 29 Apr 2016 13:45:22 - Done count ItemId + LogId: fbox-2016-02-17_parsed.csv | Count: 33906870 | Count error: 0 | Time: 57958
+[INFO] main InfoLog 29 Apr 2016 13:46:11 - Done count ItemId + LogId: fbox-2016-02-18_parsed.csv | Count: 34038184 | Count error: 0 | Time: 49320
+[INFO] main InfoLog 29 Apr 2016 13:47:08 - Done count ItemId + LogId: fbox-2016-02-15_parsed.csv | Count: 34889046 | Count error: 0 | Time: 56877
+[INFO] main InfoLog 29 Apr 2016 13:47:40 - Done count ItemId + LogId: fbox-2016-02-02_parsed.csv | Count: 23737481 | Count error: 0 | Time: 31866
+[INFO] main InfoLog 29 Apr 2016 13:57:02 - Done count ItemId + LogId: fbox-2016-02-04_parsed.csv | Count: 38069553 | Count error: 0 | Time: 562206
+[INFO] main InfoLog 29 Apr 2016 14:07:59 - Done count ItemId + LogId: fbox-2016-02-03_parsed.csv | Count: 36973034 | Count error: 0 | Time: 656187
+[INFO] main InfoLog 29 Apr 2016 14:24:42 - Done count ItemId + LogId: fbox-2016-02-29_parsed.csv | Count: 34134640 | Count error: 0 | Time: 1003716
+[INFO] main InfoLog 29 Apr 2016 15:08:08 - Done count ItemId + LogId: fbox-2016-02-16_parsed.csv | Count: 33996938 | Count error: 0 | Time: 2606093
+[INFO] main InfoLog 29 Apr 2016 15:15:05 - Done count ItemId + LogId: fbox-2016-02-05_parsed.csv | Count: 38097969 | Count error: 0 | Time: 42882
+[INFO] main InfoLog 29 Apr 2016 15:15:43 - Done count ItemId + LogId: fbox-2016-02-25_parsed.csv | Count: 35175096 | Count error: 0 | Time: 37743
+[INFO] main InfoLog 29 Apr 2016 15:16:16 - Done count ItemId + LogId: fbox-2016-02-17_parsed.csv | Count: 33906870 | Count error: 0 | Time: 33297
+[INFO] main InfoLog 29 Apr 2016 15:16:49 - Done count ItemId + LogId: fbox-2016-02-18_parsed.csv | Count: 34038184 | Count error: 0 | Time: 33083
+[INFO] main InfoLog 29 Apr 2016 15:17:26 - Done count ItemId + LogId: fbox-2016-02-15_parsed.csv | Count: 34889046 | Count error: 0 | Time: 37132
+[INFO] main InfoLog 29 Apr 2016 15:17:47 - Done count ItemId + LogId: fbox-2016-02-02_parsed.csv | Count: 23737481 | Count error: 0 | Time: 20576
+[INFO] main InfoLog 29 Apr 2016 15:18:24 - Done count ItemId + LogId: fbox-2016-02-04_parsed.csv | Count: 38069553 | Count error: 0 | Time: 37309
+[INFO] main InfoLog 29 Apr 2016 15:18:59 - Done count ItemId + LogId: fbox-2016-02-03_parsed.csv | Count: 36973034 | Count error: 0 | Time: 34568
+[INFO] main InfoLog 29 Apr 2016 15:19:33 - Done count ItemId + LogId: fbox-2016-02-29_parsed.csv | Count: 34134640 | Count error: 0 | Time: 34659
+[INFO] main InfoLog 29 Apr 2016 15:20:13 - Done count ItemId + LogId: fbox-2016-02-16_parsed.csv | Count: 33996938 | Count error: 0 | Time: 39998
+[INFO] main InfoLog 29 Apr 2016 15:20:59 - Done count ItemId + LogId: fbox-2016-02-20_parsed.csv | Count: 39873695 | Count error: 0 | Time: 45320
+[INFO] main InfoLog 29 Apr 2016 15:21:39 - Done count ItemId + LogId: fbox-2016-02-12_parsed.csv | Count: 38103023 | Count error: 0 | Time: 40725
+[INFO] main InfoLog 29 Apr 2016 15:22:24 - Done count ItemId + LogId: fbox-2016-02-26_parsed.csv | Count: 37082558 | Count error: 0 | Time: 44388
+[INFO] main InfoLog 29 Apr 2016 15:23:03 - Done count ItemId + LogId: fbox-2016-02-23_parsed.csv | Count: 34923543 | Count error: 0 | Time: 38926
+[INFO] main InfoLog 29 Apr 2016 15:23:42 - Done count ItemId + LogId: fbox-2016-02-09_parsed.csv | Count: 36659119 | Count error: 0 | Time: 39562
+[INFO] main InfoLog 29 Apr 2016 15:24:23 - Done count ItemId + LogId: fbox-2016-02-10_parsed.csv | Count: 36235576 | Count error: 0 | Time: 41182
+[INFO] main InfoLog 29 Apr 2016 15:25:15 - Done count ItemId + LogId: fbox-2016-02-07_parsed.csv | Count: 43173750 | Count error: 0 | Time: 52076
+[INFO] main InfoLog 29 Apr 2016 15:26:00 - Done count ItemId + LogId: fbox-2016-02-14_parsed.csv | Count: 39820079 | Count error: 0 | Time: 44174
+[INFO] main InfoLog 29 Apr 2016 15:26:42 - Done count ItemId + LogId: fbox-2016-02-24_parsed.csv | Count: 35226143 | Count error: 0 | Time: 42780
+[INFO] main InfoLog 29 Apr 2016 15:27:27 - Done count ItemId + LogId: fbox-2016-02-13_parsed.csv | Count: 40544292 | Count error: 0 | Time: 44979
+[INFO] main InfoLog 29 Apr 2016 15:28:14 - Done count ItemId + LogId: fbox-2016-02-11_parsed.csv | Count: 36163877 | Count error: 0 | Time: 46854
+[INFO] main InfoLog 29 Apr 2016 15:29:03 - Done count ItemId + LogId: fbox-2016-02-27_parsed.csv | Count: 40134100 | Count error: 0 | Time: 48798
+[INFO] main InfoLog 29 Apr 2016 15:29:29 - Done count ItemId + LogId: fbox-2016-02-21_parsed.csv | Count: 22748739 | Count error: 0 | Time: 25877
+[INFO] main InfoLog 29 Apr 2016 15:30:10 - Done count ItemId + LogId: fbox-2016-02-22_parsed.csv | Count: 34075050 | Count error: 0 | Time: 40847
+[INFO] main InfoLog 29 Apr 2016 15:30:55 - Done count ItemId + LogId: fbox-2016-02-28_parsed.csv | Count: 41180850 | Count error: 0 | Time: 45079
+[INFO] main InfoLog 29 Apr 2016 15:31:38 - Done count ItemId + LogId: fbox-2016-02-08_parsed.csv | Count: 39223898 | Count error: 0 | Time: 43254
+[INFO] main InfoLog 29 Apr 2016 15:32:21 - Done count ItemId + LogId: fbox-2016-02-06_parsed.csv | Count: 38587728 | Count error: 0 | Time: 42616
+[INFO] main InfoLog 29 Apr 2016 15:33:03 - Done count ItemId + LogId: fbox-2016-02-19_parsed.csv | Count: 35353316 | Count error: 0 | Time: 42472
+[INFO] pool-1-thread-6 InfoLog 04 May 2016 09:35:13 - Done support file: fbox-2016-02-02_parsed.csv | Count: 24127885 | Time: 1489921
+[INFO] pool-1-thread-8 InfoLog 04 May 2016 09:53:32 - Done support file: fbox-2016-02-03_parsed.csv | Count: 37851750 | Time: 2588533
+[INFO] pool-1-thread-3 InfoLog 04 May 2016 09:57:38 - Done support file: fbox-2016-02-17_parsed.csv | Count: 34475658 | Time: 2834506
+[INFO] pool-1-thread-10 InfoLog 04 May 2016 09:57:43 - Done support file: fbox-2016-02-16_parsed.csv | Count: 34568668 | Time: 2839706
+[INFO] pool-1-thread-5 InfoLog 04 May 2016 09:58:42 - Done support file: fbox-2016-02-15_parsed.csv | Count: 35453855 | Time: 2898620
+[INFO] pool-1-thread-4 InfoLog 04 May 2016 09:58:46 - Done support file: fbox-2016-02-18_parsed.csv | Count: 34621410 | Time: 2902482
+[INFO] pool-1-thread-14 InfoLog 04 May 2016 09:59:39 - Done support file: fbox-2016-02-23_parsed.csv | Count: 35501327 | Time: 2956144
+[INFO] pool-1-thread-2 InfoLog 04 May 2016 09:59:43 - Done support file: fbox-2016-02-25_parsed.csv | Count: 35759837 | Time: 2959523
+[INFO] pool-1-thread-19 InfoLog 04 May 2016 09:59:50 - Done support file: fbox-2016-02-24_parsed.csv | Count: 35823815 | Time: 2966795
+[INFO] pool-1-thread-9 InfoLog 04 May 2016 09:59:55 - Done support file: fbox-2016-02-29_parsed.csv | Count: 34788693 | Time: 2971782
+[INFO] pool-1-thread-16 InfoLog 04 May 2016 10:00:42 - Done support file: fbox-2016-02-10_parsed.csv | Count: 36747796 | Time: 3019044
+[INFO] pool-1-thread-15 InfoLog 04 May 2016 10:00:45 - Done support file: fbox-2016-02-09_parsed.csv | Count: 37176940 | Time: 3022139
+[INFO] pool-1-thread-1 InfoLog 04 May 2016 10:01:15 - Done support file: fbox-2016-02-05_parsed.csv | Count: 38749364 | Time: 3051438
+[INFO] pool-1-thread-7 InfoLog 04 May 2016 10:01:30 - Done support file: fbox-2016-02-04_parsed.csv | Count: 38987485 | Time: 3066966
+[INFO] pool-1-thread-13 InfoLog 04 May 2016 10:03:06 - Done support file: fbox-2016-02-26_parsed.csv | Count: 37920041 | Time: 3163110
+[INFO] pool-1-thread-20 InfoLog 04 May 2016 10:04:38 - Done support file: fbox-2016-02-13_parsed.csv | Count: 41125558 | Time: 3254349
+[INFO] pool-1-thread-12 InfoLog 04 May 2016 10:04:48 - Done support file: fbox-2016-02-12_parsed.csv | Count: 38647608 | Time: 3264984
+[INFO] pool-1-thread-11 InfoLog 04 May 2016 10:05:20 - Done support file: fbox-2016-02-20_parsed.csv | Count: 40490530 | Time: 3296769
+[INFO] pool-1-thread-17 InfoLog 04 May 2016 10:05:48 - Done support file: fbox-2016-02-07_parsed.csv | Count: 43852520 | Time: 3324431
+[INFO] pool-1-thread-18 InfoLog 04 May 2016 10:06:04 - Done support file: fbox-2016-02-14_parsed.csv | Count: 40419805 | Time: 3341001
+[INFO] pool-1-thread-3 InfoLog 04 May 2016 10:10:17 - Done support file: fbox-2016-02-21_parsed.csv | Count: 23127350 | Time: 759640
+[INFO] pool-1-thread-6 InfoLog 04 May 2016 10:10:36 - Done support file: fbox-2016-02-11_parsed.csv | Count: 36688975 | Time: 2122382
+[INFO] pool-1-thread-10 InfoLog 04 May 2016 10:11:29 - Done support file: fbox-2016-02-22_parsed.csv | Count: 34655471 | Time: 826156
+[INFO] pool-1-thread-8 InfoLog 04 May 2016 10:12:12 - Done support file: fbox-2016-02-27_parsed.csv | Count: 40800657 | Time: 1120430
+[INFO] pool-1-thread-4 InfoLog 04 May 2016 10:12:13 - Done support file: fbox-2016-02-08_parsed.csv | Count: 39762287 | Time: 807013
+[INFO] pool-1-thread-2 InfoLog 04 May 2016 10:12:14 - Done support file: fbox-2016-02-19_parsed.csv | Count: 35937049 | Time: 751151
+[INFO] pool-1-thread-14 InfoLog 04 May 2016 10:12:26 - Done support file: fbox-2016-02-06_parsed.csv | Count: 39190727 | Time: 766723
+[INFO] pool-1-thread-5 InfoLog 04 May 2016 10:12:30 - Done support file: fbox-2016-02-28_parsed.csv | Count: 41866240 | Time: 828127
+[INFO] main InfoLog 04 May 2016 12:16:15 - Done: fbox-2016-02-05_parsed.csv | Count: 38749364 | Count error: 0 | Time: 36808
+[INFO] main InfoLog 04 May 2016 12:16:50 - Done: fbox-2016-02-25_parsed.csv | Count: 35759837 | Count error: 0 | Time: 35366
+[INFO] main InfoLog 04 May 2016 12:17:22 - Done: fbox-2016-02-17_parsed.csv | Count: 34475658 | Count error: 0 | Time: 31685
+[INFO] main InfoLog 04 May 2016 12:17:52 - Done: fbox-2016-02-18_parsed.csv | Count: 34621410 | Count error: 0 | Time: 30649
+[INFO] main InfoLog 04 May 2016 12:18:24 - Done: fbox-2016-02-15_parsed.csv | Count: 35453855 | Count error: 0 | Time: 32019
+[INFO] main InfoLog 04 May 2016 12:18:40 - Done: fbox-2016-02-02_parsed.csv | Count: 24127885 | Count error: 0 | Time: 15731
+[INFO] main InfoLog 04 May 2016 12:19:12 - Done: fbox-2016-02-04_parsed.csv | Count: 38987485 | Count error: 0 | Time: 32190
+[INFO] main InfoLog 04 May 2016 12:19:39 - Done: fbox-2016-02-03_parsed.csv | Count: 37851750 | Count error: 0 | Time: 27015
+[INFO] main InfoLog 04 May 2016 12:20:12 - Done: fbox-2016-02-29_parsed.csv | Count: 34788693 | Count error: 0 | Time: 33032
+[INFO] main InfoLog 04 May 2016 12:20:43 - Done: fbox-2016-02-16_parsed.csv | Count: 34568668 | Count error: 0 | Time: 30684
+[INFO] main InfoLog 04 May 2016 12:21:20 - Done: fbox-2016-02-20_parsed.csv | Count: 40490530 | Count error: 0 | Time: 36578
+[INFO] main InfoLog 04 May 2016 12:21:53 - Done: fbox-2016-02-12_parsed.csv | Count: 38647608 | Count error: 0 | Time: 33204
+[INFO] main InfoLog 04 May 2016 12:22:27 - Done: fbox-2016-02-26_parsed.csv | Count: 37920041 | Count error: 0 | Time: 34648
+[INFO] main InfoLog 04 May 2016 12:22:59 - Done: fbox-2016-02-23_parsed.csv | Count: 35501327 | Count error: 0 | Time: 31594
+[INFO] main InfoLog 04 May 2016 12:23:31 - Done: fbox-2016-02-09_parsed.csv | Count: 37176940 | Count error: 0 | Time: 32403
+[INFO] main InfoLog 04 May 2016 12:24:03 - Done: fbox-2016-02-10_parsed.csv | Count: 36747796 | Count error: 0 | Time: 31106
+[INFO] main InfoLog 04 May 2016 12:24:42 - Done: fbox-2016-02-07_parsed.csv | Count: 43852520 | Count error: 0 | Time: 39166
+[INFO] main InfoLog 04 May 2016 12:25:24 - Done: fbox-2016-02-14_parsed.csv | Count: 40419805 | Count error: 0 | Time: 41870
+[INFO] main InfoLog 04 May 2016 12:25:58 - Done: fbox-2016-02-24_parsed.csv | Count: 35823815 | Count error: 0 | Time: 33884
+[INFO] main InfoLog 04 May 2016 12:26:34 - Done: fbox-2016-02-13_parsed.csv | Count: 41125558 | Count error: 0 | Time: 36751
+[INFO] main InfoLog 04 May 2016 12:27:07 - Done: fbox-2016-02-11_parsed.csv | Count: 36688975 | Count error: 0 | Time: 32881
+[INFO] main InfoLog 04 May 2016 12:27:51 - Done: fbox-2016-02-27_parsed.csv | Count: 40800657 | Count error: 0 | Time: 44316
+[INFO] main InfoLog 04 May 2016 12:28:13 - Done: fbox-2016-02-21_parsed.csv | Count: 23127350 | Count error: 0 | Time: 21484
+[INFO] main InfoLog 04 May 2016 12:28:45 - Done: fbox-2016-02-22_parsed.csv | Count: 34655471 | Count error: 0 | Time: 31855
+[INFO] main InfoLog 04 May 2016 12:29:26 - Done: fbox-2016-02-28_parsed.csv | Count: 41866240 | Count error: 0 | Time: 41327
+[INFO] main InfoLog 04 May 2016 12:30:03 - Done: fbox-2016-02-08_parsed.csv | Count: 39762287 | Count error: 0 | Time: 36853
+[INFO] main InfoLog 04 May 2016 12:30:41 - Done: fbox-2016-02-06_parsed.csv | Count: 39190727 | Count error: 0 | Time: 37901
+[INFO] main InfoLog 04 May 2016 12:31:15 - Done: fbox-2016-02-19_parsed.csv | Count: 35937049 | Count error: 0 | Time: 33922
+[INFO] main InfoLog 04 May 2016 13:49:24 - Done: fbox-2016-02-05_parsed.csv | Count: 38749364 | Count error: 0 | Time: 38206
+[INFO] main InfoLog 04 May 2016 13:49:57 - Done: fbox-2016-02-25_parsed.csv | Count: 35759837 | Count error: 0 | Time: 32940
+[INFO] main InfoLog 04 May 2016 13:50:28 - Done: fbox-2016-02-17_parsed.csv | Count: 34475658 | Count error: 0 | Time: 31144
+[INFO] main InfoLog 04 May 2016 13:50:59 - Done: fbox-2016-02-18_parsed.csv | Count: 34621410 | Count error: 0 | Time: 30990
+[INFO] main InfoLog 04 May 2016 13:51:32 - Done: fbox-2016-02-15_parsed.csv | Count: 35453855 | Count error: 0 | Time: 32409
+[INFO] main InfoLog 04 May 2016 13:51:47 - Done: fbox-2016-02-02_parsed.csv | Count: 24127885 | Count error: 0 | Time: 15157
+[INFO] main InfoLog 04 May 2016 13:52:19 - Done: fbox-2016-02-04_parsed.csv | Count: 38987485 | Count error: 0 | Time: 32566
+[INFO] main InfoLog 04 May 2016 13:52:47 - Done: fbox-2016-02-03_parsed.csv | Count: 37851750 | Count error: 0 | Time: 27210
+[INFO] main InfoLog 04 May 2016 13:53:21 - Done: fbox-2016-02-29_parsed.csv | Count: 34788693 | Count error: 0 | Time: 34379
+[INFO] main InfoLog 04 May 2016 13:53:55 - Done: fbox-2016-02-16_parsed.csv | Count: 34568668 | Count error: 0 | Time: 33825
+[INFO] main InfoLog 04 May 2016 13:54:33 - Done: fbox-2016-02-20_parsed.csv | Count: 40490530 | Count error: 0 | Time: 38279
+[INFO] main InfoLog 04 May 2016 13:55:07 - Done: fbox-2016-02-12_parsed.csv | Count: 38647608 | Count error: 0 | Time: 33846
+[INFO] main InfoLog 04 May 2016 13:55:42 - Done: fbox-2016-02-26_parsed.csv | Count: 37920041 | Count error: 0 | Time: 35593
+[INFO] main InfoLog 04 May 2016 13:56:17 - Done: fbox-2016-02-23_parsed.csv | Count: 35501327 | Count error: 0 | Time: 34281
+[INFO] main InfoLog 04 May 2016 13:56:51 - Done: fbox-2016-02-09_parsed.csv | Count: 37176940 | Count error: 0 | Time: 34555
+[INFO] main InfoLog 04 May 2016 13:57:26 - Done: fbox-2016-02-10_parsed.csv | Count: 36747796 | Count error: 0 | Time: 34339
+[INFO] main InfoLog 04 May 2016 13:58:11 - Done: fbox-2016-02-07_parsed.csv | Count: 43852520 | Count error: 0 | Time: 45697
+[INFO] main InfoLog 04 May 2016 13:58:49 - Done: fbox-2016-02-14_parsed.csv | Count: 40419805 | Count error: 0 | Time: 37404
+[INFO] main InfoLog 04 May 2016 13:59:26 - Done: fbox-2016-02-24_parsed.csv | Count: 35823815 | Count error: 0 | Time: 37250
+[INFO] main InfoLog 04 May 2016 14:00:10 - Done: fbox-2016-02-13_parsed.csv | Count: 41125558 | Count error: 0 | Time: 43826
+[INFO] main InfoLog 04 May 2016 14:00:44 - Done: fbox-2016-02-11_parsed.csv | Count: 36688975 | Count error: 0 | Time: 34047
+[INFO] main InfoLog 04 May 2016 14:01:24 - Done: fbox-2016-02-27_parsed.csv | Count: 40800657 | Count error: 0 | Time: 40483
+[INFO] main InfoLog 04 May 2016 14:01:47 - Done: fbox-2016-02-21_parsed.csv | Count: 23127350 | Count error: 0 | Time: 22514
+[INFO] main InfoLog 04 May 2016 14:02:22 - Done: fbox-2016-02-22_parsed.csv | Count: 34655471 | Count error: 0 | Time: 35466
+[INFO] main InfoLog 04 May 2016 14:03:03 - Done: fbox-2016-02-28_parsed.csv | Count: 41866240 | Count error: 0 | Time: 40625
+[INFO] main InfoLog 04 May 2016 14:03:38 - Done: fbox-2016-02-08_parsed.csv | Count: 39762287 | Count error: 0 | Time: 34614
+[INFO] main InfoLog 04 May 2016 14:04:12 - Done: fbox-2016-02-06_parsed.csv | Count: 39190727 | Count error: 0 | Time: 34041
+[INFO] main InfoLog 04 May 2016 14:04:44 - Done: fbox-2016-02-19_parsed.csv | Count: 35937049 | Count error: 0 | Time: 32746
+[INFO] main InfoLog 04 May 2016 14:12:00 - Done: fbox-2016-02-05_parsed.csv | Count: 38749364 | Count error: 0 | Time: 34388
+[INFO] main InfoLog 04 May 2016 14:12:33 - Done: fbox-2016-02-25_parsed.csv | Count: 35759837 | Count error: 0 | Time: 33595
+[INFO] main InfoLog 04 May 2016 14:13:05 - Done: fbox-2016-02-17_parsed.csv | Count: 34475658 | Count error: 0 | Time: 31928
+[INFO] main InfoLog 04 May 2016 14:13:37 - Done: fbox-2016-02-18_parsed.csv | Count: 34621410 | Count error: 0 | Time: 32060
+[INFO] main InfoLog 04 May 2016 14:14:15 - Done: fbox-2016-02-15_parsed.csv | Count: 35453855 | Count error: 0 | Time: 37609
+[INFO] main InfoLog 04 May 2016 14:14:35 - Done: fbox-2016-02-02_parsed.csv | Count: 24127885 | Count error: 0 | Time: 19531
+[INFO] main InfoLog 04 May 2016 14:15:17 - Done: fbox-2016-02-04_parsed.csv | Count: 38987485 | Count error: 0 | Time: 42900
+[INFO] main InfoLog 04 May 2016 14:15:54 - Done: fbox-2016-02-03_parsed.csv | Count: 37851750 | Count error: 0 | Time: 36423
+[INFO] main InfoLog 04 May 2016 14:16:28 - Done: fbox-2016-02-29_parsed.csv | Count: 34788693 | Count error: 0 | Time: 34173
+[INFO] main InfoLog 04 May 2016 14:17:01 - Done: fbox-2016-02-16_parsed.csv | Count: 34568668 | Count error: 0 | Time: 33303
+[INFO] main InfoLog 04 May 2016 14:17:40 - Done: fbox-2016-02-20_parsed.csv | Count: 40490530 | Count error: 0 | Time: 38490
+[INFO] main InfoLog 04 May 2016 14:18:14 - Done: fbox-2016-02-12_parsed.csv | Count: 38647608 | Count error: 0 | Time: 34597
+[INFO] main InfoLog 04 May 2016 14:18:50 - Done: fbox-2016-02-26_parsed.csv | Count: 37920041 | Count error: 0 | Time: 35532
+[INFO] main InfoLog 04 May 2016 14:19:22 - Done: fbox-2016-02-23_parsed.csv | Count: 35501327 | Count error: 0 | Time: 32330
+[INFO] main InfoLog 04 May 2016 14:19:54 - Done: fbox-2016-02-09_parsed.csv | Count: 37176940 | Count error: 0 | Time: 31685
+[INFO] main InfoLog 04 May 2016 14:20:26 - Done: fbox-2016-02-10_parsed.csv | Count: 36747796 | Count error: 0 | Time: 31854
+[INFO] main InfoLog 04 May 2016 14:21:04 - Done: fbox-2016-02-07_parsed.csv | Count: 43852520 | Count error: 0 | Time: 37916
+[INFO] main InfoLog 04 May 2016 14:21:40 - Done: fbox-2016-02-14_parsed.csv | Count: 40419805 | Count error: 0 | Time: 36371
+[INFO] main InfoLog 04 May 2016 14:22:14 - Done: fbox-2016-02-24_parsed.csv | Count: 35823815 | Count error: 0 | Time: 33883
+[INFO] main InfoLog 04 May 2016 14:22:51 - Done: fbox-2016-02-13_parsed.csv | Count: 41125558 | Count error: 0 | Time: 37276
+[INFO] main InfoLog 04 May 2016 14:23:23 - Done: fbox-2016-02-11_parsed.csv | Count: 36688975 | Count error: 0 | Time: 31697
+[INFO] main InfoLog 04 May 2016 14:24:02 - Done: fbox-2016-02-27_parsed.csv | Count: 40800657 | Count error: 0 | Time: 38749
+[INFO] main InfoLog 04 May 2016 14:24:23 - Done: fbox-2016-02-21_parsed.csv | Count: 23127350 | Count error: 0 | Time: 21809
+[INFO] main InfoLog 04 May 2016 14:24:55 - Done: fbox-2016-02-22_parsed.csv | Count: 34655471 | Count error: 0 | Time: 31777
+[INFO] main InfoLog 04 May 2016 14:25:35 - Done: fbox-2016-02-28_parsed.csv | Count: 41866240 | Count error: 0 | Time: 39743
+[INFO] main InfoLog 04 May 2016 14:26:12 - Done: fbox-2016-02-08_parsed.csv | Count: 39762287 | Count error: 0 | Time: 36624
+[INFO] main InfoLog 04 May 2016 14:26:45 - Done: fbox-2016-02-06_parsed.csv | Count: 39190727 | Count error: 0 | Time: 33508
+[INFO] main InfoLog 04 May 2016 14:27:18 - Done: fbox-2016-02-19_parsed.csv | Count: 35937049 | Count error: 0 | Time: 32468
+[INFO] main InfoLog 11 May 2016 09:48:33 - Done process file : /home/tunn/data/tv/log_parsed/t2/fbox-2016-02-05_parsed.csv | Time: 32126 | Line error: 0
+[INFO] main InfoLog 11 May 2016 09:49:02 - Done process file : /home/tunn/data/tv/log_parsed/t2/fbox-2016-02-25_parsed.csv | Time: 28635 | Line error: 0
+[INFO] main InfoLog 11 May 2016 09:50:23 - Done process file : /home/tunn/data/tv/log_parsed/t2/fbox-2016-02-05_parsed.csv | Time: 31508 | Total line: 38749364 | Line error: 0
+[INFO] main InfoLog 11 May 2016 09:56:53 - Done process file : fbox-2016-02-05_parsed.csv | Time: 23682 | Total line: 38749364 | Line process: 3166 | Line error: 0
+[INFO] main InfoLog 11 May 2016 09:57:21 - Done process file : fbox-2016-02-25_parsed.csv | Time: 27044 | Total line: 35759837 | Line process: 4352 | Line error: 0
+[INFO] main InfoLog 11 May 2016 09:57:51 - Done process file : fbox-2016-02-17_parsed.csv | Time: 30398 | Total line: 34475658 | Line process: 4115 | Line error: 0
+[INFO] main InfoLog 11 May 2016 09:58:22 - Done process file : fbox-2016-02-18_parsed.csv | Time: 31177 | Total line: 34621410 | Line process: 4216 | Line error: 0
+[INFO] main InfoLog 11 May 2016 09:58:53 - Done process file : fbox-2016-02-15_parsed.csv | Time: 31201 | Total line: 35453855 | Line process: 4023 | Line error: 0
+[INFO] main InfoLog 11 May 2016 09:59:08 - Done process file : fbox-2016-02-02_parsed.csv | Time: 14679 | Total line: 24127885 | Line process: 161 | Line error: 0
+[INFO] main InfoLog 11 May 2016 09:59:40 - Done process file : fbox-2016-02-04_parsed.csv | Time: 32127 | Total line: 38987485 | Line process: 3193 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:00:08 - Done process file : fbox-2016-02-03_parsed.csv | Time: 28345 | Total line: 37851750 | Line process: 1357 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:00:42 - Done process file : fbox-2016-02-29_parsed.csv | Time: 33838 | Total line: 34788693 | Line process: 4260 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:01:15 - Done process file : fbox-2016-02-16_parsed.csv | Time: 32305 | Total line: 34568668 | Line process: 4059 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:01:53 - Done process file : fbox-2016-02-20_parsed.csv | Time: 38370 | Total line: 40490530 | Line process: 4523 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:02:31 - Done process file : fbox-2016-02-12_parsed.csv | Time: 37633 | Total line: 38647608 | Line process: 3676 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:03:10 - Done process file : fbox-2016-02-26_parsed.csv | Time: 39127 | Total line: 37920041 | Line process: 4926 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:03:44 - Done process file : fbox-2016-02-23_parsed.csv | Time: 34296 | Total line: 35501327 | Line process: 4406 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:04:19 - Done process file : fbox-2016-02-09_parsed.csv | Time: 35109 | Total line: 37176940 | Line process: 3231 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:04:54 - Done process file : fbox-2016-02-10_parsed.csv | Time: 34320 | Total line: 36747796 | Line process: 3310 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:05:32 - Done process file : fbox-2016-02-07_parsed.csv | Time: 38757 | Total line: 43852520 | Line process: 3658 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:06:16 - Done process file : fbox-2016-02-14_parsed.csv | Time: 43441 | Total line: 40419805 | Line process: 4497 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:06:52 - Done process file : fbox-2016-02-24_parsed.csv | Time: 36516 | Total line: 35823815 | Line process: 4549 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:07:28 - Done process file : fbox-2016-02-13_parsed.csv | Time: 35715 | Total line: 41125558 | Line process: 4002 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:07:59 - Done process file : fbox-2016-02-11_parsed.csv | Time: 30890 | Total line: 36688975 | Line process: 3536 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:08:36 - Done process file : fbox-2016-02-27_parsed.csv | Time: 37466 | Total line: 40800657 | Line process: 4692 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:08:56 - Done process file : fbox-2016-02-21_parsed.csv | Time: 20009 | Total line: 23127350 | Line process: 2671 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:09:27 - Done process file : fbox-2016-02-22_parsed.csv | Time: 30627 | Total line: 34655471 | Line process: 4304 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:10:04 - Done process file : fbox-2016-02-28_parsed.csv | Time: 37138 | Total line: 41866240 | Line process: 5214 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:10:38 - Done process file : fbox-2016-02-08_parsed.csv | Time: 33922 | Total line: 39762287 | Line process: 3175 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:11:12 - Done process file : fbox-2016-02-06_parsed.csv | Time: 34106 | Total line: 39190727 | Line process: 2853 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:11:51 - Done process file : fbox-2016-02-19_parsed.csv | Time: 38964 | Total line: 35937049 | Line process: 4086 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:12:33 - Done process file : fbox-2016-03-12_parsed.csv | Time: 42095 | Total line: 41973177 | Line process: 1886206 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:13:55 - Done process file : fbox-2016-03-06_parsed.csv | Time: 81394 | Total line: 42990510 | Line process: 1941143 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:14:59 - Done process file : fbox-2016-03-15_parsed.csv | Time: 64611 | Total line: 35938348 | Line process: 1632274 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:15:41 - Done process file : fbox-2016-03-19_parsed.csv | Time: 41304 | Total line: 43990478 | Line process: 1940451 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:16:20 - Done process file : fbox-2016-03-08_parsed.csv | Time: 39287 | Total line: 36769382 | Line process: 1677646 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:17:00 - Done process file : fbox-2016-03-16_parsed.csv | Time: 39959 | Total line: 36574558 | Line process: 1669805 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:18:06 - Done process file : fbox-2016-03-29_parsed.csv | Time: 66363 | Total line: 36923876 | Line process: 1691556 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:18:39 - Done process file : fbox-2016-03-02_parsed.csv | Time: 32855 | Total line: 35039958 | Line process: 1603824 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:19:37 - Done process file : fbox-2016-03-24_parsed.csv | Time: 58499 | Total line: 38077815 | Line process: 1710828 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:20:40 - Done process file : fbox-2016-03-23_parsed.csv | Time: 62052 | Total line: 36964369 | Line process: 1696497 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:21:44 - Done process file : fbox-2016-03-27_parsed.csv | Time: 64389 | Total line: 42640495 | Line process: 1912433 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:22:37 - Done process file : fbox-2016-03-07_parsed.csv | Time: 53335 | Total line: 35695907 | Line process: 1635254 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:23:10 - Done process file : fbox-2016-03-11_parsed.csv | Time: 32749 | Total line: 36463649 | Line process: 1676662 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:24:19 - Done process file : fbox-2016-03-26_parsed.csv | Time: 68775 | Total line: 41802510 | Line process: 1873427 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:25:13 - Done process file : fbox-2016-03-21_parsed.csv | Time: 53776 | Total line: 36193949 | Line process: 1651144 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:25:42 - Done process file : fbox-2016-03-01_parsed.csv | Time: 29785 | Total line: 35242552 | Line process: 83121 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:26:15 - Done process file : fbox-2016-03-14_parsed.csv | Time: 32362 | Total line: 35668327 | Line process: 1627033 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:27:17 - Done process file : fbox-2016-03-17_parsed.csv | Time: 62381 | Total line: 36708759 | Line process: 1689298 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:27:49 - Done process file : fbox-2016-03-03_parsed.csv | Time: 31417 | Total line: 35362415 | Line process: 1628930 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:28:24 - Done process file : fbox-2016-03-30_parsed.csv | Time: 35529 | Total line: 36812572 | Line process: 1686116 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:29:21 - Done process file : fbox-2016-03-25_parsed.csv | Time: 57185 | Total line: 37979215 | Line process: 1723655 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:30:21 - Done process file : fbox-2016-03-22_parsed.csv | Time: 59454 | Total line: 35315345 | Line process: 1623618 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:31:00 - Done process file : fbox-2016-03-18_parsed.csv | Time: 38854 | Total line: 36926350 | Line process: 1698560 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:31:56 - Done process file : fbox-2016-03-28_parsed.csv | Time: 56355 | Total line: 36268941 | Line process: 1655339 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:32:57 - Done process file : fbox-2016-03-05_parsed.csv | Time: 60796 | Total line: 43655603 | Line process: 1913604 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:33:53 - Done process file : fbox-2016-03-10_parsed.csv | Time: 55862 | Total line: 36114662 | Line process: 1674027 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:34:55 - Done process file : fbox-2016-03-04_parsed.csv | Time: 62604 | Total line: 36632689 | Line process: 1672724 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:36:06 - Done process file : fbox-2016-03-13_parsed.csv | Time: 70371 | Total line: 43502770 | Line process: 1956938 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:37:02 - Done process file : fbox-2016-03-31_parsed.csv | Time: 56140 | Total line: 39063545 | Line process: 1734625 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:38:06 - Done process file : fbox-2016-03-20_parsed.csv | Time: 63878 | Total line: 43674216 | Line process: 1961981 | Line error: 0
+[INFO] main InfoLog 11 May 2016 10:38:38 - Done process file : fbox-2016-03-09_parsed.csv | Time: 32872 | Total line: 36899681 | Line process: 1683548 | Line error: 0
+[INFO] main InfoLog 12 May 2016 09:12:56 - Done filter log of customer 24502860 | Count: 8865
+[INFO] main InfoLog 12 May 2016 09:47:56 - Done filter log of customer 24502860 | Count: 12223
+[INFO] main InfoLog 12 May 2016 09:48:51 - Done process file : log.csv | Time: 179 | Total line: 12222 | Line process: 4993 | Line error: 0
+[INFO] main InfoLog 12 May 2016 09:54:14 - Done process file : log.csv | Time: 165 | Total line: 12222 | Line process: 4993 | Line error: 0
+[INFO] main InfoLog 12 May 2016 09:54:54 - Done process file : log.csv | Time: 407 | Total line: 12222 | Line process: 4993 | Line error: 0
+[INFO] main InfoLog 12 May 2016 09:55:16 - Done process file : log.csv | Time: 176 | Total line: 12222 | Line process: 4993 | Line error: 0
+[INFO] main InfoLog 12 May 2016 09:56:58 - Done process file : log.csv | Time: 384 | Total line: 12222 | Line process: 4993 | Line error: 0
+[INFO] main InfoLog 12 May 2016 09:58:22 - Done process file : log.csv | Time: 179 | Total line: 12222 | Line process: 4993 | Line error: 0
+[INFO] main InfoLog 12 May 2016 14:22:56 - Done process file : fbox-2016-02-05_parsed.csv | Time: 35595 | Total line: 38749364 | Line process: 3026 | Line error: 0
+[INFO] main InfoLog 12 May 2016 14:23:32 - Done process file : fbox-2016-02-25_parsed.csv | Time: 36205 | Total line: 35759837 | Line process: 4116 | Line error: 0
+[INFO] main InfoLog 12 May 2016 14:24:06 - Done process file : fbox-2016-02-17_parsed.csv | Time: 34630 | Total line: 34475658 | Line process: 3855 | Line error: 0
+[INFO] main InfoLog 12 May 2016 14:24:40 - Done process file : fbox-2016-02-18_parsed.csv | Time: 33194 | Total line: 34621410 | Line process: 3988 | Line error: 0
+[INFO] main InfoLog 12 May 2016 14:25:17 - Done process file : fbox-2016-02-15_parsed.csv | Time: 37342 | Total line: 35453855 | Line process: 3752 | Line error: 0
+[INFO] main InfoLog 12 May 2016 14:25:33 - Done process file : fbox-2016-02-02_parsed.csv | Time: 16350 | Total line: 24127885 | Line process: 153 | Line error: 0
+[INFO] main InfoLog 12 May 2016 14:26:10 - Done process file : fbox-2016-02-04_parsed.csv | Time: 36480 | Total line: 38987485 | Line process: 3028 | Line error: 0
+[INFO] main InfoLog 12 May 2016 14:26:43 - Done process file : fbox-2016-02-03_parsed.csv | Time: 33540 | Total line: 37851750 | Line process: 1274 | Line error: 0
+[INFO] main InfoLog 12 May 2016 14:27:26 - Done process file : fbox-2016-02-29_parsed.csv | Time: 43031 | Total line: 34788693 | Line process: 4053 | Line error: 0
+[INFO] main InfoLog 12 May 2016 14:28:12 - Done process file : fbox-2016-02-16_parsed.csv | Time: 45663 | Total line: 34568668 | Line process: 3724 | Line error: 0
+[INFO] main InfoLog 12 May 2016 14:28:54 - Done process file : fbox-2016-02-20_parsed.csv | Time: 42316 | Total line: 40490530 | Line process: 4279 | Line error: 0
+[INFO] main InfoLog 12 May 2016 14:29:31 - Done process file : fbox-2016-02-12_parsed.csv | Time: 36629 | Total line: 38647608 | Line process: 3499 | Line error: 0
+[INFO] main InfoLog 12 May 2016 14:34:55 - Done process file : fbox-2016-02-26_parsed.csv | Time: 323991 | Total line: 37920041 | Line process: 4244 | Line error: 0
+[INFO] main InfoLog 12 May 2016 14:42:50 - Done process file : fbox-2016-02-23_parsed.csv | Time: 474830 | Total line: 35501327 | Line process: 4168 | Line error: 0
+[INFO] main InfoLog 12 May 2016 14:55:00 - Done process file : fbox-2016-02-09_parsed.csv | Time: 730169 | Total line: 37176940 | Line process: 3016 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:02:53 - Done process file : fbox-2016-02-05_parsed.csv | Time: 37210 | Total line: 38749364 | Line process: 3026 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:03:28 - Done process file : fbox-2016-02-25_parsed.csv | Time: 34285 | Total line: 35759837 | Line process: 4116 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:04:00 - Done process file : fbox-2016-02-17_parsed.csv | Time: 32264 | Total line: 34475658 | Line process: 3855 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:04:36 - Done process file : fbox-2016-02-18_parsed.csv | Time: 35962 | Total line: 34621410 | Line process: 3988 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:05:25 - Done process file : fbox-2016-02-15_parsed.csv | Time: 48951 | Total line: 35453855 | Line process: 3752 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:05:44 - Done process file : fbox-2016-02-02_parsed.csv | Time: 18676 | Total line: 24127885 | Line process: 153 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:06:20 - Done process file : fbox-2016-02-04_parsed.csv | Time: 36347 | Total line: 38987485 | Line process: 3028 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:06:52 - Done process file : fbox-2016-02-03_parsed.csv | Time: 32275 | Total line: 37851750 | Line process: 1274 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:07:27 - Done process file : fbox-2016-02-29_parsed.csv | Time: 34107 | Total line: 34788693 | Line process: 4053 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:08:00 - Done process file : fbox-2016-02-16_parsed.csv | Time: 33181 | Total line: 34568668 | Line process: 3730 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:08:55 - Done process file : fbox-2016-02-05_parsed.csv | Time: 37420 | Total line: 38749364 | Line process: 3026 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:09:29 - Done process file : fbox-2016-02-25_parsed.csv | Time: 33473 | Total line: 35759837 | Line process: 4116 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:10:01 - Done process file : fbox-2016-02-17_parsed.csv | Time: 31741 | Total line: 34475658 | Line process: 3855 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:10:35 - Done process file : fbox-2016-02-18_parsed.csv | Time: 33863 | Total line: 34621410 | Line process: 3988 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:11:10 - Done process file : fbox-2016-02-15_parsed.csv | Time: 34969 | Total line: 35453855 | Line process: 3752 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:11:26 - Done process file : fbox-2016-02-02_parsed.csv | Time: 16266 | Total line: 24127885 | Line process: 153 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:12:02 - Done process file : fbox-2016-02-04_parsed.csv | Time: 36248 | Total line: 38987485 | Line process: 3028 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:12:34 - Done process file : fbox-2016-02-03_parsed.csv | Time: 32286 | Total line: 37851750 | Line process: 1274 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:13:08 - Done process file : fbox-2016-02-29_parsed.csv | Time: 33646 | Total line: 34788693 | Line process: 4053 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:13:42 - Done process file : fbox-2016-02-16_parsed.csv | Time: 33357 | Total line: 34568668 | Line process: 3730 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:14:22 - Done process file : fbox-2016-02-20_parsed.csv | Time: 40751 | Total line: 40490530 | Line process: 4279 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:14:58 - Done process file : fbox-2016-02-12_parsed.csv | Time: 36136 | Total line: 38647608 | Line process: 3500 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:15:37 - Done process file : fbox-2016-02-26_parsed.csv | Time: 38644 | Total line: 37920041 | Line process: 4249 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:16:13 - Done process file : fbox-2016-02-23_parsed.csv | Time: 36018 | Total line: 35501327 | Line process: 4168 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:16:48 - Done process file : fbox-2016-02-09_parsed.csv | Time: 35166 | Total line: 37176940 | Line process: 3016 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:17:24 - Done process file : fbox-2016-02-10_parsed.csv | Time: 35872 | Total line: 36747796 | Line process: 3082 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:18:05 - Done process file : fbox-2016-02-07_parsed.csv | Time: 40767 | Total line: 43852520 | Line process: 3409 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:18:43 - Done process file : fbox-2016-02-14_parsed.csv | Time: 38139 | Total line: 40419805 | Line process: 4185 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:19:17 - Done process file : fbox-2016-02-24_parsed.csv | Time: 33381 | Total line: 35823815 | Line process: 4255 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:19:53 - Done process file : fbox-2016-02-13_parsed.csv | Time: 36667 | Total line: 41125558 | Line process: 3735 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:20:27 - Done process file : fbox-2016-02-11_parsed.csv | Time: 33667 | Total line: 36688975 | Line process: 3316 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:21:05 - Done process file : fbox-2016-02-27_parsed.csv | Time: 37784 | Total line: 40800657 | Line process: 4410 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:21:26 - Done process file : fbox-2016-02-21_parsed.csv | Time: 21512 | Total line: 23127350 | Line process: 2519 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:21:59 - Done process file : fbox-2016-02-22_parsed.csv | Time: 33035 | Total line: 34655471 | Line process: 4065 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:22:39 - Done process file : fbox-2016-02-28_parsed.csv | Time: 39783 | Total line: 41866240 | Line process: 4968 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:23:14 - Done process file : fbox-2016-02-08_parsed.csv | Time: 34862 | Total line: 39762287 | Line process: 2972 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:23:48 - Done process file : fbox-2016-02-06_parsed.csv | Time: 34296 | Total line: 39190727 | Line process: 2697 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:24:21 - Done process file : fbox-2016-02-19_parsed.csv | Time: 32875 | Total line: 35937049 | Line process: 3899 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:24:59 - Done process file : fbox-2016-03-12_parsed.csv | Time: 37649 | Total line: 41973177 | Line process: 1776429 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:26:01 - Done process file : fbox-2016-03-06_parsed.csv | Time: 61524 | Total line: 42990510 | Line process: 1828735 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:26:58 - Done process file : fbox-2016-03-15_parsed.csv | Time: 57561 | Total line: 35938348 | Line process: 1541527 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:27:40 - Done process file : fbox-2016-03-19_parsed.csv | Time: 41422 | Total line: 43990478 | Line process: 1824738 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:28:17 - Done process file : fbox-2016-03-08_parsed.csv | Time: 37422 | Total line: 36769382 | Line process: 1584037 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:28:50 - Done process file : fbox-2016-03-16_parsed.csv | Time: 33206 | Total line: 36574558 | Line process: 1568873 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:29:46 - Done process file : fbox-2016-03-29_parsed.csv | Time: 55563 | Total line: 36923876 | Line process: 1598315 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:30:21 - Done process file : fbox-2016-03-02_parsed.csv | Time: 35351 | Total line: 35039958 | Line process: 1515445 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:31:18 - Done process file : fbox-2016-03-24_parsed.csv | Time: 56887 | Total line: 38077815 | Line process: 1613994 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:32:14 - Done process file : fbox-2016-03-23_parsed.csv | Time: 55493 | Total line: 36964369 | Line process: 1600276 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:33:19 - Done process file : fbox-2016-03-27_parsed.csv | Time: 65328 | Total line: 42640495 | Line process: 1805030 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:34:09 - Done process file : fbox-2016-03-07_parsed.csv | Time: 50466 | Total line: 35695907 | Line process: 1544470 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:34:43 - Done process file : fbox-2016-03-11_parsed.csv | Time: 33345 | Total line: 36463649 | Line process: 1580236 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:35:54 - Done process file : fbox-2016-03-26_parsed.csv | Time: 70864 | Total line: 41802510 | Line process: 1766600 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:36:47 - Done process file : fbox-2016-03-21_parsed.csv | Time: 53660 | Total line: 36193949 | Line process: 1560652 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:37:18 - Done process file : fbox-2016-03-01_parsed.csv | Time: 30982 | Total line: 35242552 | Line process: 79502 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:37:51 - Done process file : fbox-2016-03-14_parsed.csv | Time: 32487 | Total line: 35668327 | Line process: 1535785 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:38:52 - Done process file : fbox-2016-03-17_parsed.csv | Time: 61150 | Total line: 36708759 | Line process: 1589991 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:39:24 - Done process file : fbox-2016-03-03_parsed.csv | Time: 31651 | Total line: 35362415 | Line process: 1542030 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:39:58 - Done process file : fbox-2016-03-30_parsed.csv | Time: 33699 | Total line: 36812572 | Line process: 1593966 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:40:52 - Done process file : fbox-2016-03-25_parsed.csv | Time: 54677 | Total line: 37979215 | Line process: 1626022 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:41:52 - Done process file : fbox-2016-03-22_parsed.csv | Time: 59568 | Total line: 35315345 | Line process: 1525272 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:42:34 - Done process file : fbox-2016-03-18_parsed.csv | Time: 42327 | Total line: 36926350 | Line process: 1603162 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:43:31 - Done process file : fbox-2016-03-28_parsed.csv | Time: 56686 | Total line: 36268941 | Line process: 1565273 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:44:33 - Done process file : fbox-2016-03-05_parsed.csv | Time: 61591 | Total line: 43655603 | Line process: 1803295 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:45:31 - Done process file : fbox-2016-03-10_parsed.csv | Time: 57912 | Total line: 36114662 | Line process: 1572710 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:46:24 - Done process file : fbox-2016-03-04_parsed.csv | Time: 53544 | Total line: 36632689 | Line process: 1581642 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:47:29 - Done process file : fbox-2016-03-13_parsed.csv | Time: 65088 | Total line: 43502770 | Line process: 1843907 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:48:22 - Done process file : fbox-2016-03-31_parsed.csv | Time: 52698 | Total line: 39063545 | Line process: 1637695 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:49:30 - Done process file : fbox-2016-03-20_parsed.csv | Time: 67578 | Total line: 43674216 | Line process: 1848218 | Line error: 0
+[INFO] main InfoLog 12 May 2016 15:50:03 - Done process file : fbox-2016-03-09_parsed.csv | Time: 33526 | Total line: 36899681 | Line process: 1586706 | Line error: 0
+[INFO] main InfoLog 12 May 2016 16:43:44 - Done filter log of customer 24502860 | Count: 12825
+[INFO] main InfoLog 12 May 2016 16:44:40 - Done process file : log.csv | Time: 143 | Total line: 12824 | Line process: 739 | Line error: 0
+[INFO] main InfoLog 12 May 2016 16:45:28 - Done process file : log.csv | Time: 84 | Total line: 12824 | Line process: 739 | Line error: 0
+[INFO] main InfoLog 12 May 2016 16:46:33 - Done process file : log.csv | Time: 81 | Total line: 12824 | Line process: 739 | Line error: 0
+[INFO] main InfoLog 12 May 2016 16:56:25 - Done process file : log.csv | Time: 87 | Total line: 12824 | Line process: 739 | Line error: 0
+[INFO] main InfoLog 12 May 2016 16:57:46 - Done process file : log.csv | Time: 93 | Total line: 12824 | Line process: 739 | Line error: 0
+[INFO] main InfoLog 12 May 2016 17:00:26 - Done process file : log.csv | Time: 107 | Total line: 12824 | Line process: 739 | Line error: 0
+[INFO] main InfoLog 12 May 2016 17:01:47 - Done process file : log.csv | Time: 101 | Total line: 12824 | Line process: 739 | Line error: 0
+[INFO] main InfoLog 13 May 2016 09:34:59 - Done process file : log.csv | Time: 82 | Total line: 12824 | Line process: 506 | Line error: 0
+[INFO] main InfoLog 13 May 2016 09:37:37 - Done process file : log.csv | Time: 79 | Total line: 12824 | Line process: 506 | Line error: 0
+[INFO] main InfoLog 13 May 2016 09:38:45 - Done process file : log.csv | Time: 78 | Total line: 12824 | Line process: 505 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:09:25 - Done process file : log.csv | Time: 92 | Total line: 12824 | Line process: 739 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:14:26 - Done process file : fbox-2016-02-05_parsed.csv | Time: 37762 | Total line: 38749364 | Line process: 3026 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:15:00 - Done process file : fbox-2016-02-25_parsed.csv | Time: 34003 | Total line: 35759837 | Line process: 4116 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:15:31 - Done process file : fbox-2016-02-17_parsed.csv | Time: 30995 | Total line: 34475658 | Line process: 2059 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:16:02 - Done process file : fbox-2016-02-18_parsed.csv | Time: 30720 | Total line: 34621410 | Line process: 1951 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:16:34 - Done process file : fbox-2016-02-15_parsed.csv | Time: 31748 | Total line: 35453855 | Line process: 2026 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:16:53 - Done process file : fbox-2016-02-02_parsed.csv | Time: 18508 | Total line: 24127885 | Line process: 16 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:17:26 - Done process file : fbox-2016-02-04_parsed.csv | Time: 33769 | Total line: 38987485 | Line process: 168 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:17:57 - Done process file : fbox-2016-02-03_parsed.csv | Time: 30175 | Total line: 37851750 | Line process: 34 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:18:28 - Done process file : fbox-2016-02-29_parsed.csv | Time: 31679 | Total line: 34788693 | Line process: 4052 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:18:59 - Done process file : fbox-2016-02-16_parsed.csv | Time: 30436 | Total line: 34568668 | Line process: 1647 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:19:35 - Done process file : fbox-2016-02-20_parsed.csv | Time: 35739 | Total line: 40490530 | Line process: 1889 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:20:11 - Done process file : fbox-2016-02-12_parsed.csv | Time: 36418 | Total line: 38647608 | Line process: 2152 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:20:47 - Done process file : fbox-2016-02-26_parsed.csv | Time: 36410 | Total line: 37920041 | Line process: 4077 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:21:20 - Done process file : fbox-2016-02-23_parsed.csv | Time: 32574 | Total line: 35501327 | Line process: 1312 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:21:59 - Done process file : fbox-2016-02-09_parsed.csv | Time: 38520 | Total line: 37176940 | Line process: 2141 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:22:31 - Done process file : fbox-2016-02-10_parsed.csv | Time: 32761 | Total line: 36747796 | Line process: 2083 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:23:16 - Done process file : fbox-2016-02-07_parsed.csv | Time: 44219 | Total line: 43852520 | Line process: 2683 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:23:54 - Done process file : fbox-2016-02-14_parsed.csv | Time: 38080 | Total line: 40419805 | Line process: 2260 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:24:27 - Done process file : fbox-2016-02-24_parsed.csv | Time: 33734 | Total line: 35823815 | Line process: 1173 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:25:03 - Done process file : fbox-2016-02-13_parsed.csv | Time: 35896 | Total line: 41125558 | Line process: 2178 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:25:39 - Done process file : fbox-2016-02-11_parsed.csv | Time: 36040 | Total line: 36688975 | Line process: 2005 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:26:20 - Done process file : fbox-2016-02-27_parsed.csv | Time: 40589 | Total line: 40800657 | Line process: 4108 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:26:43 - Done process file : fbox-2016-02-21_parsed.csv | Time: 22733 | Total line: 23127350 | Line process: 1024 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:27:17 - Done process file : fbox-2016-02-22_parsed.csv | Time: 33998 | Total line: 34655471 | Line process: 1426 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:27:57 - Done process file : fbox-2016-02-28_parsed.csv | Time: 39707 | Total line: 41866240 | Line process: 4292 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:28:31 - Done process file : fbox-2016-02-08_parsed.csv | Time: 33973 | Total line: 39762287 | Line process: 2228 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:29:04 - Done process file : fbox-2016-02-06_parsed.csv | Time: 33593 | Total line: 39190727 | Line process: 2466 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:29:37 - Done process file : fbox-2016-02-19_parsed.csv | Time: 32969 | Total line: 35937049 | Line process: 1763 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:30:22 - Done process file : fbox-2016-03-12_parsed.csv | Time: 44792 | Total line: 41973177 | Line process: 1776330 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:31:27 - Done process file : fbox-2016-03-06_parsed.csv | Time: 65284 | Total line: 42990510 | Line process: 230683 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:32:44 - Done process file : fbox-2016-03-15_parsed.csv | Time: 76708 | Total line: 35938348 | Line process: 1541517 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:33:35 - Done process file : fbox-2016-03-19_parsed.csv | Time: 50988 | Total line: 43990478 | Line process: 1824727 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:34:08 - Done process file : fbox-2016-03-08_parsed.csv | Time: 32943 | Total line: 36769382 | Line process: 177436 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:34:47 - Done process file : fbox-2016-03-16_parsed.csv | Time: 38766 | Total line: 36574558 | Line process: 1549938 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:35:46 - Done process file : fbox-2016-03-29_parsed.csv | Time: 58726 | Total line: 36923876 | Line process: 1598302 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:36:18 - Done process file : fbox-2016-03-02_parsed.csv | Time: 31919 | Total line: 35039958 | Line process: 108404 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:37:24 - Done process file : fbox-2016-03-24_parsed.csv | Time: 66428 | Total line: 38077815 | Line process: 1572027 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:38:27 - Done process file : fbox-2016-03-23_parsed.csv | Time: 63235 | Total line: 36964369 | Line process: 1560497 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:39:35 - Done process file : fbox-2016-03-27_parsed.csv | Time: 67740 | Total line: 42640495 | Line process: 1744918 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:40:30 - Done process file : fbox-2016-03-07_parsed.csv | Time: 54475 | Total line: 35695907 | Line process: 173453 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:41:02 - Done process file : fbox-2016-03-11_parsed.csv | Time: 32751 | Total line: 36463649 | Line process: 155126 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:42:09 - Done process file : fbox-2016-03-26_parsed.csv | Time: 67005 | Total line: 41802510 | Line process: 1703508 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:43:15 - Done process file : fbox-2016-03-21_parsed.csv | Time: 66049 | Total line: 36193949 | Line process: 1538093 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:43:49 - Done process file : fbox-2016-03-01_parsed.csv | Time: 33755 | Total line: 35242552 | Line process: 9145 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:44:32 - Done process file : fbox-2016-03-14_parsed.csv | Time: 43214 | Total line: 35668327 | Line process: 1496422 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:45:41 - Done process file : fbox-2016-03-17_parsed.csv | Time: 68273 | Total line: 36708759 | Line process: 1556420 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:46:19 - Done process file : fbox-2016-03-03_parsed.csv | Time: 38228 | Total line: 35362415 | Line process: 107570 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:47:05 - Done process file : fbox-2016-03-30_parsed.csv | Time: 45635 | Total line: 36812572 | Line process: 1593961 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:48:00 - Done process file : fbox-2016-03-25_parsed.csv | Time: 55496 | Total line: 37979215 | Line process: 1574726 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:49:00 - Done process file : fbox-2016-03-22_parsed.csv | Time: 59705 | Total line: 35315345 | Line process: 1494541 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:49:42 - Done process file : fbox-2016-03-18_parsed.csv | Time: 42370 | Total line: 36926350 | Line process: 1559929 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:50:37 - Done process file : fbox-2016-03-28_parsed.csv | Time: 54780 | Total line: 36268941 | Line process: 1502510 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:51:38 - Done process file : fbox-2016-03-05_parsed.csv | Time: 61074 | Total line: 43655603 | Line process: 125498 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:52:33 - Done process file : fbox-2016-03-10_parsed.csv | Time: 55099 | Total line: 36114662 | Line process: 163912 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:53:27 - Done process file : fbox-2016-03-04_parsed.csv | Time: 53317 | Total line: 36632689 | Line process: 110491 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:54:31 - Done process file : fbox-2016-03-13_parsed.csv | Time: 64221 | Total line: 43502770 | Line process: 1815942 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:55:28 - Done process file : fbox-2016-03-31_parsed.csv | Time: 56782 | Total line: 39063545 | Line process: 1637688 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:56:32 - Done process file : fbox-2016-03-20_parsed.csv | Time: 63925 | Total line: 43674216 | Line process: 1835486 | Line error: 0
+[INFO] main InfoLog 13 May 2016 10:57:05 - Done process file : fbox-2016-03-09_parsed.csv | Time: 32831 | Total line: 36899681 | Line process: 171418 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:08:10 - Done process file : fbox-2016-02-05_parsed.csv | Time: 33612 | Total line: 38749364 | Line process: 3026 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:08:42 - Done process file : fbox-2016-02-25_parsed.csv | Time: 32149 | Total line: 35759837 | Line process: 4116 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:09:13 - Done process file : fbox-2016-02-17_parsed.csv | Time: 30298 | Total line: 34475658 | Line process: 1297 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:09:45 - Done process file : fbox-2016-02-18_parsed.csv | Time: 32044 | Total line: 34621410 | Line process: 1169 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:10:21 - Done process file : fbox-2016-02-15_parsed.csv | Time: 36725 | Total line: 35453855 | Line process: 360 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:10:41 - Done process file : fbox-2016-02-02_parsed.csv | Time: 19749 | Total line: 24127885 | Line process: 16 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:11:16 - Done process file : fbox-2016-02-04_parsed.csv | Time: 34622 | Total line: 38987485 | Line process: 168 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:11:44 - Done process file : fbox-2016-02-03_parsed.csv | Time: 28240 | Total line: 37851750 | Line process: 26 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:12:16 - Done process file : fbox-2016-02-29_parsed.csv | Time: 31680 | Total line: 34788693 | Line process: 4048 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:12:47 - Done process file : fbox-2016-02-16_parsed.csv | Time: 30723 | Total line: 34568668 | Line process: 172 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:13:22 - Done process file : fbox-2016-02-20_parsed.csv | Time: 35598 | Total line: 40490530 | Line process: 969 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:13:55 - Done process file : fbox-2016-02-12_parsed.csv | Time: 32860 | Total line: 38647608 | Line process: 266 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:14:29 - Done process file : fbox-2016-02-26_parsed.csv | Time: 33916 | Total line: 37920041 | Line process: 1079 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:15:01 - Done process file : fbox-2016-02-23_parsed.csv | Time: 31717 | Total line: 35501327 | Line process: 407 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:15:34 - Done process file : fbox-2016-02-09_parsed.csv | Time: 32936 | Total line: 37176940 | Line process: 88 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:16:05 - Done process file : fbox-2016-02-10_parsed.csv | Time: 31311 | Total line: 36747796 | Line process: 91 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:16:45 - Done process file : fbox-2016-02-07_parsed.csv | Time: 39787 | Total line: 43852520 | Line process: 95 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:17:20 - Done process file : fbox-2016-02-14_parsed.csv | Time: 35527 | Total line: 40419805 | Line process: 208 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:17:53 - Done process file : fbox-2016-02-24_parsed.csv | Time: 32053 | Total line: 35823815 | Line process: 328 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:18:28 - Done process file : fbox-2016-02-13_parsed.csv | Time: 35106 | Total line: 41125558 | Line process: 114 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:18:59 - Done process file : fbox-2016-02-11_parsed.csv | Time: 31255 | Total line: 36688975 | Line process: 32 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:19:36 - Done process file : fbox-2016-02-27_parsed.csv | Time: 37377 | Total line: 40800657 | Line process: 953 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:19:57 - Done process file : fbox-2016-02-21_parsed.csv | Time: 20660 | Total line: 23127350 | Line process: 199 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:20:29 - Done process file : fbox-2016-02-22_parsed.csv | Time: 31517 | Total line: 34655471 | Line process: 223 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:21:07 - Done process file : fbox-2016-02-28_parsed.csv | Time: 38496 | Total line: 41866240 | Line process: 965 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:21:41 - Done process file : fbox-2016-02-08_parsed.csv | Time: 33811 | Total line: 39762287 | Line process: 19 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:22:14 - Done process file : fbox-2016-02-06_parsed.csv | Time: 33402 | Total line: 39190727 | Line process: 44 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:22:48 - Done process file : fbox-2016-02-19_parsed.csv | Time: 33138 | Total line: 35937049 | Line process: 193 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:23:33 - Done process file : fbox-2016-03-12_parsed.csv | Time: 45408 | Total line: 41973177 | Line process: 1775515 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:24:34 - Done process file : fbox-2016-03-06_parsed.csv | Time: 60590 | Total line: 42990510 | Line process: 115353 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:25:47 - Done process file : fbox-2016-03-15_parsed.csv | Time: 73124 | Total line: 35938348 | Line process: 1540808 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:26:52 - Done process file : fbox-2016-03-19_parsed.csv | Time: 65551 | Total line: 43990478 | Line process: 1823737 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:27:34 - Done process file : fbox-2016-03-08_parsed.csv | Time: 41844 | Total line: 36769382 | Line process: 19699 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:28:11 - Done process file : fbox-2016-03-16_parsed.csv | Time: 36589 | Total line: 36574558 | Line process: 98064 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:29:42 - Done process file : fbox-2016-03-29_parsed.csv | Time: 88632 | Total line: 36923876 | Line process: 1597580 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:30:18 - Done process file : fbox-2016-03-02_parsed.csv | Time: 35700 | Total line: 35039958 | Line process: 8525 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:31:25 - Done process file : fbox-2016-03-24_parsed.csv | Time: 67424 | Total line: 38077815 | Line process: 106118 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:32:20 - Done process file : fbox-2016-03-23_parsed.csv | Time: 55487 | Total line: 36964369 | Line process: 26168 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:33:21 - Done process file : fbox-2016-03-27_parsed.csv | Time: 60453 | Total line: 42640495 | Line process: 136882 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:34:14 - Done process file : fbox-2016-03-07_parsed.csv | Time: 53510 | Total line: 35695907 | Line process: 5340 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:34:48 - Done process file : fbox-2016-03-11_parsed.csv | Time: 33191 | Total line: 36463649 | Line process: 14092 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:36:15 - Done process file : fbox-2016-03-26_parsed.csv | Time: 86946 | Total line: 41802510 | Line process: 41872 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:37:08 - Done process file : fbox-2016-03-21_parsed.csv | Time: 53199 | Total line: 36193949 | Line process: 10928 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:37:38 - Done process file : fbox-2016-03-01_parsed.csv | Time: 29803 | Total line: 35242552 | Line process: 491 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:38:11 - Done process file : fbox-2016-03-14_parsed.csv | Time: 33107 | Total line: 35668327 | Line process: 12527 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:39:07 - Done process file : fbox-2016-03-17_parsed.csv | Time: 55852 | Total line: 36708759 | Line process: 15554 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:39:36 - Done process file : fbox-2016-03-03_parsed.csv | Time: 29694 | Total line: 35362415 | Line process: 4665 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:40:14 - Done process file : fbox-2016-03-30_parsed.csv | Time: 37302 | Total line: 36812572 | Line process: 1592831 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:41:06 - Done process file : fbox-2016-03-25_parsed.csv | Time: 52631 | Total line: 37979215 | Line process: 13224 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:42:02 - Done process file : fbox-2016-03-22_parsed.csv | Time: 55509 | Total line: 35315345 | Line process: 7722 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:42:39 - Done process file : fbox-2016-03-18_parsed.csv | Time: 36599 | Total line: 36926350 | Line process: 5125 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:43:35 - Done process file : fbox-2016-03-28_parsed.csv | Time: 56587 | Total line: 36268941 | Line process: 57247 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:44:34 - Done process file : fbox-2016-03-05_parsed.csv | Time: 59016 | Total line: 43655603 | Line process: 5226 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:47:24 - START1463114843918
+[INFO] main InfoLog 13 May 2016 11:47:47 - START: 1463114867788
+[INFO] main InfoLog 13 May 2016 11:48:22 - Done process file : fbox-2016-02-05_parsed.csv | Time: 33124 | Total line: 38749364 | Line process: 3026 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:48:54 - Done process file : fbox-2016-02-25_parsed.csv | Time: 32349 | Total line: 35759837 | Line process: 4116 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:49:24 - Done process file : fbox-2016-02-17_parsed.csv | Time: 30352 | Total line: 34475658 | Line process: 3854 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:49:56 - Done process file : fbox-2016-02-18_parsed.csv | Time: 31240 | Total line: 34621410 | Line process: 3988 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:50:33 - Done process file : fbox-2016-02-15_parsed.csv | Time: 37625 | Total line: 35453855 | Line process: 3750 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:50:52 - Done process file : fbox-2016-02-02_parsed.csv | Time: 18139 | Total line: 24127885 | Line process: 153 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:51:26 - Done process file : fbox-2016-02-04_parsed.csv | Time: 34283 | Total line: 38987485 | Line process: 3027 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:51:58 - Done process file : fbox-2016-02-03_parsed.csv | Time: 32182 | Total line: 37851750 | Line process: 1274 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:52:35 - Done process file : fbox-2016-02-29_parsed.csv | Time: 36827 | Total line: 34788693 | Line process: 4048 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:53:09 - Done process file : fbox-2016-02-16_parsed.csv | Time: 34171 | Total line: 34568668 | Line process: 3728 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:53:47 - Done process file : fbox-2016-02-20_parsed.csv | Time: 37827 | Total line: 40490530 | Line process: 4274 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:54:21 - Done process file : fbox-2016-02-12_parsed.csv | Time: 34129 | Total line: 38647608 | Line process: 3500 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:54:56 - Done process file : fbox-2016-02-26_parsed.csv | Time: 34761 | Total line: 37920041 | Line process: 4247 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:55:28 - Done process file : fbox-2016-02-23_parsed.csv | Time: 31997 | Total line: 35501327 | Line process: 4164 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:56:00 - Done process file : fbox-2016-02-09_parsed.csv | Time: 31911 | Total line: 37176940 | Line process: 3016 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:56:32 - Done process file : fbox-2016-02-10_parsed.csv | Time: 31834 | Total line: 36747796 | Line process: 3081 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:57:10 - Done process file : fbox-2016-02-07_parsed.csv | Time: 37849 | Total line: 43852520 | Line process: 3409 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:57:47 - Done process file : fbox-2016-02-14_parsed.csv | Time: 37273 | Total line: 40419805 | Line process: 4183 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:58:20 - Done process file : fbox-2016-02-24_parsed.csv | Time: 33551 | Total line: 35823815 | Line process: 4250 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:58:56 - Done process file : fbox-2016-02-13_parsed.csv | Time: 35628 | Total line: 41125558 | Line process: 3734 | Line error: 0
+[INFO] main InfoLog 13 May 2016 11:59:28 - Done process file : fbox-2016-02-11_parsed.csv | Time: 32141 | Total line: 36688975 | Line process: 3315 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:00:08 - Done process file : fbox-2016-02-27_parsed.csv | Time: 39402 | Total line: 40800657 | Line process: 4407 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:00:31 - Done process file : fbox-2016-02-21_parsed.csv | Time: 23443 | Total line: 23127350 | Line process: 2519 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:01:03 - Done process file : fbox-2016-02-22_parsed.csv | Time: 32261 | Total line: 34655471 | Line process: 4062 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:01:42 - Done process file : fbox-2016-02-28_parsed.csv | Time: 38675 | Total line: 41866240 | Line process: 4964 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:02:17 - Done process file : fbox-2016-02-08_parsed.csv | Time: 34588 | Total line: 39762287 | Line process: 2971 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:02:51 - Done process file : fbox-2016-02-06_parsed.csv | Time: 33755 | Total line: 39190727 | Line process: 2697 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:03:22 - Done process file : fbox-2016-02-19_parsed.csv | Time: 31544 | Total line: 35937049 | Line process: 3897 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:04:05 - Done process file : fbox-2016-03-12_parsed.csv | Time: 42440 | Total line: 41973177 | Line process: 1775515 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:05:08 - Done process file : fbox-2016-03-06_parsed.csv | Time: 63672 | Total line: 42990510 | Line process: 1827847 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:06:09 - Done process file : fbox-2016-03-15_parsed.csv | Time: 60968 | Total line: 35938348 | Line process: 1540808 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:06:53 - Done process file : fbox-2016-03-19_parsed.csv | Time: 43948 | Total line: 43990478 | Line process: 1823737 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:07:30 - Done process file : fbox-2016-03-08_parsed.csv | Time: 36631 | Total line: 36769382 | Line process: 1583238 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:08:05 - Done process file : fbox-2016-03-16_parsed.csv | Time: 34918 | Total line: 36574558 | Line process: 1568083 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:09:08 - Done process file : fbox-2016-03-29_parsed.csv | Time: 63188 | Total line: 36923876 | Line process: 1597580 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:09:41 - Done process file : fbox-2016-03-02_parsed.csv | Time: 32700 | Total line: 35039958 | Line process: 1514737 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:10:40 - Done process file : fbox-2016-03-24_parsed.csv | Time: 59597 | Total line: 38077815 | Line process: 1613209 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:11:37 - Done process file : fbox-2016-03-23_parsed.csv | Time: 56745 | Total line: 36964369 | Line process: 1599469 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:12:42 - Done process file : fbox-2016-03-27_parsed.csv | Time: 64977 | Total line: 42640495 | Line process: 1804180 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:13:33 - Done process file : fbox-2016-03-07_parsed.csv | Time: 50676 | Total line: 35695907 | Line process: 1543694 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:14:08 - Done process file : fbox-2016-03-11_parsed.csv | Time: 34927 | Total line: 36463649 | Line process: 1579274 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:15:21 - Done process file : fbox-2016-03-26_parsed.csv | Time: 73378 | Total line: 41802510 | Line process: 1765673 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:16:15 - Done process file : fbox-2016-03-21_parsed.csv | Time: 53760 | Total line: 36193949 | Line process: 1559895 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:16:45 - Done process file : fbox-2016-03-01_parsed.csv | Time: 29826 | Total line: 35242552 | Line process: 79471 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:17:24 - Done process file : fbox-2016-03-14_parsed.csv | Time: 38664 | Total line: 35668327 | Line process: 1535057 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:18:19 - Done process file : fbox-2016-03-17_parsed.csv | Time: 55861 | Total line: 36708759 | Line process: 1589155 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:18:53 - Done process file : fbox-2016-03-03_parsed.csv | Time: 33535 | Total line: 35362415 | Line process: 1541229 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:19:34 - Done process file : fbox-2016-03-30_parsed.csv | Time: 40886 | Total line: 36812572 | Line process: 1593305 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:20:29 - Done process file : fbox-2016-03-25_parsed.csv | Time: 55473 | Total line: 37979215 | Line process: 1625193 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:21:25 - Done process file : fbox-2016-03-22_parsed.csv | Time: 55308 | Total line: 35315345 | Line process: 1524453 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:22:08 - Done process file : fbox-2016-03-18_parsed.csv | Time: 42932 | Total line: 36926350 | Line process: 1602356 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:23:04 - Done process file : fbox-2016-03-28_parsed.csv | Time: 56676 | Total line: 36268941 | Line process: 1564579 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:24:07 - Done process file : fbox-2016-03-05_parsed.csv | Time: 62048 | Total line: 43655603 | Line process: 1802339 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:25:03 - Done process file : fbox-2016-03-10_parsed.csv | Time: 56317 | Total line: 36114662 | Line process: 1571883 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:25:57 - Done process file : fbox-2016-03-04_parsed.csv | Time: 54283 | Total line: 36632689 | Line process: 1580894 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:27:02 - Done process file : fbox-2016-03-13_parsed.csv | Time: 64656 | Total line: 43502770 | Line process: 1842861 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:28:00 - Done process file : fbox-2016-03-31_parsed.csv | Time: 57806 | Total line: 39063545 | Line process: 1636953 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:29:03 - Done process file : fbox-2016-03-20_parsed.csv | Time: 63298 | Total line: 43674216 | Line process: 1847200 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:29:37 - Done process file : fbox-2016-03-09_parsed.csv | Time: 34256 | Total line: 36899681 | Line process: 1585920 | Line error: 0
+[INFO] main InfoLog 13 May 2016 12:29:42 - DONE: 2514669
+[INFO] main InfoLog 16 May 2016 11:22:30 - Done filter log of no_log_active | Count
+[INFO] main InfoLog 16 May 2016 14:12:52 - START: 1463382772646
+[INFO] main InfoLog 16 May 2016 14:12:56 - Done process file : log.csv | Time: 3305 | Total line: 3029136 | Line process: 0 | Line error: 0
+[INFO] main InfoLog 16 May 2016 14:12:56 - DONE: 3893
+[INFO] main InfoLog 16 May 2016 14:16:09 - START: 1463382969811
+[INFO] main InfoLog 16 May 2016 14:16:16 - Done process file : log.csv | Time: 6036 | Total line: 3029136 | Line process: 0 | Line error: 0
+[INFO] main InfoLog 16 May 2016 14:16:16 - DONE: 6554
+[INFO] main InfoLog 16 May 2016 14:17:56 - START: 1463383076451
+[INFO] main InfoLog 16 May 2016 14:17:59 - Done process file : log.csv | Time: 2576 | Total line: 3029136 | Line process: 0 | Line error: 0
+[INFO] main InfoLog 16 May 2016 14:17:59 - DONE: 3094
+[INFO] main InfoLog 16 May 2016 14:18:52 - START: 1463383132019
+[INFO] main InfoLog 16 May 2016 14:18:57 - Done process file : log.csv | Time: 5472 | Total line: 3029136 | Line process: 0 | Line error: 0
+[INFO] main InfoLog 16 May 2016 14:18:58 - DONE: 5995
+[INFO] main InfoLog 16 May 2016 14:20:58 - START: 1463383258788
+[INFO] main InfoLog 16 May 2016 14:21:01 - Done process file : log.csv | Time: 2335 | Total line: 3029136 | Line process: 0 | Line error: 0
+[INFO] main InfoLog 16 May 2016 14:21:01 - DONE: 2809
+[INFO] main InfoLog 16 May 2016 14:27:12 - START: 1463383632486
+[INFO] main InfoLog 16 May 2016 14:27:15 - Done process file : log.csv | Time: 2264 | Total line: 3029136 | Line process: 0 | Line error: 0
+[INFO] main InfoLog 16 May 2016 14:27:15 - DONE: 2756
+[INFO] main InfoLog 16 May 2016 14:28:40 - START: 1463383720736
+[INFO] main InfoLog 16 May 2016 14:28:43 - Done process file : log.csv | Time: 2282 | Total line: 3029136 | Line process: 0 | Line error: 0
+[INFO] main InfoLog 16 May 2016 14:28:43 - DONE: 2771
+[INFO] main InfoLog 16 May 2016 14:29:29 - START: 1463383769848
+[INFO] main InfoLog 16 May 2016 14:29:32 - Done process file : log.csv | Time: 2359 | Total line: 3029136 | Line process: 0 | Line error: 0
+[INFO] main InfoLog 16 May 2016 14:29:32 - DONE: 2830
+[INFO] main InfoLog 16 May 2016 14:30:18 - START: 1463383818911
+[INFO] main InfoLog 16 May 2016 14:30:21 - Done process file : log.csv | Time: 2322 | Total line: 3029136 | Line process: 0 | Line error: 0
+[INFO] main InfoLog 16 May 2016 14:30:21 - DONE: 2807
+[INFO] main InfoLog 16 May 2016 14:30:35 - START: 1463383835624
+[INFO] main InfoLog 16 May 2016 14:30:38 - Done process file : log.csv | Time: 2369 | Total line: 3029136 | Line process: 0 | Line error: 0
+[INFO] main InfoLog 16 May 2016 14:30:38 - DONE: 2838
+[INFO] main InfoLog 16 May 2016 14:31:47 - START: 1463383907561
+[INFO] main InfoLog 16 May 2016 14:31:50 - Done process file : log.csv | Time: 2315 | Total line: 3029136 | Line process: 5 | Line error: 0
+[INFO] main InfoLog 16 May 2016 14:31:50 - DONE: 2841
+[INFO] main InfoLog 16 May 2016 14:46:57 - START: 1463384817476
+[INFO] main InfoLog 16 May 2016 14:47:00 - Done process file : log.csv | Time: 2287 | Total line: 3029136 | Line process: 5 | Line error: 0
+[INFO] main InfoLog 16 May 2016 14:47:00 - DONE: 2765
+[INFO] main InfoLog 16 May 2016 14:47:26 - START: 1463384846526
+[INFO] main InfoLog 16 May 2016 14:47:29 - Done process file : log.csv | Time: 2383 | Total line: 3029136 | Line process: 5 | Line error: 0
+[INFO] main InfoLog 16 May 2016 14:47:29 - DONE: 2878
+[INFO] main InfoLog 16 May 2016 15:43:40 - Done filter log of no_log_active | Count
+[INFO] main InfoLog 16 May 2016 15:59:04 - START: 1463389144852
+[INFO] main InfoLog 16 May 2016 15:59:59 - START: 1463389199850
+[INFO] main InfoLog 16 May 2016 16:00:08 - Done process file : log.csv | Time: 8503 | Total line: 10508555 | Line process: 5 | Line error: 0
+[INFO] main InfoLog 16 May 2016 16:00:08 - DONE: 9023
+[INFO] main InfoLog 16 May 2016 16:02:15 - START: 1463389335663
+[INFO] main InfoLog 16 May 2016 16:02:24 - Done process file : log.csv | Time: 8370 | Total line: 10508555 | Line process: 5 | Line error: 0
+[INFO] main InfoLog 16 May 2016 16:02:24 - DONE: 8901
+[INFO] main InfoLog 16 May 2016 16:07:28 - START: 1463389648497
+[INFO] main InfoLog 16 May 2016 16:07:37 - Done process file : log.csv | Time: 8417 | Total line: 10508555 | Line process: 5 | Line error: 0
+[INFO] main InfoLog 16 May 2016 16:07:37 - DONE: 8943
+[INFO] main InfoLog 16 May 2016 16:10:08 - START: 1463389808567
+[INFO] main InfoLog 16 May 2016 16:10:17 - Done process file : log.csv | Time: 8395 | Total line: 10508555 | Line process: 5 | Line error: 0
+[INFO] main InfoLog 16 May 2016 16:10:17 - DONE: 8940
+[INFO] main InfoLog 16 May 2016 16:11:42 - START: 1463389902092
+[INFO] main InfoLog 16 May 2016 16:11:50 - Done process file : log.csv | Time: 8271 | Total line: 10508555 | Line process: 5 | Line error: 0
+[INFO] main InfoLog 16 May 2016 16:11:50 - DONE: 8817
+[INFO] main InfoLog 16 May 2016 16:12:17 - START: 1463389937318
+[INFO] main InfoLog 16 May 2016 16:12:25 - Done process file : log.csv | Time: 8111 | Total line: 10508555 | Line process: 5 | Line error: 0
+[INFO] main InfoLog 16 May 2016 16:12:25 - DONE: 8627
+[INFO] main InfoLog 16 May 2016 16:15:28 - START: 1463390128537
+[INFO] main InfoLog 16 May 2016 16:15:37 - Done process file : log.csv | Time: 8151 | Total line: 10508555 | Line process: 5 | Line error: 0
+[INFO] main InfoLog 16 May 2016 16:15:37 - DONE: 8699
+[INFO] main InfoLog 16 May 2016 16:16:46 - START: 1463390206646
+[INFO] main InfoLog 16 May 2016 16:16:55 - Done process file : log.csv | Time: 8145 | Total line: 10508555 | Line process: 5 | Line error: 0
+[INFO] main InfoLog 16 May 2016 16:16:55 - DONE: 8686
+[INFO] main InfoLog 16 May 2016 16:17:06 - START: 1463390225978
+[INFO] main InfoLog 16 May 2016 16:17:14 - Done process file : log.csv | Time: 8094 | Total line: 10508555 | Line process: 5 | Line error: 0
+[INFO] main InfoLog 16 May 2016 16:17:14 - DONE: 8639
+[INFO] main InfoLog 16 May 2016 16:21:39 - START: 1463390499384
+[INFO] main InfoLog 16 May 2016 16:21:47 - Done process file : log.csv | Time: 8167 | Total line: 10508555 | Line process: 5 | Line error: 0
+[INFO] main InfoLog 16 May 2016 16:21:48 - DONE: 8692
+[INFO] main InfoLog 16 May 2016 16:23:04 - START: 1463390584270
+[INFO] main InfoLog 16 May 2016 16:23:12 - Done process file : log.csv | Time: 8073 | Total line: 10508555 | Line process: 5 | Line error: 0
+[INFO] main InfoLog 16 May 2016 16:23:12 - DONE: 8600
+[INFO] main InfoLog 16 May 2016 16:23:41 - START: 1463390620987
+[INFO] main InfoLog 16 May 2016 16:23:49 - Done process file : log.csv | Time: 8204 | Total line: 10508555 | Line process: 5 | Line error: 0
+[INFO] main InfoLog 16 May 2016 16:23:49 - DONE: 8735
+[INFO] main InfoLog 16 May 2016 16:24:18 - START: 1463390658758
+[INFO] main InfoLog 16 May 2016 16:24:27 - Done process file : log.csv | Time: 8212 | Total line: 10508555 | Line process: 5 | Line error: 0
+[INFO] main InfoLog 16 May 2016 16:24:27 - DONE: 8757
+[INFO] main InfoLog 16 May 2016 16:28:17 - START: 1463390897082
+[INFO] main InfoLog 16 May 2016 16:28:25 - Done process file : log.csv | Time: 8132 | Total line: 10508555 | Line process: 5 | Line error: 0
+[INFO] main InfoLog 16 May 2016 16:28:25 - DONE: 8656
+[INFO] main InfoLog 18 May 2016 10:37:10 - Done process file: fbox-2016-02-05_parsed.csv | Process/Total: 1232023/38749365 | Time: 108980
+[INFO] main InfoLog 18 May 2016 10:44:30 - -----------------------------------------------------
+[INFO] pool-1-thread-2 InfoLog 18 May 2016 10:46:34 - Done process file: fbox-2016-02-25_parsed.csv | Process/Total: 1044520/35759838 | Time: 123366
+[INFO] pool-1-thread-3 InfoLog 18 May 2016 10:46:34 - Done process file: fbox-2016-02-17_parsed.csv | Process/Total: 1008496/34475659 | Time: 123668
+[INFO] pool-1-thread-1 InfoLog 18 May 2016 10:46:51 - Done process file: fbox-2016-02-05_parsed.csv | Process/Total: 1232023/38749365 | Time: 140420
+[INFO] pool-1-thread-1 InfoLog 18 May 2016 10:47:59 - Done process file: fbox-2016-02-02_parsed.csv | Process/Total: 5851549/24127886 | Time: 68580
+[INFO] pool-1-thread-2 InfoLog 18 May 2016 10:48:51 - Done process file: fbox-2016-02-18_parsed.csv | Process/Total: 997705/34621411 | Time: 137557
+[INFO] pool-1-thread-3 InfoLog 18 May 2016 10:48:54 - Done process file: fbox-2016-02-15_parsed.csv | Process/Total: 1035068/35453856 | Time: 139951
+[INFO] pool-1-thread-1 InfoLog 18 May 2016 10:50:29 - Done process file: fbox-2016-02-04_parsed.csv | Process/Total: 1509456/38987486 | Time: 150041
+[INFO] pool-1-thread-2 InfoLog 18 May 2016 10:50:52 - Done process file: fbox-2016-02-03_parsed.csv | Process/Total: 6086040/37851751 | Time: 120960
+[INFO] pool-1-thread-3 InfoLog 18 May 2016 10:51:06 - Done process file: fbox-2016-02-29_parsed.csv | Process/Total: 1005681/34788694 | Time: 132281
+[INFO] pool-1-thread-1 InfoLog 18 May 2016 10:52:39 - Done process file: fbox-2016-02-16_parsed.csv | Process/Total: 1000632/34568669 | Time: 130075
+[INFO] pool-1-thread-2 InfoLog 18 May 2016 10:53:21 - Done process file: fbox-2016-02-20_parsed.csv | Process/Total: 1178008/40490531 | Time: 148892
+[INFO] pool-1-thread-3 InfoLog 18 May 2016 10:53:30 - Done process file: fbox-2016-02-12_parsed.csv | Process/Total: 1123997/38647609 | Time: 144144
+[INFO] pool-1-thread-1 InfoLog 18 May 2016 10:55:01 - Done process file: fbox-2016-02-26_parsed.csv | Process/Total: 1058530/37920042 | Time: 141254
+[INFO] pool-1-thread-2 InfoLog 18 May 2016 10:55:35 - Done process file: fbox-2016-02-23_parsed.csv | Process/Total: 1046467/35501328 | Time: 133861
+[INFO] pool-1-thread-3 InfoLog 18 May 2016 10:55:52 - Done process file: fbox-2016-02-09_parsed.csv | Process/Total: 1092729/37176941 | Time: 141422
+[INFO] pool-1-thread-1 InfoLog 18 May 2016 10:57:28 - Done process file: fbox-2016-02-10_parsed.csv | Process/Total: 1065018/36747797 | Time: 147345
+[INFO] pool-1-thread-2 InfoLog 18 May 2016 10:58:35 - Done process file: fbox-2016-02-07_parsed.csv | Process/Total: 1346943/43852521 | Time: 180385
+[INFO] pool-1-thread-3 InfoLog 18 May 2016 10:58:39 - Done process file: fbox-2016-02-14_parsed.csv | Process/Total: 1186158/40419806 | Time: 167253
+[INFO] pool-1-thread-1 InfoLog 18 May 2016 10:59:46 - Done process file: fbox-2016-02-24_parsed.csv | Process/Total: 1055448/35823816 | Time: 138426
+[INFO] pool-1-thread-3 InfoLog 18 May 2016 11:01:02 - Done process file: fbox-2016-02-11_parsed.csv | Process/Total: 1067083/36688976 | Time: 143580
+[INFO] pool-1-thread-2 InfoLog 18 May 2016 11:01:16 - Done process file: fbox-2016-02-13_parsed.csv | Process/Total: 1200674/41125559 | Time: 160463
+[INFO] pool-1-thread-1 InfoLog 18 May 2016 11:02:21 - Done process file: fbox-2016-02-27_parsed.csv | Process/Total: 1192398/40800658 | Time: 154747
+[INFO] pool-1-thread-3 InfoLog 18 May 2016 11:02:30 - Done process file: fbox-2016-02-21_parsed.csv | Process/Total: 632564/23127351 | Time: 87976
+[INFO] pool-1-thread-2 InfoLog 18 May 2016 11:03:32 - Done process file: fbox-2016-02-22_parsed.csv | Process/Total: 1009324/34655472 | Time: 136594
+[INFO] pool-1-thread-1 InfoLog 18 May 2016 11:05:15 - Done process file: fbox-2016-02-28_parsed.csv | Process/Total: 1203401/41866241 | Time: 174099
+[INFO] pool-1-thread-3 InfoLog 18 May 2016 11:05:19 - Done process file: fbox-2016-02-08_parsed.csv | Process/Total: 1197371/39762288 | Time: 168267
+[INFO] pool-1-thread-2 InfoLog 18 May 2016 11:06:17 - Done process file: fbox-2016-02-06_parsed.csv | Process/Total: 1191183/39190728 | Time: 164652
+[INFO] pool-1-thread-1 InfoLog 18 May 2016 11:08:00 - Done process file: fbox-2016-02-19_parsed.csv | Process/Total: 1047304/35937050 | Time: 164550
+[INFO] pool-1-thread-3 InfoLog 18 May 2016 11:09:05 - Done process file: fbox-2016-03-12_parsed.csv | Process/Total: 11210093/41973178 | Time: 226790
+[INFO] pool-1-thread-2 InfoLog 18 May 2016 11:10:30 - Done process file: fbox-2016-03-06_parsed.csv | Process/Total: 11463056/42990511 | Time: 252967
+[INFO] pool-1-thread-1 InfoLog 18 May 2016 11:11:47 - Done process file: fbox-2016-03-15_parsed.csv | Process/Total: 9702322/35938349 | Time: 226768
+[INFO] pool-1-thread-3 InfoLog 18 May 2016 11:12:57 - Done process file: fbox-2016-03-19_parsed.csv | Process/Total: 11872313/43990479 | Time: 231501
+[INFO] pool-1-thread-2 InfoLog 18 May 2016 11:13:25 - Done process file: fbox-2016-03-08_parsed.csv | Process/Total: 9758401/36769383 | Time: 175174
+[INFO] pool-1-thread-1 InfoLog 18 May 2016 11:15:01 - Done process file: fbox-2016-03-16_parsed.csv | Process/Total: 9836861/36574559 | Time: 194221
+[INFO] pool-1-thread-3 InfoLog 18 May 2016 11:17:07 - Done process file: fbox-2016-03-29_parsed.csv | Process/Total: 9947058/36923877 | Time: 249562
+[INFO] pool-1-thread-2 InfoLog 18 May 2016 11:17:11 - Done process file: fbox-2016-03-02_parsed.csv | Process/Total: 9297366/35039959 | Time: 225578
+[INFO] pool-1-thread-1 InfoLog 18 May 2016 11:19:48 - Done process file: fbox-2016-03-24_parsed.csv | Process/Total: 10305201/38077816 | Time: 287546
+[INFO] pool-1-thread-3 InfoLog 18 May 2016 11:21:44 - Done process file: fbox-2016-03-23_parsed.csv | Process/Total: 9926661/36964370 | Time: 277831
+[INFO] pool-1-thread-2 InfoLog 18 May 2016 11:22:24 - Done process file: fbox-2016-03-27_parsed.csv | Process/Total: 11430570/42640496 | Time: 313868
+[INFO] pool-1-thread-1 InfoLog 18 May 2016 11:23:55 - Done process file: fbox-2016-03-07_parsed.csv | Process/Total: 9541379/35695908 | Time: 246569
+[INFO] pool-1-thread-3 InfoLog 18 May 2016 11:25:14 - Done process file: fbox-2016-03-11_parsed.csv | Process/Total: 9700647/36463650 | Time: 209994
+[INFO] pool-1-thread-2 InfoLog 18 May 2016 11:26:38 - Done process file: fbox-2016-03-26_parsed.csv | Process/Total: 11203670/41802511 | Time: 253578
+[INFO] pool-1-thread-1 InfoLog 18 May 2016 11:27:26 - Done process file: fbox-2016-03-21_parsed.csv | Process/Total: 9758017/36193950 | Time: 211057
+[INFO] pool-1-thread-3 InfoLog 18 May 2016 11:28:07 - Done process file: fbox-2016-03-01_parsed.csv | Process/Total: 1404029/35242553 | Time: 172135
+[INFO] pool-1-thread-2 InfoLog 18 May 2016 11:29:34 - Done process file: fbox-2016-03-14_parsed.csv | Process/Total: 9568663/35668328 | Time: 176274
+[INFO] pool-1-thread-1 InfoLog 18 May 2016 11:30:30 - Done process file: fbox-2016-03-17_parsed.csv | Process/Total: 9784171/36708760 | Time: 184314
+[INFO] pool-1-thread-3 InfoLog 18 May 2016 11:31:00 - Done process file: fbox-2016-03-03_parsed.csv | Process/Total: 9445689/35362416 | Time: 173057
+[INFO] pool-1-thread-2 InfoLog 18 May 2016 11:32:51 - Done process file: fbox-2016-03-30_parsed.csv | Process/Total: 9913468/36812573 | Time: 196260
+[INFO] pool-1-thread-1 InfoLog 18 May 2016 11:34:56 - Done process file: fbox-2016-03-25_parsed.csv | Process/Total: 10213274/37979216 | Time: 265290
+[INFO] pool-1-thread-3 InfoLog 18 May 2016 11:35:33 - Done process file: fbox-2016-03-22_parsed.csv | Process/Total: 9469361/35315346 | Time: 273315
+[INFO] pool-1-thread-2 InfoLog 18 May 2016 11:37:38 - Done process file: fbox-2016-03-18_parsed.csv | Process/Total: 9789127/36926351 | Time: 287643
+[INFO] pool-1-thread-1 InfoLog 18 May 2016 11:39:18 - Done process file: fbox-2016-03-28_parsed.csv | Process/Total: 9745296/36268942 | Time: 262817
+[INFO] pool-1-thread-3 InfoLog 18 May 2016 11:40:35 - Done process file: fbox-2016-03-05_parsed.csv | Process/Total: 11745236/43655604 | Time: 302182
+[INFO] pool-1-thread-2 InfoLog 18 May 2016 11:42:11 - Done process file: fbox-2016-03-10_parsed.csv | Process/Total: 9571535/36114663 | Time: 272547
+[INFO] pool-1-thread-1 InfoLog 18 May 2016 11:43:47 - Done process file: fbox-2016-03-04_parsed.csv | Process/Total: 9808021/36632690 | Time: 268188
+[INFO] pool-1-thread-3 InfoLog 18 May 2016 11:45:38 - Done process file: fbox-2016-03-13_parsed.csv | Process/Total: 11636677/43502771 | Time: 303310
+[INFO] pool-1-thread-2 InfoLog 18 May 2016 11:45:54 - Done process file: fbox-2016-03-31_parsed.csv | Process/Total: 10678997/39063546 | Time: 222814
+[INFO] pool-1-thread-1 InfoLog 18 May 2016 11:47:38 - Done process file: fbox-2016-03-20_parsed.csv | Process/Total: 11708556/43674217 | Time: 231567
+[INFO] pool-1-thread-3 InfoLog 18 May 2016 11:48:21 - Done process file: fbox-2016-03-09_parsed.csv | Process/Total: 9844432/36899682 | Time: 162466
+[INFO] main InfoLog 18 May 2016 16:26:45 - -----------------------------------------------------
+[INFO] main InfoLog 18 May 2016 16:26:45 - Done process file: log.csv | Process/Total: 476/3224 | Time: 24
+[INFO] main InfoLog 18 May 2016 16:39:44 - -----------------------------------------------------
+[INFO] main InfoLog 18 May 2016 16:39:45 - Done process file: log.csv | Process/Total: 476/3224 | Time: 31
+[INFO] main InfoLog 18 May 2016 16:42:07 - -----------------------------------------------------
+[INFO] main InfoLog 18 May 2016 16:42:07 - Done process file: log.csv | Process/Total: 476/3224 | Time: 30
+[INFO] main InfoLog 18 May 2016 16:54:19 - -----------------------------------------------------
+[INFO] main InfoLog 18 May 2016 16:54:20 - Done process file: log.csv | Process/Total: 309/3224 | Time: 35
+[INFO] main InfoLog 18 May 2016 16:55:02 - -----------------------------------------------------
+[INFO] main InfoLog 18 May 2016 16:55:03 - Done process file: log.csv | Process/Total: 309/3224 | Time: 63
+[INFO] main InfoLog 18 May 2016 16:55:48 - -----------------------------------------------------
+[INFO] main InfoLog 18 May 2016 16:55:48 - Done process file: log.csv | Process/Total: 309/3224 | Time: 31
+[INFO] main InfoLog 18 May 2016 17:04:29 - -----------------------------------------------------
+[INFO] main InfoLog 18 May 2016 17:06:11 - Done process file: fbox-2016-02-05_parsed.csv | Process/Total: 50432/38749365 | Time: 101538
+[INFO] main InfoLog 18 May 2016 17:07:44 - Done process file: fbox-2016-02-25_parsed.csv | Process/Total: 67634/35759838 | Time: 92929
+[INFO] main InfoLog 18 May 2016 17:09:14 - Done process file: fbox-2016-02-17_parsed.csv | Process/Total: 61700/34475659 | Time: 89729
+[INFO] main InfoLog 18 May 2016 17:10:47 - Done process file: fbox-2016-02-18_parsed.csv | Process/Total: 62569/34621411 | Time: 92683
+[INFO] main InfoLog 18 May 2016 17:12:25 - Done process file: fbox-2016-02-15_parsed.csv | Process/Total: 62675/35453856 | Time: 97801
+[INFO] main InfoLog 18 May 2016 17:12:58 - Done process file: fbox-2016-02-02_parsed.csv | Process/Total: 590/24127886 | Time: 33765
+[INFO] main InfoLog 18 May 2016 17:14:37 - Done process file: fbox-2016-02-04_parsed.csv | Process/Total: 33691/38987486 | Time: 99116
+[INFO] main InfoLog 18 May 2016 17:15:48 - Done process file: fbox-2016-02-03_parsed.csv | Process/Total: 9383/37851751 | Time: 70528
+[INFO] main InfoLog 18 May 2016 17:17:21 - Done process file: fbox-2016-02-29_parsed.csv | Process/Total: 66542/34788694 | Time: 92921
+[INFO] main InfoLog 18 May 2016 17:18:52 - Done process file: fbox-2016-02-16_parsed.csv | Process/Total: 59176/34568669 | Time: 90750
+[INFO] main InfoLog 18 May 2016 17:20:42 - Done process file: fbox-2016-02-20_parsed.csv | Process/Total: 73743/40490531 | Time: 109997
+[INFO] main InfoLog 18 May 2016 17:22:27 - Done process file: fbox-2016-02-12_parsed.csv | Process/Total: 56980/38647609 | Time: 104979
+[INFO] main InfoLog 18 May 2016 17:24:06 - Done process file: fbox-2016-02-26_parsed.csv | Process/Total: 64975/37920042 | Time: 99101
+[INFO] main InfoLog 18 May 2016 17:25:36 - Done process file: fbox-2016-02-23_parsed.csv | Process/Total: 68870/35501328 | Time: 90700
+[INFO] main InfoLog 18 May 2016 17:27:11 - Done process file: fbox-2016-02-09_parsed.csv | Process/Total: 53547/37176941 | Time: 94977
+[INFO] main InfoLog 18 May 2016 17:28:46 - Done process file: fbox-2016-02-10_parsed.csv | Process/Total: 53030/36747797 | Time: 94498
+[INFO] main InfoLog 18 May 2016 17:30:40 - Done process file: fbox-2016-02-07_parsed.csv | Process/Total: 69014/43852521 | Time: 113669
+[INFO] main InfoLog 18 May 2016 17:32:23 - Done process file: fbox-2016-02-14_parsed.csv | Process/Total: 67257/40419806 | Time: 103854
+[INFO] main InfoLog 18 May 2016 17:33:56 - Done process file: fbox-2016-02-24_parsed.csv | Process/Total: 68023/35823816 | Time: 92466
+[INFO] main InfoLog 18 May 2016 17:35:42 - Done process file: fbox-2016-02-13_parsed.csv | Process/Total: 65765/41125559 | Time: 105971
+[INFO] main InfoLog 18 May 2016 17:37:16 - Done process file: fbox-2016-02-11_parsed.csv | Process/Total: 56474/36688976 | Time: 94232
+[INFO] main InfoLog 18 May 2016 17:39:01 - Done process file: fbox-2016-02-27_parsed.csv | Process/Total: 77313/40800658 | Time: 105123
+[INFO] main InfoLog 18 May 2016 17:40:01 - Done process file: fbox-2016-02-21_parsed.csv | Process/Total: 42864/23127351 | Time: 59999
+[INFO] main InfoLog 18 May 2016 17:41:30 - Done process file: fbox-2016-02-22_parsed.csv | Process/Total: 62538/34655472 | Time: 89010
+[INFO] main InfoLog 18 May 2016 17:43:18 - Done process file: fbox-2016-02-28_parsed.csv | Process/Total: 78023/41866241 | Time: 107891
+[INFO] main InfoLog 18 May 2016 17:44:59 - Done process file: fbox-2016-02-08_parsed.csv | Process/Total: 62173/39762288 | Time: 101394
+[INFO] main InfoLog 18 May 2016 17:46:40 - Done process file: fbox-2016-02-06_parsed.csv | Process/Total: 52975/39190728 | Time: 100570
+[INFO] main InfoLog 18 May 2016 17:48:12 - Done process file: fbox-2016-02-19_parsed.csv | Process/Total: 66466/35937050 | Time: 91826
+[INFO] main InfoLog 18 May 2016 17:50:23 - Done process file: fbox-2016-03-12_parsed.csv | Process/Total: 10087680/41973178 | Time: 130986
+[INFO] main InfoLog 18 May 2016 17:52:39 - Done process file: fbox-2016-03-06_parsed.csv | Process/Total: 10305432/42990511 | Time: 135843
+[INFO] main InfoLog 18 May 2016 17:54:34 - Done process file: fbox-2016-03-15_parsed.csv | Process/Total: 8729279/35938349 | Time: 115629
+[INFO] main InfoLog 18 May 2016 17:56:52 - Done process file: fbox-2016-03-19_parsed.csv | Process/Total: 10678081/43990479 | Time: 137448
+[INFO] main InfoLog 18 May 2016 17:58:47 - Done process file: fbox-2016-03-08_parsed.csv | Process/Total: 8772238/36769383 | Time: 114929
+[INFO] main InfoLog 18 May 2016 18:00:44 - Done process file: fbox-2016-03-16_parsed.csv | Process/Total: 8853843/36574559 | Time: 117647
+[INFO] main InfoLog 18 May 2016 18:02:43 - Done process file: fbox-2016-03-29_parsed.csv | Process/Total: 8944496/36923877 | Time: 118670
+[INFO] main InfoLog 18 May 2016 18:04:32 - Done process file: fbox-2016-03-02_parsed.csv | Process/Total: 8345181/35039959 | Time: 109281
+[INFO] main InfoLog 18 May 2016 18:06:33 - Done process file: fbox-2016-03-24_parsed.csv | Process/Total: 9263587/38077816 | Time: 120626
+[INFO] main InfoLog 18 May 2016 18:08:31 - Done process file: fbox-2016-03-23_parsed.csv | Process/Total: 8935135/36964370 | Time: 117855
+[INFO] main InfoLog 18 May 2016 18:10:49 - Done process file: fbox-2016-03-27_parsed.csv | Process/Total: 10285872/42640496 | Time: 138270
+[INFO] main InfoLog 18 May 2016 18:12:43 - Done process file: fbox-2016-03-07_parsed.csv | Process/Total: 8574366/35695908 | Time: 114074
+[INFO] main InfoLog 18 May 2016 18:14:37 - Done process file: fbox-2016-03-11_parsed.csv | Process/Total: 8717754/36463650 | Time: 113999
+[INFO] main InfoLog 18 May 2016 18:16:49 - Done process file: fbox-2016-03-26_parsed.csv | Process/Total: 10077407/41802511 | Time: 131925
+[INFO] main InfoLog 18 May 2016 18:18:46 - Done process file: fbox-2016-03-21_parsed.csv | Process/Total: 8772309/36193950 | Time: 116714
+[INFO] main InfoLog 18 May 2016 18:20:17 - Done process file: fbox-2016-03-01_parsed.csv | Process/Total: 443680/35242553 | Time: 90872
+[INFO] main InfoLog 18 May 2016 18:22:09 - Done process file: fbox-2016-03-14_parsed.csv | Process/Total: 8610023/35668328 | Time: 112225
+[INFO] main InfoLog 18 May 2016 18:24:05 - Done process file: fbox-2016-03-17_parsed.csv | Process/Total: 8806419/36708760 | Time: 116477
+[INFO] main InfoLog 18 May 2016 18:25:58 - Done process file: fbox-2016-03-03_parsed.csv | Process/Total: 8490174/35362416 | Time: 112842
+[INFO] main InfoLog 18 May 2016 18:27:55 - Done process file: fbox-2016-03-30_parsed.csv | Process/Total: 8920385/36812573 | Time: 116974
+[INFO] main InfoLog 18 May 2016 18:29:56 - Done process file: fbox-2016-03-25_parsed.csv | Process/Total: 9185341/37979216 | Time: 120782
+[INFO] main InfoLog 18 May 2016 18:31:49 - Done process file: fbox-2016-03-22_parsed.csv | Process/Total: 8509866/35315346 | Time: 112617
+[INFO] main InfoLog 18 May 2016 18:33:45 - Done process file: fbox-2016-03-18_parsed.csv | Process/Total: 8798281/36926351 | Time: 116447
+[INFO] main InfoLog 18 May 2016 18:35:42 - Done process file: fbox-2016-03-28_parsed.csv | Process/Total: 8762003/36268942 | Time: 116630
+[INFO] main InfoLog 18 May 2016 18:38:00 - Done process file: fbox-2016-03-05_parsed.csv | Process/Total: 10557674/43655604 | Time: 137960
+[INFO] main InfoLog 18 May 2016 18:39:56 - Done process file: fbox-2016-03-10_parsed.csv | Process/Total: 8612038/36114663 | Time: 116317
+[INFO] main InfoLog 18 May 2016 18:41:51 - Done process file: fbox-2016-03-04_parsed.csv | Process/Total: 8818012/36632690 | Time: 115429
+[INFO] main InfoLog 18 May 2016 18:44:09 - Done process file: fbox-2016-03-13_parsed.csv | Process/Total: 10466443/43502771 | Time: 137371
+[INFO] main InfoLog 18 May 2016 18:46:12 - Done process file: fbox-2016-03-31_parsed.csv | Process/Total: 9603157/39063546 | Time: 122936
+[INFO] main InfoLog 18 May 2016 18:48:30 - Done process file: fbox-2016-03-20_parsed.csv | Process/Total: 10527664/43674217 | Time: 137881
+[INFO] main InfoLog 18 May 2016 18:50:24 - Done process file: fbox-2016-03-09_parsed.csv | Process/Total: 8851970/36899682 | Time: 114585
+[INFO] main InfoLog 19 May 2016 08:34:30 - -----------------------------------------------------
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-05_parsed.csv | Process/Total: 0/66 | Time: 27
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-25_parsed.csv | Process/Total: 0/65 | Time: 14
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-17_parsed.csv | Process/Total: 0/74 | Time: 3
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-12_parsed.csv | Process/Total: 52/142 | Time: 29
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-18_parsed.csv | Process/Total: 0/78 | Time: 3
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-06_parsed.csv | Process/Total: 34/123 | Time: 4
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-15_parsed.csv | Process/Total: 0/60 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-15_parsed.csv | Process/Total: 29/95 | Time: 8
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-02_parsed.csv | Process/Total: 0/93 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-19_parsed.csv | Process/Total: 39/93 | Time: 3
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-08_parsed.csv | Process/Total: 12/248 | Time: 7
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-16_parsed.csv | Process/Total: 64/128 | Time: 4
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-04_parsed.csv | Process/Total: 0/53 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-03_parsed.csv | Process/Total: 0/42 | Time: 7
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-29_parsed.csv | Process/Total: 65/129 | Time: 2
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-29_parsed.csv | Process/Total: 0/82 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-16_parsed.csv | Process/Total: 0/57 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-20_parsed.csv | Process/Total: 0/133 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-02_parsed.csv | Process/Total: 4/41 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-24_parsed.csv | Process/Total: 67/142 | Time: 2
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-12_parsed.csv | Process/Total: 0/85 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-23_parsed.csv | Process/Total: 53/108 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-26_parsed.csv | Process/Total: 0/81 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-27_parsed.csv | Process/Total: 62/124 | Time: 2
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-07_parsed.csv | Process/Total: 28/75 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-11_parsed.csv | Process/Total: 57/127 | Time: 15
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-26_parsed.csv | Process/Total: 64/129 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-21_parsed.csv | Process/Total: 62/125 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-23_parsed.csv | Process/Total: 0/58 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-01_parsed.csv | Process/Total: 0/87 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-09_parsed.csv | Process/Total: 0/72 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-10_parsed.csv | Process/Total: 0/118 | Time: 2
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-14_parsed.csv | Process/Total: 67/136 | Time: 3
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-17_parsed.csv | Process/Total: 64/128 | Time: 2
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-07_parsed.csv | Process/Total: 0/64 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-03_parsed.csv | Process/Total: 2/50 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-14_parsed.csv | Process/Total: 0/57 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-30_parsed.csv | Process/Total: 59/123 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-25_parsed.csv | Process/Total: 64/128 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-22_parsed.csv | Process/Total: 54/109 | Time: 2
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-24_parsed.csv | Process/Total: 0/135 | Time: 17
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-13_parsed.csv | Process/Total: 0/47 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-11_parsed.csv | Process/Total: 0/88 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-27_parsed.csv | Process/Total: 0/75 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-18_parsed.csv | Process/Total: 64/126 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-21_parsed.csv | Process/Total: 0/26 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-28_parsed.csv | Process/Total: 65/130 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-22_parsed.csv | Process/Total: 0/55 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-05_parsed.csv | Process/Total: 11/61 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-28_parsed.csv | Process/Total: 0/53 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-08_parsed.csv | Process/Total: 0/68 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-10_parsed.csv | Process/Total: 49/118 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-04_parsed.csv | Process/Total: 17/52 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-06_parsed.csv | Process/Total: 0/77 | Time: 4
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-13_parsed.csv | Process/Total: 63/150 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-31_parsed.csv | Process/Total: 65/130 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-20_parsed.csv | Process/Total: 64/128 | Time: 2
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-03-09_parsed.csv | Process/Total: 22/67 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:34:31 - Done process file: fbox-2016-02-19_parsed.csv | Process/Total: 0/73 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:35:36 - -----------------------------------------------------
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-25_parsed.csv | Process/Total: 0/65 | Time: 4
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-17_parsed.csv | Process/Total: 0/74 | Time: 5
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-18_parsed.csv | Process/Total: 0/78 | Time: 1
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-06_parsed.csv | Process/Total: 34/123 | Time: 3
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-12_parsed.csv | Process/Total: 52/142 | Time: 4
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-15_parsed.csv | Process/Total: 0/60 | Time: 1
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-02_parsed.csv | Process/Total: 0/93 | Time: 1
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-19_parsed.csv | Process/Total: 39/93 | Time: 2
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-05_parsed.csv | Process/Total: 0/66 | Time: 17
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-08_parsed.csv | Process/Total: 12/248 | Time: 5
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-04_parsed.csv | Process/Total: 0/53 | Time: 1
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-03_parsed.csv | Process/Total: 0/42 | Time: 0
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-16_parsed.csv | Process/Total: 64/128 | Time: 3
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-29_parsed.csv | Process/Total: 0/82 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-15_parsed.csv | Process/Total: 29/95 | Time: 19
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-29_parsed.csv | Process/Total: 65/129 | Time: 10
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-20_parsed.csv | Process/Total: 0/133 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-16_parsed.csv | Process/Total: 0/57 | Time: 1
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-02_parsed.csv | Process/Total: 4/41 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-12_parsed.csv | Process/Total: 0/85 | Time: 0
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-23_parsed.csv | Process/Total: 53/108 | Time: 2
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-24_parsed.csv | Process/Total: 67/142 | Time: 3
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-26_parsed.csv | Process/Total: 0/81 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-11_parsed.csv | Process/Total: 57/127 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-27_parsed.csv | Process/Total: 62/124 | Time: 5
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-26_parsed.csv | Process/Total: 64/129 | Time: 2
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-23_parsed.csv | Process/Total: 0/58 | Time: 0
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-07_parsed.csv | Process/Total: 28/75 | Time: 5
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-01_parsed.csv | Process/Total: 0/87 | Time: 2
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-10_parsed.csv | Process/Total: 0/118 | Time: 1
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-09_parsed.csv | Process/Total: 0/72 | Time: 2
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-17_parsed.csv | Process/Total: 64/128 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-14_parsed.csv | Process/Total: 67/136 | Time: 2
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-21_parsed.csv | Process/Total: 62/125 | Time: 5
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-03_parsed.csv | Process/Total: 2/50 | Time: 0
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-14_parsed.csv | Process/Total: 0/57 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-30_parsed.csv | Process/Total: 59/123 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-25_parsed.csv | Process/Total: 64/128 | Time: 2
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-24_parsed.csv | Process/Total: 0/135 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-13_parsed.csv | Process/Total: 0/47 | Time: 0
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-11_parsed.csv | Process/Total: 0/88 | Time: 0
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-27_parsed.csv | Process/Total: 0/75 | Time: 0
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-18_parsed.csv | Process/Total: 64/126 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-22_parsed.csv | Process/Total: 54/109 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-21_parsed.csv | Process/Total: 0/26 | Time: 0
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-28_parsed.csv | Process/Total: 65/130 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-22_parsed.csv | Process/Total: 0/55 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-05_parsed.csv | Process/Total: 11/61 | Time: 0
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-28_parsed.csv | Process/Total: 0/53 | Time: 1
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-07_parsed.csv | Process/Total: 0/64 | Time: 0
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-10_parsed.csv | Process/Total: 49/118 | Time: 1
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-04_parsed.csv | Process/Total: 17/52 | Time: 1
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-06_parsed.csv | Process/Total: 0/77 | Time: 0
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-13_parsed.csv | Process/Total: 63/150 | Time: 1
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-20_parsed.csv | Process/Total: 64/128 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-08_parsed.csv | Process/Total: 0/68 | Time: 3
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-09_parsed.csv | Process/Total: 22/67 | Time: 0
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-02-19_parsed.csv | Process/Total: 0/73 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:37 - Done process file: fbox-2016-03-31_parsed.csv | Process/Total: 65/130 | Time: 3
+[INFO] main InfoLog 19 May 2016 08:35:55 - -----------------------------------------------------
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-05_parsed.csv | Process/Total: 0/66 | Time: 3
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-25_parsed.csv | Process/Total: 0/65 | Time: 5
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-18_parsed.csv | Process/Total: 0/78 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-12_parsed.csv | Process/Total: 52/142 | Time: 6
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-15_parsed.csv | Process/Total: 0/60 | Time: 0
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-06_parsed.csv | Process/Total: 34/123 | Time: 3
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-15_parsed.csv | Process/Total: 29/95 | Time: 3
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-02_parsed.csv | Process/Total: 0/93 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-19_parsed.csv | Process/Total: 39/93 | Time: 3
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-16_parsed.csv | Process/Total: 64/128 | Time: 3
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-08_parsed.csv | Process/Total: 12/248 | Time: 7
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-04_parsed.csv | Process/Total: 0/53 | Time: 0
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-03_parsed.csv | Process/Total: 0/42 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-29_parsed.csv | Process/Total: 0/82 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-16_parsed.csv | Process/Total: 0/57 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-29_parsed.csv | Process/Total: 65/129 | Time: 3
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-20_parsed.csv | Process/Total: 0/133 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-02_parsed.csv | Process/Total: 4/41 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-12_parsed.csv | Process/Total: 0/85 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-23_parsed.csv | Process/Total: 53/108 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-26_parsed.csv | Process/Total: 0/81 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-27_parsed.csv | Process/Total: 62/124 | Time: 2
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-07_parsed.csv | Process/Total: 28/75 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-11_parsed.csv | Process/Total: 57/127 | Time: 3
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-26_parsed.csv | Process/Total: 64/129 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-21_parsed.csv | Process/Total: 62/125 | Time: 4
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-23_parsed.csv | Process/Total: 0/58 | Time: 0
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-17_parsed.csv | Process/Total: 0/74 | Time: 6
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-09_parsed.csv | Process/Total: 0/72 | Time: 0
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-24_parsed.csv | Process/Total: 67/142 | Time: 22
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-01_parsed.csv | Process/Total: 0/87 | Time: 5
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-17_parsed.csv | Process/Total: 64/128 | Time: 2
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-07_parsed.csv | Process/Total: 0/64 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-03_parsed.csv | Process/Total: 2/50 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-14_parsed.csv | Process/Total: 0/57 | Time: 1
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-10_parsed.csv | Process/Total: 0/118 | Time: 6
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-14_parsed.csv | Process/Total: 67/136 | Time: 8
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-30_parsed.csv | Process/Total: 59/123 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-25_parsed.csv | Process/Total: 64/128 | Time: 2
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-22_parsed.csv | Process/Total: 54/109 | Time: 2
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-13_parsed.csv | Process/Total: 0/47 | Time: 0
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-11_parsed.csv | Process/Total: 0/88 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-27_parsed.csv | Process/Total: 0/75 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-24_parsed.csv | Process/Total: 0/135 | Time: 4
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-18_parsed.csv | Process/Total: 64/126 | Time: 3
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-22_parsed.csv | Process/Total: 0/55 | Time: 0
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-21_parsed.csv | Process/Total: 0/26 | Time: 2
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-28_parsed.csv | Process/Total: 65/130 | Time: 3
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-08_parsed.csv | Process/Total: 0/68 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-10_parsed.csv | Process/Total: 49/118 | Time: 3
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-28_parsed.csv | Process/Total: 0/53 | Time: 6
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-04_parsed.csv | Process/Total: 17/52 | Time: 1
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-05_parsed.csv | Process/Total: 11/61 | Time: 9
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-06_parsed.csv | Process/Total: 0/77 | Time: 2
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-20_parsed.csv | Process/Total: 64/128 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-09_parsed.csv | Process/Total: 22/67 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-02-19_parsed.csv | Process/Total: 0/73 | Time: 0
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-31_parsed.csv | Process/Total: 65/130 | Time: 5
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:35:56 - Done process file: fbox-2016-03-13_parsed.csv | Process/Total: 63/150 | Time: 8
+[INFO] main InfoLog 19 May 2016 08:36:49 - -----------------------------------------------------
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-05_parsed.csv | Process/Total: 0/66 | Time: 3
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-25_parsed.csv | Process/Total: 0/65 | Time: 3
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-17_parsed.csv | Process/Total: 0/74 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-12_parsed.csv | Process/Total: 52/142 | Time: 4
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-18_parsed.csv | Process/Total: 0/78 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-06_parsed.csv | Process/Total: 34/123 | Time: 3
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-15_parsed.csv | Process/Total: 0/60 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-15_parsed.csv | Process/Total: 29/95 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-02_parsed.csv | Process/Total: 0/93 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-19_parsed.csv | Process/Total: 39/93 | Time: 2
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-08_parsed.csv | Process/Total: 12/248 | Time: 3
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-16_parsed.csv | Process/Total: 64/128 | Time: 3
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-04_parsed.csv | Process/Total: 0/53 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-03_parsed.csv | Process/Total: 0/42 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-29_parsed.csv | Process/Total: 65/129 | Time: 2
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-29_parsed.csv | Process/Total: 0/82 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-16_parsed.csv | Process/Total: 0/57 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-20_parsed.csv | Process/Total: 0/133 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-02_parsed.csv | Process/Total: 4/41 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-24_parsed.csv | Process/Total: 67/142 | Time: 2
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-12_parsed.csv | Process/Total: 0/85 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-23_parsed.csv | Process/Total: 53/108 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-26_parsed.csv | Process/Total: 0/81 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-27_parsed.csv | Process/Total: 62/124 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-07_parsed.csv | Process/Total: 28/75 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-11_parsed.csv | Process/Total: 57/127 | Time: 2
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-26_parsed.csv | Process/Total: 64/129 | Time: 2
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-21_parsed.csv | Process/Total: 62/125 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-23_parsed.csv | Process/Total: 0/58 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-01_parsed.csv | Process/Total: 0/87 | Time: 2
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-09_parsed.csv | Process/Total: 0/72 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-10_parsed.csv | Process/Total: 0/118 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-14_parsed.csv | Process/Total: 67/136 | Time: 2
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-17_parsed.csv | Process/Total: 64/128 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-07_parsed.csv | Process/Total: 0/64 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-03_parsed.csv | Process/Total: 2/50 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-14_parsed.csv | Process/Total: 0/57 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-30_parsed.csv | Process/Total: 59/123 | Time: 2
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-25_parsed.csv | Process/Total: 64/128 | Time: 2
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-22_parsed.csv | Process/Total: 54/109 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-24_parsed.csv | Process/Total: 0/135 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-13_parsed.csv | Process/Total: 0/47 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-11_parsed.csv | Process/Total: 0/88 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-27_parsed.csv | Process/Total: 0/75 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-18_parsed.csv | Process/Total: 64/126 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-21_parsed.csv | Process/Total: 0/26 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-28_parsed.csv | Process/Total: 65/130 | Time: 2
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-22_parsed.csv | Process/Total: 0/55 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-05_parsed.csv | Process/Total: 11/61 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-28_parsed.csv | Process/Total: 0/53 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-08_parsed.csv | Process/Total: 0/68 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-10_parsed.csv | Process/Total: 49/118 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-04_parsed.csv | Process/Total: 17/52 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-06_parsed.csv | Process/Total: 0/77 | Time: 0
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-13_parsed.csv | Process/Total: 63/150 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-31_parsed.csv | Process/Total: 65/130 | Time: 3
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-20_parsed.csv | Process/Total: 64/128 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-03-09_parsed.csv | Process/Total: 22/67 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:36:50 - Done process file: fbox-2016-02-19_parsed.csv | Process/Total: 0/73 | Time: 1
+[INFO] main InfoLog 19 May 2016 08:38:09 - -----------------------------------------------------
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-05_parsed.csv | Process/Total: 0/66 | Time: 11
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-12_parsed.csv | Process/Total: 52/142 | Time: 5
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-18_parsed.csv | Process/Total: 0/78 | Time: 1
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-17_parsed.csv | Process/Total: 0/74 | Time: 23
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-15_parsed.csv | Process/Total: 0/60 | Time: 0
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-15_parsed.csv | Process/Total: 29/95 | Time: 2
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-02_parsed.csv | Process/Total: 0/93 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-06_parsed.csv | Process/Total: 34/123 | Time: 8
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-25_parsed.csv | Process/Total: 0/65 | Time: 26
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-16_parsed.csv | Process/Total: 64/128 | Time: 2
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-04_parsed.csv | Process/Total: 0/53 | Time: 0
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-03_parsed.csv | Process/Total: 0/42 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-29_parsed.csv | Process/Total: 65/129 | Time: 2
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-29_parsed.csv | Process/Total: 0/82 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-16_parsed.csv | Process/Total: 0/57 | Time: 0
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-08_parsed.csv | Process/Total: 12/248 | Time: 12
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-02_parsed.csv | Process/Total: 4/41 | Time: 0
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-24_parsed.csv | Process/Total: 67/142 | Time: 2
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-19_parsed.csv | Process/Total: 39/93 | Time: 13
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-23_parsed.csv | Process/Total: 53/108 | Time: 1
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-26_parsed.csv | Process/Total: 0/81 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-12_parsed.csv | Process/Total: 0/85 | Time: 2
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-07_parsed.csv | Process/Total: 28/75 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-20_parsed.csv | Process/Total: 0/133 | Time: 8
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-26_parsed.csv | Process/Total: 64/129 | Time: 5
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-21_parsed.csv | Process/Total: 62/125 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-23_parsed.csv | Process/Total: 0/58 | Time: 0
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-27_parsed.csv | Process/Total: 62/124 | Time: 11
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-09_parsed.csv | Process/Total: 0/72 | Time: 0
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-10_parsed.csv | Process/Total: 0/118 | Time: 0
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-14_parsed.csv | Process/Total: 67/136 | Time: 3
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-11_parsed.csv | Process/Total: 57/127 | Time: 12
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-07_parsed.csv | Process/Total: 0/64 | Time: 0
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-03_parsed.csv | Process/Total: 2/50 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-14_parsed.csv | Process/Total: 0/57 | Time: 0
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-17_parsed.csv | Process/Total: 64/128 | Time: 2
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-30_parsed.csv | Process/Total: 59/123 | Time: 1
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-25_parsed.csv | Process/Total: 64/128 | Time: 2
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-22_parsed.csv | Process/Total: 54/109 | Time: 1
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-24_parsed.csv | Process/Total: 0/135 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-13_parsed.csv | Process/Total: 0/47 | Time: 0
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-27_parsed.csv | Process/Total: 0/75 | Time: 0
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-11_parsed.csv | Process/Total: 0/88 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-18_parsed.csv | Process/Total: 64/126 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-01_parsed.csv | Process/Total: 0/87 | Time: 9
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-21_parsed.csv | Process/Total: 0/26 | Time: 0
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-28_parsed.csv | Process/Total: 65/130 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-22_parsed.csv | Process/Total: 0/55 | Time: 0
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-05_parsed.csv | Process/Total: 11/61 | Time: 0
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-28_parsed.csv | Process/Total: 0/53 | Time: 1
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-10_parsed.csv | Process/Total: 49/118 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-08_parsed.csv | Process/Total: 0/68 | Time: 1
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-04_parsed.csv | Process/Total: 17/52 | Time: 0
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-06_parsed.csv | Process/Total: 0/77 | Time: 0
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-31_parsed.csv | Process/Total: 65/130 | Time: 2
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-13_parsed.csv | Process/Total: 63/150 | Time: 3
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-02-19_parsed.csv | Process/Total: 0/73 | Time: 1
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-09_parsed.csv | Process/Total: 22/67 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:38:09 - Done process file: fbox-2016-03-20_parsed.csv | Process/Total: 64/128 | Time: 2
+[INFO] main InfoLog 19 May 2016 08:41:01 - -----------------------------------------------------
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-05_parsed.csv | Process/Total: 0/66 | Time: 3
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-12_parsed.csv | Process/Total: 52/142 | Time: 6
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-25_parsed.csv | Process/Total: 0/65 | Time: 10
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-18_parsed.csv | Process/Total: 0/78 | Time: 2
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-15_parsed.csv | Process/Total: 0/60 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-15_parsed.csv | Process/Total: 29/95 | Time: 3
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-02_parsed.csv | Process/Total: 0/93 | Time: 2
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-19_parsed.csv | Process/Total: 39/93 | Time: 3
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-08_parsed.csv | Process/Total: 12/248 | Time: 3
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-16_parsed.csv | Process/Total: 64/128 | Time: 3
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-04_parsed.csv | Process/Total: 0/53 | Time: 0
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-03_parsed.csv | Process/Total: 0/42 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-29_parsed.csv | Process/Total: 65/129 | Time: 2
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-29_parsed.csv | Process/Total: 0/82 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-16_parsed.csv | Process/Total: 0/57 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-20_parsed.csv | Process/Total: 0/133 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-02_parsed.csv | Process/Total: 4/41 | Time: 0
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-06_parsed.csv | Process/Total: 34/123 | Time: 24
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-12_parsed.csv | Process/Total: 0/85 | Time: 0
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-17_parsed.csv | Process/Total: 0/74 | Time: 38
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-26_parsed.csv | Process/Total: 0/81 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-23_parsed.csv | Process/Total: 53/108 | Time: 6
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-24_parsed.csv | Process/Total: 67/142 | Time: 11
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-11_parsed.csv | Process/Total: 57/127 | Time: 2
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-27_parsed.csv | Process/Total: 62/124 | Time: 6
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-07_parsed.csv | Process/Total: 28/75 | Time: 3
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-23_parsed.csv | Process/Total: 0/58 | Time: 0
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-01_parsed.csv | Process/Total: 0/87 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-09_parsed.csv | Process/Total: 0/72 | Time: 0
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-10_parsed.csv | Process/Total: 0/118 | Time: 1
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-21_parsed.csv | Process/Total: 62/125 | Time: 3
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-14_parsed.csv | Process/Total: 67/136 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-26_parsed.csv | Process/Total: 64/129 | Time: 6
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-03_parsed.csv | Process/Total: 2/50 | Time: 0
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-14_parsed.csv | Process/Total: 0/57 | Time: 0
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-17_parsed.csv | Process/Total: 64/128 | Time: 2
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-07_parsed.csv | Process/Total: 0/64 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-22_parsed.csv | Process/Total: 54/109 | Time: 2
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-24_parsed.csv | Process/Total: 0/135 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-13_parsed.csv | Process/Total: 0/47 | Time: 0
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-11_parsed.csv | Process/Total: 0/88 | Time: 1
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-30_parsed.csv | Process/Total: 59/123 | Time: 5
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-27_parsed.csv | Process/Total: 0/75 | Time: 1
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-25_parsed.csv | Process/Total: 64/128 | Time: 5
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-21_parsed.csv | Process/Total: 0/26 | Time: 0
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-22_parsed.csv | Process/Total: 0/55 | Time: 0
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-05_parsed.csv | Process/Total: 11/61 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-28_parsed.csv | Process/Total: 0/53 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-08_parsed.csv | Process/Total: 0/68 | Time: 0
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-28_parsed.csv | Process/Total: 65/130 | Time: 3
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-10_parsed.csv | Process/Total: 49/118 | Time: 2
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-06_parsed.csv | Process/Total: 0/77 | Time: 0
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-18_parsed.csv | Process/Total: 64/126 | Time: 3
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-04_parsed.csv | Process/Total: 17/52 | Time: 5
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-20_parsed.csv | Process/Total: 64/128 | Time: 1
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-13_parsed.csv | Process/Total: 63/150 | Time: 2
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-02-19_parsed.csv | Process/Total: 0/73 | Time: 0
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-31_parsed.csv | Process/Total: 65/130 | Time: 3
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:41:02 - Done process file: fbox-2016-03-09_parsed.csv | Process/Total: 22/67 | Time: 2
+[INFO] main InfoLog 19 May 2016 08:41:26 - -----------------------------------------------------
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:43:34 - Done process file: fbox-2016-02-17_parsed.csv | Process/Total: 61700/34475659 | Time: 126768
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:43:38 - Done process file: fbox-2016-02-25_parsed.csv | Process/Total: 67634/35759838 | Time: 130847
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:43:52 - Done process file: fbox-2016-02-05_parsed.csv | Process/Total: 50432/38749365 | Time: 144755
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:44:47 - Done process file: fbox-2016-02-02_parsed.csv | Process/Total: 590/24127886 | Time: 55509
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:45:44 - Done process file: fbox-2016-02-18_parsed.csv | Process/Total: 62569/34621411 | Time: 130565
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:45:51 - Done process file: fbox-2016-02-15_parsed.csv | Process/Total: 62675/35453856 | Time: 133813
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:47:08 - Done process file: fbox-2016-02-04_parsed.csv | Process/Total: 33691/38987486 | Time: 141188
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:47:28 - Done process file: fbox-2016-02-03_parsed.csv | Process/Total: 9383/37851751 | Time: 103667
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:47:56 - Done process file: fbox-2016-02-29_parsed.csv | Process/Total: 66542/34788694 | Time: 124186
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:49:16 - Done process file: fbox-2016-02-16_parsed.csv | Process/Total: 59176/34568669 | Time: 127772
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:49:56 - Done process file: fbox-2016-02-20_parsed.csv | Process/Total: 73743/40490531 | Time: 148516
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:50:16 - Done process file: fbox-2016-02-12_parsed.csv | Process/Total: 56980/38647609 | Time: 140383
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:51:30 - Done process file: fbox-2016-02-26_parsed.csv | Process/Total: 64975/37920042 | Time: 134120
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:52:04 - Done process file: fbox-2016-02-23_parsed.csv | Process/Total: 68870/35501328 | Time: 127456
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:52:33 - Done process file: fbox-2016-02-09_parsed.csv | Process/Total: 53547/37176941 | Time: 136834
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:53:49 - Done process file: fbox-2016-02-10_parsed.csv | Process/Total: 53030/36747797 | Time: 138450
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:54:48 - Done process file: fbox-2016-02-07_parsed.csv | Process/Total: 69014/43852521 | Time: 163996
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:55:02 - Done process file: fbox-2016-02-14_parsed.csv | Process/Total: 67257/40419806 | Time: 148820
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:56:01 - Done process file: fbox-2016-02-24_parsed.csv | Process/Total: 68023/35823816 | Time: 132177
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:57:22 - Done process file: fbox-2016-02-11_parsed.csv | Process/Total: 56474/36688976 | Time: 140180
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:57:24 - Done process file: fbox-2016-02-13_parsed.csv | Process/Total: 65765/41125559 | Time: 156398
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 08:58:30 - Done process file: fbox-2016-02-27_parsed.csv | Process/Total: 77313/40800658 | Time: 148842
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 08:58:44 - Done process file: fbox-2016-02-21_parsed.csv | Process/Total: 42864/23127351 | Time: 82088
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 08:59:29 - Done process file: fbox-2016-02-22_parsed.csv | Process/Total: 62538/34655472 | Time: 125263
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 09:01:07 - Done process file: fbox-2016-02-28_parsed.csv | Process/Total: 78023/41866241 | Time: 157238
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 09:01:15 - Done process file: fbox-2016-02-08_parsed.csv | Process/Total: 62173/39762288 | Time: 150931
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 09:02:00 - Done process file: fbox-2016-02-06_parsed.csv | Process/Total: 52975/39190728 | Time: 150656
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 09:03:52 - Done process file: fbox-2016-02-19_parsed.csv | Process/Total: 66466/35937050 | Time: 165498
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 09:05:11 - Done process file: fbox-2016-03-12_parsed.csv | Process/Total: 10087680/41973178 | Time: 236599
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 09:06:21 - Done process file: fbox-2016-03-06_parsed.csv | Process/Total: 10305432/42990511 | Time: 260540
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 09:07:49 - Done process file: fbox-2016-03-15_parsed.csv | Process/Total: 8729279/35938349 | Time: 237123
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 09:09:11 - Done process file: fbox-2016-03-19_parsed.csv | Process/Total: 10678081/43990479 | Time: 239556
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 09:09:38 - Done process file: fbox-2016-03-08_parsed.csv | Process/Total: 8772238/36769383 | Time: 197511
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 09:10:52 - Done process file: fbox-2016-03-16_parsed.csv | Process/Total: 8853843/36574559 | Time: 182795
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 09:13:09 - Done process file: fbox-2016-03-29_parsed.csv | Process/Total: 8944496/36923877 | Time: 238198
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 09:13:12 - Done process file: fbox-2016-03-02_parsed.csv | Process/Total: 8345181/35039959 | Time: 213477
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 09:16:10 - Done process file: fbox-2016-03-24_parsed.csv | Process/Total: 9263587/38077816 | Time: 317903
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 09:18:18 - Done process file: fbox-2016-03-23_parsed.csv | Process/Total: 8935135/36964370 | Time: 309231
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 09:18:44 - Done process file: fbox-2016-03-27_parsed.csv | Process/Total: 10285872/42640496 | Time: 332226
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 09:20:23 - Done process file: fbox-2016-03-07_parsed.csv | Process/Total: 8574366/35695908 | Time: 252616
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 09:22:04 - Done process file: fbox-2016-03-11_parsed.csv | Process/Total: 8717754/36463650 | Time: 225713
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 09:23:27 - Done process file: fbox-2016-03-26_parsed.csv | Process/Total: 10077407/41802511 | Time: 282697
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 09:24:11 - Done process file: fbox-2016-03-21_parsed.csv | Process/Total: 8772309/36193950 | Time: 228225
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 09:25:12 - Done process file: fbox-2016-03-01_parsed.csv | Process/Total: 443680/35242553 | Time: 188203
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 09:26:45 - Done process file: fbox-2016-03-14_parsed.csv | Process/Total: 8610023/35668328 | Time: 198026
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 09:27:48 - Done process file: fbox-2016-03-17_parsed.csv | Process/Total: 8806419/36708760 | Time: 216982
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 09:28:23 - Done process file: fbox-2016-03-03_parsed.csv | Process/Total: 8490174/35362416 | Time: 190298
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 09:30:18 - Done process file: fbox-2016-03-30_parsed.csv | Process/Total: 8920385/36812573 | Time: 213713
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 09:32:12 - Done process file: fbox-2016-03-25_parsed.csv | Process/Total: 9185341/37979216 | Time: 263716
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 09:33:12 - Done process file: fbox-2016-03-22_parsed.csv | Process/Total: 8509866/35315346 | Time: 288916
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 09:35:15 - Done process file: fbox-2016-03-18_parsed.csv | Process/Total: 8798281/36926351 | Time: 296699
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 09:36:42 - Done process file: fbox-2016-03-28_parsed.csv | Process/Total: 8762003/36268942 | Time: 270155
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 09:38:05 - Done process file: fbox-2016-03-05_parsed.csv | Process/Total: 10557674/43655604 | Time: 292999
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 09:40:03 - Done process file: fbox-2016-03-10_parsed.csv | Process/Total: 8612038/36114663 | Time: 288448
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 09:41:31 - Done process file: fbox-2016-03-04_parsed.csv | Process/Total: 8818012/36632690 | Time: 288868
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 09:43:43 - Done process file: fbox-2016-03-31_parsed.csv | Process/Total: 9603157/39063546 | Time: 219358
+[INFO] pool-1-thread-2 InfoLog 19 May 2016 09:43:44 - Done process file: fbox-2016-03-13_parsed.csv | Process/Total: 10466443/43502771 | Time: 339107
+[INFO] pool-1-thread-1 InfoLog 19 May 2016 09:46:53 - Done process file: fbox-2016-03-20_parsed.csv | Process/Total: 10527664/43674217 | Time: 321845
+[INFO] pool-1-thread-3 InfoLog 19 May 2016 09:47:35 - Done process file: fbox-2016-03-09_parsed.csv | Process/Total: 8851970/36899682 | Time: 232269
+[INFO] main InfoLog 23 May 2016 16:00:11 - -----------------------------------------------------
+[INFO] pool-1-thread-3 InfoLog 23 May 2016 16:02:09 - Done process file: fbox-2016-02-17_parsed.csv | SMM/RTP/Total: 3854/61633/34475659 | Time: 116206
+[INFO] pool-1-thread-2 InfoLog 23 May 2016 16:02:13 - Done process file: fbox-2016-02-25_parsed.csv | SMM/RTP/Total: 4116/67505/35759838 | Time: 120368
+[INFO] pool-1-thread-1 InfoLog 23 May 2016 16:02:25 - Done process file: fbox-2016-02-05_parsed.csv | SMM/RTP/Total: 3026/50329/38749365 | Time: 131781
+[INFO] pool-1-thread-1 InfoLog 23 May 2016 16:03:15 - Done process file: fbox-2016-02-02_parsed.csv | SMM/RTP/Total: 153/590/24127886 | Time: 50023
+[INFO] pool-1-thread-3 InfoLog 23 May 2016 16:04:04 - Done process file: fbox-2016-02-18_parsed.csv | SMM/RTP/Total: 3988/62472/34621411 | Time: 114632
+[INFO] pool-1-thread-2 InfoLog 23 May 2016 16:04:09 - Done process file: fbox-2016-02-15_parsed.csv | SMM/RTP/Total: 3750/62577/35453856 | Time: 116334
+[INFO] pool-1-thread-1 InfoLog 23 May 2016 16:05:27 - Done process file: fbox-2016-02-04_parsed.csv | SMM/RTP/Total: 3027/33624/38987486 | Time: 132756
+[INFO] pool-1-thread-3 InfoLog 23 May 2016 16:05:52 - Done process file: fbox-2016-02-03_parsed.csv | SMM/RTP/Total: 1274/9369/37851751 | Time: 108590
+[INFO] pool-1-thread-2 InfoLog 23 May 2016 16:06:18 - Done process file: fbox-2016-02-29_parsed.csv | SMM/RTP/Total: 4048/66455/34788694 | Time: 128946
+[INFO] pool-1-thread-1 InfoLog 23 May 2016 16:07:37 - Done process file: fbox-2016-02-16_parsed.csv | SMM/RTP/Total: 3728/59089/34568669 | Time: 130052
+[INFO] pool-1-thread-3 InfoLog 23 May 2016 16:08:18 - Done process file: fbox-2016-02-20_parsed.csv | SMM/RTP/Total: 4274/73620/40490531 | Time: 145689
+[INFO] pool-1-thread-2 InfoLog 23 May 2016 16:08:38 - Done process file: fbox-2016-02-12_parsed.csv | SMM/RTP/Total: 3500/56918/38647609 | Time: 139630
+[INFO] pool-1-thread-1 InfoLog 23 May 2016 16:09:46 - Done process file: fbox-2016-02-26_parsed.csv | SMM/RTP/Total: 4247/64863/37920042 | Time: 128570
+[INFO] pool-1-thread-3 InfoLog 23 May 2016 16:10:17 - Done process file: fbox-2016-02-23_parsed.csv | SMM/RTP/Total: 4164/68789/35501328 | Time: 119342
+[INFO] pool-1-thread-2 InfoLog 23 May 2016 16:10:42 - Done process file: fbox-2016-02-09_parsed.csv | SMM/RTP/Total: 3016/53477/37176941 | Time: 124001
+[INFO] pool-1-thread-1 InfoLog 23 May 2016 16:11:45 - Done process file: fbox-2016-02-10_parsed.csv | SMM/RTP/Total: 3081/52924/36747797 | Time: 118780
+[INFO] pool-1-thread-3 InfoLog 23 May 2016 16:12:40 - Done process file: fbox-2016-02-07_parsed.csv | SMM/RTP/Total: 3409/68916/43852521 | Time: 142484
+[INFO] pool-1-thread-2 InfoLog 23 May 2016 16:12:54 - Done process file: fbox-2016-02-14_parsed.csv | SMM/RTP/Total: 4183/67177/40419806 | Time: 132102
+[INFO] pool-1-thread-1 InfoLog 23 May 2016 16:13:42 - Done process file: fbox-2016-02-24_parsed.csv | SMM/RTP/Total: 4250/67921/35823816 | Time: 117232
+[INFO] pool-1-thread-3 InfoLog 23 May 2016 16:14:54 - Done process file: fbox-2016-02-13_parsed.csv | SMM/RTP/Total: 3734/65671/41125559 | Time: 133919
+[INFO] pool-1-thread-2 InfoLog 23 May 2016 16:14:54 - Done process file: fbox-2016-02-11_parsed.csv | SMM/RTP/Total: 3315/56404/36688976 | Time: 119803
+[INFO] pool-1-thread-1 InfoLog 23 May 2016 16:16:02 - Done process file: fbox-2016-02-27_parsed.csv | SMM/RTP/Total: 4407/77219/40800658 | Time: 139929
+[INFO] pool-1-thread-3 InfoLog 23 May 2016 16:16:21 - Done process file: fbox-2016-02-21_parsed.csv | SMM/RTP/Total: 2519/42789/23127351 | Time: 87410
+[INFO] pool-1-thread-2 InfoLog 23 May 2016 16:17:04 - Done process file: fbox-2016-02-22_parsed.csv | SMM/RTP/Total: 4062/62474/34655472 | Time: 130423
+[INFO] pool-1-thread-1 InfoLog 23 May 2016 16:18:38 - Done process file: fbox-2016-02-28_parsed.csv | SMM/RTP/Total: 4964/77896/41866241 | Time: 156320
+[INFO] pool-1-thread-3 InfoLog 23 May 2016 16:18:49 - Done process file: fbox-2016-02-08_parsed.csv | SMM/RTP/Total: 2971/62079/39762288 | Time: 147881
+[INFO] pool-1-thread-2 InfoLog 23 May 2016 16:19:34 - Done process file: fbox-2016-02-06_parsed.csv | SMM/RTP/Total: 2697/52898/39190728 | Time: 149604
+[INFO] pool-1-thread-1 InfoLog 23 May 2016 16:21:29 - Done process file: fbox-2016-02-19_parsed.csv | SMM/RTP/Total: 3897/66375/35937050 | Time: 170454
+[INFO] pool-1-thread-3 InfoLog 23 May 2016 16:23:11 - Done process file: fbox-2016-03-12_parsed.csv | SMM/RTP/Total: 1775515/10073736/41973178 | Time: 262253
+[INFO] pool-1-thread-2 InfoLog 23 May 2016 16:24:15 - Done process file: fbox-2016-03-06_parsed.csv | SMM/RTP/Total: 1827847/10290518/42990511 | Time: 281097
+[INFO] pool-1-thread-1 InfoLog 23 May 2016 16:25:45 - Done process file: fbox-2016-03-15_parsed.csv | SMM/RTP/Total: 1540808/8717801/35938349 | Time: 256726
+[INFO] pool-1-thread-3 InfoLog 23 May 2016 16:27:42 - Done process file: fbox-2016-03-19_parsed.csv | SMM/RTP/Total: 1823737/10661890/43990479 | Time: 270829
+[INFO] pool-1-thread-2 InfoLog 23 May 2016 16:27:52 - Done process file: fbox-2016-03-08_parsed.csv | SMM/RTP/Total: 1583238/8760346/36769383 | Time: 217159
+[INFO] pool-1-thread-1 InfoLog 23 May 2016 16:29:30 - Done process file: fbox-2016-03-16_parsed.csv | SMM/RTP/Total: 1568083/8842141/36574559 | Time: 224315
+[INFO] pool-1-thread-2 InfoLog 23 May 2016 16:31:52 - Done process file: fbox-2016-03-02_parsed.csv | SMM/RTP/Total: 1514737/8333938/35039959 | Time: 240123
+[INFO] pool-1-thread-3 InfoLog 23 May 2016 16:31:54 - Done process file: fbox-2016-03-29_parsed.csv | SMM/RTP/Total: 1597580/8931951/36923877 | Time: 252313
+[INFO] pool-1-thread-1 InfoLog 23 May 2016 16:34:32 - Done process file: fbox-2016-03-24_parsed.csv | SMM/RTP/Total: 1613209/9251398/38077816 | Time: 302799
+[INFO] pool-1-thread-2 InfoLog 23 May 2016 16:37:38 - Done process file: fbox-2016-03-23_parsed.csv | SMM/RTP/Total: 1599469/8923314/36964370 | Time: 345351
+[INFO] pool-1-thread-3 InfoLog 23 May 2016 16:38:27 - Done process file: fbox-2016-03-27_parsed.csv | SMM/RTP/Total: 1804180/10271576/42640496 | Time: 392833
+[INFO] pool-1-thread-1 InfoLog 23 May 2016 16:39:56 - Done process file: fbox-2016-03-07_parsed.csv | SMM/RTP/Total: 1543694/8562315/35695908 | Time: 324007
+[INFO] pool-1-thread-2 InfoLog 23 May 2016 16:42:09 - Done process file: fbox-2016-03-11_parsed.csv | SMM/RTP/Total: 1579274/8706309/36463650 | Time: 271115
+[INFO] pool-1-thread-3 InfoLog 23 May 2016 16:43:44 - Done process file: fbox-2016-03-26_parsed.csv | SMM/RTP/Total: 1765673/10063816/41802511 | Time: 316708
+[INFO] pool-1-thread-1 InfoLog 23 May 2016 16:44:37 - Done process file: fbox-2016-03-21_parsed.csv | SMM/RTP/Total: 1559895/8760569/36193950 | Time: 280708
+[INFO] pool-1-thread-2 InfoLog 23 May 2016 16:45:33 - Done process file: fbox-2016-03-01_parsed.csv | SMM/RTP/Total: 79471/443095/35242553 | Time: 204410
+[INFO] pool-1-thread-3 InfoLog 23 May 2016 16:47:36 - Done process file: fbox-2016-03-14_parsed.csv | SMM/RTP/Total: 1535057/8598811/35668328 | Time: 232381
+[INFO] pool-1-thread-1 InfoLog 23 May 2016 16:48:22 - Done process file: fbox-2016-03-17_parsed.csv | SMM/RTP/Total: 1589155/8794939/36708760 | Time: 225158
+[INFO] pool-1-thread-2 InfoLog 23 May 2016 16:49:10 - Done process file: fbox-2016-03-03_parsed.csv | SMM/RTP/Total: 1541229/8478873/35362416 | Time: 216781
+[INFO] pool-1-thread-3 InfoLog 23 May 2016 16:51:34 - Done process file: fbox-2016-03-30_parsed.csv | SMM/RTP/Total: 1593305/8908404/36812573 | Time: 237861
+[INFO] pool-1-thread-1 InfoLog 23 May 2016 16:53:01 - Done process file: fbox-2016-03-25_parsed.csv | SMM/RTP/Total: 1625193/9173140/37979216 | Time: 278319
+[INFO] pool-1-thread-2 InfoLog 23 May 2016 16:54:01 - Done process file: fbox-2016-03-22_parsed.csv | SMM/RTP/Total: 1524453/8498009/35315346 | Time: 291316
+[INFO] pool-1-thread-3 InfoLog 23 May 2016 16:56:40 - Done process file: fbox-2016-03-18_parsed.csv | SMM/RTP/Total: 1602356/8786274/36926351 | Time: 305824
+[INFO] pool-1-thread-1 InfoLog 23 May 2016 16:57:39 - Done process file: fbox-2016-03-28_parsed.csv | SMM/RTP/Total: 1564579/8750574/36268942 | Time: 277927
+[INFO] pool-1-thread-2 InfoLog 23 May 2016 16:59:48 - Done process file: fbox-2016-03-05_parsed.csv | SMM/RTP/Total: 1802339/10541478/43655604 | Time: 346592
+[INFO] pool-1-thread-3 InfoLog 23 May 2016 17:02:08 - Done process file: fbox-2016-03-10_parsed.csv | SMM/RTP/Total: 1571883/8600419/36114663 | Time: 328023
+[INFO] pool-1-thread-1 InfoLog 23 May 2016 17:03:08 - Done process file: fbox-2016-03-04_parsed.csv | SMM/RTP/Total: 1580894/8805193/36632690 | Time: 329113
+[INFO] pool-1-thread-2 InfoLog 23 May 2016 17:06:05 - Done process file: fbox-2016-03-13_parsed.csv | SMM/RTP/Total: 1842861/10452092/43502771 | Time: 377590
+[INFO] pool-1-thread-3 InfoLog 23 May 2016 17:06:49 - Done process file: fbox-2016-03-31_parsed.csv | SMM/RTP/Total: 1636953/9589691/39063546 | Time: 280871
+[INFO] pool-1-thread-1 InfoLog 23 May 2016 17:08:16 - Done process file: fbox-2016-03-20_parsed.csv | SMM/RTP/Total: 1847200/10513319/43674217 | Time: 308530
+[INFO] pool-1-thread-2 InfoLog 23 May 2016 17:09:17 - Done process file: fbox-2016-03-09_parsed.csv | SMM/RTP/Total: 1585920/8839832/36899682 | Time: 191019
+[INFO] main InfoLog 24 May 2016 09:28:08 - -----------------------------------------------------
+[INFO] main InfoLog 24 May 2016 09:28:28 - -----------------------------------------------------
+[INFO] pool-1-thread-3 InfoLog 24 May 2016 09:30:46 - Done process file: fbox-2016-02-17_parsed.csv | SMM/RTP/Total: 0/61697/34475659 | Time: 137967
+[INFO] pool-1-thread-2 InfoLog 24 May 2016 09:30:49 - Done process file: fbox-2016-02-25_parsed.csv | SMM/RTP/Total: 0/67524/35759838 | Time: 141348
+[INFO] pool-1-thread-1 InfoLog 24 May 2016 09:31:03 - Done process file: fbox-2016-02-05_parsed.csv | SMM/RTP/Total: 0/50425/38749365 | Time: 155276
+[INFO] pool-1-thread-1 InfoLog 24 May 2016 09:32:02 - Done process file: fbox-2016-02-02_parsed.csv | SMM/RTP/Total: 0/591/24127886 | Time: 59000
+[INFO] pool-1-thread-3 InfoLog 24 May 2016 09:32:58 - Done process file: fbox-2016-02-18_parsed.csv | SMM/RTP/Total: 0/62550/34621411 | Time: 131549
+[INFO] pool-1-thread-2 InfoLog 24 May 2016 09:33:02 - Done process file: fbox-2016-02-15_parsed.csv | SMM/RTP/Total: 0/62636/35453856 | Time: 132405
+[INFO] pool-1-thread-1 InfoLog 24 May 2016 09:34:27 - Done process file: fbox-2016-02-04_parsed.csv | SMM/RTP/Total: 0/33681/38987486 | Time: 144455
+[INFO] pool-1-thread-3 InfoLog 24 May 2016 09:34:50 - Done process file: fbox-2016-02-03_parsed.csv | SMM/RTP/Total: 0/9380/37851751 | Time: 112124
+[INFO] pool-1-thread-2 InfoLog 24 May 2016 09:35:15 - Done process file: fbox-2016-02-29_parsed.csv | SMM/RTP/Total: 0/66472/34788694 | Time: 133573
+[INFO] pool-1-thread-1 InfoLog 24 May 2016 09:36:37 - Done process file: fbox-2016-02-16_parsed.csv | SMM/RTP/Total: 0/59136/34568669 | Time: 130042
+[INFO] pool-1-thread-3 InfoLog 24 May 2016 09:37:17 - Done process file: fbox-2016-02-20_parsed.csv | SMM/RTP/Total: 0/73682/40490531 | Time: 147109
+[INFO] pool-1-thread-2 InfoLog 24 May 2016 09:37:35 - Done process file: fbox-2016-02-12_parsed.csv | SMM/RTP/Total: 0/56953/38647609 | Time: 139578
+[INFO] pool-1-thread-1 InfoLog 24 May 2016 09:38:45 - Done process file: fbox-2016-02-26_parsed.csv | SMM/RTP/Total: 0/64904/37920042 | Time: 127686
+[INFO] pool-1-thread-3 InfoLog 24 May 2016 09:39:17 - Done process file: fbox-2016-02-23_parsed.csv | SMM/RTP/Total: 0/68822/35501328 | Time: 120130
+[INFO] pool-1-thread-2 InfoLog 24 May 2016 09:39:43 - Done process file: fbox-2016-02-09_parsed.csv | SMM/RTP/Total: 0/53530/37176941 | Time: 128292
+[INFO] pool-1-thread-1 InfoLog 24 May 2016 09:40:52 - Done process file: fbox-2016-02-10_parsed.csv | SMM/RTP/Total: 0/52978/36747797 | Time: 127356
+[INFO] pool-1-thread-3 InfoLog 24 May 2016 09:41:58 - Done process file: fbox-2016-02-07_parsed.csv | SMM/RTP/Total: 0/68963/43852521 | Time: 160921
+[INFO] pool-1-thread-2 InfoLog 24 May 2016 09:42:10 - Done process file: fbox-2016-02-14_parsed.csv | SMM/RTP/Total: 0/67267/40419806 | Time: 146935
+[INFO] pool-1-thread-1 InfoLog 24 May 2016 09:43:05 - Done process file: fbox-2016-02-24_parsed.csv | SMM/RTP/Total: 0/67955/35823816 | Time: 132993
+[INFO] pool-1-thread-2 InfoLog 24 May 2016 09:44:18 - Done process file: fbox-2016-02-11_parsed.csv | SMM/RTP/Total: 0/56422/36688976 | Time: 128100
+[INFO] pool-1-thread-3 InfoLog 24 May 2016 09:44:24 - Done process file: fbox-2016-02-13_parsed.csv | SMM/RTP/Total: 0/65744/41125559 | Time: 146153
+[INFO] pool-1-thread-1 InfoLog 24 May 2016 09:45:34 - Done process file: fbox-2016-02-27_parsed.csv | SMM/RTP/Total: 0/77258/40800658 | Time: 148846
+[INFO] pool-1-thread-2 InfoLog 24 May 2016 09:45:49 - Done process file: fbox-2016-02-21_parsed.csv | SMM/RTP/Total: 0/42799/23127351 | Time: 90418
+[INFO] pool-1-thread-3 InfoLog 24 May 2016 09:46:37 - Done process file: fbox-2016-02-22_parsed.csv | SMM/RTP/Total: 0/62513/34655472 | Time: 133146
+[INFO] pool-1-thread-1 InfoLog 24 May 2016 09:48:09 - Done process file: fbox-2016-02-28_parsed.csv | SMM/RTP/Total: 0/77926/41866241 | Time: 155030
+[INFO] pool-1-thread-2 InfoLog 24 May 2016 09:48:16 - Done process file: fbox-2016-02-08_parsed.csv | SMM/RTP/Total: 0/62108/39762288 | Time: 147178
+[INFO] pool-1-thread-3 InfoLog 24 May 2016 09:49:07 - Done process file: fbox-2016-02-06_parsed.csv | SMM/RTP/Total: 0/52957/39190728 | Time: 150169
+[INFO] pool-1-thread-1 InfoLog 24 May 2016 09:50:50 - Done process file: fbox-2016-02-19_parsed.csv | SMM/RTP/Total: 0/66434/35937050 | Time: 160776
+[INFO] pool-1-thread-2 InfoLog 24 May 2016 09:52:02 - Done process file: fbox-2016-03-12_parsed.csv | SMM/RTP/Total: 0/10078198/41973178 | Time: 226566
+[INFO] pool-1-thread-3 InfoLog 24 May 2016 09:53:13 - Done process file: fbox-2016-03-06_parsed.csv | SMM/RTP/Total: 0/10294997/42990511 | Time: 245968
+[INFO] pool-1-thread-1 InfoLog 24 May 2016 09:54:36 - Done process file: fbox-2016-03-15_parsed.csv | SMM/RTP/Total: 0/8722096/35938349 | Time: 226544
+[INFO] pool-1-thread-2 InfoLog 24 May 2016 09:56:08 - Done process file: fbox-2016-03-19_parsed.csv | SMM/RTP/Total: 0/10667293/43990479 | Time: 245469
+[INFO] pool-1-thread-3 InfoLog 24 May 2016 09:56:26 - Done process file: fbox-2016-03-08_parsed.csv | SMM/RTP/Total: 0/8764390/36769383 | Time: 192447
+[INFO] pool-1-thread-1 InfoLog 24 May 2016 09:57:53 - Done process file: fbox-2016-03-16_parsed.csv | SMM/RTP/Total: 0/8846576/36574559 | Time: 196425
+[INFO] pool-1-thread-2 InfoLog 24 May 2016 09:59:56 - Done process file: fbox-2016-03-29_parsed.csv | SMM/RTP/Total: 0/8940088/36923877 | Time: 227695
+[INFO] pool-1-thread-3 InfoLog 24 May 2016 10:00:05 - Done process file: fbox-2016-03-02_parsed.csv | SMM/RTP/Total: 0/8336453/35039959 | Time: 219591
+[INFO] pool-1-thread-1 InfoLog 24 May 2016 10:02:17 - Done process file: fbox-2016-03-24_parsed.csv | SMM/RTP/Total: 0/9257252/38077816 | Time: 264977
+[INFO] pool-1-thread-2 InfoLog 24 May 2016 10:04:47 - Done process file: fbox-2016-03-23_parsed.csv | SMM/RTP/Total: 0/8928569/36964370 | Time: 291327
+[INFO] pool-1-thread-3 InfoLog 24 May 2016 10:05:25 - Done process file: fbox-2016-03-27_parsed.csv | SMM/RTP/Total: 0/10279399/42640496 | Time: 319315
+[INFO] pool-1-thread-1 InfoLog 24 May 2016 10:06:53 - Done process file: fbox-2016-03-07_parsed.csv | SMM/RTP/Total: 0/8566219/35695908 | Time: 275778
+[INFO] pool-1-thread-2 InfoLog 24 May 2016 10:08:33 - Done process file: fbox-2016-03-11_parsed.csv | SMM/RTP/Total: 0/8710281/36463650 | Time: 225619
+[INFO] pool-1-thread-3 InfoLog 24 May 2016 10:09:59 - Done process file: fbox-2016-03-26_parsed.csv | SMM/RTP/Total: 0/10071199/41802511 | Time: 273872
+[INFO] pool-1-thread-1 InfoLog 24 May 2016 10:10:46 - Done process file: fbox-2016-03-21_parsed.csv | SMM/RTP/Total: 0/8765502/36193950 | Time: 232769
+[INFO] pool-1-thread-2 InfoLog 24 May 2016 10:11:30 - Done process file: fbox-2016-03-01_parsed.csv | SMM/RTP/Total: 0/443207/35242553 | Time: 177062
+[INFO] pool-1-thread-3 InfoLog 24 May 2016 10:13:18 - Done process file: fbox-2016-03-14_parsed.csv | SMM/RTP/Total: 0/8603287/35668328 | Time: 199529
+[INFO] pool-1-thread-1 InfoLog 24 May 2016 10:14:17 - Done process file: fbox-2016-03-17_parsed.csv | SMM/RTP/Total: 0/8799784/36708760 | Time: 210713
+[INFO] pool-1-thread-2 InfoLog 24 May 2016 10:14:57 - Done process file: fbox-2016-03-03_parsed.csv | SMM/RTP/Total: 0/8482742/35362416 | Time: 207804
+[INFO] pool-1-thread-3 InfoLog 24 May 2016 10:17:16 - Done process file: fbox-2016-03-30_parsed.csv | SMM/RTP/Total: 0/8916726/36812573 | Time: 237793
+[INFO] pool-1-thread-1 InfoLog 24 May 2016 10:18:58 - Done process file: fbox-2016-03-25_parsed.csv | SMM/RTP/Total: 0/9179609/37979216 | Time: 281701
+[INFO] pool-1-thread-2 InfoLog 24 May 2016 10:19:31 - Done process file: fbox-2016-03-22_parsed.csv | SMM/RTP/Total: 0/8502817/35315346 | Time: 273356
+[INFO] pool-1-thread-3 InfoLog 24 May 2016 10:21:43 - Done process file: fbox-2016-03-18_parsed.csv | SMM/RTP/Total: 0/8791432/36926351 | Time: 266878
+[INFO] pool-1-thread-1 InfoLog 24 May 2016 10:23:01 - Done process file: fbox-2016-03-28_parsed.csv | SMM/RTP/Total: 0/8758098/36268942 | Time: 242582
+[INFO] pool-1-thread-2 InfoLog 24 May 2016 10:24:11 - Done process file: fbox-2016-03-05_parsed.csv | SMM/RTP/Total: 0/10545869/43655604 | Time: 280241
+[INFO] pool-1-thread-3 InfoLog 24 May 2016 10:26:17 - Done process file: fbox-2016-03-10_parsed.csv | SMM/RTP/Total: 0/8604142/36114663 | Time: 274090
+[INFO] pool-1-thread-1 InfoLog 24 May 2016 10:27:27 - Done process file: fbox-2016-03-04_parsed.csv | SMM/RTP/Total: 0/8809153/36632690 | Time: 266441
+[INFO] pool-1-thread-2 InfoLog 24 May 2016 10:29:15 - Done process file: fbox-2016-03-13_parsed.csv | SMM/RTP/Total: 0/10456777/43502771 | Time: 303668
+[INFO] pool-1-thread-3 InfoLog 24 May 2016 10:29:55 - Done process file: fbox-2016-03-31_parsed.csv | SMM/RTP/Total: 0/9598840/39063546 | Time: 217845
+[INFO] pool-1-thread-1 InfoLog 24 May 2016 10:31:24 - Done process file: fbox-2016-03-20_parsed.csv | SMM/RTP/Total: 0/10518370/43674217 | Time: 236923
+[INFO] pool-1-thread-2 InfoLog 24 May 2016 10:32:10 - Done process file: fbox-2016-03-09_parsed.csv | SMM/RTP/Total: 0/8843849/36899682 | Time: 174844
