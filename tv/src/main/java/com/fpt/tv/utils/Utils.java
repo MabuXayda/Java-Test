@@ -1,8 +1,10 @@
 package com.fpt.tv.utils;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -33,8 +35,8 @@ public class Utils {
 	}
 
 	public static void main(String[] args) {
-//		test();
-		System.out.println(2000 / (24 * 3600));
+		// test();
+		System.out.println(isNumeric(""));
 	}
 
 	public static Integer getWeekOfMonth(Integer dayOfMonth) {
@@ -52,8 +54,20 @@ public class Utils {
 		}
 
 	}
+
+	public static void loadListFile(List<String> listFile, File file) {
+		File[] subdir = file.listFiles();
+		for (File f : subdir) {
+			if (f.isFile()) {
+				listFile.add(f.getAbsolutePath());
+			}
+			if (f.isDirectory()) {
+				loadListFile(listFile, f);
+			}
+		}
+	}
 	
-	public static PrintWriter getPrintWriter(String file) throws IOException{
+	public static PrintWriter getPrintWriter(String file) throws IOException {
 		return new PrintWriter(new FileWriter(file));
 	}
 
@@ -149,35 +163,20 @@ public class Utils {
 		}
 	}
 
-	public static void printLabelHourly(PrintWriter pr) {
-		pr.print("CustomerId");
-		for (int i = 0; i < 24; i++) {
-			pr.print("," + i);
+	public static void addMapKeyIntValInt(Map<Integer, Integer> mapMain, Integer key, Integer value) {
+		if (mapMain.containsKey(key)) {
+			mapMain.put(key, mapMain.get(key) + value);
+		} else {
+			mapMain.put(key, value);
 		}
-		pr.println();
 	}
 
-	public static void printHourly(PrintWriter pr, String customerId, Map<Integer, Integer> mapHourly) {
-		pr.print(customerId);
-		for (int i = 0; i < 24; i++) {
-			pr.print("," + mapHourly.get(i));
+	public static void addMapKeyStrValInt(Map<String, Integer> mapMain, String key, Integer value) {
+		if (mapMain.containsKey(key)) {
+			mapMain.put(key, mapMain.get(key) + value);
+		} else {
+			mapMain.put(key, value);
 		}
-		pr.println();
 	}
 
-	public static void printLabelDaily(PrintWriter pr) {
-		pr.print("CustomerId");
-		for (String day : LIST_DAY_OF_WEEK) {
-			pr.print("," + day);
-		}
-		pr.println();
-	}
-
-	public static void printDaily(PrintWriter pr, String customerId, Map<String, Integer> mapDaily) {
-		pr.print(customerId);
-		for (String day : LIST_DAY_OF_WEEK) {
-			pr.print("," + mapDaily.get(day));
-		}
-		pr.println();
-	}
 }

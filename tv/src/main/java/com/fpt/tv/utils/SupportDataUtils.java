@@ -9,16 +9,35 @@ import java.util.Map;
 import java.util.Set;
 
 import org.joda.time.DateTime;
+import org.joda.time.Duration;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 public class SupportDataUtils {
 	private final static String DIR = "/home/tunn/data/tv/support/using/";
-	private final static String USER_NGHIEP_VU = DIR + "boxNV.csv";
-	private final static String USER_DEMO = DIR + "boxDM.csv";
+	private final static String USER_NGHIEP_VU = DIR + "boxNghiepVu.csv";
+	private final static String USER_DEMO = DIR + "boxDemo.csv";
 	private final static String USER_ACTIVE = DIR + "activeUser.csv";
-	private final static String USER_HUY = DIR + "huyboxUser.csv";
+	private final static String USER_HUY = DIR + "churnUser.csv";
 	private final static String USER_PACKAGE = DIR + "goidichvuUser.csv";
+
+	public static Map<String, DateTime> getMapUserDateCondition(String stringDate, Set<String> setUserActive,
+			Map<String, Map<String, DateTime>> mapUserHuy) {
+		Map<String, DateTime> mapUserDateCondition = new HashMap<>();
+		DateTime dateCondition = DateTimeFormat.forPattern("dd/MM/yyyy").parseDateTime(stringDate);
+		for (String customerId : setUserActive) {
+			mapUserDateCondition.put(customerId, dateCondition);
+		}
+		for (String customerId : mapUserHuy.keySet()) {
+			DateTime startDate = mapUserHuy.get(customerId).get("start");
+			DateTime stopDate = mapUserHuy.get(customerId).get("stop");
+			int daysActive = (int) new Duration(startDate, stopDate).getStandardDays();
+			if (daysActive >= 28) {
+				mapUserDateCondition.put(customerId, stopDate);
+			}
+		}
+		return mapUserDateCondition;
+	}
 
 	public static Set<String> loadSetUserNghiepVu() throws IOException {
 		Set<String> setUserNghiepVu = new HashSet<>();
@@ -41,7 +60,7 @@ public class SupportDataUtils {
 		br.close();
 		return setUserNghiepVu;
 	}
-	
+
 	public static Set<String> loadSetUserDemo() throws IOException {
 		Set<String> setUserDemo = new HashSet<>();
 		BufferedReader br = new BufferedReader(new FileReader(USER_DEMO));

@@ -1,7 +1,5 @@
 package com.fpt.tv.object.raw;
 
-import java.io.IOException;
-
 import com.google.gson.annotations.SerializedName;
 
 public class Fields {
