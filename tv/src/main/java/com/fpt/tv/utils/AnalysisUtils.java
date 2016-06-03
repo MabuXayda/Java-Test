@@ -39,13 +39,13 @@ public class AnalysisUtils {
 
 	public static void printApp(PrintWriter pr, Map<String, Map<String, Integer>> totalMapApp) throws IOException {
 		pr.print("CustomerId");
-		for (String appName : Utils.LIST_APP_NAME) {
+		for (String appName : Utils.LIST_APP_NAME_RTP) {
 			pr.print("," + appName);
 		}
 		pr.println();
 		for (String customerId : totalMapApp.keySet()) {
 			pr.print(customerId);
-			for (String appName : Utils.LIST_APP_NAME) {
+			for (String appName : Utils.LIST_APP_NAME_RTP) {
 				pr.print("," + totalMapApp.get(customerId).get(appName));
 			}
 			pr.println();

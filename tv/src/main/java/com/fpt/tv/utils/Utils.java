@@ -16,7 +16,9 @@ import org.joda.time.format.DateTimeFormatter;
 
 public class Utils {
 	public static final List<String> LIST_DAY_OF_WEEK = Arrays.asList("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun");
-	public static final List<String> LIST_APP_NAME = Arrays.asList("HOME", "IPTV", "VOD", "SPORT", "CHILD", "RELAX",
+	public static final List<String> LIST_APP_NAME_FULL = Arrays.asList("HOME", "IPTV", "VOD", "SPORT", "CHILD", "RELAX",
+			"SERVICE", "BHD", "FIMs", "FIRMWARE", "LOGIN", "PARENTAL CONTROL", "FADIO");
+	public static final List<String> LIST_APP_NAME_RTP = Arrays.asList("IPTV", "VOD", "SPORT", "CHILD", "RELAX",
 			"SERVICE", "BHD", "FIMs");
 	public static final Logger LOG_INFO = Logger.getLogger("InfoLog");
 	public static final Logger LOG_ERROR = Logger.getLogger("ErrorLog");

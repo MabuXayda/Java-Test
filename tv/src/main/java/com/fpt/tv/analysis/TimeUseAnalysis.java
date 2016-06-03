@@ -132,7 +132,7 @@ public class TimeUseAnalysis {
 							DateTime received_at = Utils.parseReceived_at(arr[8]);
 							
 							if (mapUserActiveDateCondition1.containsKey(customerId) && sessionMainMenu != null
-									&& received_at != null && Utils.LIST_APP_NAME.contains(appName)) {
+									&& received_at != null && Utils.LIST_APP_NAME_RTP.contains(appName)) {
 								long duration = new Duration(received_at, mapUserActiveDateCondition1.get(customerId))
 										.getStandardDays();
 								if (duration >= 0 && duration <= 27) {
@@ -151,7 +151,7 @@ public class TimeUseAnalysis {
 							}
 							
 							if (mapUserActiveDateCondition2.containsKey(customerId) && sessionMainMenu != null
-									&& received_at != null && Utils.LIST_APP_NAME.contains(appName)) {
+									&& received_at != null && Utils.LIST_APP_NAME_RTP.contains(appName)) {
 								long duration = new Duration(received_at, mapUserActiveDateCondition2.get(customerId))
 										.getStandardDays();
 								if (duration >= 0 && duration <= 27) {
@@ -169,7 +169,7 @@ public class TimeUseAnalysis {
 							}
 							
 							if (mapUserDateCondition.containsKey(customerId) && sessionMainMenu != null
-									&& received_at != null && Utils.LIST_APP_NAME.contains(appName)) {
+									&& received_at != null && Utils.LIST_APP_NAME_RTP.contains(appName)) {
 								long duration = new Duration(received_at, mapUserDateCondition.get(customerId))
 										.getStandardDays();
 								if (duration >= 0 && duration <= 27) {
@@ -319,7 +319,7 @@ public class TimeUseAnalysis {
 //							}
 							// ---------->
 							if (mapUserDateCondition.containsKey(customerId) && sessionMainMenu != null
-									&& received_at != null && Utils.LIST_APP_NAME.contains(appName)) {
+									&& received_at != null && Utils.LIST_APP_NAME_RTP.contains(appName)) {
 								long duration = new Duration(received_at, mapUserDateCondition.get(customerId))
 										.getStandardDays();
 								if (duration >= 0 && duration <= 27) {

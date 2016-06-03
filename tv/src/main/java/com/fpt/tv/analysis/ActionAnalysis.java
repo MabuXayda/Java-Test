@@ -99,17 +99,29 @@ public class ActionAnalysis {
 							String unparseSMM = arr[6];
 							DateTime sessionMainMenu = Utils.parseSessionMainMenu(arr[6]);
 							DateTime received_at = Utils.parseReceived_at(arr[8]);
-							if (mapUserDateCondition.containsKey(customerId) && sessionMainMenu != null
-									&& received_at != null && Utils.LIST_APP_NAME.contains(appName)) {
-								long duration = new Duration(sessionMainMenu, mapUserDateCondition.get(customerId)).getStandardDays();
+
+							if (mapUserDateCondition.containsKey(customerId) && received_at != null
+									&& Utils.LIST_APP_NAME_FULL.contains(appName)) {
+								long duration = new Duration(received_at, mapUserDateCondition.get(customerId)).getStandardDays();
 								if (duration >= 0 && duration <= 27) {
-									boolean willProcessSMM = TimeUseAnalysis.willProcessSessionMainMenu(customerId,
-											logId, unparseSMM, sessionMainMenu, received_at, mapCheckDupSMM,
-											mapCheckValidSMM);
-									boolean willProcessRTP = TimeUseAnalysis.willProcessRealTimePlaying(customerId,
-											received_at, realTimePlaying, mapCheckValidRTP);
-									boolean willProcess = willProcessActionCount(logId, realTimePlaying,
-											sessionMainMenu, received_at, willProcessSMM, willProcessRTP);
+									boolean willProcess = false;
+									if(logId.equals("12") || logId.equals("18")){
+										if(sessionMainMenu != null){
+											willProcess = TimeUseAnalysis.willProcessSessionMainMenu(customerId,
+													logId, unparseSMM, sessionMainMenu, received_at, mapCheckDupSMM,
+													mapCheckValidSMM);
+											int secondsSMM = (int) new Duration(sessionMainMenu, received_at).getStandardSeconds();
+											if (secondsSMM <= 0 && secondsSMM > 12 * 3600) {
+												willProcess = false;
+											}
+										}
+									}else {
+										boolean willProcessRTP = TimeUseAnalysis.willProcessRealTimePlaying(customerId,
+												received_at, realTimePlaying, mapCheckValidRTP);
+										willProcess = willProcessActionCount(logId, realTimePlaying,
+												received_at, willProcessRTP);
+									}
+									
 
 									if (willProcess) {
 										setLogId.add(logId);
@@ -157,16 +169,11 @@ public class ActionAnalysis {
 
 	}
 
-	private boolean willProcessActionCount(String logId, Double realTimePlaying, DateTime sessionMainMenu,
-			DateTime received_at, boolean willProcessSMM, boolean willProcessRTP) {
+	private boolean willProcessActionCount(String logId, Double realTimePlaying,
+			DateTime received_at, boolean willProcessRTP) {
 		boolean willProcess = false;
 
-		if (willProcessSMM) {
-			int secondsSMM = (int) new Duration(sessionMainMenu, received_at).getStandardSeconds();
-			if (secondsSMM > 0 && secondsSMM <= 12 * 3600) {
-				willProcess = true;
-			}
-		} else if (willProcessRTP) {
+		if (willProcessRTP) {
 			int secondsRTP = (int) Math.round(realTimePlaying);
 			if (secondsRTP > 0 && secondsRTP <= 3 * 3600) {
 				willProcess = true;
