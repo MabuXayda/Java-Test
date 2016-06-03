@@ -7,17 +7,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import org.joda.time.DateTime;
-import org.joda.time.Duration;
-import org.joda.time.format.DateTimeFormat;
 
-import com.fpt.tv.utils.SupportDataUtils;
+import com.fpt.tv.utils.CommonConfig;
 import com.fpt.tv.utils.Utils;
 
 public class ErrorChecking {
@@ -25,9 +22,10 @@ public class ErrorChecking {
 	private Set<String> setUserDemo;
 	private Set<String> setUserActive;
 	private Map<String, Map<String, DateTime>> mapUserHuy;
-	private Map<String, DateTime> mapUserCondition;
 	private List<String> listFileLogPath;
 	private Set<String> setUserNoLog;
+	
+	private CommonConfig cf;
 
 	public static void main(String[] args) throws IOException {
 		System.out.println("START");
@@ -37,14 +35,14 @@ public class ErrorChecking {
 	}
 
 	public ErrorChecking() throws IOException {
-		loadListFilePath(new File(Utils.DIR + "log_parsed"));
+		cf = CommonConfig.getInstance();
+		loadListFilePath(new File(cf.get(CommonConfig.MAIN_DIR) + "/log_parsed"));
 		System.out.println("NUMBER OF FILE: " + listFileLogPath.size());
-		loadSupportData();
 	}
 
 	private void loadListUserNoLog() throws IOException {
 		setUserNoLog = new HashSet();
-		BufferedReader br = new BufferedReader(new FileReader(Utils.DIR + "time_zero.csv"));
+		BufferedReader br = new BufferedReader(new FileReader(cf.get(CommonConfig.MAIN_DIR) + "/time_zero.csv"));
 		String line = br.readLine();
 		int count = 0;
 		while (line != null) {
@@ -56,36 +54,6 @@ public class ErrorChecking {
 		br.close();
 	}
 
-	private void loadSupportData() throws IOException {
-		if (mapUserCondition == null) {
-			mapUserCondition = new HashMap<>();
-		}
-
-		setUserDemo = SupportDataUtils.loadSetUserDemo();
-		System.out.println("NUMBER USER DEMO: " + setUserDemo.size());
-
-		// load map User_huy + Day_condition
-		mapUserHuy = SupportDataUtils.loadMapUserHuy();
-		for (String customerId : mapUserHuy.keySet()) {
-			DateTime startDate = mapUserHuy.get(customerId).get("start");
-			DateTime stopDate = mapUserHuy.get(customerId).get("stop");
-			Duration duration = new Duration(startDate, stopDate);
-			int daysActive = (int) duration.getStandardDays();
-			if (daysActive >= 28) {
-				mapUserCondition.put(customerId, stopDate);
-			}
-		}
-		System.out.println("NUMBER USER HUY: " + mapUserHuy.size());
-
-		// load map User_active + Day_condition
-		setUserActive = SupportDataUtils.loadSetUserActive(mapUserHuy);
-		DateTime dateCondition = DateTimeFormat.forPattern("dd/MM/yyyy").parseDateTime("31/03/2016");
-		for (String customerId : setUserActive) {
-			mapUserCondition.put(customerId, dateCondition);
-		}
-		System.out.println("NUMBER USER ACTIVE: " + setUserActive.size());
-
-	}
 
 	private void loadListFilePath(File file) {
 		if (listFileLogPath == null) {
@@ -103,8 +71,8 @@ public class ErrorChecking {
 	}
 
 	public void checkLogDuplicate() throws IOException {
-		File[] files = new File(Utils.DIR + "log_parsed/t2/").listFiles();
-		PrintWriter pr = new PrintWriter(new FileWriter(Utils.DIR + "duplicate.csv"));
+		File[] files = new File(cf.get(CommonConfig.MAIN_DIR) + "/log_parsed/t2/").listFiles();
+		PrintWriter pr = new PrintWriter(new FileWriter(cf.get(CommonConfig.MAIN_DIR) + "/duplicate.csv"));
 		int count = 0;
 		for (File file : files) {
 			BufferedReader br = new BufferedReader(new FileReader(file));
@@ -127,8 +95,8 @@ public class ErrorChecking {
 
 	public void checkDanhSachHuyActive() throws IOException {
 		Set<String> setMissing = new HashSet<>();
-		PrintWriter prLog = new PrintWriter(new FileWriter(Utils.DIR + "log_missing.csv"));
-		PrintWriter prUser = new PrintWriter(new FileWriter(Utils.DIR + "user_missing.csv"));
+		PrintWriter prLog = new PrintWriter(new FileWriter(cf.get(CommonConfig.MAIN_DIR) + "/log_missing.csv"));
+		PrintWriter prUser = new PrintWriter(new FileWriter(cf.get(CommonConfig.MAIN_DIR) + "/user_missing.csv"));
 		for (String file : listFileLogPath) {
 			BufferedReader br = new BufferedReader(new FileReader(file));
 			String line = br.readLine();
@@ -158,7 +126,7 @@ public class ErrorChecking {
 	}
 
 	public void filterLogForCheck() throws IOException {
-		PrintWriter pr = new PrintWriter(new FileWriter(Utils.DIR + "log.csv"));
+		PrintWriter pr = new PrintWriter(new FileWriter(cf.get(CommonConfig.MAIN_DIR) + "/log.csv"));
 		// File[] files = new File(Utils.DIR + "log_parsed/t3/").listFiles();
 		for (String file : listFileLogPath) {
 			long start = System.currentTimeMillis();
@@ -186,7 +154,7 @@ public class ErrorChecking {
 	}
 
 	public void getUserActiveNolog() throws IOException {
-		BufferedReader br = new BufferedReader(new FileReader(Utils.DIR + "unique_customer.csv"));
+		BufferedReader br = new BufferedReader(new FileReader(cf.get(CommonConfig.MAIN_DIR) + "/unique_customer.csv"));
 		String line = br.readLine();
 		Set<String> setUnique = new HashSet<>();
 		while (line != null) {
@@ -195,7 +163,7 @@ public class ErrorChecking {
 		}
 		br.close();
 		int count = 0;
-		PrintWriter pr = new PrintWriter(new FileWriter(Utils.DIR + "userHasNoLog.csv"));
+		PrintWriter pr = new PrintWriter(new FileWriter(cf.get(CommonConfig.MAIN_DIR) + "/userHasNoLog.csv"));
 		for (String c : setUserNoLog) {
 			if (!setUnique.contains(c)) {
 				pr.println(c);

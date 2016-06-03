@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -19,8 +18,6 @@ public class Utils {
 	public static final List<String> LIST_DAY_OF_WEEK = Arrays.asList("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun");
 	public static final List<String> LIST_APP_NAME = Arrays.asList("HOME", "IPTV", "VOD", "SPORT", "CHILD", "RELAX",
 			"SERVICE", "BHD", "FIMs");
-	public static final String DIR = "/home/tunn/data/tv/";
-	public static final String DIR_MOUNT = "/mnt/nfs/data/";
 	public static final Logger LOG_INFO = Logger.getLogger("InfoLog");
 	public static final Logger LOG_ERROR = Logger.getLogger("ErrorLog");
 
@@ -37,22 +34,6 @@ public class Utils {
 	public static void main(String[] args) {
 		// test();
 		System.out.println(isNumeric(""));
-	}
-
-	public static Integer getWeekOfMonth(Integer dayOfMonth) {
-		Double weekDouble = (double) dayOfMonth / 7;
-		if (weekDouble <= 1) {
-			return 1;
-		} else if (weekDouble > 1 && weekDouble <= 2) {
-			return 2;
-		} else if (weekDouble > 2 && weekDouble <= 3) {
-			return 3;
-		} else if (weekDouble > 3 && weekDouble <= 4) {
-			return 4;
-		} else {
-			return 5;
-		}
-
 	}
 
 	public static void loadListFile(List<String> listFile, File file) {

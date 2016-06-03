@@ -18,13 +18,15 @@ import java.util.concurrent.Executors;
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
 
-import com.fpt.tv.utils.ActionUtils;
-import com.fpt.tv.utils.SupportDataUtils;
+import com.fpt.tv.utils.AnalysisUtils;
+import com.fpt.tv.utils.CommonConfig;
+import com.fpt.tv.utils.SupportData;
 import com.fpt.tv.utils.Utils;
 
 public class ActionAnalysis {
-	private Map<String, DateTime> sp_mapUserDateCondition;
+	private Map<String, DateTime> mapUserDateCondition;
 	private List<String> listFileLogPath;
+	private CommonConfig cf; 
 
 	public static void main(String[] args) throws IOException {
 		System.out.println("START");
@@ -39,20 +41,21 @@ public class ActionAnalysis {
 	}
 
 	public ActionAnalysis() throws IOException {
-		if (sp_mapUserDateCondition == null) {
-			Map<String, Map<String, DateTime>> mapUserHuy = SupportDataUtils.loadMapUserHuy();
-			Set<String> setUserActive = SupportDataUtils.loadSetUserActive(mapUserHuy);
-			sp_mapUserDateCondition = SupportDataUtils.getMapUserDateCondition("31/03/2016", setUserActive, mapUserHuy);
+		cf = CommonConfig.getInstance();
+		if (mapUserDateCondition == null) {
+			mapUserDateCondition = SupportData.getMapUserDateCondition(
+					SupportData.getMapUserActive(cf.get(CommonConfig.SUPPORT_DATA_DIR) + "/userActive.csv"),
+					SupportData.getMapUserChurn(cf.get(CommonConfig.SUPPORT_DATA_DIR) + "/userChurn.csv"));
 		}
 		if (listFileLogPath == null) {
 			listFileLogPath = new ArrayList<>();
-			Utils.loadListFile(listFileLogPath, new File(Utils.DIR + "log_parsed"));
+			Utils.loadListFile(listFileLogPath, new File(cf.get(CommonConfig.PARSED_LOG_DIR)));
 		}
 	}
 
 	public void getLogIdCount() throws IOException {
 		Map<String, Map<String, Integer>> totalMapLogId = Collections.synchronizedMap(new HashMap<>());
-		for (String customerId : sp_mapUserDateCondition.keySet()) {
+		for (String customerId : mapUserDateCondition.keySet()) {
 			totalMapLogId.put(customerId, new HashMap<>());
 		}
 
@@ -67,7 +70,7 @@ public class ActionAnalysis {
 					int count = 0;
 					int countProcess = 0;
 					Map<String, Set<String>> mapCheckDupSMM = new HashMap<>();
-					for (String customerId : sp_mapUserDateCondition.keySet()) {
+					for (String customerId : mapUserDateCondition.keySet()) {
 						mapCheckDupSMM.put(customerId, new HashSet<>());
 					}
 					Map<String, DateTime> mapCheckValidSMM = new HashMap<>();
@@ -96,23 +99,28 @@ public class ActionAnalysis {
 							String unparseSMM = arr[6];
 							DateTime sessionMainMenu = Utils.parseSessionMainMenu(arr[6]);
 							DateTime received_at = Utils.parseReceived_at(arr[8]);
-							boolean willProcessSMM = TimeUseAnalysis.willProcessSessionMainMenu(customerId, appName,
-									logId, unparseSMM, sessionMainMenu, received_at, mapCheckDupSMM, mapCheckValidSMM,
-									sp_mapUserDateCondition);
-							boolean willProcessRTP = TimeUseAnalysis.willProcessRealTimePlaying(customerId, appName,
-									sessionMainMenu, received_at, realTimePlaying, mapCheckValidRTP, mapCheckValidSMM);
-							boolean willProcess = willProcessActionCount(customerId, logId, realTimePlaying,
-									sessionMainMenu, received_at, willProcessSMM, willProcessRTP,
-									sp_mapUserDateCondition);
+							if (mapUserDateCondition.containsKey(customerId) && sessionMainMenu != null
+									&& received_at != null && Utils.LIST_APP_NAME.contains(appName)) {
+								long duration = new Duration(sessionMainMenu, mapUserDateCondition.get(customerId)).getStandardDays();
+								if (duration >= 0 && duration <= 27) {
+									boolean willProcessSMM = TimeUseAnalysis.willProcessSessionMainMenu(customerId,
+											logId, unparseSMM, sessionMainMenu, received_at, mapCheckDupSMM,
+											mapCheckValidSMM);
+									boolean willProcessRTP = TimeUseAnalysis.willProcessRealTimePlaying(customerId,
+											received_at, realTimePlaying, mapCheckValidRTP);
+									boolean willProcess = willProcessActionCount(logId, realTimePlaying,
+											sessionMainMenu, received_at, willProcessSMM, willProcessRTP);
 
-							if (willProcess) {
-								setLogId.add(logId);
-								Map<String, Integer> mapLogId = totalMapLogId.get(customerId);
-								ActionUtils.updateCountItem(mapLogId, logId);
-								totalMapLogId.put(customerId, mapLogId);
-								countProcess++;
+									if (willProcess) {
+										setLogId.add(logId);
+										Map<String, Integer> mapLogId = totalMapLogId.get(customerId);
+										AnalysisUtils.updateCountItem(mapLogId, logId);
+										totalMapLogId.put(customerId, mapLogId);
+										countProcess++;
+									}
+								}
 							}
-
+								
 						} else {
 							Utils.LOG_ERROR.error("Parsed log error: " + line);
 						}
@@ -145,13 +153,12 @@ public class ActionAnalysis {
 		while (!executorService.isTerminated()) {
 		}
 
-		ActionUtils.printCountItem(Utils.getPrintWriter(Utils.DIR + "countLogId.csv"), setLogId, totalMapLogId);
+		AnalysisUtils.printCountItem(Utils.getPrintWriter(cf.get(CommonConfig.MAIN_DIR) + "/countLogId.csv"), setLogId, totalMapLogId);
 
 	}
 
-	private boolean willProcessActionCount(String customerId, String logId, Double realTimePlaying,
-			DateTime sessionMainMenu, DateTime received_at, boolean willProcessSMM, boolean willProcessRTP,
-			Map<String, DateTime> mapUserDateCondition) {
+	private boolean willProcessActionCount(String logId, Double realTimePlaying, DateTime sessionMainMenu,
+			DateTime received_at, boolean willProcessSMM, boolean willProcessRTP) {
 		boolean willProcess = false;
 
 		if (willProcessSMM) {
@@ -164,10 +171,8 @@ public class ActionAnalysis {
 			if (secondsRTP > 0 && secondsRTP <= 3 * 3600) {
 				willProcess = true;
 			}
-		} else if (Utils.isNumeric(logId) && mapUserDateCondition.containsKey(customerId)) {
-			if (new Duration(sessionMainMenu, mapUserDateCondition.get(customerId)).getStandardDays() <= 28) {
-				willProcess = true;
-			}
+		} else if (Utils.isNumeric(logId)) {
+			willProcess = true;
 		}
 		return willProcess;
 	}
