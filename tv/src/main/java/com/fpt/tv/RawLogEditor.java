@@ -6,7 +6,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import com.fpt.tv.object.raw.Source;
@@ -18,17 +25,90 @@ public class RawLogEditor {
 
 	private Set<String> setCustomerId;
 	private Set<String> setCustomerIdChurnOld;
-	private CommonConfig cf;
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
 		RawLogEditor rawLogEditor = new RawLogEditor();
-		rawLogEditor.parseRawLog();
+		rawLogEditor.hashRawData();
 	}
 
 	public RawLogEditor() throws IOException {
-		loadSetCustomerId();
-		loadSetCustomerIdChurnOld();
-		cf = CommonConfig.getInstance();
+//		loadSetCustomerId();
+//		loadSetCustomerIdChurnOld();
+	}
+
+	private void hashRawData() throws IOException, NoSuchAlgorithmException {
+		List<File> listFile = Arrays
+				.asList(new File(CommonConfig.getInstance().get(CommonConfig.PARSED_LOG_DIR) + "/t2").listFiles());
+		Utils.sortListFile(listFile);
+		String hashFolder = CommonConfig.getInstance().get(CommonConfig.PARSED_LOG_DIR) + "/t2_hash";
+		Utils.createFolder(hashFolder);
+		
+		Map<String, String> mapHashCode = new HashMap<>();
+		
+		for (File file : listFile) {
+			long start = System.currentTimeMillis();
+			int count = 0;
+			int valid = 0;
+			
+			BufferedReader br = new BufferedReader(new FileReader(file));
+			PrintWriter pr = new PrintWriter(new FileWriter(hashFolder + "/" + file.getName()));
+			pr.println("CustomerId,LogId,AppName,ItemId,RealTimePlaying,SessionMainMenu,BoxTime,received_at");
+
+			String line = br.readLine();
+			while (line != null) {
+				String[] arr = line.split(",");
+				if (arr.length == 9) {
+					String customerId = arr[0];
+					String logId = arr[2];
+					String appName = arr[3];
+					String itemId = arr[4];
+					String realTimePlaying = arr[5];
+					String sessionMainMenu = null;
+					if(arr[6].length() == 36){
+						sessionMainMenu = arr[6].substring(13);
+					}
+					String boxTime = arr[7];
+					String received_at = arr[8];
+					String customerIdHash;
+
+					if (Utils.isNumeric(customerId) && Utils.isNumeric(logId)) {
+						if (received_at != null && !received_at.equals("null") && !received_at.isEmpty()) {
+							if(mapHashCode.containsKey(customerId)){
+								customerIdHash = mapHashCode.get(customerId);
+							}else {
+								customerIdHash = Utils.hashCode(customerId);
+								mapHashCode.put(customerId, customerIdHash);
+							}
+							
+							pr.println(customerIdHash + "," + logId + "," + appName + "," + itemId + ","
+									+ realTimePlaying + "," + sessionMainMenu + "," + boxTime + "," + received_at);
+							
+							valid ++;
+						}
+
+					}
+
+				} else {
+					Utils.LOG_ERROR.error("Parsed log error: " + line);
+				}
+				line = br.readLine();
+				count ++;
+				if(count % 500000 == 0){
+					System.out.println(file.getName() + " | " + count);
+				}
+			}
+			Utils.LOG_INFO.info("Done hash: " + file.getName() + " | Valid/Total | " + valid + "/" + count + " | Time: "
+					+ (System.currentTimeMillis() - start));
+			br.close();
+			pr.close();
+		}
+	
+		
+		PrintWriter pr = new PrintWriter(new FileWriter(CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/Hash.csv"));
+		pr.println("CustomerId,HashCode");
+		for(String customerId : mapHashCode.keySet()){
+			pr.println(customerId + "," + mapHashCode.get(customerId));
+		}
 	}
 
 	private void loadSetCustomerIdChurnOld() throws IOException {
@@ -36,7 +116,7 @@ public class RawLogEditor {
 			setCustomerIdChurnOld = new HashSet<>();
 		}
 		BufferedReader br = new BufferedReader(
-				new FileReader(cf.get(CommonConfig.SUPPORT_DATA_DIR) + "/churnUser.csv"));
+				new FileReader(CommonConfig.getInstance().get(CommonConfig.SUPPORT_DATA_DIR) + "/churnUser.csv"));
 		String line = br.readLine();
 		while (line != null) {
 			String[] arr = line.split(",");
@@ -57,7 +137,7 @@ public class RawLogEditor {
 			setCustomerId = new HashSet<>();
 		}
 		BufferedReader br = new BufferedReader(
-				new FileReader(cf.get(CommonConfig.SUPPORT_DATA_DIR) + "/active_t4.csv"));
+				new FileReader(CommonConfig.getInstance().get(CommonConfig.SUPPORT_DATA_DIR) + "/active_t4.csv"));
 		String line = br.readLine();
 		while (line != null) {
 			String[] arr = line.split(",");
@@ -71,7 +151,8 @@ public class RawLogEditor {
 			line = br.readLine();
 		}
 		br.close();
-		br = new BufferedReader(new FileReader(cf.get(CommonConfig.SUPPORT_DATA_DIR) + "/huy_t4.csv"));
+		br = new BufferedReader(
+				new FileReader(CommonConfig.getInstance().get(CommonConfig.SUPPORT_DATA_DIR) + "/huy_t4.csv"));
 		line = br.readLine();
 		while (line != null) {
 			String[] arr = line.split(",");
@@ -89,8 +170,8 @@ public class RawLogEditor {
 	}
 
 	public void parseRawLog() throws IOException {
-		File[] files = new File(cf.get(CommonConfig.RAW_LOG_DIR)).listFiles();
-		File theDir = new File(cf.get(CommonConfig.PARSED_LOG_DIR));
+		File[] files = new File(CommonConfig.getInstance().get(CommonConfig.RAW_LOG_DIR)).listFiles();
+		File theDir = new File(CommonConfig.getInstance().get(CommonConfig.PARSED_LOG_DIR));
 		if (!theDir.exists()) {
 			try {
 				theDir.mkdir();
@@ -98,7 +179,7 @@ public class RawLogEditor {
 			}
 		}
 
-		File theDirDrop = new File(cf.get(CommonConfig.PARSED_LOG_DROP_DIR));
+		File theDirDrop = new File(CommonConfig.getInstance().get(CommonConfig.PARSED_LOG_DROP_DIR));
 		if (!theDirDrop.exists()) {
 			try {
 				theDirDrop.mkdir();
@@ -115,13 +196,13 @@ public class RawLogEditor {
 			int valid = 0;
 			int drop = 0;
 
-			String output = cf.get(CommonConfig.PARSED_LOG_DIR) + "/" + file.getName().split("\\.")[0]
-					+ "_parsed.csv";
+			String output = CommonConfig.getInstance().get(CommonConfig.PARSED_LOG_DIR) + "/"
+					+ file.getName().split("\\.")[0] + "_parsed.csv";
 			PrintWriter pr = new PrintWriter(new FileWriter(output));
 			pr.println("CustomerId,Contract,LogId,AppName,ItemId,RealTimePlaying,SessionMainMenu,BoxTime,received_at");
 
-			String outputDrop = cf.get(CommonConfig.PARSED_LOG_DROP_DIR) + "/" + file.getName().split("\\.")[0]
-					+ "_parsed_drop.csv";
+			String outputDrop = CommonConfig.getInstance().get(CommonConfig.PARSED_LOG_DROP_DIR) + "/"
+					+ file.getName().split("\\.")[0] + "_parsed_drop.csv";
 			PrintWriter prDrop = new PrintWriter(new FileWriter(outputDrop));
 			pr.println("CustomerId,Contract,LogId,AppName,ItemId,RealTimePlaying,SessionMainMenu,BoxTime,received_at");
 

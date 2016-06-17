@@ -5,7 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -24,51 +25,50 @@ import com.fpt.tv.utils.SupportData;
 import com.fpt.tv.utils.Utils;
 
 public class ActionAnalysis {
-	private Map<String, DateTime> mapUserDateCondition;
-	private List<String> listFileLogPath;
-	private CommonConfig cf; 
 
 	public static void main(String[] args) throws IOException {
 		System.out.println("START");
 		Utils.LOG_INFO.info("-----------------------------------------------------");
 		long star = System.currentTimeMillis();
-
 		ActionAnalysis actionAnalysis = new ActionAnalysis();
-		actionAnalysis.getLogIdCount();
+		actionAnalysis.process();
 
-		long end = System.currentTimeMillis();
-		System.out.println("DONE: " + (end - star));
+
+		System.out.println("DONE: " + (System.currentTimeMillis() - star));
+	}
+	
+	public void process() throws IOException{
+		Map<String, DateTime> mapUserDateCondition = SupportData.getMapUserActiveDateCondition(
+				Utils.DATE_TIME_FORMAT_WITH_HOUR.parseDateTime("2016-02-29 00:00:00"), 
+				SupportData.getMapUserActive(CommonConfig.getInstance().get(CommonConfig.SUPPORT_DATA_DIR) + "/userActive.csv"));
+		
+		List<File> listFile_t2 = Arrays.asList(new File(CommonConfig.getInstance().get(CommonConfig.PARSED_LOG_DIR) + "/t2").listFiles());
+		Utils.sortListFile(listFile_t2);
+		
+		
+		getLogIdCount(mapUserDateCondition, listFile_t2, CommonConfig.getInstance().get(CommonConfig.MAIN_DIR));
 	}
 
-	public ActionAnalysis() throws IOException {
-		cf = CommonConfig.getInstance();
-		if (mapUserDateCondition == null) {
-			mapUserDateCondition = SupportData.getMapUserDateCondition(
-					SupportData.getMapUserActive(cf.get(CommonConfig.SUPPORT_DATA_DIR) + "/userActive.csv"),
-					SupportData.getMapUserChurn(cf.get(CommonConfig.SUPPORT_DATA_DIR) + "/userChurn.csv"));
-		}
-		if (listFileLogPath == null) {
-			listFileLogPath = new ArrayList<>();
-			Utils.loadListFile(listFileLogPath, new File(cf.get(CommonConfig.PARSED_LOG_DIR)));
-		}
-	}
+	public void getLogIdCount(Map<String, DateTime> mapUserDateCondition, List<File> listFileLogPath,
+			String outputFolderPath) throws IOException {
 
-	public void getLogIdCount() throws IOException {
 		Map<String, Map<String, Integer>> totalMapLogId = Collections.synchronizedMap(new HashMap<>());
 		for (String customerId : mapUserDateCondition.keySet()) {
 			totalMapLogId.put(customerId, new HashMap<>());
 		}
 
 		Set<String> setLogId = new HashSet<>();
+
 		ExecutorService executorService = Executors.newFixedThreadPool(3);
-		for (String file : listFileLogPath) {
+		for (final File file : listFileLogPath) {
 			executorService.execute(new Runnable() {
 
 				@Override
 				public void run() {
 					long start = System.currentTimeMillis();
 					int count = 0;
-					int countProcess = 0;
+					int countProcessCountLogId = 0;
+
 					Map<String, Set<String>> mapCheckDupSMM = new HashMap<>();
 					for (String customerId : mapUserDateCondition.keySet()) {
 						mapCheckDupSMM.put(customerId, new HashSet<>());
@@ -101,38 +101,52 @@ public class ActionAnalysis {
 							DateTime received_at = Utils.parseReceived_at(arr[8]);
 
 							if (mapUserDateCondition.containsKey(customerId) && received_at != null
-									&& Utils.LIST_APP_NAME_FULL.contains(appName)) {
-								long duration = new Duration(received_at, mapUserDateCondition.get(customerId)).getStandardDays();
-								if (duration >= 0 && duration <= 27) {
-									boolean willProcess = false;
-									if(logId.equals("12") || logId.equals("18")){
-										if(sessionMainMenu != null){
-											willProcess = TimeUseAnalysis.willProcessSessionMainMenu(customerId,
-													logId, unparseSMM, sessionMainMenu, received_at, mapCheckDupSMM,
-													mapCheckValidSMM);
-											int secondsSMM = (int) new Duration(sessionMainMenu, received_at).getStandardSeconds();
-											if (secondsSMM <= 0 && secondsSMM > 12 * 3600) {
-												willProcess = false;
+									&& Utils.SET_APP_NAME_FULL.contains(appName) && Utils.isNumeric(logId)) {
+								setLogId.add(logId);
+
+								long duration = new Duration(received_at, mapUserDateCondition.get(customerId))
+										.getStandardDays();
+								if (duration >= 0 && duration <= 26) {
+
+									boolean willProcessCountLogId = true;
+
+									if (logId.equals("12") || logId.equals("18")) {
+										if (sessionMainMenu != null) {
+											boolean willProcessSMM = AnalysisUtils.willProcessSessionMainMenu(
+													customerId, unparseSMM, sessionMainMenu, received_at,
+													mapCheckDupSMM, mapCheckValidSMM);
+											if (willProcessSMM) {
+												int secondsSMM = (int) new Duration(sessionMainMenu, received_at)
+														.getStandardSeconds();
+												if (secondsSMM <= 0 || secondsSMM > 12 * 3600) {
+													willProcessSMM = false;
+												}
+											}
+											willProcessCountLogId = willProcessSMM;
+										}
+									} else if (Utils.SET_APP_NAME_RTP.contains(appName)
+											&& Utils.SET_LOG_ID_RTP.contains(logId)) {
+										boolean willProcessRTP = AnalysisUtils.willProcessRealTimePlaying(customerId,
+												received_at, realTimePlaying, mapCheckValidRTP);
+										if (willProcessRTP) {
+											int secondsRTP = (int) Math.round(realTimePlaying);
+											if (secondsRTP <= 0 || secondsRTP > 3 * 3600) {
+												willProcessRTP = false;
 											}
 										}
-									}else {
-										boolean willProcessRTP = TimeUseAnalysis.willProcessRealTimePlaying(customerId,
-												received_at, realTimePlaying, mapCheckValidRTP);
-										willProcess = willProcessActionCount(logId, realTimePlaying,
-												received_at, willProcessRTP);
+										willProcessCountLogId = willProcessRTP;
 									}
-									
 
-									if (willProcess) {
-										setLogId.add(logId);
+									if (willProcessCountLogId) {
 										Map<String, Integer> mapLogId = totalMapLogId.get(customerId);
 										AnalysisUtils.updateCountItem(mapLogId, logId);
 										totalMapLogId.put(customerId, mapLogId);
-										countProcess++;
+
+										countProcessCountLogId++;
 									}
 								}
 							}
-								
+
 						} else {
 							Utils.LOG_ERROR.error("Parsed log error: " + line);
 						}
@@ -145,7 +159,7 @@ public class ActionAnalysis {
 
 						count++;
 						if (count % 500000 == 0) {
-							System.out.println(file.split("/")[file.split("/").length - 1] + " | " + count);
+							System.out.println(file.getName() + " | " + count);
 						}
 					}
 
@@ -155,9 +169,9 @@ public class ActionAnalysis {
 						e.printStackTrace();
 					}
 
-					Utils.LOG_INFO.info(
-							"Done process file: " + file.split("/")[file.split("/").length - 1] + " | Valid/Total: "
-									+ countProcess + "/" + count + " | Time: " + (System.currentTimeMillis() - start));
+					Utils.LOG_INFO.info("Done process job logId: " + file.getName() + " | CountLogId/Total: "
+							+ countProcessCountLogId + "/" + count + " | Time: "
+							+ (System.currentTimeMillis() - start));
 				}
 			});
 		}
@@ -165,22 +179,82 @@ public class ActionAnalysis {
 		while (!executorService.isTerminated()) {
 		}
 
-		AnalysisUtils.printCountItem(Utils.getPrintWriter(cf.get(CommonConfig.MAIN_DIR) + "/countLogId.csv"), setLogId, totalMapLogId);
+		AnalysisUtils.printCountItem(Utils.getPrintWriter(outputFolderPath + "/logIdCount.csv"), setLogId,
+				totalMapLogId);
 
 	}
 
-	private boolean willProcessActionCount(String logId, Double realTimePlaying,
-			DateTime received_at, boolean willProcessRTP) {
-		boolean willProcess = false;
-
-		if (willProcessRTP) {
-			int secondsRTP = (int) Math.round(realTimePlaying);
-			if (secondsRTP > 0 && secondsRTP <= 3 * 3600) {
-				willProcess = true;
-			}
-		} else if (Utils.isNumeric(logId)) {
-			willProcess = true;
+	public void checkLogIdInAppName(Map<String, DateTime> mapUserDateCondition, List<String> listFileLogPath,
+			String outputLogIdCheck) throws IOException {
+		Map<String, Set<String>> totalMapLogId = new HashMap<>();
+		for (String appName : Utils.SET_APP_NAME_RTP) {
+			totalMapLogId.put(appName, new HashSet<>());
 		}
-		return willProcess;
+		for (final String file : listFileLogPath) {
+			long start = System.currentTimeMillis();
+			int count = 0;
+			int countProcess = 0;
+
+			Map<String, DateTime> mapCheckValidRTP = new HashMap<>();
+
+			BufferedReader br = new BufferedReader(new FileReader(file));
+			String line = br.readLine();
+
+			while (line != null) {
+				String[] arr = line.split(",");
+				if (arr.length == 9) {
+
+					String customerId = arr[0];
+					String logId = arr[2];
+					String appName = arr[3];
+					Double realTimePlaying = Utils.parseRealTimePlaying(arr[5]);
+					DateTime received_at = Utils.parseReceived_at(arr[8]);
+
+					if (mapUserDateCondition.containsKey(customerId) && received_at != null
+							&& Utils.SET_APP_NAME_RTP.contains(appName)) {
+						long duration = new Duration(received_at, mapUserDateCondition.get(customerId))
+								.getStandardDays();
+						if (duration >= 0 && duration <= 26) {
+							boolean willProcessRTP = AnalysisUtils.willProcessRealTimePlaying(customerId, received_at,
+									realTimePlaying, mapCheckValidRTP);
+							if (willProcessRTP) {
+								int seconds = (int) Math.round(realTimePlaying);
+								if (seconds > 0 && seconds <= (3 * 3600)) {
+									Set<String> setLogId = totalMapLogId.get(appName);
+									setLogId.add(logId);
+									totalMapLogId.put(appName, setLogId);
+									countProcess++;
+								}
+							}
+						}
+					}
+
+				} else {
+					Utils.LOG_ERROR.error("Parsed log error: " + line);
+				}
+
+				line = br.readLine();
+				count++;
+				if (count % 500000 == 0) {
+					System.out.println(file.split("/")[file.split("/").length - 1] + " | " + count);
+				}
+
+			}
+
+			br.close();
+			Utils.LOG_INFO.info("Done process file: " + file.split("/")[file.split("/").length - 1] + " | Count/Total: "
+					+ countProcess + "/" + count + " | Time: " + (System.currentTimeMillis() - start));
+		}
+
+		PrintWriter pr = Utils.getPrintWriter(outputLogIdCheck);
+		for (String appName : totalMapLogId.keySet()) {
+			pr.print(appName);
+			for (String logId : totalMapLogId.get(appName)) {
+				pr.print("," + logId);
+			}
+			pr.println();
+		}
+		pr.close();
 	}
+
 }
