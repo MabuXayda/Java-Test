@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +35,7 @@ public class Utils {
 	public static final DateTimeFormatter DATE_TIME_FORMAT_WITH_HOUR = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
 	public static final String DATE_CONDITION_MONTH_3 = "2016-03-31 23:59:59";
 	public static final String DATE_CONDITION_MONTH_4 = "2016-04-30 23:59:59";
-	
+
 	public static final Logger LOG_INFO = Logger.getLogger("InfoLog");
 	public static final Logger LOG_ERROR = Logger.getLogger("ErrorLog");
 
@@ -52,26 +53,56 @@ public class Utils {
 
 	public static void main(String[] args) throws NoSuchAlgorithmException {
 		System.out.println("B046FCB79A4B:2016:04:01:06:44:40:965".substring(13));
-//		String o = "/home/tunn/data/tv/log_parsed/t3/fbox-2016-03-20_parsed.csv";
-//		System.out.println(o.substring(o.length() - 21, o.length() - 11));
-//		System.out.println(isNumeric("11.9"));
+		// String o =
+		// "/home/tunn/data/tv/log_parsed/t3/fbox-2016-03-20_parsed.csv";
+		// System.out.println(o.substring(o.length() - 21, o.length() - 11));
+		// System.out.println(isNumeric("11.9"));
 	}
-	
-	public static String hashCode(String input) throws NoSuchAlgorithmException{
+
+	public static Map<String, Double> scaleMap(Map<String, Double> inputMap) {
+		Map<String, Double> outputMap = new HashMap<>();
+		double sum = 0;
+		for (String key : inputMap.keySet()) {
+			sum += inputMap.get(key);
+		}
+		for (String key : inputMap.keySet()) {
+			double value = inputMap.get(key) / sum * 100;
+			outputMap.put(key, value);
+		}
+		return outputMap;
+	}
+
+	public static double getMaxListDouble(List<Double> listDouble) {
+		double max = listDouble.get(0);
+		for (int i = 1; i < listDouble.size(); i++) {
+			max = Math.max(max, listDouble.get(i));
+		}
+		return max;
+	}
+
+	public static double getAverageListDouble(List<Double> listDouble) {
+		double sum = 0.0;
+		for (int i = 0; i < listDouble.size(); i++) {
+			sum += listDouble.get(i);
+		}
+		return sum / listDouble.size();
+	}
+
+	public static String hashCode(String input) throws NoSuchAlgorithmException {
 		MessageDigest md = MessageDigest.getInstance("MD5");
-        md.update(input.getBytes());
-        byte byteData[] = md.digest();
-        
+		md.update(input.getBytes());
+		byte byteData[] = md.digest();
+
 		StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < byteData.length; i++) {
 			sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
 		}
-		
+
 		return sb.toString();
-        
+
 	}
-	
-	public static void createFolder(String folderPath){
+
+	public static void createFolder(String folderPath) {
 		File theDir = new File(folderPath);
 		if (!theDir.exists()) {
 			try {
@@ -98,7 +129,7 @@ public class Utils {
 			}
 		});
 	}
-	
+
 	public static void sortListFile(List<File> files) {
 		Collections.sort(files, new Comparator<File>() {
 			DateTimeFormatter dtf = DateTimeFormat.forPattern("yyyy-MM-dd");

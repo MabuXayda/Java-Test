@@ -1,4 +1,4 @@
-package com.fpt.tv.analysis;
+package com.fpt.tv.statistic;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
 
-import com.fpt.tv.utils.AnalysisUtils;
+import com.fpt.tv.utils.StatisticUtils;
 import com.fpt.tv.utils.CommonConfig;
 import com.fpt.tv.utils.SupportData;
 import com.fpt.tv.utils.Utils;
@@ -145,7 +145,7 @@ public class TotalJob {
 
 							if (logId.equals("12") || logId.equals("18")) {
 								if (sessionMainMenu != null) {
-									boolean willProcessSMM = AnalysisUtils.willProcessSessionMainMenu(customerId,
+									boolean willProcessSMM = StatisticUtils.willProcessSessionMainMenu(customerId,
 											unparseSMM, sessionMainMenu, received_at, mapCheckDupSMM,
 											mapCheckValidSMM);
 									if (willProcessSMM) {
@@ -159,15 +159,15 @@ public class TotalJob {
 								}
 							} else if (Utils.SET_APP_NAME_RTP.contains(appName)
 									&& Utils.SET_LOG_ID_RTP.contains(logId)) {
-								boolean willProcessRTP = AnalysisUtils.willProcessRealTimePlaying(customerId,
+								boolean willProcessRTP = StatisticUtils.willProcessRealTimePlaying(customerId,
 										received_at, realTimePlaying, mapCheckValidRTP);
 								if (willProcessRTP) {
 									int seconds = (int) Math.round(realTimePlaying);
 									if (seconds > 0 && seconds <= (3 * 3600)) {
 										Utils.addMapKeyStrValInt(mapRTPTotalCount, customerId, 1);
-										AnalysisUtils.updateAppHourlyDaily(customerId, received_at, appName, seconds,
+										StatisticUtils.updateAppHourlyDaily(customerId, received_at, appName, seconds,
 												totalMapAppRTP, totalMapHourlyRTP, totalMapDailyRTP);
-										AnalysisUtils.updateReturnUse(customerId, received_at, seconds,
+										StatisticUtils.updateReturnUse(customerId, received_at, seconds,
 												mapReturnUsePoint, mapReturnUseCount, mapReturnUseSum,
 												mapReturnUseMax);
 
@@ -181,7 +181,7 @@ public class TotalJob {
 
 							if (willProcessCountLogId) {
 								Map<String, Integer> mapLogId = totalMapLogId.get(customerId);
-								AnalysisUtils.updateCountItem(mapLogId, logId);
+								StatisticUtils.updateCountItem(mapLogId, logId);
 								totalMapLogId.put(customerId, mapLogId);
 							}
 						}
@@ -204,13 +204,13 @@ public class TotalJob {
 					+ count + " | Time: " + (System.currentTimeMillis() - start));
 		}
 
-		AnalysisUtils.printApp(Utils.getPrintWriter(outputFolderPath + "/vectorApp.csv"), totalMapAppRTP,
+		StatisticUtils.printApp(Utils.getPrintWriter(outputFolderPath + "/vectorApp.csv"), totalMapAppRTP,
 				Utils.SET_APP_NAME_RTP);
-		AnalysisUtils.printHourly(Utils.getPrintWriter(outputFolderPath + "/vectorHourly.csv"), totalMapHourlyRTP);
-		AnalysisUtils.printDaily(Utils.getPrintWriter(outputFolderPath + "/vectorDaily.csv"), totalMapDailyRTP);
-		AnalysisUtils.printCountItem(Utils.getPrintWriter(outputFolderPath + "/logIdCount.csv"), setLogId,
+		StatisticUtils.printHourly(Utils.getPrintWriter(outputFolderPath + "/vectorHourly.csv"), totalMapHourlyRTP);
+		StatisticUtils.printDaily(Utils.getPrintWriter(outputFolderPath + "/vectorDaily.csv"), totalMapDailyRTP);
+		StatisticUtils.printCountItem(Utils.getPrintWriter(outputFolderPath + "/logIdCount.csv"), setLogId,
 				totalMapLogId);
-		AnalysisUtils.printReturnUse(Utils.getPrintWriter(outputFolderPath + "/reuseTime.csv"), mapUserDateCondition,
+		StatisticUtils.printReturnUse(Utils.getPrintWriter(outputFolderPath + "/reuseTime.csv"), mapUserDateCondition,
 				mapRTPTotalCount, mapReturnUseCount, mapReturnUseSum, mapReturnUseMax);
 
 	}

@@ -7,11 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -29,6 +27,7 @@ public class RawLogEditor {
 	public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
 		RawLogEditor rawLogEditor = new RawLogEditor();
 		rawLogEditor.hashRawData();
+		System.out.println("DONE");
 	}
 
 	public RawLogEditor() throws IOException {
@@ -38,12 +37,21 @@ public class RawLogEditor {
 
 	private void hashRawData() throws IOException, NoSuchAlgorithmException {
 		List<File> listFile = Arrays
-				.asList(new File(CommonConfig.getInstance().get(CommonConfig.PARSED_LOG_DIR) + "/t2").listFiles());
+				.asList(new File(CommonConfig.getInstance().get(CommonConfig.PARSED_LOG_DIR) + "/t4").listFiles());
 		Utils.sortListFile(listFile);
-		String hashFolder = CommonConfig.getInstance().get(CommonConfig.PARSED_LOG_DIR) + "/t2_hash";
+		String hashFolder = CommonConfig.getInstance().get(CommonConfig.PARSED_LOG_DIR) + "/t4_hash";
 		Utils.createFolder(hashFolder);
 		
 		Map<String, String> mapHashCode = new HashMap<>();
+		BufferedReader br_h = new BufferedReader(new FileReader(CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/hash/hash_old.csv"));
+		String line_h = br_h.readLine();
+		while (line_h != null) {
+			String[] arr = line_h.split(",");
+			mapHashCode.put(arr[0], arr[1]);
+			line_h = br_h.readLine();
+		}
+		br_h.close();
+		System.out.println("Total hash: " + mapHashCode.size());
 		
 		for (File file : listFile) {
 			long start = System.currentTimeMillis();
@@ -105,10 +113,10 @@ public class RawLogEditor {
 	
 		
 		PrintWriter pr = new PrintWriter(new FileWriter(CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/Hash.csv"));
-		pr.println("CustomerId,HashCode");
 		for(String customerId : mapHashCode.keySet()){
 			pr.println(customerId + "," + mapHashCode.get(customerId));
 		}
+		pr.close();
 	}
 
 	private void loadSetCustomerIdChurnOld() throws IOException {

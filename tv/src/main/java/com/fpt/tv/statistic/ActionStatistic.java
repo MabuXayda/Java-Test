@@ -1,4 +1,4 @@
-package com.fpt.tv.analysis;
+package com.fpt.tv.statistic;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -19,18 +19,18 @@ import java.util.concurrent.Executors;
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
 
-import com.fpt.tv.utils.AnalysisUtils;
+import com.fpt.tv.utils.StatisticUtils;
 import com.fpt.tv.utils.CommonConfig;
 import com.fpt.tv.utils.SupportData;
 import com.fpt.tv.utils.Utils;
 
-public class ActionAnalysis {
+public class ActionStatistic {
 
 	public static void main(String[] args) throws IOException {
 		System.out.println("START");
 		Utils.LOG_INFO.info("-----------------------------------------------------");
 		long star = System.currentTimeMillis();
-		ActionAnalysis actionAnalysis = new ActionAnalysis();
+		ActionStatistic actionAnalysis = new ActionStatistic();
 		actionAnalysis.process();
 
 
@@ -112,7 +112,7 @@ public class ActionAnalysis {
 
 									if (logId.equals("12") || logId.equals("18")) {
 										if (sessionMainMenu != null) {
-											boolean willProcessSMM = AnalysisUtils.willProcessSessionMainMenu(
+											boolean willProcessSMM = StatisticUtils.willProcessSessionMainMenu(
 													customerId, unparseSMM, sessionMainMenu, received_at,
 													mapCheckDupSMM, mapCheckValidSMM);
 											if (willProcessSMM) {
@@ -126,7 +126,7 @@ public class ActionAnalysis {
 										}
 									} else if (Utils.SET_APP_NAME_RTP.contains(appName)
 											&& Utils.SET_LOG_ID_RTP.contains(logId)) {
-										boolean willProcessRTP = AnalysisUtils.willProcessRealTimePlaying(customerId,
+										boolean willProcessRTP = StatisticUtils.willProcessRealTimePlaying(customerId,
 												received_at, realTimePlaying, mapCheckValidRTP);
 										if (willProcessRTP) {
 											int secondsRTP = (int) Math.round(realTimePlaying);
@@ -139,7 +139,7 @@ public class ActionAnalysis {
 
 									if (willProcessCountLogId) {
 										Map<String, Integer> mapLogId = totalMapLogId.get(customerId);
-										AnalysisUtils.updateCountItem(mapLogId, logId);
+										StatisticUtils.updateCountItem(mapLogId, logId);
 										totalMapLogId.put(customerId, mapLogId);
 
 										countProcessCountLogId++;
@@ -179,7 +179,7 @@ public class ActionAnalysis {
 		while (!executorService.isTerminated()) {
 		}
 
-		AnalysisUtils.printCountItem(Utils.getPrintWriter(outputFolderPath + "/logIdCount.csv"), setLogId,
+		StatisticUtils.printCountItem(Utils.getPrintWriter(outputFolderPath + "/logIdCount.csv"), setLogId,
 				totalMapLogId);
 
 	}
@@ -215,7 +215,7 @@ public class ActionAnalysis {
 						long duration = new Duration(received_at, mapUserDateCondition.get(customerId))
 								.getStandardDays();
 						if (duration >= 0 && duration <= 26) {
-							boolean willProcessRTP = AnalysisUtils.willProcessRealTimePlaying(customerId, received_at,
+							boolean willProcessRTP = StatisticUtils.willProcessRealTimePlaying(customerId, received_at,
 									realTimePlaying, mapCheckValidRTP);
 							if (willProcessRTP) {
 								int seconds = (int) Math.round(realTimePlaying);

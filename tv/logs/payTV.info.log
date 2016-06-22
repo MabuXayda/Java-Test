@@ -3906,3 +3906,231 @@
 [INFO] main InfoLog 17 Jun 2016 15:14:34 - Done hash: fbox-2016-02-27_parsed.csv | Valid/Total | 40089649/40800658 | Time: 125750
 [INFO] main InfoLog 17 Jun 2016 15:16:37 - Done hash: fbox-2016-02-28_parsed.csv | Valid/Total | 41137571/41866241 | Time: 123301
 [INFO] main InfoLog 17 Jun 2016 15:18:27 - Done hash: fbox-2016-02-29_parsed.csv | Valid/Total | 34096636/34788694 | Time: 109576
+[INFO] main InfoLog 21 Jun 2016 16:01:47 - Done hash: fbox-2016-03-01_parsed.csv | Valid/Total | 34577730/35242553 | Time: 103203
+[INFO] main InfoLog 21 Jun 2016 16:03:24 - Done hash: fbox-2016-03-02_parsed.csv | Valid/Total | 34388099/35039959 | Time: 96793
+[INFO] main InfoLog 21 Jun 2016 16:05:02 - Done hash: fbox-2016-03-03_parsed.csv | Valid/Total | 34702792/35362416 | Time: 98056
+[INFO] main InfoLog 21 Jun 2016 16:06:44 - Done hash: fbox-2016-03-04_parsed.csv | Valid/Total | 35947727/36632690 | Time: 101818
+[INFO] main InfoLog 21 Jun 2016 16:08:59 - Done hash: fbox-2016-03-05_parsed.csv | Valid/Total | 42916638/43655604 | Time: 134665
+[INFO] main InfoLog 21 Jun 2016 16:11:04 - Done hash: fbox-2016-03-06_parsed.csv | Valid/Total | 42269295/42990511 | Time: 125390
+[INFO] main InfoLog 21 Jun 2016 16:12:53 - Done hash: fbox-2016-03-07_parsed.csv | Valid/Total | 35023747/35695908 | Time: 108750
+[INFO] main InfoLog 21 Jun 2016 16:14:44 - Done hash: fbox-2016-03-08_parsed.csv | Valid/Total | 36081825/36769383 | Time: 110753
+[INFO] main InfoLog 21 Jun 2016 16:16:40 - Done hash: fbox-2016-03-09_parsed.csv | Valid/Total | 36149644/36899682 | Time: 116639
+[INFO] main InfoLog 21 Jun 2016 16:18:44 - Done hash: fbox-2016-03-10_parsed.csv | Valid/Total | 35293207/36114663 | Time: 123679
+[INFO] main InfoLog 21 Jun 2016 16:20:40 - Done hash: fbox-2016-03-11_parsed.csv | Valid/Total | 35644668/36463650 | Time: 116213
+[INFO] main InfoLog 21 Jun 2016 16:22:49 - Done hash: fbox-2016-03-12_parsed.csv | Valid/Total | 41121320/41973178 | Time: 128903
+[INFO] main InfoLog 21 Jun 2016 16:25:07 - Done hash: fbox-2016-03-13_parsed.csv | Valid/Total | 42649729/43502771 | Time: 137517
+[INFO] main InfoLog 21 Jun 2016 16:27:02 - Done hash: fbox-2016-03-14_parsed.csv | Valid/Total | 34921162/35668328 | Time: 115027
+[INFO] main InfoLog 21 Jun 2016 16:28:59 - Done hash: fbox-2016-03-15_parsed.csv | Valid/Total | 35168806/35938349 | Time: 116915
+[INFO] main InfoLog 21 Jun 2016 16:30:51 - Done hash: fbox-2016-03-16_parsed.csv | Valid/Total | 35787465/36574559 | Time: 112105
+[INFO] main InfoLog 21 Jun 2016 16:32:49 - Done hash: fbox-2016-03-17_parsed.csv | Valid/Total | 35853652/36708760 | Time: 118281
+[INFO] main InfoLog 21 Jun 2016 16:34:50 - Done hash: fbox-2016-03-18_parsed.csv | Valid/Total | 36172935/36926351 | Time: 121102
+[INFO] main InfoLog 21 Jun 2016 16:37:10 - Done hash: fbox-2016-03-19_parsed.csv | Valid/Total | 43201216/43990479 | Time: 140149
+[INFO] main InfoLog 21 Jun 2016 16:39:33 - Done hash: fbox-2016-03-20_parsed.csv | Valid/Total | 42885309/43674217 | Time: 142443
+[INFO] main InfoLog 21 Jun 2016 16:41:32 - Done hash: fbox-2016-03-21_parsed.csv | Valid/Total | 35503304/36193950 | Time: 119067
+[INFO] main InfoLog 21 Jun 2016 16:43:23 - Done hash: fbox-2016-03-22_parsed.csv | Valid/Total | 34570106/35315346 | Time: 111545
+[INFO] main InfoLog 21 Jun 2016 16:45:23 - Done hash: fbox-2016-03-23_parsed.csv | Valid/Total | 36239465/36964370 | Time: 119417
+[INFO] main InfoLog 21 Jun 2016 16:47:28 - Done hash: fbox-2016-03-24_parsed.csv | Valid/Total | 37310859/38077816 | Time: 125495
+[INFO] main InfoLog 21 Jun 2016 16:49:32 - Done hash: fbox-2016-03-25_parsed.csv | Valid/Total | 37252403/37979216 | Time: 123650
+[INFO] main InfoLog 21 Jun 2016 16:51:53 - Done hash: fbox-2016-03-26_parsed.csv | Valid/Total | 41067319/41802511 | Time: 141027
+[INFO] main InfoLog 21 Jun 2016 16:54:08 - Done hash: fbox-2016-03-27_parsed.csv | Valid/Total | 41880695/42640496 | Time: 135366
+[INFO] main InfoLog 21 Jun 2016 16:56:10 - Done hash: fbox-2016-03-28_parsed.csv | Valid/Total | 35556455/36268942 | Time: 121758
+[INFO] main InfoLog 21 Jun 2016 16:58:14 - Done hash: fbox-2016-03-29_parsed.csv | Valid/Total | 36187239/36923877 | Time: 124158
+[INFO] main InfoLog 21 Jun 2016 17:00:15 - Done hash: fbox-2016-03-30_parsed.csv | Valid/Total | 36093310/36812573 | Time: 121108
+[INFO] main InfoLog 21 Jun 2016 17:02:21 - Done hash: fbox-2016-03-31_parsed.csv | Valid/Total | 38288255/39063546 | Time: 125550
+[INFO] main InfoLog 21 Jun 2016 17:07:08 - -----------------------------------------------------
+[INFO] pool-1-thread-1 InfoLog 21 Jun 2016 17:08:07 - Done process job reuseTime: fbox-2016-02-02_parsed.csv | RTP/Total: 7812/24127886 | Time: 56195
+[INFO] pool-1-thread-2 InfoLog 21 Jun 2016 17:08:50 - Done process job reuseTime: fbox-2016-02-03_parsed.csv | RTP/Total: 11959/37851751 | Time: 99478
+[INFO] pool-1-thread-3 InfoLog 21 Jun 2016 17:09:13 - Done process job reuseTime: fbox-2016-02-04_parsed.csv | RTP/Total: 12626/38987486 | Time: 122522
+[INFO] pool-1-thread-1 InfoLog 21 Jun 2016 17:10:04 - Done process job reuseTime: fbox-2016-02-05_parsed.csv | RTP/Total: 13866/38749365 | Time: 117533
+[INFO] pool-1-thread-2 InfoLog 21 Jun 2016 17:10:47 - Done process job reuseTime: fbox-2016-02-06_parsed.csv | RTP/Total: 14057/39190728 | Time: 116861
+[INFO] pool-1-thread-3 InfoLog 21 Jun 2016 17:11:25 - Done process job reuseTime: fbox-2016-02-07_parsed.csv | RTP/Total: 18502/43852521 | Time: 131841
+[INFO] pool-1-thread-1 InfoLog 21 Jun 2016 17:12:13 - Done process job reuseTime: fbox-2016-02-08_parsed.csv | RTP/Total: 16615/39762288 | Time: 128310
+[INFO] pool-1-thread-2 InfoLog 21 Jun 2016 17:12:54 - Done process job reuseTime: fbox-2016-02-09_parsed.csv | RTP/Total: 15747/37176941 | Time: 126996
+[INFO] pool-1-thread-3 InfoLog 21 Jun 2016 17:13:31 - Done process job reuseTime: fbox-2016-02-10_parsed.csv | RTP/Total: 17924/36747797 | Time: 125872
+[INFO] pool-1-thread-1 InfoLog 21 Jun 2016 17:14:12 - Done process job reuseTime: fbox-2016-02-11_parsed.csv | RTP/Total: 18046/36688976 | Time: 119719
+[INFO] pool-1-thread-2 InfoLog 21 Jun 2016 17:14:54 - Done process job reuseTime: fbox-2016-02-12_parsed.csv | RTP/Total: 19094/38647609 | Time: 119956
+[INFO] pool-1-thread-3 InfoLog 21 Jun 2016 17:15:37 - Done process job reuseTime: fbox-2016-02-13_parsed.csv | RTP/Total: 21093/41125559 | Time: 126535
+[INFO] pool-1-thread-1 InfoLog 21 Jun 2016 17:16:16 - Done process job reuseTime: fbox-2016-02-14_parsed.csv | RTP/Total: 22382/40419806 | Time: 123663
+[INFO] pool-1-thread-2 InfoLog 21 Jun 2016 17:16:42 - Done process job reuseTime: fbox-2016-02-15_parsed.csv | RTP/Total: 18372/35453856 | Time: 108065
+[INFO] pool-1-thread-3 InfoLog 21 Jun 2016 17:17:24 - Done process job reuseTime: fbox-2016-02-16_parsed.csv | RTP/Total: 20233/34568669 | Time: 106297
+[INFO] main InfoLog 21 Jun 2016 17:20:41 - Done hash: fbox-2016-02-02_parsed.csv | Valid/Total | 23662061/24127886 | Time: 65897
+[INFO] main InfoLog 21 Jun 2016 17:22:28 - Done hash: fbox-2016-02-03_parsed.csv | Valid/Total | 36881654/37851751 | Time: 107713
+[INFO] main InfoLog 21 Jun 2016 17:24:28 - Done hash: fbox-2016-02-04_parsed.csv | Valid/Total | 38024161/38987486 | Time: 119312
+[INFO] main InfoLog 21 Jun 2016 17:26:31 - Done hash: fbox-2016-02-05_parsed.csv | Valid/Total | 38058672/38749365 | Time: 123144
+[INFO] main InfoLog 21 Jun 2016 17:28:42 - Done hash: fbox-2016-02-06_parsed.csv | Valid/Total | 38549204/39190728 | Time: 131722
+[INFO] main InfoLog 21 Jun 2016 17:31:05 - Done hash: fbox-2016-02-07_parsed.csv | Valid/Total | 43136169/43852521 | Time: 142852
+[INFO] main InfoLog 21 Jun 2016 17:33:09 - Done hash: fbox-2016-02-08_parsed.csv | Valid/Total | 39185021/39762288 | Time: 123899
+[INFO] main InfoLog 21 Jun 2016 17:35:13 - Done hash: fbox-2016-02-09_parsed.csv | Valid/Total | 36619979/37176941 | Time: 123954
+[INFO] main InfoLog 21 Jun 2016 17:37:17 - Done hash: fbox-2016-02-10_parsed.csv | Valid/Total | 36195860/36747797 | Time: 124363
+[INFO] main InfoLog 21 Jun 2016 17:39:12 - Done hash: fbox-2016-02-11_parsed.csv | Valid/Total | 36123649/36688976 | Time: 114154
+[INFO] main InfoLog 21 Jun 2016 17:41:19 - Done hash: fbox-2016-02-12_parsed.csv | Valid/Total | 38060289/38647609 | Time: 127336
+[INFO] main InfoLog 21 Jun 2016 17:43:31 - Done hash: fbox-2016-02-13_parsed.csv | Valid/Total | 40500002/41125559 | Time: 131876
+[INFO] main InfoLog 21 Jun 2016 17:45:39 - Done hash: fbox-2016-02-14_parsed.csv | Valid/Total | 39777497/40419806 | Time: 128593
+[INFO] main InfoLog 21 Jun 2016 17:47:32 - Done hash: fbox-2016-02-15_parsed.csv | Valid/Total | 34850163/35453856 | Time: 112753
+[INFO] main InfoLog 21 Jun 2016 17:49:27 - Done hash: fbox-2016-02-16_parsed.csv | Valid/Total | 33958543/34568669 | Time: 114710
+[INFO] main InfoLog 21 Jun 2016 17:51:16 - Done hash: fbox-2016-02-17_parsed.csv | Valid/Total | 33866382/34475659 | Time: 109097
+[INFO] main InfoLog 21 Jun 2016 17:53:02 - Done hash: fbox-2016-02-18_parsed.csv | Valid/Total | 33998791/34621411 | Time: 105656
+[INFO] main InfoLog 21 Jun 2016 17:54:38 - Done hash: fbox-2016-02-19_parsed.csv | Valid/Total | 35311188/35937050 | Time: 95941
+[INFO] main InfoLog 21 Jun 2016 17:56:45 - Done hash: fbox-2016-02-20_parsed.csv | Valid/Total | 39826900/40490531 | Time: 127022
+[INFO] main InfoLog 21 Jun 2016 17:57:52 - Done hash: fbox-2016-02-21_parsed.csv | Valid/Total | 22725410/23127351 | Time: 67412
+[INFO] main InfoLog 21 Jun 2016 17:59:34 - Done hash: fbox-2016-02-22_parsed.csv | Valid/Total | 34032970/34655472 | Time: 101815
+[INFO] main InfoLog 21 Jun 2016 18:01:21 - Done hash: fbox-2016-02-23_parsed.csv | Valid/Total | 34881115/35501328 | Time: 107488
+[INFO] main InfoLog 21 Jun 2016 18:03:04 - Done hash: fbox-2016-02-24_parsed.csv | Valid/Total | 35187207/35823816 | Time: 102592
+[INFO] main InfoLog 21 Jun 2016 18:04:50 - Done hash: fbox-2016-02-25_parsed.csv | Valid/Total | 35134008/35759838 | Time: 105971
+[INFO] main InfoLog 21 Jun 2016 18:06:49 - Done hash: fbox-2016-02-26_parsed.csv | Valid/Total | 37041766/37920042 | Time: 119444
+[INFO] main InfoLog 21 Jun 2016 18:08:56 - Done hash: fbox-2016-02-27_parsed.csv | Valid/Total | 40089649/40800658 | Time: 126221
+[INFO] main InfoLog 21 Jun 2016 18:11:12 - Done hash: fbox-2016-02-28_parsed.csv | Valid/Total | 41137571/41866241 | Time: 136792
+[INFO] main InfoLog 21 Jun 2016 18:12:59 - Done hash: fbox-2016-02-29_parsed.csv | Valid/Total | 34096636/34788694 | Time: 106958
+[INFO] main InfoLog 21 Jun 2016 19:18:43 - Done hash: fbox-2016-03-01_parsed.csv | Valid/Total | 34577730/35242553 | Time: 108184
+[INFO] main InfoLog 21 Jun 2016 19:20:31 - Done hash: fbox-2016-03-02_parsed.csv | Valid/Total | 34388099/35039959 | Time: 108554
+[INFO] main InfoLog 21 Jun 2016 19:22:23 - Done hash: fbox-2016-03-03_parsed.csv | Valid/Total | 34702792/35362416 | Time: 111729
+[INFO] main InfoLog 21 Jun 2016 19:24:23 - Done hash: fbox-2016-03-04_parsed.csv | Valid/Total | 35947727/36632690 | Time: 119759
+[INFO] main InfoLog 21 Jun 2016 19:26:43 - Done hash: fbox-2016-03-05_parsed.csv | Valid/Total | 42916638/43655604 | Time: 139879
+[INFO] main InfoLog 21 Jun 2016 19:28:56 - Done hash: fbox-2016-03-06_parsed.csv | Valid/Total | 42269295/42990511 | Time: 133348
+[INFO] main InfoLog 21 Jun 2016 19:30:51 - Done hash: fbox-2016-03-07_parsed.csv | Valid/Total | 35023747/35695908 | Time: 114940
+[INFO] main InfoLog 21 Jun 2016 19:32:48 - Done hash: fbox-2016-03-08_parsed.csv | Valid/Total | 36081825/36769383 | Time: 117254
+[INFO] main InfoLog 21 Jun 2016 19:34:46 - Done hash: fbox-2016-03-09_parsed.csv | Valid/Total | 36149644/36899682 | Time: 118192
+[INFO] main InfoLog 21 Jun 2016 19:36:41 - Done hash: fbox-2016-03-10_parsed.csv | Valid/Total | 35293207/36114663 | Time: 114814
+[INFO] main InfoLog 21 Jun 2016 19:38:36 - Done hash: fbox-2016-03-11_parsed.csv | Valid/Total | 35644668/36463650 | Time: 115179
+[INFO] main InfoLog 21 Jun 2016 19:40:51 - Done hash: fbox-2016-03-12_parsed.csv | Valid/Total | 41121320/41973178 | Time: 134439
+[INFO] main InfoLog 21 Jun 2016 19:43:13 - Done hash: fbox-2016-03-13_parsed.csv | Valid/Total | 42649729/43502771 | Time: 141875
+[INFO] main InfoLog 21 Jun 2016 19:45:04 - Done hash: fbox-2016-03-14_parsed.csv | Valid/Total | 34921162/35668328 | Time: 111237
+[INFO] main InfoLog 21 Jun 2016 19:47:02 - Done hash: fbox-2016-03-15_parsed.csv | Valid/Total | 35168806/35938349 | Time: 118572
+[INFO] main InfoLog 21 Jun 2016 19:49:01 - Done hash: fbox-2016-03-16_parsed.csv | Valid/Total | 35787465/36574559 | Time: 118958
+[INFO] main InfoLog 21 Jun 2016 19:51:03 - Done hash: fbox-2016-03-17_parsed.csv | Valid/Total | 35853652/36708760 | Time: 121664
+[INFO] main InfoLog 21 Jun 2016 19:52:59 - Done hash: fbox-2016-03-18_parsed.csv | Valid/Total | 36172935/36926351 | Time: 115949
+[INFO] main InfoLog 21 Jun 2016 19:55:26 - Done hash: fbox-2016-03-19_parsed.csv | Valid/Total | 43201216/43990479 | Time: 146634
+[INFO] main InfoLog 21 Jun 2016 19:57:49 - Done hash: fbox-2016-03-20_parsed.csv | Valid/Total | 42885309/43674217 | Time: 143242
+[INFO] main InfoLog 21 Jun 2016 19:59:43 - Done hash: fbox-2016-03-21_parsed.csv | Valid/Total | 35503304/36193950 | Time: 114410
+[INFO] main InfoLog 21 Jun 2016 20:01:42 - Done hash: fbox-2016-03-22_parsed.csv | Valid/Total | 34570106/35315346 | Time: 118349
+[INFO] main InfoLog 21 Jun 2016 20:03:46 - Done hash: fbox-2016-03-23_parsed.csv | Valid/Total | 36239465/36964370 | Time: 123984
+[INFO] main InfoLog 21 Jun 2016 20:05:52 - Done hash: fbox-2016-03-24_parsed.csv | Valid/Total | 37310859/38077816 | Time: 126421
+[INFO] main InfoLog 21 Jun 2016 20:07:59 - Done hash: fbox-2016-03-25_parsed.csv | Valid/Total | 37252403/37979216 | Time: 127126
+[INFO] main InfoLog 21 Jun 2016 20:10:21 - Done hash: fbox-2016-03-26_parsed.csv | Valid/Total | 41067319/41802511 | Time: 142174
+[INFO] main InfoLog 21 Jun 2016 20:12:45 - Done hash: fbox-2016-03-27_parsed.csv | Valid/Total | 41880695/42640496 | Time: 143980
+[INFO] main InfoLog 21 Jun 2016 20:14:46 - Done hash: fbox-2016-03-28_parsed.csv | Valid/Total | 35556455/36268942 | Time: 120508
+[INFO] main InfoLog 21 Jun 2016 20:16:47 - Done hash: fbox-2016-03-29_parsed.csv | Valid/Total | 36187239/36923877 | Time: 121225
+[INFO] main InfoLog 21 Jun 2016 20:18:50 - Done hash: fbox-2016-03-30_parsed.csv | Valid/Total | 36093310/36812573 | Time: 122565
+[INFO] main InfoLog 21 Jun 2016 20:21:06 - Done hash: fbox-2016-03-31_parsed.csv | Valid/Total | 38288255/39063546 | Time: 136292
+[INFO] main InfoLog 22 Jun 2016 10:09:50 - Done hash: fbox-2016-04-01_parsed_drop.csv | Valid/Total | 490085/1314261 | Time: 2235
+[INFO] main InfoLog 22 Jun 2016 10:12:01 - Done hash: fbox-2016-04-01_parsed.csv | Valid/Total | 39022659/39022661 | Time: 131786
+[INFO] main InfoLog 22 Jun 2016 10:12:03 - Done hash: fbox-2016-04-02_parsed_drop.csv | Valid/Total | 582936/1384771 | Time: 1786
+[INFO] main InfoLog 22 Jun 2016 10:14:37 - Done hash: fbox-2016-04-02_parsed.csv | Valid/Total | 45532032/45532034 | Time: 153655
+[INFO] main InfoLog 22 Jun 2016 10:14:40 - Done hash: fbox-2016-04-03_parsed_drop.csv | Valid/Total | 567947/1401167 | Time: 3099
+[INFO] main InfoLog 22 Jun 2016 10:17:09 - Done hash: fbox-2016-04-03_parsed.csv | Valid/Total | 43820723/43820725 | Time: 148675
+[INFO] main InfoLog 22 Jun 2016 10:17:11 - Done hash: fbox-2016-04-04_parsed_drop.csv | Valid/Total | 437935/1312415 | Time: 2418
+[INFO] main InfoLog 22 Jun 2016 10:19:16 - Done hash: fbox-2016-04-04_parsed.csv | Valid/Total | 36893811/36893813 | Time: 124684
+[INFO] main InfoLog 22 Jun 2016 10:19:17 - Done hash: fbox-2016-04-05_parsed_drop.csv | Valid/Total | 440195/1230348 | Time: 1453
+[INFO] main InfoLog 22 Jun 2016 10:21:19 - Done hash: fbox-2016-04-05_parsed.csv | Valid/Total | 36865374/36865376 | Time: 122356
+[INFO] main InfoLog 22 Jun 2016 10:23:11 - Done hash: fbox-2016-04-06_parsed.csv | Valid/Total | 37339702/37339704 | Time: 111991
+[INFO] main InfoLog 22 Jun 2016 10:23:13 - Done hash: fbox-2016-04-06_parsed_drop.csv | Valid/Total | 447705/1261100 | Time: 1502
+[INFO] main InfoLog 22 Jun 2016 10:24:58 - Done hash: fbox-2016-04-07_parsed.csv | Valid/Total | 37047652/37047654 | Time: 105392
+[INFO] main InfoLog 22 Jun 2016 10:25:00 - Done hash: fbox-2016-04-07_parsed_drop.csv | Valid/Total | 454490/1282310 | Time: 1713
+[INFO] main InfoLog 22 Jun 2016 10:26:47 - Done hash: fbox-2016-04-08_parsed.csv | Valid/Total | 37809663/37809665 | Time: 106769
+[INFO] main InfoLog 22 Jun 2016 10:26:49 - Done hash: fbox-2016-04-08_parsed_drop.csv | Valid/Total | 466603/1341102 | Time: 2137
+[INFO] main InfoLog 22 Jun 2016 10:26:54 - Done hash: fbox-2016-04-09_parsed_drop.csv | Valid/Total | 558135/1561578 | Time: 4996
+[INFO] main InfoLog 22 Jun 2016 10:28:57 - Done hash: fbox-2016-04-09_parsed.csv | Valid/Total | 43859639/43859641 | Time: 122739
+[INFO] main InfoLog 22 Jun 2016 10:31:05 - Done hash: fbox-2016-04-10_parsed.csv | Valid/Total | 44510621/44510623 | Time: 128298
+[INFO] main InfoLog 22 Jun 2016 10:31:07 - Done hash: fbox-2016-04-10_parsed_drop.csv | Valid/Total | 544616/1435611 | Time: 1778
+[INFO] main InfoLog 22 Jun 2016 10:31:08 - Done hash: fbox-2016-04-11_parsed_drop.csv | Valid/Total | 420852/1303477 | Time: 1494
+[INFO] main InfoLog 22 Jun 2016 10:32:53 - Done hash: fbox-2016-04-11_parsed.csv | Valid/Total | 36389075/36389087 | Time: 104400
+[INFO] main InfoLog 22 Jun 2016 10:32:54 - Done hash: fbox-2016-04-12_parsed_drop.csv | Valid/Total | 431036/1325359 | Time: 1532
+[INFO] main InfoLog 22 Jun 2016 10:34:44 - Done hash: fbox-2016-04-12_parsed.csv | Valid/Total | 36229198/36229200 | Time: 110205
+[INFO] main InfoLog 22 Jun 2016 10:36:32 - Done hash: fbox-2016-04-13_parsed.csv | Valid/Total | 36905815/36905817 | Time: 107910
+[INFO] main InfoLog 22 Jun 2016 10:36:34 - Done hash: fbox-2016-04-13_parsed_drop.csv | Valid/Total | 444125/1330460 | Time: 1589
+[INFO] main InfoLog 22 Jun 2016 10:38:27 - Done hash: fbox-2016-04-14_parsed.csv | Valid/Total | 36825367/36825376 | Time: 112585
+[INFO] main InfoLog 22 Jun 2016 10:38:28 - Done hash: fbox-2016-04-14_parsed_drop.csv | Valid/Total | 433421/1297108 | Time: 1553
+[INFO] main InfoLog 22 Jun 2016 10:38:30 - Done hash: fbox-2016-04-15_parsed_drop.csv | Valid/Total | 452998/1747066 | Time: 1838
+[INFO] main InfoLog 22 Jun 2016 10:40:26 - Done hash: fbox-2016-04-15_parsed.csv | Valid/Total | 37415585/37415587 | Time: 116182
+[INFO] main InfoLog 22 Jun 2016 10:40:28 - Done hash: fbox-2016-04-16_parsed_drop.csv | Valid/Total | 571419/1434443 | Time: 1783
+[INFO] main InfoLog 22 Jun 2016 10:42:45 - Done hash: fbox-2016-04-16_parsed.csv | Valid/Total | 44089725/44089727 | Time: 136875
+[INFO] main InfoLog 22 Jun 2016 10:45:11 - Done hash: fbox-2016-04-17_parsed.csv | Valid/Total | 43702113/43702115 | Time: 146119
+[INFO] main InfoLog 22 Jun 2016 10:45:13 - Done hash: fbox-2016-04-17_parsed_drop.csv | Valid/Total | 520981/1439587 | Time: 1646
+[INFO] main InfoLog 22 Jun 2016 10:45:14 - Done hash: fbox-2016-04-18_parsed_drop.csv | Valid/Total | 431906/1418683 | Time: 1520
+[INFO] main InfoLog 22 Jun 2016 10:47:17 - Done hash: fbox-2016-04-18_parsed.csv | Valid/Total | 40888502/40888504 | Time: 122779
+[INFO] main InfoLog 22 Jun 2016 10:47:18 - Done hash: fbox-2016-04-19_parsed_drop.csv | Valid/Total | 388783/1281873 | Time: 1396
+[INFO] main InfoLog 22 Jun 2016 10:49:04 - Done hash: fbox-2016-04-19_parsed.csv | Valid/Total | 35252555/35252557 | Time: 106163
+[INFO] main InfoLog 22 Jun 2016 10:50:57 - Done hash: fbox-2016-04-20_parsed.csv | Valid/Total | 37069959/37069961 | Time: 112412
+[INFO] main InfoLog 22 Jun 2016 10:51:03 - Done hash: fbox-2016-04-20_parsed_drop.csv | Valid/Total | 404424/1328524 | Time: 5965
+[INFO] main InfoLog 22 Jun 2016 10:52:50 - Done hash: fbox-2016-04-21_parsed.csv | Valid/Total | 36387846/36387848 | Time: 107525
+[INFO] main InfoLog 22 Jun 2016 10:52:52 - Done hash: fbox-2016-04-21_parsed_drop.csv | Valid/Total | 397207/1368354 | Time: 1464
+[INFO] main InfoLog 22 Jun 2016 10:54:51 - Done hash: fbox-2016-04-22_parsed.csv | Valid/Total | 38156166/38156168 | Time: 119459
+[INFO] main InfoLog 22 Jun 2016 10:54:53 - Done hash: fbox-2016-04-22_parsed_drop.csv | Valid/Total | 436965/1394040 | Time: 1528
+[INFO] main InfoLog 22 Jun 2016 10:54:54 - Done hash: fbox-2016-04-23_parsed_drop.csv | Valid/Total | 472256/1469686 | Time: 1749
+[INFO] main InfoLog 22 Jun 2016 10:57:07 - Done hash: fbox-2016-04-23_parsed.csv | Valid/Total | 43109919/43109921 | Time: 132479
+[INFO] main InfoLog 22 Jun 2016 10:59:20 - Done hash: fbox-2016-04-24_parsed.csv | Valid/Total | 44116478/44116483 | Time: 132859
+[INFO] main InfoLog 22 Jun 2016 10:59:22 - Done hash: fbox-2016-04-24_parsed_drop.csv | Valid/Total | 489011/1511834 | Time: 1753
+[INFO] main InfoLog 22 Jun 2016 10:59:23 - Done hash: fbox-2016-04-25_parsed_drop.csv | Valid/Total | 365663/1328041 | Time: 1479
+[INFO] main InfoLog 22 Jun 2016 11:01:12 - Done hash: fbox-2016-04-25_parsed.csv | Valid/Total | 36301370/36301372 | Time: 109313
+[INFO] main InfoLog 22 Jun 2016 11:01:14 - Done hash: fbox-2016-04-26_parsed_drop.csv | Valid/Total | 398460/1223815 | Time: 1453
+[INFO] main InfoLog 22 Jun 2016 11:03:11 - Done hash: fbox-2016-04-26_parsed.csv | Valid/Total | 36982927/36982929 | Time: 117566
+[INFO] main InfoLog 22 Jun 2016 11:04:47 - Done hash: fbox-2016-04-27-a_parsed.csv | Valid/Total | 32385558/32385560 | Time: 95826
+[INFO] main InfoLog 22 Jun 2016 11:04:47 - Done hash: fbox-2016-04-27-b_parsed_drop.csv | Valid/Total | 38080/145636 | Time: 219
+[INFO] main InfoLog 22 Jun 2016 11:05:00 - Done hash: fbox-2016-04-27-b_parsed.csv | Valid/Total | 3957839/3957841 | Time: 12166
+[INFO] main InfoLog 22 Jun 2016 11:05:02 - Done hash: fbox-2016-04-27-a_parsed_drop.csv | Valid/Total | 346041/1079575 | Time: 2281
+[INFO] main InfoLog 22 Jun 2016 11:06:58 - Done hash: fbox-2016-04-28_parsed.csv | Valid/Total | 37347410/37347414 | Time: 115640
+[INFO] main InfoLog 22 Jun 2016 11:06:59 - Done hash: fbox-2016-04-28_parsed_drop.csv | Valid/Total | 394253/1262098 | Time: 1391
+[INFO] main InfoLog 22 Jun 2016 11:07:01 - Done hash: fbox-2016-04-29_parsed_drop.csv | Valid/Total | 428288/1386242 | Time: 1585
+[INFO] main InfoLog 22 Jun 2016 11:09:02 - Done hash: fbox-2016-04-29_parsed.csv | Valid/Total | 39694382/39694384 | Time: 121426
+[INFO] main InfoLog 22 Jun 2016 11:11:25 - Done hash: fbox-2016-04-30_parsed.csv | Valid/Total | 44961840/44961842 | Time: 143268
+[INFO] main InfoLog 22 Jun 2016 11:11:27 - Done hash: fbox-2016-04-30_parsed_drop.csv | Valid/Total | 548020/1392829 | Time: 1626
+[INFO] main InfoLog 22 Jun 2016 11:50:49 - -----------------------------------------------------
+[INFO] pool-1-thread-1 InfoLog 22 Jun 2016 11:52:07 - Done process job reuseTime: fbox-2016-02-02_parsed.csv | RTP/Total: 7812/24127886 | Time: 75362
+[INFO] pool-1-thread-2 InfoLog 22 Jun 2016 11:53:12 - Done process job reuseTime: fbox-2016-02-03_parsed.csv | RTP/Total: 11959/37851751 | Time: 140111
+[INFO] pool-1-thread-3 InfoLog 22 Jun 2016 11:53:43 - Done process job reuseTime: fbox-2016-02-04_parsed.csv | RTP/Total: 12626/38987486 | Time: 170839
+[INFO] pool-1-thread-1 InfoLog 22 Jun 2016 11:54:54 - Done process job reuseTime: fbox-2016-02-05_parsed.csv | RTP/Total: 13866/38749365 | Time: 166045
+[INFO] pool-1-thread-2 InfoLog 22 Jun 2016 11:55:58 - Done process job reuseTime: fbox-2016-02-06_parsed.csv | RTP/Total: 14057/39190728 | Time: 165749
+[INFO] pool-1-thread-3 InfoLog 22 Jun 2016 11:56:41 - Done process job reuseTime: fbox-2016-02-07_parsed.csv | RTP/Total: 18502/43852521 | Time: 178071
+[INFO] pool-1-thread-1 InfoLog 22 Jun 2016 11:57:37 - Done process job reuseTime: fbox-2016-02-08_parsed.csv | RTP/Total: 16615/39762288 | Time: 163067
+[INFO] pool-1-thread-2 InfoLog 22 Jun 2016 11:58:27 - Done process job reuseTime: fbox-2016-02-09_parsed.csv | RTP/Total: 15747/37176941 | Time: 149229
+[INFO] pool-1-thread-3 InfoLog 22 Jun 2016 11:59:09 - Done process job reuseTime: fbox-2016-02-10_parsed.csv | RTP/Total: 17924/36747797 | Time: 148440
+[INFO] pool-1-thread-1 InfoLog 22 Jun 2016 12:00:06 - Done process job reuseTime: fbox-2016-02-11_parsed.csv | RTP/Total: 18046/36688976 | Time: 149636
+[INFO] pool-1-thread-2 InfoLog 22 Jun 2016 12:01:04 - Done process job reuseTime: fbox-2016-02-12_parsed.csv | RTP/Total: 19094/38647609 | Time: 156983
+[INFO] pool-1-thread-3 InfoLog 22 Jun 2016 12:01:55 - Done process job reuseTime: fbox-2016-02-13_parsed.csv | RTP/Total: 21093/41125559 | Time: 165083
+[INFO] pool-1-thread-1 InfoLog 22 Jun 2016 12:02:40 - Done process job reuseTime: fbox-2016-02-14_parsed.csv | RTP/Total: 22382/40419806 | Time: 154067
+[INFO] pool-1-thread-2 InfoLog 22 Jun 2016 12:03:12 - Done process job reuseTime: fbox-2016-02-15_parsed.csv | RTP/Total: 18372/35453856 | Time: 127338
+[INFO] pool-1-thread-3 InfoLog 22 Jun 2016 12:03:53 - Done process job reuseTime: fbox-2016-02-16_parsed.csv | RTP/Total: 20233/34568669 | Time: 118555
+[INFO] pool-1-thread-1 InfoLog 22 Jun 2016 12:04:39 - Done process job reuseTime: fbox-2016-02-17_parsed.csv | RTP/Total: 20469/34475659 | Time: 118698
+[INFO] pool-1-thread-2 InfoLog 22 Jun 2016 12:05:11 - Done process job reuseTime: fbox-2016-02-18_parsed.csv | RTP/Total: 20955/34621411 | Time: 119040
+[INFO] pool-1-thread-3 InfoLog 22 Jun 2016 12:05:58 - Done process job reuseTime: fbox-2016-02-19_parsed.csv | RTP/Total: 23036/35937050 | Time: 124739
+[INFO] pool-1-thread-2 InfoLog 22 Jun 2016 12:06:32 - Done process job reuseTime: fbox-2016-02-21_parsed.csv | RTP/Total: 12737/23127351 | Time: 81615
+[INFO] pool-1-thread-1 InfoLog 22 Jun 2016 12:07:05 - Done process job reuseTime: fbox-2016-02-20_parsed.csv | RTP/Total: 24760/40490531 | Time: 145434
+[INFO] pool-1-thread-3 InfoLog 22 Jun 2016 12:08:07 - Done process job reuseTime: fbox-2016-02-22_parsed.csv | RTP/Total: 19445/34655472 | Time: 129110
+[INFO] pool-1-thread-2 InfoLog 22 Jun 2016 12:08:46 - Done process job reuseTime: fbox-2016-02-23_parsed.csv | RTP/Total: 22960/35501328 | Time: 133644
+[INFO] pool-1-thread-1 InfoLog 22 Jun 2016 12:09:25 - Done process job reuseTime: fbox-2016-02-24_parsed.csv | RTP/Total: 21492/35823816 | Time: 140622
+[INFO] pool-1-thread-3 InfoLog 22 Jun 2016 12:10:23 - Done process job reuseTime: fbox-2016-02-25_parsed.csv | RTP/Total: 23262/35759838 | Time: 136550
+[INFO] pool-1-thread-2 InfoLog 22 Jun 2016 12:11:12 - Done process job reuseTime: fbox-2016-02-26_parsed.csv | RTP/Total: 22050/37920042 | Time: 146223
+[INFO] pool-1-thread-1 InfoLog 22 Jun 2016 12:12:03 - Done process job reuseTime: fbox-2016-02-27_parsed.csv | RTP/Total: 25073/40800658 | Time: 158315
+[INFO] pool-1-thread-3 InfoLog 22 Jun 2016 12:13:03 - Done process job reuseTime: fbox-2016-02-28_parsed.csv | RTP/Total: 26028/41866241 | Time: 159618
+[INFO] pool-1-thread-2 InfoLog 22 Jun 2016 12:13:25 - Done process job reuseTime: fbox-2016-02-29_parsed.csv | RTP/Total: 21145/34788694 | Time: 133382
+[INFO] pool-1-thread-1 InfoLog 22 Jun 2016 12:14:32 - Done process job reuseTime: fbox-2016-03-01_parsed.csv | RTP/Total: 21155/35242553 | Time: 148476
+[INFO] pool-1-thread-3 InfoLog 22 Jun 2016 12:15:31 - Done process job reuseTime: fbox-2016-03-02_parsed.csv | RTP/Total: 22581/35039959 | Time: 147569
+[INFO] pool-1-thread-2 InfoLog 22 Jun 2016 12:16:05 - Done process job reuseTime: fbox-2016-03-03_parsed.csv | RTP/Total: 580433/35362416 | Time: 159508
+[INFO] pool-1-thread-1 InfoLog 22 Jun 2016 12:20:13 - Done process job reuseTime: fbox-2016-03-04_parsed.csv | RTP/Total: 9626811/36632690 | Time: 341100
+[INFO] pool-1-thread-2 InfoLog 22 Jun 2016 12:20:40 - Done process job reuseTime: fbox-2016-03-06_parsed.csv | RTP/Total: 11186535/42990511 | Time: 275463
+[INFO] pool-1-thread-3 InfoLog 22 Jun 2016 12:21:23 - Done process job reuseTime: fbox-2016-03-05_parsed.csv | RTP/Total: 11473816/43655604 | Time: 352638
+[INFO] pool-1-thread-2 InfoLog 22 Jun 2016 12:23:45 - Done process job reuseTime: fbox-2016-03-08_parsed.csv | RTP/Total: 9413626/36769383 | Time: 184820
+[INFO] pool-1-thread-1 InfoLog 22 Jun 2016 12:23:58 - Done process job reuseTime: fbox-2016-03-07_parsed.csv | RTP/Total: 9239752/35695908 | Time: 225257
+[INFO] pool-1-thread-3 InfoLog 22 Jun 2016 12:24:27 - Done process job reuseTime: fbox-2016-03-09_parsed.csv | RTP/Total: 9454702/36899682 | Time: 183445
+[INFO] pool-1-thread-1 InfoLog 22 Jun 2016 12:27:10 - Done process job reuseTime: fbox-2016-03-11_parsed.csv | RTP/Total: 9252648/36463650 | Time: 191717
+[INFO] pool-1-thread-3 InfoLog 22 Jun 2016 12:28:28 - Done process job reuseTime: fbox-2016-03-12_parsed.csv | RTP/Total: 10671908/41973178 | Time: 241038
+[INFO] pool-1-thread-2 InfoLog 22 Jun 2016 12:28:34 - Done process job reuseTime: fbox-2016-03-10_parsed.csv | RTP/Total: 9157438/36114663 | Time: 288460
+[INFO] pool-1-thread-3 InfoLog 22 Jun 2016 12:32:28 - Done process job reuseTime: fbox-2016-03-14_parsed.csv | RTP/Total: 9058298/35668328 | Time: 240339
+[INFO] pool-1-thread-1 InfoLog 22 Jun 2016 12:34:44 - Done process job reuseTime: fbox-2016-03-13_parsed.csv | RTP/Total: 11093350/43502771 | Time: 454042
+[INFO] pool-1-thread-2 InfoLog 22 Jun 2016 12:36:03 - Done process job reuseTime: fbox-2016-03-15_parsed.csv | RTP/Total: 9143653/35938349 | Time: 449592
+[INFO] pool-1-thread-3 InfoLog 22 Jun 2016 12:37:23 - Done process job reuseTime: fbox-2016-03-16_parsed.csv | RTP/Total: 9235558/36574559 | Time: 294793
+[INFO] pool-1-thread-1 InfoLog 22 Jun 2016 12:40:06 - Done process job reuseTime: fbox-2016-03-17_parsed.csv | RTP/Total: 9160010/36708760 | Time: 322091
+[INFO] pool-1-thread-2 InfoLog 22 Jun 2016 12:41:04 - Done process job reuseTime: fbox-2016-03-18_parsed.csv | RTP/Total: 9141871/36926351 | Time: 300564
+[INFO] pool-1-thread-3 InfoLog 22 Jun 2016 12:41:53 - Done process job reuseTime: fbox-2016-03-19_parsed.csv | RTP/Total: 11086368/43990479 | Time: 270523
+[INFO] pool-1-thread-1 InfoLog 22 Jun 2016 12:46:31 - Done process job reuseTime: fbox-2016-03-20_parsed.csv | RTP/Total: 10934319/43674217 | Time: 384620
+[INFO] pool-1-thread-2 InfoLog 22 Jun 2016 12:47:10 - Done process job reuseTime: fbox-2016-03-21_parsed.csv | RTP/Total: 9056637/36193950 | Time: 366265
+[INFO] pool-1-thread-3 InfoLog 22 Jun 2016 12:48:34 - Done process job reuseTime: fbox-2016-03-22_parsed.csv | RTP/Total: 8751358/35315346 | Time: 400678
+[INFO] pool-1-thread-1 InfoLog 22 Jun 2016 12:53:27 - Done process job reuseTime: fbox-2016-03-23_parsed.csv | RTP/Total: 9140911/36964370 | Time: 415982
+[INFO] pool-1-thread-2 InfoLog 22 Jun 2016 12:53:54 - Done process job reuseTime: fbox-2016-03-24_parsed.csv | RTP/Total: 9476653/38077816 | Time: 403797
+[INFO] pool-1-thread-3 InfoLog 22 Jun 2016 12:55:10 - Done process job reuseTime: fbox-2016-03-25_parsed.csv | RTP/Total: 9351151/37979216 | Time: 395921
+[INFO] pool-1-thread-1 InfoLog 22 Jun 2016 13:01:03 - Done process job reuseTime: fbox-2016-03-26_parsed.csv | RTP/Total: 10240887/41802511 | Time: 456529
+[INFO] pool-1-thread-2 InfoLog 22 Jun 2016 13:01:05 - Done process job reuseTime: fbox-2016-03-27_parsed.csv | RTP/Total: 10485363/42640496 | Time: 431255
+[INFO] pool-1-thread-3 InfoLog 22 Jun 2016 13:01:28 - Done process job reuseTime: fbox-2016-03-28_parsed.csv | RTP/Total: 8859085/36268942 | Time: 378050
+[INFO] pool-1-thread-3 InfoLog 22 Jun 2016 13:04:41 - Done process job reuseTime: fbox-2016-03-31_parsed.csv | RTP/Total: 9017737/39063546 | Time: 192433
+[INFO] pool-1-thread-2 InfoLog 22 Jun 2016 13:05:06 - Done process job reuseTime: fbox-2016-03-30_parsed.csv | RTP/Total: 8953320/36812573 | Time: 240855
+[INFO] pool-1-thread-1 InfoLog 22 Jun 2016 13:05:33 - Done process job reuseTime: fbox-2016-03-29_parsed.csv | RTP/Total: 9002756/36923877 | Time: 269455

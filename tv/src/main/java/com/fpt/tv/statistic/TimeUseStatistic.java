@@ -1,10 +1,11 @@
-package com.fpt.tv.analysis;
+package com.fpt.tv.statistic;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -12,37 +13,175 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
 
-import com.fpt.tv.utils.AnalysisUtils;
+import com.fpt.tv.utils.StatisticUtils;
 import com.fpt.tv.utils.CommonConfig;
 import com.fpt.tv.utils.SupportData;
 import com.fpt.tv.utils.Utils;
 
-public class TimeUseAnalysis {
+public class TimeUseStatistic {
 
 
 	public static void main(String[] args) throws IOException {
 		Utils.LOG_INFO.info("-----------------------------------------------------");
-		long star = System.currentTimeMillis();
-		TimeUseAnalysis timeUseAnalysis = new TimeUseAnalysis();
+		long star = System.currentTimeMillis(); 
+		TimeUseStatistic timeUseAnalysis = new TimeUseStatistic();
 		timeUseAnalysis.process();
 
 		System.out.println("DONE: " + (System.currentTimeMillis() - star));
 	}
 	
 	public void process() throws IOException{
-		Map<String, DateTime> mapUserDateCondition = SupportData.getMapUserActiveDateCondition(
-				Utils.DATE_TIME_FORMAT_WITH_HOUR.parseDateTime("2016-02-29 00:00:00"), 
-				SupportData.getMapUserActive(CommonConfig.getInstance().get(CommonConfig.SUPPORT_DATA_DIR) + "/userActive.csv"));
+		Map<String, DateTime> mapUserDateConditionTrain = SupportData.getMapUserDateCondition(
+				SupportData.getMapUserActive(
+						CommonConfig.getInstance().get(CommonConfig.SUPPORT_DATA_DIR) + "/userActive.csv"),
+				SupportData.getMapUserChurn(
+						CommonConfig.getInstance().get(CommonConfig.SUPPORT_DATA_DIR) + "/userChurn.csv"),
+				"2016-03-31 00:00:00");
 		
 		List<File> listFile_t2 = Arrays.asList(new File(CommonConfig.getInstance().get(CommonConfig.PARSED_LOG_DIR) + "/t2").listFiles());
-		Utils.sortListFile(listFile_t2);
-		getVectorAppHourlyDaily(mapUserDateCondition, listFile_t2, CommonConfig.getInstance().get(CommonConfig.MAIN_DIR));
+		List<File> listFile_t3 = Arrays.asList(new File(CommonConfig.getInstance().get(CommonConfig.PARSED_LOG_DIR) + "/t3").listFiles());
+		List<File> listFileTrain = Stream.concat(listFile_t2.stream(), listFile_t3.stream()).collect(Collectors.toList());
+		Utils.sortListFile(listFileTrain);
+		
+		getReuseTimeNew(mapUserDateConditionTrain, listFileTrain, CommonConfig.getInstance().get(CommonConfig.MAIN_DIR));
 	}
 
+	public void getReuseTimeNew(Map<String, DateTime> mapUserDateCondition, List<File> listFileLogPath, String ouputReuseTimePath) throws IOException{
+		Map<String, Map<Integer, Integer>> mapReuseTime = Collections.synchronizedMap(new HashMap<>());
+		for(String customerId : mapUserDateCondition.keySet()){
+			Map<Integer, Integer> mapUse = new HashMap<>();
+			for(int i = 0; i <=26; i++){
+				mapUse.put(i, 0);
+			}
+			mapReuseTime.put(customerId, mapUse);
+		}
+		ExecutorService executorService =  Executors.newFixedThreadPool(3);
+		for(final File file : listFileLogPath){
+			executorService.execute(new Runnable() {
+				
+				@Override
+				public void run() {
+					long start = System.currentTimeMillis();
+					int count = 0;
+					int countProcessRTP = 0;
+					Map<String, DateTime> mapCheckValidRTP = new HashMap<>();
+					
+					System.out.println("===> Process file: " + file);
+					BufferedReader br = null;
+					try {
+						br = new BufferedReader(new FileReader(file));
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					String line = null;
+					try {
+						line = br.readLine();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+					while (line != null) {
+						String[] arr = line.split(",");
+						if (arr.length == 9) {
+							String customerId = arr[0];
+							String appName = arr[3];
+							Double realTimePlaying = Utils.parseRealTimePlaying(arr[5]);
+							DateTime received_at = Utils.parseReceived_at(arr[8]);
+							String logId = arr[2];
+
+							if (mapUserDateCondition.containsKey(customerId) && received_at != null
+									&& Utils.SET_APP_NAME_FULL.contains(appName) && Utils.isNumeric(logId)) {
+
+								long duration = new Duration(received_at, mapUserDateCondition.get(customerId))
+										.getStandardDays();
+								if (duration >= 0 && duration <= 26) {
+									if (Utils.SET_APP_NAME_RTP.contains(appName) && Utils.SET_LOG_ID_RTP.contains(logId)) {
+										boolean willProcessRTP = StatisticUtils.willProcessRealTimePlaying(customerId,
+												received_at, realTimePlaying, mapCheckValidRTP);
+
+										if (willProcessRTP) {
+											int seconds = (int) Math.round(realTimePlaying);
+											if (seconds > 0 && seconds <= (3 * 3600)) {
+												Integer distance = new Integer((int) duration);
+												Map<Integer, Integer> mapUse = mapReuseTime.get(customerId);
+												mapUse.put(distance, 1);
+												countProcessRTP++;
+											}
+										}
+									}
+								}
+							}
+						}
+
+						try {
+							line = br.readLine();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						count++;
+						if (count % 500000 == 0) {
+							System.out.println(file.getName() + " | " + count);
+						}
+					}
+					
+					try {
+						br.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					Utils.LOG_INFO.info("Done process job reuseTime: " + file.getName() + " | RTP/Total: " + countProcessRTP
+							+ "/" + count + " | Time: " + (System.currentTimeMillis() - start));
+				}
+			});
+		}
+		executorService.shutdown();
+		while (!executorService.isTerminated()) {
+		}
+		
+		calculateReuseTime(mapReuseTime, Utils.getPrintWriter(ouputReuseTimePath + "/reuseTime.csv"));
+	}
+	
+	public void calculateReuseTime(Map<String, Map<Integer, Integer>> mapReuseTime, PrintWriter pr){
+		pr.println("CustomerId,ReuseCount,ReuseSum,ReuseAvg,ReuseMax");
+		for(String customerId : mapReuseTime.keySet()){
+			Map<Integer, Integer> mapUse = mapReuseTime.get(customerId);
+			int count = 0;
+			int sum = 0;
+			int max = 0;
+			int start = 0;
+			
+			for (int i = 1; i <= 26; i++) {
+				if (i < 26 && mapUse.get(i) == 1) {
+					count += 1;
+					sum = sum + (i - start);
+					max = Math.max(max, i - start);
+					start = i;
+				} else if (i == 26) {
+					sum = sum + (i - start);
+					max = Math.max(max, i - start);
+				}
+			}
+			double avg = 0;
+			if (count == 0) {
+				avg = sum;
+			} else {
+				avg = sum / (double) count;
+			}
+			pr.println(customerId + "," + count + "," + sum + "," + avg + "," + max);
+		}
+		pr.close();
+	}
+	
 	public void getReuseTime(Map<String, DateTime> mapUserDateCondition, List<File> listFileLogPath,
 			String outputReuseTime) throws IOException {
 		Map<String, DateTime> mapReturnUsePoint = new HashMap<>();
@@ -81,14 +220,14 @@ public class TimeUseAnalysis {
 						if (duration >= 0 && duration <= 26) {
 
 							if (Utils.SET_APP_NAME_RTP.contains(appName) && Utils.SET_LOG_ID_RTP.contains(logId)) {
-								boolean willProcessRTP = AnalysisUtils.willProcessRealTimePlaying(customerId,
+								boolean willProcessRTP = StatisticUtils.willProcessRealTimePlaying(customerId,
 										received_at, realTimePlaying, mapCheckValidRTP);
 
 								if (willProcessRTP) {
 									int seconds = (int) Math.round(realTimePlaying);
 									if (seconds > 0 && seconds <= (3 * 3600)) {
 										Utils.addMapKeyStrValInt(mapRTPTotalCount, customerId, 1);
-										AnalysisUtils.updateReturnUse(customerId, received_at, seconds,
+										StatisticUtils.updateReturnUse(customerId, received_at, seconds,
 												mapReturnUsePoint, mapReturnUseCount, mapReturnUseSum, mapReturnUseMax);
 										countProcessRTP++;
 									}
@@ -110,7 +249,7 @@ public class TimeUseAnalysis {
 					+ "/" + count + " | Time: " + (System.currentTimeMillis() - start));
 		}
 
-		AnalysisUtils.printReturnUse(Utils.getPrintWriter(outputReuseTime), mapUserDateCondition, mapRTPTotalCount,
+		StatisticUtils.printReturnUse(Utils.getPrintWriter(outputReuseTime), mapUserDateCondition, mapRTPTotalCount,
 				mapReturnUseCount, mapReturnUseSum, mapReturnUseMax);
 
 	}
@@ -186,14 +325,14 @@ public class TimeUseAnalysis {
 									if (Utils.SET_APP_NAME_RTP.contains(appName)
 											&& Utils.SET_LOG_ID_RTP.contains(logId)) {
 
-										boolean willProcessRTP = AnalysisUtils.willProcessRealTimePlaying(customerId,
+										boolean willProcessRTP = StatisticUtils.willProcessRealTimePlaying(customerId,
 												received_at, realTimePlaying, mapCheckValidRTP);
 										if (willProcessRTP) {
 											int seconds = (int) Math.round(realTimePlaying);
 											if (seconds > 0 && seconds <= (3 * 3600)) {
 
 												Map<Integer, Integer> mapHourly = totalMapHourlyRTP.get(customerId);
-												AnalysisUtils.updateHourly(mapHourly, received_at, seconds);
+												StatisticUtils.updateHourly(mapHourly, received_at, seconds);
 												totalMapHourlyRTP.put(customerId, mapHourly);
 
 //												Map<String, Integer> mapDaily = totalMapDailyRTP.get(customerId);
@@ -246,7 +385,7 @@ public class TimeUseAnalysis {
 		while (!executorService.isTerminated()) {
 		}
 
-		AnalysisUtils.printHourly(Utils.getPrintWriter(outputFolderPath + "/vectorHourly.csv"), totalMapHourlyRTP);
+		StatisticUtils.printHourly(Utils.getPrintWriter(outputFolderPath + "/vectorHourly.csv"), totalMapHourlyRTP);
 //		AnalysisUtils.printApp(Utils.getPrintWriter(outputFolderPath + "/vectorApp.csv"), totalMapAppRTP,
 //				Utils.SET_APP_NAME_RTP);
 //		AnalysisUtils.printDaily(Utils.getPrintWriter(outputFolderPath + "/vectorDaily.csv"), totalMapDailyRTP);
