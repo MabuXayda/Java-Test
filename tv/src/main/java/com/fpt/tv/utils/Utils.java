@@ -35,6 +35,8 @@ public class Utils {
 	public static final DateTimeFormatter DATE_TIME_FORMAT_WITH_HOUR = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
 	public static final String DATE_CONDITION_MONTH_3 = "2016-03-31 23:59:59";
 	public static final String DATE_CONDITION_MONTH_4 = "2016-04-30 23:59:59";
+	public static final Integer TIMEUSE_TOP = 1433528;
+	
 
 	public static final Logger LOG_INFO = Logger.getLogger("InfoLog");
 	public static final Logger LOG_ERROR = Logger.getLogger("ErrorLog");
@@ -61,12 +63,8 @@ public class Utils {
 
 	public static Map<String, Double> scaleMap(Map<String, Double> inputMap) {
 		Map<String, Double> outputMap = new HashMap<>();
-		double sum = 0;
 		for (String key : inputMap.keySet()) {
-			sum += inputMap.get(key);
-		}
-		for (String key : inputMap.keySet()) {
-			double value = inputMap.get(key) / sum * 100;
+			double value = inputMap.get(key) / TIMEUSE_TOP;
 			outputMap.put(key, value);
 		}
 		return outputMap;

@@ -42,7 +42,6 @@ public class AnalysisUtils {
 				if (value1 == 0 || value2 == 0) {
 					continue;
 				}
-				System.out.println(value1 + " | " + value2);
 
 				double means = 0.5 * (value1 + value2);
 
