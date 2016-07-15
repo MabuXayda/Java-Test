@@ -10,6 +10,11 @@
 			<artifactId>ftel-core-utils</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>com.fpt.ftel</groupId>
+			<artifactId>ftel-core-db</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

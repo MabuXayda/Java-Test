@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MapUtils {
-	
+
 	public static Map<String, Double> scaleMap(Map<String, Double> inputMap, Integer topValue) {
 		Map<String, Double> outputMap = new HashMap<>();
 		for (String key : inputMap.keySet()) {

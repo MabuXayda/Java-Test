@@ -22,7 +22,6 @@ import org.joda.time.Duration;
 import com.fpt.ftel.core.config.CommonConfig;
 import com.fpt.ftel.core.utils.FileUtils;
 import com.fpt.ftel.core.utils.StringUtils;
-import com.fpt.ftel.paytv.SupportData;
 import com.fpt.ftel.paytv.utils.PayTVUtils;
 import com.fpt.ftel.paytv.utils.StatisticUtils;
 
@@ -39,17 +38,17 @@ public class TimeUseStatistic {
 	}
 	
 	public void process() throws IOException{
-		Map<String, DateTime> mapUserDateConditionTrain = SupportData.getMapUserDateCondition(
-				SupportData.getMapUserActive(
+		Map<String, DateTime> mapUserDateConditionTrain = UserStatus.getMapUserDateCondition(
+				UserStatus.getMapUserActive(
 						CommonConfig.getInstance().get(CommonConfig.SUPPORT_DATA_DIR) + "/userActive.csv"),
-				SupportData.getMapUserChurn(
+				UserStatus.getMapUserChurn(
 						CommonConfig.getInstance().get(CommonConfig.SUPPORT_DATA_DIR) + "/userChurn.csv"),
 				"2016-03-31 00:00:00");
 		
-		Map<String, DateTime> mapUserDateConditionTest = SupportData.getMapUserDateCondition(
-				SupportData.getMapUserActive(
+		Map<String, DateTime> mapUserDateConditionTest = UserStatus.getMapUserDateCondition(
+				UserStatus.getMapUserActive(
 						CommonConfig.getInstance().get(CommonConfig.SUPPORT_DATA_DIR) + "/userActive_t4.csv"),
-				SupportData.getMapUserChurn(
+				UserStatus.getMapUserChurn(
 						CommonConfig.getInstance().get(CommonConfig.SUPPORT_DATA_DIR) + "/userChurn_t4.csv"),
 				"2016-04-30 00:00:00");
 		
@@ -58,8 +57,8 @@ public class TimeUseStatistic {
 		List<File> listFile_t4 = Arrays.asList(new File(CommonConfig.getInstance().get(CommonConfig.PARSED_LOG_DIR) + "/t4").listFiles());
 		List<File> listFileTrain = Stream.concat(listFile_t2.stream(), listFile_t3.stream()).collect(Collectors.toList());
 		List<File> listFileTest = Stream.concat(listFile_t3.stream(), listFile_t4.stream()).collect(Collectors.toList());
-		FileUtils.sortListFile(listFileTrain);
-		FileUtils.sortListFile(listFileTest);
+		FileUtils.sortListFileDateTime(listFileTrain);
+		FileUtils.sortListFileDateTime(listFileTest);
 		
 		getReuseTime(mapUserDateConditionTest, listFileTest, CommonConfig.getInstance().get(CommonConfig.MAIN_DIR));
 	}

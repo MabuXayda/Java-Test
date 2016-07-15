@@ -50,12 +50,17 @@ public class StatisticUtils {
 		return willProcess;
 	}
 
-	public static void printWeek(PrintWriter pr, Map<String, Map<Integer, Integer>> totalMapWeek) {
-		pr.println("CustomerId,week1,week2,week3,week4");
-		for (String customerid : totalMapWeek.keySet()) {
-			pr.print(customerid);
-			for (int i = 1; i <= 4; i++) {
-				Integer value = totalMapWeek.get(customerid).get(i);
+	public static void printDays(PrintWriter pr, Map<String, Map<Integer, Integer>> totalMapDays) {
+		pr.print("CustomerId");
+		for (int i = 0; i <= 27; i++) {
+			pr.print("," + i);
+		}
+		pr.println();
+		for (String customerId : totalMapDays.keySet()) {
+			pr.print(customerId);
+			Map<Integer, Integer> mapDays = totalMapDays.get(customerId);
+			for (int i = 0; i <= 27; i++) {
+				Integer value = mapDays.get(i);
 				if (value == null) {
 					value = 0;
 				}
@@ -65,13 +70,14 @@ public class StatisticUtils {
 		}
 
 		pr.close();
+
 	}
 
-	public static void updateWeek(Map<Integer, Integer> mapWeek, Integer week, int seconds) {
-		if (mapWeek.containsKey(week)) {
-			mapWeek.put(week, mapWeek.get(week) + seconds);
+	public static void updateDays(Map<Integer, Integer> mapDays, int day, int seconds) {
+		if (mapDays.containsKey(day)) {
+			mapDays.put(day, mapDays.get(day) + seconds);
 		} else {
-			mapWeek.put(week, seconds);
+			mapDays.put(day, seconds);
 		}
 	}
 
@@ -85,13 +91,13 @@ public class StatisticUtils {
 			int start = 0;
 			double avg = 0;
 
-			for (int i = 1; i <= 26; i++) {
-				if (i < 26 && mapUse.get(i) == 1) {
+			for (int i = 1; i <= 27; i++) {
+				if (i < 27 && mapUse.get(i) == 1) {
 					count += 1;
 					sum = sum + (i - start);
 					max = Math.max(max, i - start);
 					start = i;
-				} else if (i == 26) {
+				} else if (i == 27) {
 					sum = sum + (i - start);
 					max = Math.max(max, i - start);
 				}
@@ -99,7 +105,7 @@ public class StatisticUtils {
 			if (count == 0) {
 				avg = sum;
 			} else {
-				avg = sum / (double) count + 1;
+				avg = sum / ((double) count + 1);
 			}
 			pr.println(customerId + "," + count + "," + sum + "," + NumberUtils.FORMAT_DOUBLE.format(avg) + "," + max);
 		}
@@ -107,9 +113,8 @@ public class StatisticUtils {
 		pr.close();
 	}
 
-	public static void updateReturnUse(Map<Integer, Integer> mapReuse, Long dayDuration) {
-		Integer distance = dayDuration.intValue();
-		mapReuse.put(distance, 1);
+	public static void updateReturnUse(Map<Integer, Integer> mapReuse, int dayDuration) {
+		mapReuse.put(dayDuration, 1);
 	}
 
 	public static void printLogIdCount(PrintWriter pr, Set<String> setItem,

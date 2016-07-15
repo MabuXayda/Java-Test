@@ -14,13 +14,14 @@ public class CommonConfig {
 	private static final String COMMON_PAYTV_CONFIGURATION_FILE = "common_paytv_configuration.json";
 	public static final String HDFS_CORE_SITE = "HDFS_CORE_SITE";
 	public static final String HDFS_SITE = "HDFS_SITE";
+	public static final String LOG4J_CONFIG_DIR = "LOG4J_CONFIG_DIR";
 	
 	public static final String MAIN_DIR = "MAIN_DIR";
 	public static final String RAW_LOG_DIR = "RAW_LOG_DIR";
 	public static final String PARSED_LOG_DIR = "PARSED_LOG_DIR";
-	public static final String PARSED_LOG_DROP_DIR = "PARSED_LOG_DROP_DIR";
+	public static final String PARSED_LOG_HDFS_DIR = "PARSED_LOG_HDFS_DIR";
 	public static final String SUPPORT_DATA_DIR = "SUPPORT_DATA_DIR";
-	public static final String LOG4J_CONFIG_DIR = "LOG4J_CONFIG_DIR";
+	public static final String USER_SPECIAL_FILE = "USER_SPECIAL_FILE";
 
 	private String configurationFile = "";
 	private String configurationFolder = "";

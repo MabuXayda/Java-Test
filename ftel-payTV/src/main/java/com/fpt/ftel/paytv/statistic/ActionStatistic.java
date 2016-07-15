@@ -23,7 +23,6 @@ import org.joda.time.Duration;
 import com.fpt.ftel.core.config.CommonConfig;
 import com.fpt.ftel.core.utils.FileUtils;
 import com.fpt.ftel.core.utils.StringUtils;
-import com.fpt.ftel.paytv.SupportData;
 import com.fpt.ftel.paytv.utils.PayTVUtils;
 import com.fpt.ftel.paytv.utils.StatisticUtils;
 
@@ -41,12 +40,12 @@ public class ActionStatistic {
 	}
 	
 	public void process() throws IOException{
-		Map<String, DateTime> mapUserDateCondition = SupportData.getMapUserActiveDateCondition(
+		Map<String, DateTime> mapUserDateCondition = UserStatus.getMapUserActiveDateCondition(
 				PayTVUtils.FORMAT_DATE_TIME_WITH_HOUR.parseDateTime("2016-02-29 00:00:00"), 
-				SupportData.getMapUserActive(CommonConfig.getInstance().get(CommonConfig.SUPPORT_DATA_DIR) + "/userActive.csv"));
+				UserStatus.getMapUserActive(CommonConfig.getInstance().get(CommonConfig.SUPPORT_DATA_DIR) + "/userActive.csv"));
 		
 		List<File> listFile_t2 = Arrays.asList(new File(CommonConfig.getInstance().get(CommonConfig.PARSED_LOG_DIR) + "/t2").listFiles());
-		FileUtils.sortListFile(listFile_t2);
+		FileUtils.sortListFileDateTime(listFile_t2);
 		
 		
 		getLogIdCount(mapUserDateCondition, listFile_t2, CommonConfig.getInstance().get(CommonConfig.MAIN_DIR));

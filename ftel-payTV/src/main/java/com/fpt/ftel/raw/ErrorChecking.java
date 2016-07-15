@@ -1,4 +1,4 @@
-package com.fpt.ftel.paytv;
+package com.fpt.ftel.raw;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -24,25 +24,31 @@ public class ErrorChecking {
 	private Map<String, Map<String, DateTime>> mapUserHuy;
 	private List<String> listFileLogPath;
 	private Set<String> setUserNoLog;
-	
-	private CommonConfig cf;
 
 	public static void main(String[] args) throws IOException {
 		System.out.println("START");
 		ErrorChecking errorChecking = new ErrorChecking();
-		errorChecking.filterLogForCheck();
+		errorChecking.test();
 		System.out.println("DONE");
 	}
 
+	public void test() {
+		String o = "/data/fbox/logs/2016/07/01/00/fbox_1.txt";
+		String[] arr1 = o.split("/");
+		String[] arr2 = arr1[arr1.length - 1].split("\\.");
+		String[] arr3 = arr2[0].split("_");
+		System.out.println(Integer.parseInt(arr3[1]));
+	}
+
 	public ErrorChecking() throws IOException {
-		cf = CommonConfig.getInstance();
-		loadListFilePath(new File(cf.get(CommonConfig.MAIN_DIR) + "/log_parsed"));
-		System.out.println("NUMBER OF FILE: " + listFileLogPath.size());
+//		loadListFilePath(new File(CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/log_parsed"));
+//		System.out.println("NUMBER OF FILE: " + listFileLogPath.size());
 	}
 
 	private void loadListUserNoLog() throws IOException {
 		setUserNoLog = new HashSet();
-		BufferedReader br = new BufferedReader(new FileReader(cf.get(CommonConfig.MAIN_DIR) + "/time_zero.csv"));
+		BufferedReader br = new BufferedReader(
+				new FileReader(CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/time_zero.csv"));
 		String line = br.readLine();
 		int count = 0;
 		while (line != null) {
@@ -53,7 +59,6 @@ public class ErrorChecking {
 		System.out.println("LIST NO LOG: " + count);
 		br.close();
 	}
-
 
 	private void loadListFilePath(File file) {
 		if (listFileLogPath == null) {
@@ -71,8 +76,9 @@ public class ErrorChecking {
 	}
 
 	public void checkLogDuplicate() throws IOException {
-		File[] files = new File(cf.get(CommonConfig.MAIN_DIR) + "/log_parsed/t2/").listFiles();
-		PrintWriter pr = new PrintWriter(new FileWriter(cf.get(CommonConfig.MAIN_DIR) + "/duplicate.csv"));
+		File[] files = new File(CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/log_parsed/t2/").listFiles();
+		PrintWriter pr = new PrintWriter(
+				new FileWriter(CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/duplicate.csv"));
 		int count = 0;
 		for (File file : files) {
 			BufferedReader br = new BufferedReader(new FileReader(file));
@@ -95,8 +101,10 @@ public class ErrorChecking {
 
 	public void checkDanhSachHuyActive() throws IOException {
 		Set<String> setMissing = new HashSet<>();
-		PrintWriter prLog = new PrintWriter(new FileWriter(cf.get(CommonConfig.MAIN_DIR) + "/log_missing.csv"));
-		PrintWriter prUser = new PrintWriter(new FileWriter(cf.get(CommonConfig.MAIN_DIR) + "/user_missing.csv"));
+		PrintWriter prLog = new PrintWriter(
+				new FileWriter(CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/log_missing.csv"));
+		PrintWriter prUser = new PrintWriter(
+				new FileWriter(CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/user_missing.csv"));
 		for (String file : listFileLogPath) {
 			BufferedReader br = new BufferedReader(new FileReader(file));
 			String line = br.readLine();
@@ -126,7 +134,8 @@ public class ErrorChecking {
 	}
 
 	public void filterLogForCheck() throws IOException {
-		PrintWriter pr = new PrintWriter(new FileWriter(cf.get(CommonConfig.MAIN_DIR) + "/log.csv"));
+		PrintWriter pr = new PrintWriter(
+				new FileWriter(CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/log.csv"));
 		// File[] files = new File(Utils.DIR + "log_parsed/t3/").listFiles();
 		for (String file : listFileLogPath) {
 			long start = System.currentTimeMillis();
@@ -154,7 +163,8 @@ public class ErrorChecking {
 	}
 
 	public void getUserActiveNolog() throws IOException {
-		BufferedReader br = new BufferedReader(new FileReader(cf.get(CommonConfig.MAIN_DIR) + "/unique_customer.csv"));
+		BufferedReader br = new BufferedReader(
+				new FileReader(CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/unique_customer.csv"));
 		String line = br.readLine();
 		Set<String> setUnique = new HashSet<>();
 		while (line != null) {
@@ -163,7 +173,8 @@ public class ErrorChecking {
 		}
 		br.close();
 		int count = 0;
-		PrintWriter pr = new PrintWriter(new FileWriter(cf.get(CommonConfig.MAIN_DIR) + "/userHasNoLog.csv"));
+		PrintWriter pr = new PrintWriter(
+				new FileWriter(CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/userHasNoLog.csv"));
 		for (String c : setUserNoLog) {
 			if (!setUnique.contains(c)) {
 				pr.println(c);

@@ -31,7 +31,7 @@ public class LogSplitting {
 	public void process() throws IOException {
 		List<String> listFilePath = new ArrayList<>();
 		FileUtils.loadListFilePath(listFilePath, new File(CommonConfig.getInstance().get(CommonConfig.PARSED_LOG_DIR) + "/t4"));
-		FileUtils.sortListFilePath(listFilePath);
+		FileUtils.sortListFilePathDateTime(listFilePath);
 		splitFile(listFilePath, CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/hadoop_hdfs/2016");
 
 	}

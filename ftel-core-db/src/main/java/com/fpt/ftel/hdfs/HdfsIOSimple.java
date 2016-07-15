@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,40 +22,54 @@ import org.apache.hadoop.fs.Path;
 import com.fpt.ftel.core.config.CommonConfig;
 
 public class HdfsIOSimple {
-	private final FileSystem hdfs;
+	private final FileSystem fileSystem;
 
 	public static void main(String[] args) throws IOException, URISyntaxException {
 		HdfsIOSimple hdfsIOSimple = new HdfsIOSimple();
-//		List<String> listFile = hdfsIOSimple.getAllFileInDir2("/data/payTV/log_parsed/2016/03/");
-//		for(String file : listFile){
-//			System.out.println(file);
-//		}
-		System.out.println(hdfsIOSimple.isExist("/data"));
+		String content = "ghi thu 2 dong trogn hdfs";
+		String content2 = "ghi dong thu tiếp theo dong vào hdfs";
+		String path = "/data/payTV/test.txt";
+		BufferedWriter br = hdfsIOSimple.getWriteStreamNewToHdfs(path);
+		br.write(content);
+		br.close();
+		br = hdfsIOSimple.getWriteStreamAppendToHdfs(path);
+		br.write(content2);
+		br.close();
 	}
-	
-	public HdfsIOSimple() throws IOException{
+
+	public void test(String path) throws IOException {
+		Path pt = new Path(path);
+		BufferedWriter br = new BufferedWriter(new OutputStreamWriter(fileSystem.append(pt)));
+		String text = "ghi tiep 1 dong vào có Tiếng Việt";
+		br.write(text);
+		br.close();
+	}
+
+	public BufferedWriter getWriteStreamNewToHdfs(String filePath) throws UnsupportedEncodingException, IOException {
+		Path path = new Path(filePath);
+		return new BufferedWriter(new OutputStreamWriter(fileSystem.create(path), "UTF-8"));
+	}
+
+	public BufferedWriter getWriteStreamAppendToHdfs(String filePath) throws UnsupportedEncodingException, IOException {
+		Path path = new Path(filePath);
+		return new BufferedWriter(new OutputStreamWriter(fileSystem.append(path), "UTF-8"));
+	}
+
+	public HdfsIOSimple() throws IOException {
 		Configuration configuration = new Configuration();
 		configuration.addResource(new Path(CommonConfig.getInstance().get(CommonConfig.HDFS_CORE_SITE)));
 		configuration.addResource(new Path(CommonConfig.getInstance().get(CommonConfig.HDFS_SITE)));
-		hdfs = FileSystem.get(configuration);
+		fileSystem = FileSystem.get(configuration);
 	}
 
 	public void createFolder(String folderPath) throws IOException {
-//		Path workingDir = hdfs.getWorkingDirectory();
-//		System.out.println("Home folder: " + workingDir);
 		Path newFolderPath = new Path(folderPath);
-		System.out.println("Create fodler:" + newFolderPath);
-
-		if (hdfs.exists(newFolderPath)) {
-			hdfs.delete(newFolderPath, true); // Delete existing Directory
-		}
-
-		hdfs.mkdirs(newFolderPath);
+		fileSystem.mkdirs(newFolderPath);
 	}
 
 	public void write(String path, String content) throws IOException {
 		Path file = new Path(path);
-		OutputStream os = hdfs.create(file, true);
+		OutputStream os = fileSystem.create(file, true);
 		BufferedWriter br = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
 		br.write(content);
 		br.close();
@@ -62,7 +77,7 @@ public class HdfsIOSimple {
 
 	public void write(String path, List<String> contents) throws IOException {
 		Path file = new Path(path);
-		OutputStream os = hdfs.create(file, true);
+		OutputStream os = fileSystem.create(file, true);
 		BufferedWriter br = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
 		for (String string : contents) {
 			br.write(string);
@@ -70,23 +85,10 @@ public class HdfsIOSimple {
 		br.close();
 	}
 
-	public void write(String path, Map<String, String> contents) throws IOException {
-		Path file = new Path(path);
-		OutputStream os = hdfs.create(file, true);
-		BufferedWriter br = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-		for (String key : contents.keySet()) {
-			br.write("(" + key + "," + contents.get(key) + ")");
-			br.newLine();
-		}
-		br.close();
-	}
-
-	public List<String> getAllFileInDir2(String dir) throws FileNotFoundException, IOException {
+	public List<String> getAllFileInDir(String dir) throws FileNotFoundException, IOException {
 		List<String> files = new ArrayList<String>();
 		Path path = new Path(dir);
-		FileStatus[] status = hdfs.listStatus(path); // you need to pass in your
-														// hdfs path
-		// System.out.println("Size: " + status.length);
+		FileStatus[] status = fileSystem.listStatus(path);
 		for (int i = 0; i < status.length; i++) {
 			String name = status[i].getPath().getName();
 			files.add(name);
@@ -97,43 +99,56 @@ public class HdfsIOSimple {
 	public void move(String src, String dst) throws FileNotFoundException, IOException {
 		Path oldPath = new Path(src);
 		Path newPath = new Path(dst);
-		hdfs.rename(oldPath, newPath);
+		fileSystem.rename(oldPath, newPath);
 	}
 
 	public void delete(String dir) throws FileNotFoundException, IOException {
 		Path path = new Path(dir);
-		hdfs.delete(path, true);
+		fileSystem.delete(path, true);
 	}
 
 	public boolean isExist(String dir) throws FileNotFoundException, IOException {
 		Path path = new Path(dir);
-		return hdfs.exists(path);
+		return fileSystem.exists(path);
 	}
 
 	public long getSpaceConsumed(String dir) throws FileNotFoundException, IOException {
 		Path path = new Path(dir);
-		return hdfs.getContentSummary(path).getSpaceConsumed();
+		return fileSystem.getContentSummary(path).getSpaceConsumed();
 	}
 
-	public List<String> readContentOfDirectory(String dir) throws FileNotFoundException, IOException {
-		Path path = new Path(dir);
-		FileStatus[] status = hdfs.listStatus(path);
-		List<String> result = new ArrayList<String>();
-		for (int i = 0; i < status.length; i++) {
-			InputStream in = hdfs.open(status[i].getPath());
-			BufferedReader br = new BufferedReader(new InputStreamReader(in));
-			String line;
-			line = br.readLine();
-			while (line != null) {
-				// System.out.println(line);
-				result.add(line);
-				line = br.readLine();
+
+	public void readFile(String file) throws FileNotFoundException, IOException {
+		Path path = new Path(file);
+		BufferedReader br = new BufferedReader(new InputStreamReader(fileSystem.open(path)));
+		String line = br.readLine();
+		while (line != null) {
+			String[] arr = line.split(",");
+			if (arr.length == 9) {
+				System.out.println(arr[0]);
 			}
+			line = br.readLine();
 		}
-		return result;
+		br.close();
 	}
 
 	public void close() throws IOException {
-		hdfs.close();
+		fileSystem.close();
+	}
+
+	public List<String> getAllFilePath(String dir) throws IOException {
+		Path path = new Path(dir);
+		List<String> listFile = new ArrayList<>();
+		FileStatus[] arrFileStatus = fileSystem.listStatus(path);
+		for (FileStatus fileStatus : arrFileStatus) {
+			if (fileStatus.isDirectory()) {
+				listFile.addAll(getAllFilePath(fileStatus.getPath().toString()));
+			} else if (fileStatus.isFile()) {
+				if (!fileStatus.getPath().toString().contains("_SUCCESS")) {
+					listFile.add(fileStatus.getPath().toString());
+				}
+			}
+		}
+		return listFile;
 	}
 }
