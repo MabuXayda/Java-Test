@@ -44,7 +44,12 @@ public class HdfsIOSimple {
 		br.write(text);
 		br.close();
 	}
-
+	
+	public BufferedReader getReadStreamFromHdfs(String filePath) throws UnsupportedEncodingException, IOException{
+		Path path = new Path(filePath);
+		return new BufferedReader(new InputStreamReader(fileSystem.open(path), "UTF-8"));
+	}
+	
 	public BufferedWriter getWriteStreamNewToHdfs(String filePath) throws UnsupportedEncodingException, IOException {
 		Path path = new Path(filePath);
 		return new BufferedWriter(new OutputStreamWriter(fileSystem.create(path), "UTF-8"));

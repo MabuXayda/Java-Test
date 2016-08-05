@@ -11,11 +11,20 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 public class FileUtils {
-	public static void sortListFileNumber(List<File> files) {
-		Collections.sort(files, new Comparator<File>() {
+	public static void main(String[] args) {
+		List<String> listFile = getListFilePath(new File("/home/tunn/data/tv/hadoop_hdfs/zz"));
+		sortListFilePathNumber(listFile);
+		for (String file : listFile) {
+			System.out.println(file);
+		}
+
+	}
+
+	public static void sortListFileNumber(List<File> listFile) {
+		Collections.sort(listFile, new Comparator<File>() {
 			public Integer getNumber(File o) {
 				String[] arr1 = o.getAbsolutePath().split("/");
-				String[] arr2 = arr1[arr1.length - 1].split(".");
+				String[] arr2 = arr1[arr1.length - 1].split("\\.");
 				String[] arr3 = arr2[0].split("_");
 				return Integer.parseInt(arr3[1]);
 			}
@@ -29,9 +38,9 @@ public class FileUtils {
 			}
 		});
 	}
-	
-	public static void sortListFileDateTime(List<File> files) {
-		Collections.sort(files, new Comparator<File>() {
+
+	public static void sortListFileDateTime(List<File> listFile) {
+		Collections.sort(listFile, new Comparator<File>() {
 			DateTimeFormatter dtf = DateTimeFormat.forPattern("yyyy-MM-dd");
 
 			public DateTime getDateTime(File file) {
@@ -47,12 +56,31 @@ public class FileUtils {
 			}
 		});
 	}
+	
+	public static void sortListFilePathDateTimeHdfs(List<String> listFilePath){
+		Collections.sort(listFilePath, new Comparator<String>() {
+			DateTimeFormatter dtf = DateTimeFormat.forPattern("yyyy-MM-dd_HH");
+			public DateTime getDateTime(String o) {
+				String[] arr1 = o.split("/");
+				String[] arr2 = arr1[arr1.length - 1].split("\\.");
+				return dtf.parseDateTime(arr2[0].substring(0, 13));
+			}
 
-	public static void sortListFilePathNumber(List<String> listFile) {
-		Collections.sort(listFile, new Comparator<String>() {
+			public int compare(String o1, String o2) {
+				try {
+					return getDateTime(o1).compareTo(getDateTime(o2));
+				} catch (Exception e) {
+					throw e;
+				}
+			}
+		});
+	}
+
+	public static void sortListFilePathNumber(List<String> listFilePath) {
+		Collections.sort(listFilePath, new Comparator<String>() {
 			public Integer getNumber(String o) {
 				String[] arr1 = o.split("/");
-				String[] arr2 = arr1[arr1.length - 1].split(".");
+				String[] arr2 = arr1[arr1.length - 1].split("\\.");
 				String[] arr3 = arr2[0].split("_");
 				return Integer.parseInt(arr3[1]);
 			}
@@ -67,8 +95,8 @@ public class FileUtils {
 		});
 	}
 
-	public static void sortListFilePathDateTime(List<String> listFile) {
-		Collections.sort(listFile, new Comparator<String>() {
+	public static void sortListFilePathDateTime(List<String> listFilePath) {
+		Collections.sort(listFilePath, new Comparator<String>() {
 			DateTimeFormatter dtf = DateTimeFormat.forPattern("yyyy-MM-dd");
 
 			public DateTime getDateTime(String o) {
@@ -99,28 +127,16 @@ public class FileUtils {
 		return listFile;
 	}
 
-	public static void loadListFilePath(List<String> listFile, File file) {
-		File[] subdir = file.listFiles();
-		for (File f : subdir) {
-			if (f.isFile()) {
-				listFile.add(f.getAbsolutePath());
-			}
-			if (f.isDirectory()) {
-				loadListFilePath(listFile, f);
-			}
-		}
-	}
-
-	public static boolean isExitFile(File filePath) {
-		if (filePath.exists() && !filePath.isDirectory()) {
+	public static boolean isExistFile(String filePath) {
+		if (new File(filePath).exists() && !new File(filePath).isDirectory()) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	public static boolean isExitFolder(File folderPath) {
-		if (folderPath.exists()) {
+	public static boolean isExistFolder(String folderPath) {
+		if (new File(folderPath).exists() && new File(folderPath).isDirectory()) {
 			return true;
 		} else {
 			return false;

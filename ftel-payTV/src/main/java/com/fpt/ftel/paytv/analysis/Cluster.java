@@ -25,6 +25,7 @@ import com.fpt.ftel.paytv.utils.AnalysisUtils;
 import com.fpt.ftel.paytv.utils.PayTVUtils;
 
 public class Cluster {
+	private static final Integer TIME_USE_TOP = 1433528;
 	public static List<String> LIST_FEATURES = Arrays.asList("Time1", "Time2", "Time3", "IPTV", "VOD_TOTAL", "SERVICE",
 			"LOGID_TIMESHIFT", "LOGID_SERVICE", "ReuseCount", "ReuseAvg", "ReuseMax", "DayActive");
 
@@ -106,7 +107,7 @@ public class Cluster {
 					}
 					mapInfo.put(Integer.toString(i), value);
 				}
-				Map<String, Double> mapInfoScale = MapUtils.scaleMap(mapInfo, PayTVUtils.TIME_USE_TOP);
+				Map<String, Double> mapInfoScale = MapUtils.scaleMap(mapInfo, TIME_USE_TOP);
 				if (setUserActive.contains(customerId)) {
 					mapUserActiveInfo.put(customerId, mapInfoScale);
 				} else if (setUserChurn.contains(customerId)) {

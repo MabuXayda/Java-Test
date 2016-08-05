@@ -26,8 +26,8 @@ import com.google.gson.stream.JsonReader;
 public class UserStatus {
 
 	public static void main(String[] args) {
-		System.out.println(new Duration(PayTVUtils.FORMAT_DATE_TIME_WITH_HOUR.parseDateTime("2016-03-04 00:00:01"),
-				PayTVUtils.FORMAT_DATE_TIME_WITH_HOUR.parseDateTime("2016-03-31 00:00:00")).getStandardDays());
+		System.out.println(new Duration(PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-03-04 00:00:01"),
+				PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-03-31 00:00:00")).getStandardDays());
 	}
 
 	public static Map<String, DateTime> getMapUserChurnDateCondition(Map<String, Map<String, DateTime>> mapUserChurn) {
@@ -51,7 +51,7 @@ public class UserStatus {
 			Map<String, Map<String, DateTime>> mapUserChurn, String dateCondition) {
 		Map<String, DateTime> mapUserDateCondition = new HashMap<>();
 		for (String customerId : mapUserActive.keySet()) {
-			mapUserDateCondition.put(customerId, PayTVUtils.FORMAT_DATE_TIME_WITH_HOUR.parseDateTime(dateCondition));
+			mapUserDateCondition.put(customerId, PayTVUtils.FORMAT_DATE_TIME.parseDateTime(dateCondition));
 		}
 
 		for (String customerId : mapUserChurn.keySet()) {
@@ -70,7 +70,7 @@ public class UserStatus {
 			String[] arr = line.split(",");
 			if (arr.length == 5) {
 				if (StringUtils.isNumeric(arr[0])) {
-					DateTime startDate = PayTVUtils.FORMAT_DATE_TIME_WITH_HOUR.parseDateTime(arr[2]);
+					DateTime startDate = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(arr[2]);
 					if (startDate != null) {
 						mapUserActive.put(arr[0], startDate);
 						count++;
@@ -94,8 +94,8 @@ public class UserStatus {
 			String[] arr = line.split(",");
 			if (arr.length == 6) {
 				if (StringUtils.isNumeric(arr[0])) {
-					DateTime startDate = PayTVUtils.FORMAT_DATE_TIME_WITH_HOUR.parseDateTime(arr[2]);
-					DateTime stopDate = PayTVUtils.FORMAT_DATE_TIME_WITH_HOUR.parseDateTime(arr[4]);
+					DateTime startDate = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(arr[2]);
+					DateTime stopDate = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(arr[4]);
 					if (startDate != null && stopDate != null) {
 						Map<String, DateTime> mapDate = new HashMap<>();
 						mapDate.put("StartDate", startDate);
@@ -112,7 +112,7 @@ public class UserStatus {
 		return mapUserChurn;
 	}
 
-	public static Set<String> getListUserSpecial(String filePath)
+	public static Set<String> getSetUserSpecial(String filePath)
 			throws JsonIOException, JsonSyntaxException, FileNotFoundException {
 		UserSpecialApi api = new Gson().fromJson(new JsonReader(new FileReader(filePath)), UserSpecialApi.class);
 		List<CustomerID> listCustomerId = api.getRoot().getListCustomer();

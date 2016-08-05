@@ -3,6 +3,7 @@ package com.fpt.ftel.paytv.utils;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -35,16 +36,24 @@ public class StatisticUtils {
 	public static boolean willProcessSessionMainMenu(String customerId, String unparseSMM, DateTime sessionMainMenu,
 			DateTime received_at, Map<String, Set<String>> mapCheckDupSMM, Map<String, DateTime> mapCheckValidSMM) {
 		boolean willProcess = false;
-		Set<String> setCheckDupSMM = mapCheckDupSMM.get(customerId);
-		if (!setCheckDupSMM.contains(unparseSMM)) {
+		Set<String> setCheckDupSMM = new HashSet<>();
+		if (!mapCheckDupSMM.containsKey(customerId)) {
 			setCheckDupSMM.add(unparseSMM);
 			mapCheckDupSMM.put(customerId, setCheckDupSMM);
-			if (!mapCheckValidSMM.containsKey(customerId)) {
-				mapCheckValidSMM.put(customerId, received_at);
-				willProcess = true;
-			} else if (new Duration(mapCheckValidSMM.get(customerId), sessionMainMenu).getStandardSeconds() > (-60)) {
-				mapCheckValidSMM.put(customerId, received_at);
-				willProcess = true;
+			willProcess = true;
+		} else {
+			setCheckDupSMM = mapCheckDupSMM.get(customerId);
+			if (!setCheckDupSMM.contains(unparseSMM)) {
+				setCheckDupSMM.add(unparseSMM);
+				mapCheckDupSMM.put(customerId, setCheckDupSMM);
+				if (!mapCheckValidSMM.containsKey(customerId)) {
+					mapCheckValidSMM.put(customerId, received_at);
+					willProcess = true;
+				} else if (new Duration(mapCheckValidSMM.get(customerId), sessionMainMenu)
+						.getStandardSeconds() > (-60)) {
+					mapCheckValidSMM.put(customerId, received_at);
+					willProcess = true;
+				}
 			}
 		}
 		return willProcess;

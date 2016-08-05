@@ -68,7 +68,7 @@ public class HdfsIO {
 		br.close();
 	}
 
-	public List<String> getAllFileInDir2(String dir) throws FileNotFoundException, IOException {
+	public List<String> getAllFileInDir(String dir) throws FileNotFoundException, IOException {
 		List<String> files = new ArrayList<String>();
 		Path path = new Path(hdfsURL + dir);
 		FileStatus[] status = hdfs.listStatus(path); // you need to pass in your

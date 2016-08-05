@@ -21,19 +21,16 @@ public class PayTVUtils {
 	public static final Set<String> SET_LOG_ID_RTP = new HashSet<String>(
 			Arrays.asList("42", "44", "451", "461", "415", "416", "52", "63", "681", "82", "133", "152"));
 
-	public static final DateTimeFormatter FORMAT_DATE_TIME = DateTimeFormat.forPattern("yyyy-MM-dd");
-	public static final DateTimeFormatter FORMAT_DATE_TIME_WITH_HOUR = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
-
-	public static final String DATE_CONDITION_MONTH_3 = "2016-03-31 23:59:59";
-	public static final String DATE_CONDITION_MONTH_4 = "2016-04-30 23:59:59";
-	public static final Integer TIME_USE_TOP = 1433528;
+	public static final DateTimeFormatter FORMAT_DATE_TIME_SIMPLE = DateTimeFormat.forPattern("yyyy-MM-dd");
+	public static final DateTimeFormatter FORMAT_DATE_TIME = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
+	public static final DateTimeFormatter FORMAT_DATE_TIME_HOUR = DateTimeFormat.forPattern("yyyy-MM-dd_HH");
 
 	public static final Logger LOG_INFO = Logger.getLogger("InfoLog");
 	public static final Logger LOG_ERROR = Logger.getLogger("ErrorLog");
 
-	static {
-		PropertyConfigurator.configure(CommonConfig.getInstance().get(CommonConfig.LOG4J_CONFIG_DIR));
-	}
+//	static {
+//		PropertyConfigurator.configure(CommonConfig.getInstance().get(CommonConfig.LOG4J_CONFIG_DIR));
+//	}
 
 	public static void main(String[] args) throws NoSuchAlgorithmException {
 	}
