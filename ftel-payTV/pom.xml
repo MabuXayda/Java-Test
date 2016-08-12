@@ -17,7 +17,8 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>ftel_raw</finalName>
+<!-- 		<finalName>ftel_payTV_ParseLogService</finalName> -->
+		<finalName>ftel_payTV_TableNowService</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -44,7 +45,8 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>com.fpt.ftel.raw.ParseLogService</mainClass>
+<!-- 							<mainClass>com.fpt.ftel.paytv.service.ParseLogService</mainClass> -->
+							<mainClass>com.fpt.ftel.paytv.service.TableNowService</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

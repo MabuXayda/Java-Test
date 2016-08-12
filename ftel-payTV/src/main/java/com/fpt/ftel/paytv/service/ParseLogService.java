@@ -32,49 +32,47 @@ import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 
 public class ParseLogService {
-	private static HdfsIOSimple hdfsIOSimple;
-	private static String hdfsParsedLogDir;
-	private static final String PARSE_MISSING = "./parseMissing";
-	private static Set<String> setUserSpecial;
+	private HdfsIOSimple hdfsIOSimple;
+	private static final String PROCESS_MISSING = "./process_missing";
+	private Set<String> setUserSpecial;
+	private CommonConfig cf;
 
 	public static void main(String[] args) throws JsonIOException, JsonSyntaxException, IOException {
 		ParseLogService parseLogService = new ParseLogService();
 		if (args[0].equals("fix") && args.length == 3) {
-			System.out.println("Start fix job ..........");
+			System.out.println("Start parse log fix job ..........");
 			parseLogService.processParseRawLogHdfsFix(args[1], args[2]);
 		} else if (args[0].equals("real") && args.length == 2) {
-			System.out.println("Start real job ..........");
+			System.out.println("Start parse log real job ..........");
 			parseLogService.processParseRawLogHdfsReal(args[1]);
 		}
 	}
 
 	public ParseLogService() throws IOException {
-		PropertyConfigurator.configure("./log4j_jobParse.properties");
+		cf = CommonConfig.getInstance();
+		PropertyConfigurator.configure(cf.get(CommonConfig.LOG4J_CONFIG_DIR) + "/log4j_ParseLogService.properties");
 		hdfsIOSimple = new HdfsIOSimple();
-		hdfsParsedLogDir = CommonConfig.getInstance().get(CommonConfig.PARSED_LOG_HDFS_DIR);
-		if (hdfsIOSimple.isExist(hdfsParsedLogDir)) {
-			hdfsIOSimple.createFolder(hdfsParsedLogDir);
+		if (hdfsIOSimple.isExist(cf.get(CommonConfig.PARSED_LOG_HDFS_DIR))) {
+			hdfsIOSimple.createFolder(cf.get(CommonConfig.PARSED_LOG_HDFS_DIR));
 		}
-		setUserSpecial = UserStatus.getSetUserSpecial(CommonConfig.getInstance().get(CommonConfig.USER_SPECIAL_FILE));
+		setUserSpecial = UserStatus.getSetUserSpecial(cf.get(CommonConfig.USER_SPECIAL_FILE));
 	}
 
 	public void processParseRawLogHdfsReal(String dateString) throws IOException {
-		DateTime dateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(dateString);
-		String logPathProcess = getProcessFilePath(dateTime.minusMinutes(5));
-		List<String> listFilePath = getListParseMissing();
-		listFilePath.add(logPathProcess);
-		List<String> listParseMissing = new ArrayList<>();
-		int timeIndex = listFilePath.size() - 1;
-		for(String filePath : listFilePath){
-			if(FileUtils.isExistFile(getProcessFilePath(dateTime.minus(5 * timeIndex)))){
-				parseRawLogHdfs(filePath, setUserSpecial);
-			}else {
-				listParseMissing.add(filePath);
+		List<String> listDateString = getListParseMissing();
+		List<String> listMissing = new ArrayList<>();
+		DateTime currentDateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(dateString);
+		listDateString.add(PayTVUtils.FORMAT_DATE_TIME.print(currentDateTime.minusMinutes(5)));
+		for (String date : listDateString) {
+			currentDateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(date);
+			if (FileUtils.isExistFile(getProcessFilePath(currentDateTime.plusMinutes(5)))) {
+				parseRawLogHdfs(getProcessFilePath(currentDateTime), setUserSpecial);
+			} else {
+				listMissing.addAll(listDateString.subList(listDateString.indexOf(date), listDateString.size()));
+				break;
 			}
-			timeIndex ++ ;
 		}
-		printListParseMissing(listParseMissing);
-		
+		printListParseMissing(listMissing);
 	}
 
 	public void processParseRawLogHdfsFix(String fromDate, String toDate) throws IOException {
@@ -83,18 +81,18 @@ public class ParseLogService {
 			String processPath = getProcessDirPath(date);
 			List<String> listFilePath = FileUtils.getListFilePath(new File(processPath));
 			FileUtils.sortListFilePathNumber(listFilePath);
-			for(String filePath : listFilePath){
+			for (String filePath : listFilePath) {
 				parseRawLogHdfs(filePath, setUserSpecial);
 			}
 		}
 	}
 
-	private List<String> getListParseMissing() throws IOException{
+	public static List<String> getListParseMissing() throws IOException {
 		List<String> listMissing = new ArrayList<>();
-		if(FileUtils.isExistFile(PARSE_MISSING)){
-			BufferedReader br = new BufferedReader(new FileReader(PARSE_MISSING));
+		if (FileUtils.isExistFile(PROCESS_MISSING)) {
+			BufferedReader br = new BufferedReader(new FileReader(PROCESS_MISSING));
 			String line = br.readLine();
-			while (line!=null) {
+			while (line != null) {
 				listMissing.add(line);
 				line = br.readLine();
 			}
@@ -102,20 +100,20 @@ public class ParseLogService {
 		}
 		return listMissing;
 	}
-	
-	private void printListParseMissing(List<String> listMissing) throws IOException{
-		PrintWriter pr = new PrintWriter(new FileWriter(PARSE_MISSING));
-		if(listMissing.size() == 0){
+
+	public static void printListParseMissing(List<String> listMissing) throws IOException {
+		PrintWriter pr = new PrintWriter(new FileWriter(PROCESS_MISSING));
+		if (listMissing.size() == 0) {
 			pr.print("");
 		} else {
-			for(String fileMissing : listMissing){
+			for (String fileMissing : listMissing) {
 				pr.println(fileMissing);
 			}
 		}
 		pr.close();
 	}
-	
-	public String getProcessFilePath(DateTime date) {
+
+	private String getProcessFilePath(DateTime date) {
 		int year = date.getYear();
 		int month = date.getMonthOfYear();
 		int day = date.getDayOfMonth();
@@ -123,7 +121,7 @@ public class ParseLogService {
 		int index = (int) Math.ceil(date.getMinuteOfHour() / 5.0) - 1;
 		String filePath = year + "/" + NumberUtils.getTwoCharNumber(month) + "/" + NumberUtils.getTwoCharNumber(day)
 				+ "/" + NumberUtils.getTwoCharNumber(hour) + "/fbox_" + index + ".txt";
-		return CommonConfig.getInstance().get(CommonConfig.RAW_LOG_DIR) + "/" + filePath;
+		return cf.get(CommonConfig.RAW_LOG_DIR) + "/" + filePath;
 	}
 
 	private String getProcessDirPath(DateTime dateTime) {
@@ -133,7 +131,7 @@ public class ParseLogService {
 		int hour = dateTime.getHourOfDay();
 		String path = year + File.separator + NumberUtils.getTwoCharNumber(month) + File.separator
 				+ NumberUtils.getTwoCharNumber(day) + File.separator + NumberUtils.getTwoCharNumber(hour);
-		return CommonConfig.getInstance().get(CommonConfig.RAW_LOG_DIR) + "/" + path;
+		return cf.get(CommonConfig.RAW_LOG_DIR) + "/" + path;
 	}
 
 	private List<DateTime> getListDateFix(String fromDate, String toDate) {
@@ -175,10 +173,12 @@ public class ParseLogService {
 					String boxTime = source.getFields().getBoxTime();
 					String received_at_string = source.getReceived_at();
 					DateTime received_at = PayTVUtils.parseReceived_at(received_at_string);
+					String ip_wan = source.getFields().getIp_wan();
 
 					if (StringUtils.isNumeric(customerId) && logId != null && appName != null) {
 						String writeLog = customerId + "," + contract + "," + logId + "," + appName + "," + itemId + ","
-								+ realTimePlaying + "," + sessionMainMenu + "," + boxTime + "," + received_at_string;
+								+ realTimePlaying + "," + sessionMainMenu + "," + boxTime + "," + received_at_string
+								+ "," + ip_wan;
 
 						if (received_at != null) {
 							int year = received_at.getYear();
@@ -219,14 +219,14 @@ public class ParseLogService {
 	private int printParsedLogHdfs(int year, int month, int day, int hour, List<String> listLog, int count)
 			throws IOException {
 
-		String path = hdfsParsedLogDir + "/" + year;
+		String path = cf.get(CommonConfig.PARSED_LOG_HDFS_DIR) + "/" + year;
 		path = path + "/" + String.format("%02d", month);
 		path = path + "/" + String.format("%02d", day);
 		path = path + "/" + String.format("%02d", hour);
 		if (!hdfsIOSimple.isExist(path)) {
 			hdfsIOSimple.createFolder(path);
 		}
-		path = path + "/2016-" + String.format("%02d", month) + "-" + String.format("%02d", day) + "_"
+		path = path + "/" + year + "-" + String.format("%02d", month) + "-" + String.format("%02d", day) + "_"
 				+ String.format("%02d", hour) + "_log_parsed.csv";
 		if (listLog.size() > 0) {
 			System.out.println("Push data to : " + path);
@@ -247,16 +247,14 @@ public class ParseLogService {
 		return count;
 	}
 
-	private void hashCustomerId() throws IOException, NoSuchAlgorithmException {
-		List<File> listFile = Arrays
-				.asList(new File(CommonConfig.getInstance().get(CommonConfig.PARSED_LOG_DIR) + "/t4").listFiles());
+	public void hashCustomerId() throws IOException, NoSuchAlgorithmException {
+		List<File> listFile = Arrays.asList(new File(cf.get(CommonConfig.PARSED_LOG_DIR) + "/t4").listFiles());
 		FileUtils.sortListFileDateTime(listFile);
-		String hashFolder = CommonConfig.getInstance().get(CommonConfig.PARSED_LOG_DIR) + "/t4_hash";
+		String hashFolder = cf.get(CommonConfig.PARSED_LOG_DIR) + "/t4_hash";
 		FileUtils.createFolder(hashFolder);
 
 		Map<String, String> mapHashCode = new HashMap<>();
-		BufferedReader br_h = new BufferedReader(
-				new FileReader(CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/hash/hash_old.csv"));
+		BufferedReader br_h = new BufferedReader(new FileReader(cf.get(CommonConfig.MAIN_DIR) + "/hash/hash_old.csv"));
 		String line_h = br_h.readLine();
 		while (line_h != null) {
 			String[] arr = line_h.split(",");
@@ -278,40 +276,36 @@ public class ParseLogService {
 			String line = br.readLine();
 			while (line != null) {
 				String[] arr = line.split(",");
-				if (arr.length == 9) {
-					String customerId = arr[0];
-					String logId = arr[2];
-					String appName = arr[3];
-					String itemId = arr[4];
-					String realTimePlaying = arr[5];
-					String sessionMainMenu = null;
-					if (arr[6].length() == 36) {
-						sessionMainMenu = arr[6].substring(13);
-					}
-					String boxTime = arr[7];
-					String received_at = arr[8];
-					String customerIdHash;
+				String customerId = arr[0];
+				String logId = arr[2];
+				String appName = arr[3];
+				String itemId = arr[4];
+				String realTimePlaying = arr[5];
+				String sessionMainMenu = null;
+				if (arr[6].length() == 36) {
+					sessionMainMenu = arr[6].substring(13);
+				}
+				String boxTime = arr[7];
+				String received_at = arr[8];
+				String customerIdHash;
 
-					if (StringUtils.isNumeric(customerId) && StringUtils.isNumeric(logId)) {
-						if (received_at != null && !received_at.equals("null") && !received_at.isEmpty()) {
-							if (mapHashCode.containsKey(customerId)) {
-								customerIdHash = mapHashCode.get(customerId);
-							} else {
-								customerIdHash = StringUtils.hashCode(customerId);
-								mapHashCode.put(customerId, customerIdHash);
-							}
-
-							pr.println(customerIdHash + "," + logId + "," + appName + "," + itemId + ","
-									+ realTimePlaying + "," + sessionMainMenu + "," + boxTime + "," + received_at);
-
-							valid++;
+				if (StringUtils.isNumeric(customerId) && StringUtils.isNumeric(logId)) {
+					if (received_at != null && !received_at.equals("null") && !received_at.isEmpty()) {
+						if (mapHashCode.containsKey(customerId)) {
+							customerIdHash = mapHashCode.get(customerId);
+						} else {
+							customerIdHash = StringUtils.hashCode(customerId);
+							mapHashCode.put(customerId, customerIdHash);
 						}
 
+						pr.println(customerIdHash + "," + logId + "," + appName + "," + itemId + "," + realTimePlaying
+								+ "," + sessionMainMenu + "," + boxTime + "," + received_at);
+
+						valid++;
 					}
 
-				} else {
-					PayTVUtils.LOG_ERROR.error("Parsed log error: " + line);
 				}
+
 				line = br.readLine();
 				count++;
 				if (count % 500000 == 0) {
@@ -324,8 +318,7 @@ public class ParseLogService {
 			pr.close();
 		}
 
-		PrintWriter pr = new PrintWriter(
-				new FileWriter(CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/Hash.csv"));
+		PrintWriter pr = new PrintWriter(new FileWriter(cf.get(CommonConfig.MAIN_DIR) + "/Hash.csv"));
 		for (String customerId : mapHashCode.keySet()) {
 			pr.println(customerId + "," + mapHashCode.get(customerId));
 		}

@@ -12,6 +12,7 @@ public class CommonConfig {
 
 	private static final String COMMON_PAYTV_CONFIGURATION_FOLDER = "COMMON_PAYTV_CONFIGURATION_FOLDER";
 	private static final String COMMON_PAYTV_CONFIGURATION_FILE = "common_paytv_configuration.json";
+	public static final String LOG4J_CONFIG_DIR = "LOG4J_CONFIG_DIR";
 	public static final String HDFS_CORE_SITE = "HDFS_CORE_SITE";
 	public static final String HDFS_SITE = "HDFS_SITE";
 	
@@ -21,6 +22,12 @@ public class CommonConfig {
 	public static final String PARSED_LOG_HDFS_DIR = "PARSED_LOG_HDFS_DIR";
 	public static final String SUPPORT_DATA_DIR = "SUPPORT_DATA_DIR";
 	public static final String USER_SPECIAL_FILE = "USER_SPECIAL_FILE";
+	
+	public static final String POSTGRESQL_PAYTV_HOST = "POSTGRESQL_PAYTV_HOST";
+	public static final String POSTGRESQL_PAYTV_PORT = "POSTGRESQL_PAYTV_PORT";
+	public static final String POSTGRESQL_PAYTV_DATABASE = "POSTGRESQL_PAYTV_DATABASE"; 
+	public static final String POSTGRESQL_PAYTV_USER = "POSTGRESQL_PAYTV_USER"; 
+	public static final String POSTGRESQL_PAYTV_USER_PASSWORD = "POSTGRESQL_PAYTV_USER_PASSWORD"; 
 
 	private String configurationFile = "";
 	private String configurationFolder = "";

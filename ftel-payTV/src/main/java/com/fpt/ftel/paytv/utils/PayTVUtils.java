@@ -3,21 +3,23 @@ package com.fpt.ftel.paytv.utils;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import com.fpt.ftel.core.config.CommonConfig;
-
 public class PayTVUtils {
+//	public static final int NUMBER_OF_FIELDS = 10;
+	
 	public static final Set<String> SET_APP_NAME_FULL = new HashSet<String>(Arrays.asList("HOME", "IPTV", "VOD",
 			"SPORT", "CHILD", "RELAX", "SERVICE", "BHD", "FIMs", "FIRMWARE", "LOGIN", "PARENTAL CONTROL"));
 	public static final Set<String> SET_APP_NAME_RTP = new HashSet<String>(
 			Arrays.asList("IPTV", "VOD", "SPORT", "CHILD", "RELAX", "SERVICE", "BHD", "FIMs"));
+	public static final List<String> LIST_APP_NAME_RTP = Arrays.asList("IPTV", "VOD", "SPORT", "CHILD", "RELAX",
+			"SERVICE", "BHD", "FIMs");
 	public static final Set<String> SET_LOG_ID_RTP = new HashSet<String>(
 			Arrays.asList("42", "44", "451", "461", "415", "416", "52", "63", "681", "82", "133", "152"));
 

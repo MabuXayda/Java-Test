@@ -21,8 +21,13 @@ public class Fields {
 	// String localType;
 	// @SerializedName("SubnetMask")
 	// String subnetMask;
-	// @SerializedName("ip_wan")
-	// String ip_wan;
+	@SerializedName("ip_wan")
+	String ip_wan;
+
+	public String getIp_wan() {
+		return ip_wan;
+	}
+
 	// @SerializedName("PreviousSubMenuId")
 	// String previousSubMenuId;
 	// @SerializedName("PreviousItemId")
