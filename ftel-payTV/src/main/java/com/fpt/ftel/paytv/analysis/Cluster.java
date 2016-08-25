@@ -18,6 +18,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import com.fpt.ftel.core.config.CommonConfig;
+import com.fpt.ftel.core.config.PayTVConfig;
 import com.fpt.ftel.core.utils.ListUtils;
 import com.fpt.ftel.core.utils.MapUtils;
 import com.fpt.ftel.core.utils.StringUtils;
@@ -54,18 +55,19 @@ public class Cluster {
 		Map<String, Map<String, Double>> mapUserTestInfo = new HashMap<>();
 
 		loadMapInfoFromTrain(mapUserActiveInfo, mapUserChurnInfo,
-				CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/train_test/7_train_scale.csv");
-		loadMapInfoFromTest(mapUserTestInfo,
-				CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/train_test/7_test_scale.csv");
-		
-//		System.out.println("Process similar user Active");
-//		calculateSimilarity(mapUserActiveInfo, mapUserChurnInfo,
-//				CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/train_similarAvg.csv",
-//				CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/train_similarMax.csv");
+				CommonConfig.get(PayTVConfig.MAIN_DIR) + "/train_test/7_train_scale.csv");
+		loadMapInfoFromTest(mapUserTestInfo, CommonConfig.get(PayTVConfig.MAIN_DIR) + "/train_test/7_test_scale.csv");
+
+		// System.out.println("Process similar user Active");
+		// calculateSimilarity(mapUserActiveInfo, mapUserChurnInfo,
+		// CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) +
+		// "/train_similarAvg.csv",
+		// CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) +
+		// "/train_similarMax.csv");
 		System.out.println("Process similar user Test");
 		calculateSimilarity(mapUserTestInfo, mapUserChurnInfo,
-				CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/test_similarAvg.csv",
-				CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/test_similarMax.csv");
+				CommonConfig.get(PayTVConfig.MAIN_DIR) + "/test_similarAvg.csv",
+				CommonConfig.get(PayTVConfig.MAIN_DIR) + "/test_similarMax.csv");
 	}
 
 	public void loadMapActiveChurnFromVectorHourly(Map<String, Map<String, Double>> mapUserActiveInfo,
@@ -74,15 +76,14 @@ public class Cluster {
 		Set<String> setUserChurn = new HashSet<>();
 
 		BufferedReader br = new BufferedReader(
-				new FileReader(CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/userActive.csv"));
+				new FileReader(CommonConfig.get(PayTVConfig.MAIN_DIR) + "/userActive.csv"));
 		String line = br.readLine();
 		while (line != null) {
 			setUserActive.add(line);
 			line = br.readLine();
 		}
 		br.close();
-		br = new BufferedReader(
-				new FileReader(CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/userChurn.csv"));
+		br = new BufferedReader(new FileReader(CommonConfig.get(PayTVConfig.MAIN_DIR) + "/userChurn.csv"));
 		line = br.readLine();
 		while (line != null) {
 			setUserChurn.add(line);
@@ -90,8 +91,7 @@ public class Cluster {
 		}
 		br.close();
 
-		br = new BufferedReader(
-				new FileReader(CommonConfig.getInstance().get(CommonConfig.MAIN_DIR) + "/z_train/vectorHourly.csv"));
+		br = new BufferedReader(new FileReader(CommonConfig.get(PayTVConfig.MAIN_DIR) + "/z_train/vectorHourly.csv"));
 		line = br.readLine();
 		line = br.readLine();
 		while (line != null) {
@@ -119,7 +119,8 @@ public class Cluster {
 
 	}
 
-	public void loadMapInfoFromTest(Map<String, Map<String, Double>> mapUserTestInfo, String fileTestPath) throws IOException {
+	public void loadMapInfoFromTest(Map<String, Map<String, Double>> mapUserTestInfo, String fileTestPath)
+			throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader(fileTestPath));
 		String line = br.readLine();
 		while (line != null) {
@@ -135,7 +136,7 @@ public class Cluster {
 			}
 			line = br.readLine();
 		}
-		br.close(); 
+		br.close();
 	}
 
 	public void loadMapInfoFromTrain(Map<String, Map<String, Double>> mapUserActiveInfo,
@@ -164,7 +165,8 @@ public class Cluster {
 	}
 
 	public void calculateSimilarity(Map<String, Map<String, Double>> mapUserCheckInfo,
-			Map<String, Map<String, Double>> mapUserCompareInfo, String outputAvg, String outputMax) throws IOException {
+			Map<String, Map<String, Double>> mapUserCompareInfo, String outputAvg, String outputMax)
+			throws IOException {
 		Map<String, Double> mapSimilarAvg = Collections.synchronizedMap(new HashMap<>());
 		Map<String, Double> mapSimilarMax = Collections.synchronizedMap(new HashMap<>());
 

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeComparator;
 import org.joda.time.Duration;
 
 public class DateTimeUtils {
@@ -52,5 +53,22 @@ public class DateTimeUtils {
 			break;
 		}
 		return day;
+	}
+	
+	public static int compareToHour(DateTime d1, DateTime d2){
+		if(DateTimeComparator.getDateOnlyInstance().compare(d1, d2) == 0){
+			if(d1.getHourOfDay() < d2.getHourOfDay()){
+				return -1;
+			}else if (d1.getHourOfDay() > d2.getHourOfDay()) {
+				return 1;
+			}else {
+				return 0;
+			}
+		}
+		return DateTimeComparator.getDateOnlyInstance().compare(d1, d2);
+	}
+	
+	public static int compareToDate(DateTime d1, DateTime d2){
+		return DateTimeComparator.getDateOnlyInstance().compare(d1, d2);
 	}
 }

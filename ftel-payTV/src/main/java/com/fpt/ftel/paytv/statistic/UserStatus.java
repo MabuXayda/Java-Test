@@ -1,5 +1,6 @@
 package com.fpt.ftel.paytv.statistic;
 
+import java.awt.Robot;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -25,36 +26,47 @@ import com.google.gson.stream.JsonReader;
 public class UserStatus {
 
 	public static void main(String[] args) {
-		System.out.println(new Duration(PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-03-04 00:00:01"),
-				PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-03-31 00:00:00")).getStandardDays());
-	}
-
-	public static Map<String, DateTime> getMapUserChurnDateCondition(Map<String, Map<String, DateTime>> mapUserChurn) {
-		Map<String, DateTime> mapUserDateCondition = new HashMap<>();
-		for (String customerId : mapUserChurn.keySet()) {
-			mapUserDateCondition.put(customerId, mapUserChurn.get(customerId).get("StopDate"));
+		try {
+			Set<String> setId = UserStatus.getSetUserSpecial("/home/tunn/data/tv/support_data/paytv_get_dm_nv_vip");
+			for (String id : setId) {
+				System.out.println(id);
+			}
+		} catch (JsonIOException | JsonSyntaxException | FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return mapUserDateCondition;
 	}
 
-	public static Map<String, DateTime> getMapUserActiveDateCondition(DateTime dateCondition,
-			Map<String, DateTime> mapUserActive) {
+	public static Map<String, DateTime> getMapUserDateCondition(String fileUserActive, String dateCondition,
+			String fileUserChurn) throws IOException {
 		Map<String, DateTime> mapUserDateCondition = new HashMap<>();
-		for (String customerId : mapUserActive.keySet()) {
-			mapUserDateCondition.put(customerId, dateCondition);
-		}
-		return mapUserDateCondition;
-	}
-
-	public static Map<String, DateTime> getMapUserDateCondition(Map<String, DateTime> mapUserActive,
-			Map<String, Map<String, DateTime>> mapUserChurn, String dateCondition) {
-		Map<String, DateTime> mapUserDateCondition = new HashMap<>();
+		Map<String, DateTime> mapUserActive = getMapUserActive(fileUserActive);
 		for (String customerId : mapUserActive.keySet()) {
 			mapUserDateCondition.put(customerId, PayTVUtils.FORMAT_DATE_TIME.parseDateTime(dateCondition));
 		}
 
+		Map<String, Map<String, DateTime>> mapUserChurn = getMapUserChurn(fileUserChurn);
 		for (String customerId : mapUserChurn.keySet()) {
 			mapUserDateCondition.put(customerId, mapUserChurn.get(customerId).get("StopDate"));
+		}
+		return mapUserDateCondition;
+	}
+
+	public static Map<String, DateTime> getMapUserChurnDateCondition(String fileUserChurn) throws IOException {
+		Map<String, Map<String, DateTime>> mapUserChurn = getMapUserChurn(fileUserChurn);
+		Map<String, DateTime> mapUserDateCondition = new HashMap<>();
+		for (String customerId : mapUserChurn.keySet()) {
+			mapUserDateCondition.put(customerId, mapUserChurn.get(customerId).get("StopDate"));
+		}
+		return mapUserDateCondition;
+	}
+
+	public static Map<String, DateTime> getMapUserActiveDateCondition(String fileUserActive, DateTime dateCondition)
+			throws IOException {
+		Map<String, DateTime> mapUserActive = getMapUserActive(fileUserActive);
+		Map<String, DateTime> mapUserDateCondition = new HashMap<>();
+		for (String customerId : mapUserActive.keySet()) {
+			mapUserDateCondition.put(customerId, dateCondition);
 		}
 		return mapUserDateCondition;
 	}
@@ -114,15 +126,80 @@ public class UserStatus {
 	public static Set<String> getSetUserSpecial(String filePath)
 			throws JsonIOException, JsonSyntaxException, FileNotFoundException {
 		UserSpecialApi api = new Gson().fromJson(new JsonReader(new FileReader(filePath)), UserSpecialApi.class);
-		List<CustomerID> listCustomerId = api.getRoot().getListCustomer();
+		List<UserSpecialApi.Root.CustomerID> listCustomerId = api.getRoot().getListCustomer();
 		Set<String> result = new HashSet<>();
-		for (CustomerID id : listCustomerId) {
+		for (UserSpecialApi.Root.CustomerID id : listCustomerId) {
 			result.add(id.getCustomerId());
 		}
 		return result;
 	}
 
-	public class UserSpecialApi {
+	class UserSpecialApi {
+		class Root {
+			class CustomerID {
+				@SerializedName("CustomerID")
+				String customerID;
+
+				public String getCustomerId() {
+					return customerID;
+				}
+			}
+
+			@SerializedName("List_Customer")
+			List<CustomerID> list_Customer;
+
+			public List<CustomerID> getListCustomer() {
+				return list_Customer;
+			}
+		}
+
+		@SerializedName("Root")
+		Root root;
+
+		public Root getRoot() {
+			return root;
+		}
+	}
+	
+	public static 
+
+	class UserRegis {
+		class Root {
+			class Item {
+				@SerializedName("Contract")
+				String contract;
+
+				public String getContract() {
+					return contract;
+				}
+
+				@SerializedName("CustomerID")
+				String customerID;
+
+				public String getCustomerId() {
+					return customerID;
+				}
+
+				@SerializedName("ServiceID")
+				String serviceID;
+
+				public String getServiceId() {
+					return serviceID;
+				}
+				// @SerializedName("ServiceName")
+				// String serviceName;
+				// @SerializedName("Location")
+				// String location;
+			}
+
+			@SerializedName("item")
+			List<Item> list_item;
+
+			public List<Item> getListItem() {
+				return list_item;
+			}
+		}
+
 		@SerializedName("Root")
 		Root root;
 
@@ -131,22 +208,45 @@ public class UserStatus {
 		}
 	}
 
-	public class Root {
-		@SerializedName("List_Customer")
-		List<CustomerID> list_Customer;
+	class UserCancel{
+		class Root {
+			class Item {
+				@SerializedName("Contract")
+				String contract;
 
-		public List<CustomerID> getListCustomer() {
-			return list_Customer;
+				public String getContract() {
+					return contract;
+				}
+
+				@SerializedName("CustomerID")
+				String customerID;
+
+				public String getCustomerId() {
+					return customerID;
+				}
+
+				@SerializedName("Status")
+				String status;
+
+				public String getStatus() {
+					return status;
+				}
+			}
+
+			@SerializedName("item")
+			List<Item> list_item;
+
+			public List<Item> getListItem() {
+				return list_item;
+			}
+		}
+
+		@SerializedName("Root")
+		Root root;
+
+		public Root getRoot() {
+			return root;
 		}
 	}
-
-	public class CustomerID {
-		@SerializedName("CustomerID")
-		String customerID;
-
-		public String getCustomerId() {
-			return customerID;
-		}
-	}
-
+	
 }

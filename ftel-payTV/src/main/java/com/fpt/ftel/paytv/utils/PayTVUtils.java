@@ -1,6 +1,5 @@
 package com.fpt.ftel.paytv.utils;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -33,9 +32,7 @@ public class PayTVUtils {
 //	static {
 //		PropertyConfigurator.configure(CommonConfig.getInstance().get(CommonConfig.LOG4J_CONFIG_DIR));
 //	}
-
-	public static void main(String[] args) throws NoSuchAlgorithmException {
-	}
+	
 
 	public static Double parseRealTimePlaying(String realTimePlaying) {
 		Double time = null;

@@ -77,9 +77,28 @@ public class StatisticUtils {
 			}
 			pr.println();
 		}
-
 		pr.close();
-
+	}
+	
+	public static void printDays48(PrintWriter pr, Map<String, Map<Integer, Integer>> totalMapDays) {
+		pr.print("CustomerId");
+		for (int i = 0; i <= 47; i++) {
+			pr.print("," + i);
+		}
+		pr.println();
+		for (String customerId : totalMapDays.keySet()) {
+			pr.print(customerId);
+			Map<Integer, Integer> mapDays = totalMapDays.get(customerId);
+			for (int i = 0; i <= 47; i++) {
+				Integer value = mapDays.get(i);
+				if (value == null) {
+					value = 0;
+				}
+				pr.print("," + value);
+			}
+			pr.println();
+		}
+		pr.close();
 	}
 
 	public static void updateDays(Map<Integer, Integer> mapDays, int day, int seconds) {
