@@ -28,10 +28,6 @@ public class CommonConfig {
 	// return instance;
 	// }
 
-	public static void main(String[] args) {
-		System.out.println(CommonConfig.get(PayTVConfig.LOG4J_CONFIG_DIR));
-	}
-
 	private CommonConfig() {
 		loadCommonConfiguration();
 	}

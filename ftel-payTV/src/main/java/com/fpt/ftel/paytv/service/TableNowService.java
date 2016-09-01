@@ -2,6 +2,7 @@ package com.fpt.ftel.paytv.service;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,10 +17,10 @@ import com.fpt.ftel.core.config.PayTVConfig;
 import com.fpt.ftel.core.utils.DateTimeUtils;
 import com.fpt.ftel.core.utils.ListUtils;
 import com.fpt.ftel.core.utils.MapUtils;
-import com.fpt.ftel.core.utils.NumberUtils;
 import com.fpt.ftel.hdfs.HdfsIO;
-import com.fpt.ftel.paytv.db.SQLTableNow;
+import com.fpt.ftel.paytv.db.TableNowDAO;
 import com.fpt.ftel.paytv.statistic.UserUsage;
+import com.fpt.ftel.paytv.utils.PayTVDBUtils;
 import com.fpt.ftel.paytv.utils.PayTVUtils;
 import com.fpt.ftel.paytv.utils.ServiceUtils;
 import com.fpt.ftel.postgresql.ConnectionFactory;
@@ -27,40 +28,44 @@ import com.fpt.ftel.postgresql.ConnectionFactory;
 public class TableNowService {
 	private UserUsage userUsage;
 	private HdfsIO hdfsIO;
-	private static final String TABLE = "now";
+	private TableNowDAO tableNowDAO;
 
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args) {
 		TableNowService tableNowService = new TableNowService();
-		// tableNowService.test("2016-08-21");
-		if (args[0].equals("test") && args.length == 2) {
-			System.out.println("Start table now test job ..........");
-			tableNowService.test(args[1]);
+		if (args[0].equals("create table") && args.length == 1) {
+			System.out.println("Start create table now ..........");
+			try {
+				tableNowService.processTableNowCreateTable();
+			} catch (SQLException e) {
+				PayTVUtils.LOG_ERROR.error(e.getMessage());
+				e.printStackTrace();
+			}
 		} else if (args[0].equals("real") && args.length == 2) {
 			System.out.println("Start table now real job ..........");
-			tableNowService.processTableNowReal(args[1]);
+			try {
+				tableNowService.processTableNowReal(args[1]);
+			} catch (IOException | NumberFormatException | SQLException e) {
+				PayTVUtils.LOG_ERROR.error(e.getMessage());
+				e.printStackTrace();
+			}
 		}
 		System.out.println("DONE " + args[0] + " job");
 	}
 
-	public void test(String dateString) {
-		for (int i = 0; i < 24; i++) {
-			try {
-				processTableNowReal(dateString + " " + NumberUtils.get2CharNumber(i) + ":10:00");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
-
-	public TableNowService() throws IOException {
+	public TableNowService() {
 		PropertyConfigurator
 				.configure(CommonConfig.get(PayTVConfig.LOG4J_CONFIG_DIR) + "/log4j_TableNowService.properties");
-		hdfsIO = new HdfsIO();
+		try {
+			hdfsIO = new HdfsIO();
+		} catch (IOException e) {
+			PayTVUtils.LOG_ERROR.error(e.getMessage());
+			e.printStackTrace();
+		}
 		userUsage = new UserUsage();
+		tableNowDAO = new TableNowDAO();
 	}
 
-	public void processTableNowReal(String dateString) throws IOException {
+	public void processTableNowReal(String dateString) throws IOException, NumberFormatException, SQLException {
 		Connection connection = ConnectionFactory.openConnection(CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_HOST),
 				Integer.parseInt(CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_PORT)),
 				CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_DATABASE),
@@ -76,7 +81,7 @@ public class TableNowService {
 			currentDateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(date);
 
 			if (currentDateTime.getHourOfDay() == 12) {
-				SQLTableNow.deleteOldRows(connection, TABLE,
+				tableNowDAO.deleteOldRecords(connection,
 						Integer.parseInt(CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_TABLE_NOW_TIMETOLIVE)));
 			}
 
@@ -104,13 +109,13 @@ public class TableNowService {
 		ConnectionFactory.closeConnection(connection);
 	}
 
-	public void processTableNowCreateTable() {
+	public void processTableNowCreateTable() throws SQLException {
 		Connection connection = ConnectionFactory.openConnection(CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_HOST),
 				Integer.parseInt(CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_PORT)),
 				CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_DATABASE),
 				CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_USER),
 				CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_USER_PASSWORD));
-		SQLTableNow.createTable(connection);
+		tableNowDAO.createTable(connection);
 		ConnectionFactory.closeConnection(connection);
 	}
 
@@ -126,7 +131,7 @@ public class TableNowService {
 		return path;
 	}
 
-	public void updateUserUsage(DateTime dateTime, Connection connection) {
+	private void updateUserUsage(DateTime dateTime, Connection connection) throws SQLException {
 		String filePath = getFilePathFromDateTime(dateTime);
 		Map<String, String> mapUserContract = userUsage.calculateUserUsageHourly(filePath, hdfsIO);
 		Map<String, Map<Integer, Integer>> mapUserVectorHourly = userUsage.getMapUserVectorHourly();
@@ -138,10 +143,8 @@ public class TableNowService {
 
 		for (String customerId : mapUserContract.keySet()) {
 			Map<String, Integer> mapUsage = new HashMap<>();
-			for (Integer hour : mapUserVectorHourly.get(customerId).keySet()) {
-				mapUsage.put(Integer.toString(hour), mapUserVectorHourly.get(customerId).get(hour));
-			}
-			mapUsage.putAll(mapUserVectorApp.get(customerId));
+			mapUsage.putAll(PayTVDBUtils.formatDBVectorHourly(mapUserVectorHourly.get(customerId)));
+			mapUsage.putAll(PayTVDBUtils.formatDBVectorApp(mapUserVectorApp.get(customerId)));
 			mapUserUsage.put(customerId, mapUsage);
 		}
 
@@ -150,15 +153,15 @@ public class TableNowService {
 		long start = System.currentTimeMillis();
 		for (Set<String> subSetUser : listSetUser) {
 
-			Map<String, Map<String, Integer>> mapUserUsageUpdate = SQLTableNow.queryUserUsage(connection, TABLE,
+			Map<String, Map<String, Integer>> mapUserUsageUpdate = tableNowDAO.queryUserUsage(connection,
 					PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime), subSetUser);
 			if (mapUserUsageUpdate.size() > 0) {
 				for (String customerId : mapUserUsageUpdate.keySet()) {
-					Map<String, Integer> mapInfo = MapUtils.plusMapStringInteger(mapUserUsage.get(customerId),
+					Map<String, Integer> mapInfo = MapUtils.plusMapStringIntegerHard(mapUserUsage.get(customerId),
 							mapUserUsageUpdate.get(customerId));
 					mapUserUsageUpdate.put(customerId, mapInfo);
 				}
-				long t = SQLTableNow.updateUserUsageMultiple(connection, TABLE, mapUserUsageUpdate, mapUserContract,
+				tableNowDAO.updateUserUsageMultiple(connection, mapUserUsageUpdate, mapUserContract,
 						PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime));
 				countUpdate += mapUserUsageUpdate.size();
 			}
@@ -170,7 +173,7 @@ public class TableNowService {
 				}
 			}
 			if (mapUserUsageInsert.size() > 0) {
-				long t = SQLTableNow.insertUserUsageMultiple(connection, TABLE, mapUserUsageInsert, mapUserContract,
+				tableNowDAO.insertUserUsageMultiple(connection, mapUserUsageInsert, mapUserContract,
 						PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime));
 				countInsert += mapUserUsageInsert.size();
 			}

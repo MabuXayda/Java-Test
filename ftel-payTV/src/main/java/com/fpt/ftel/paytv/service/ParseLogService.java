@@ -42,10 +42,10 @@ public class ParseLogService {
 	public static void main(String[] args) throws JsonIOException, JsonSyntaxException, IOException {
 		ParseLogService parseLogService = new ParseLogService();
 		if (args[0].equals("fix") && args.length == 3) {
-			System.out.println("Start parse log fix job ..........");
+			System.out.println("Start parse log fix ..........");
 			parseLogService.processParseLogFix(args[1], args[2]);
 		} else if (args[0].equals("real") && args.length == 2) {
-			System.out.println("Start parse log real job ..........");
+			System.out.println("Start parse log real ..........");
 			parseLogService.processParseLogReal(args[1]);
 		}
 		System.out.println("DONE " + args[0] + " job");
@@ -141,74 +141,6 @@ public class ParseLogService {
 		return listDateFix;
 	}
 
-	private void parseLogOld(DateTime dateTime) throws IOException {
-		List<String> listLog = new ArrayList<>();
-		int startYear = 2016;
-		int startMonth = 2;
-		int startDay = 1;
-		int startHour = 1;
-		int countPrint = 0;
-		int countTotal = 0;
-		long start = System.currentTimeMillis();
-		String filePath = getFilePathFromDateTime(dateTime);
-		BufferedReader br = new BufferedReader(new FileReader(filePath));
-		String line = br.readLine();
-
-		while (line != null) {
-			countTotal++;
-
-			if (!line.isEmpty()) {
-				try {
-					Source source = new Gson().fromJson(line, Source.class);
-					String customerId = source.getFields().getCustomerId();
-					String contract = source.getFields().getContract();
-					String logId = source.getFields().getLogId();
-					String appName = source.getFields().getAppName();
-					String itemId = source.getFields().getItemId();
-					String realTimePlaying = source.getFields().getRealTimePlaying();
-					String sessionMainMenu = source.getFields().getSessionMainMenu();
-					String boxTime = source.getFields().getBoxTime();
-					String received_at_string = source.getReceived_at();
-					DateTime received_at = PayTVUtils.parseReceived_at(received_at_string);
-					String ip_wan = source.getFields().getIp_wan();
-
-					if (StringUtils.isNumeric(customerId) && logId != null && appName != null && received_at != null
-							&& !setUserSpecial.contains(customerId)) {
-						String writeLog = customerId + "," + contract + "," + logId + "," + appName + "," + itemId + ","
-								+ realTimePlaying + "," + sessionMainMenu + "," + boxTime + "," + received_at_string
-								+ "," + ip_wan;
-						int year = received_at.getYear();
-						int month = received_at.getMonthOfYear();
-						int day = received_at.getDayOfMonth();
-						int hour = received_at.getHourOfDay();
-						if (year == startYear && month == startMonth && day == startDay && hour == startHour) {
-							listLog.add(writeLog);
-						} else {
-							countPrint = printLogParsed(startYear, startMonth, startDay, startHour, listLog,
-									countPrint);
-
-							startMonth = month;
-							startDay = day;
-							startHour = hour;
-							listLog = new ArrayList<>();
-							listLog.add(writeLog);
-						}
-					}
-				} catch (Exception e) {
-					// TODO: handle exception
-				}
-			}
-			line = br.readLine();
-		}
-		br.close();
-
-		countPrint = printLogParsed(startYear, startMonth, startDay, startHour, listLog, countPrint);
-		listLog = new ArrayList<>();
-
-		PayTVUtils.LOG_INFO.info("Done file: " + filePath + " | Print: " + countPrint + " | Total: " + countTotal
-				+ " | Time: " + (System.currentTimeMillis() - start));
-	}
-
 	private void parseLog(DateTime dateTime) throws IOException {
 		long start = System.currentTimeMillis();
 		int countPrint = 0;
@@ -283,7 +215,7 @@ public class ParseLogService {
 		return count;
 	}
 
-	private void hashCustomerId() throws IOException, NoSuchAlgorithmException {
+	public static void hashCustomerId() throws IOException, NoSuchAlgorithmException {
 		List<File> listFile = Arrays.asList(new File(CommonConfig.get(PayTVConfig.MAIN_DIR) + "/t4").listFiles());
 		FileUtils.sortListFileDateTime(listFile);
 		String hashFolder = CommonConfig.get(PayTVConfig.MAIN_DIR) + "/t4_hash";

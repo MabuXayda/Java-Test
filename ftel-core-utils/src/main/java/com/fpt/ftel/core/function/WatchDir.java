@@ -109,6 +109,7 @@ public class WatchDir {
 	/**
 	 * Process all events for keys queued to the watcher
 	 */
+	@SuppressWarnings("rawtypes")
 	void processEvents() {
 		for (;;) {
 
@@ -141,10 +142,9 @@ public class WatchDir {
 
 				// print out event
 				System.out.format("%s: %s\n", event.kind().name(), child);
-				if(event.kind().name().equals("ENTRY_CREATE")){
+				if (event.kind().name().equals("ENTRY_CREATE")) {
 					System.out.println("tao file: " + child);
 				}
-					
 
 				// if directory is created, and watching recursively, then
 				// register it and its sub-directories
@@ -179,16 +179,16 @@ public class WatchDir {
 
 	public static void main(String[] args) throws IOException {
 		// parse arguments
-//		if (args.length == 0 || args.length > 2)
-//			usage();
-//		boolean recursive = false;
-//		int dirArg = 0;
-//		if (args[0].equals("-r")) {
-//			if (args.length < 2)
-//				usage();
-//			recursive = true;
-//			dirArg++;
-//		}
+		// if (args.length == 0 || args.length > 2)
+		// usage();
+		// boolean recursive = false;
+		// int dirArg = 0;
+		// if (args[0].equals("-r")) {
+		// if (args.length < 2)
+		// usage();
+		// recursive = true;
+		// dirArg++;
+		// }
 
 		boolean recursive = true;
 		// register directory and process its events

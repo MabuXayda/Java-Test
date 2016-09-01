@@ -3,12 +3,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.fpt.ftel</groupId>
 	<artifactId>ftel-core-db</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<dependencies>
 		<dependency>
 			<groupId>com.fpt.ftel.core</groupId>
 			<artifactId>ftel-core-utils</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.hadoop</groupId>

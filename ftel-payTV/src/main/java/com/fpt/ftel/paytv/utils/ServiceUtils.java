@@ -18,7 +18,8 @@ public class ServiceUtils {
 	public static final String PARSE_LOG_SERVICE_MISSING = "/ParseLogService_missing";
 	public static final String TABLE_NOW_SERVICE_MISSING = "/TableNowService_missing";
 	public static final String TABLE_DAILY_SERVICE_MISSING = "/TableDailyService_missing";
-
+	public static final String TABLE_PROFILE_SERVICE_MISSING = "/TableProfileService_missing";
+	
 	public static List<String> getListProcessMissing(String file) throws IOException {
 		List<String> listMissing = new ArrayList<>();
 		if (FileUtils.isExistFile(CommonConfig.get(PayTVConfig.SERVICE_MONITOR_DIR) + file)) {

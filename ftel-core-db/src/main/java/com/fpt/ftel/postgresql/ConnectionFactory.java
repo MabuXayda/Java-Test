@@ -22,6 +22,7 @@ public class ConnectionFactory {
 		try {
 			connection = DriverManager.getConnection("jdbc:postgresql://" + host + ":" + port + "/" + database, user,
 					password);
+			connection.setAutoCommit(false);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -34,11 +35,13 @@ public class ConnectionFactory {
 	}
 
 	public static void closeConnection(Connection connection) {
-		try {
-			connection.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (connection != null) {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }
