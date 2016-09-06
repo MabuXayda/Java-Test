@@ -18,11 +18,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import com.fpt.ftel.core.config.CommonConfig;
-import com.fpt.ftel.core.config.PayTVConfig;
 import com.fpt.ftel.core.utils.ListUtils;
 import com.fpt.ftel.core.utils.MapUtils;
 import com.fpt.ftel.core.utils.StringUtils;
 import com.fpt.ftel.paytv.utils.AnalysisUtils;
+import com.fpt.ftel.paytv.utils.PayTVConfig;
 
 public class Cluster {
 	private static final Integer TIME_USE_TOP = 1433528;

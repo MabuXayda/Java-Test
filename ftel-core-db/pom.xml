@@ -6,20 +6,15 @@
 	<version>1.0</version>
 	<dependencies>
 		<dependency>
-			<groupId>com.fpt.ftel.core</groupId>
-			<artifactId>ftel-core-utils</artifactId>
-			<version>1.0</version>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.hadoop</groupId>
 			<artifactId>hadoop-client</artifactId>
 			<version>2.7.2</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>guava</artifactId>
-					<groupId>com.google.guava</groupId>
-				</exclusion>
-			</exclusions>
+<!-- 			<exclusions> -->
+<!-- 				<exclusion> -->
+<!-- 					<artifactId>guava</artifactId> -->
+<!-- 					<groupId>com.google.guava</groupId> -->
+<!-- 				</exclusion> -->
+<!-- 			</exclusions> -->
 		</dependency>
 		<dependency>
 			<groupId>org.apache.hadoop</groupId>

@@ -19,7 +19,8 @@
 	<build>
 <!-- 		<finalName>ftel_payTV_ParseLogService</finalName> -->
 <!-- 		<finalName>ftel_payTV_TableNowService</finalName> -->
-		<finalName>ftel_payTV_TableDailyService</finalName>
+<!-- 		<finalName>ftel_payTV_TableDailyService</finalName> -->
+		<finalName>ftel_payTV_TableProfileService</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -48,7 +49,8 @@
 							<classpathPrefix>lib/</classpathPrefix>
 <!-- 							<mainClass>com.fpt.ftel.paytv.service.ParseLogService</mainClass> -->
 <!-- 							<mainClass>com.fpt.ftel.paytv.service.TableNowService</mainClass> -->
-							<mainClass>com.fpt.ftel.paytv.service.TableDailyService</mainClass>
+<!-- 							<mainClass>com.fpt.ftel.paytv.service.TableDailyService</mainClass> -->
+							<mainClass>com.fpt.ftel.paytv.service.TableProfileService</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

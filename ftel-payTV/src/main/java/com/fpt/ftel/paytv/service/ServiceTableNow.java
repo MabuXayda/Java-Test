@@ -13,25 +13,25 @@ import org.apache.log4j.PropertyConfigurator;
 import org.joda.time.DateTime;
 
 import com.fpt.ftel.core.config.CommonConfig;
-import com.fpt.ftel.core.config.PayTVConfig;
 import com.fpt.ftel.core.utils.DateTimeUtils;
 import com.fpt.ftel.core.utils.ListUtils;
 import com.fpt.ftel.core.utils.MapUtils;
 import com.fpt.ftel.hdfs.HdfsIO;
 import com.fpt.ftel.paytv.db.TableNowDAO;
 import com.fpt.ftel.paytv.statistic.UserUsage;
+import com.fpt.ftel.paytv.utils.PayTVConfig;
 import com.fpt.ftel.paytv.utils.PayTVDBUtils;
 import com.fpt.ftel.paytv.utils.PayTVUtils;
 import com.fpt.ftel.paytv.utils.ServiceUtils;
 import com.fpt.ftel.postgresql.ConnectionFactory;
 
-public class TableNowService {
+public class ServiceTableNow {
 	private UserUsage userUsage;
 	private HdfsIO hdfsIO;
 	private TableNowDAO tableNowDAO;
 
 	public static void main(String[] args) {
-		TableNowService tableNowService = new TableNowService();
+		ServiceTableNow tableNowService = new ServiceTableNow();
 		if (args[0].equals("create table") && args.length == 1) {
 			System.out.println("Start create table now ..........");
 			try {
@@ -52,11 +52,11 @@ public class TableNowService {
 		System.out.println("DONE " + args[0] + " job");
 	}
 
-	public TableNowService() {
+	public ServiceTableNow() {
 		PropertyConfigurator
 				.configure(CommonConfig.get(PayTVConfig.LOG4J_CONFIG_DIR) + "/log4j_TableNowService.properties");
 		try {
-			hdfsIO = new HdfsIO();
+			hdfsIO = new HdfsIO(CommonConfig.get(PayTVConfig.HDFS_CORE_SITE), CommonConfig.get(PayTVConfig.HDFS_SITE));
 		} catch (IOException e) {
 			PayTVUtils.LOG_ERROR.error(e.getMessage());
 			e.printStackTrace();

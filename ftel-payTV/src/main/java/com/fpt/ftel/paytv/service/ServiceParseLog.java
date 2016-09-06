@@ -20,7 +20,6 @@ import org.joda.time.DateTime;
 import org.joda.time.Duration;
 
 import com.fpt.ftel.core.config.CommonConfig;
-import com.fpt.ftel.core.config.PayTVConfig;
 import com.fpt.ftel.core.utils.DateTimeUtils;
 import com.fpt.ftel.core.utils.FileUtils;
 import com.fpt.ftel.core.utils.NumberUtils;
@@ -29,18 +28,19 @@ import com.fpt.ftel.hdfs.HdfsIO;
 import com.fpt.ftel.paytv.object.raw.Fields;
 import com.fpt.ftel.paytv.object.raw.Source;
 import com.fpt.ftel.paytv.statistic.UserStatus;
+import com.fpt.ftel.paytv.utils.PayTVConfig;
 import com.fpt.ftel.paytv.utils.PayTVUtils;
 import com.fpt.ftel.paytv.utils.ServiceUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 
-public class ParseLogService {
+public class ServiceParseLog {
 	private HdfsIO hdfsIO;
 	private Set<String> setUserSpecial;
 
 	public static void main(String[] args) throws JsonIOException, JsonSyntaxException, IOException {
-		ParseLogService parseLogService = new ParseLogService();
+		ServiceParseLog parseLogService = new ServiceParseLog();
 		if (args[0].equals("fix") && args.length == 3) {
 			System.out.println("Start parse log fix ..........");
 			parseLogService.processParseLogFix(args[1], args[2]);
@@ -51,10 +51,10 @@ public class ParseLogService {
 		System.out.println("DONE " + args[0] + " job");
 	}
 
-	public ParseLogService() throws IOException {
+	public ServiceParseLog() throws IOException {
 		PropertyConfigurator
 				.configure(CommonConfig.get(PayTVConfig.LOG4J_CONFIG_DIR) + "/log4j_ParseLogService.properties");
-		hdfsIO = new HdfsIO();
+		hdfsIO = new HdfsIO(CommonConfig.get(PayTVConfig.HDFS_CORE_SITE), CommonConfig.get(PayTVConfig.HDFS_SITE));
 		if (hdfsIO.isExist(CommonConfig.get(PayTVConfig.PARSED_LOG_HDFS_DIR))) {
 			hdfsIO.createFolder(CommonConfig.get(PayTVConfig.PARSED_LOG_HDFS_DIR));
 		}

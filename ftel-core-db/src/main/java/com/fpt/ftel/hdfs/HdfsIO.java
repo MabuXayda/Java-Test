@@ -15,16 +15,13 @@ import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 
-import com.fpt.ftel.core.config.CommonConfig;
-import com.fpt.ftel.core.config.PayTVConfig;
-
 public class HdfsIO {
 	private final FileSystem fileSystem;
 
-	public HdfsIO() throws IOException {
+	public HdfsIO(String hdfsCoreSite, String hdfsSite) throws IOException {
 		Configuration configuration = new Configuration();
-		configuration.addResource(new Path(CommonConfig.get(PayTVConfig.HDFS_CORE_SITE)));
-		configuration.addResource(new Path(CommonConfig.get(PayTVConfig.HDFS_SITE)));
+		configuration.addResource(new Path(hdfsCoreSite));
+		configuration.addResource(new Path(hdfsSite));
 		fileSystem = FileSystem.get(configuration);
 	}
 

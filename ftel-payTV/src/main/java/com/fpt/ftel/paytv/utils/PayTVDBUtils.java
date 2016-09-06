@@ -4,8 +4,6 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.joda.time.DateTime;
-
 import com.fpt.ftel.core.utils.DateTimeUtils;
 import com.fpt.ftel.core.utils.NumberUtils;
 import com.google.gson.Gson;

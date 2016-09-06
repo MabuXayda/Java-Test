@@ -1,11 +1,11 @@
 package com.fpt.ftel.paytv.statistic;
 
-import java.awt.Robot;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -13,7 +13,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.joda.time.DateTime;
-import org.joda.time.Duration;
 
 import com.fpt.ftel.core.utils.StringUtils;
 import com.fpt.ftel.paytv.utils.PayTVUtils;
@@ -25,9 +24,18 @@ import com.google.gson.stream.JsonReader;
 
 public class UserStatus {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UnsupportedEncodingException, IOException {
+		// URL url = new URL("http://127.0.0.1:8080");
+		//
+		// try (BufferedReader reader = new BufferedReader(new
+		// InputStreamReader(url.openStream(), "UTF-8"))) {
+		// for (String line; (line = reader.readLine()) != null;) {
+		// System.out.println(line);
+		// }
+		// }
+
 		try {
-			Set<String> setId = UserStatus.getSetUserSpecial("/home/tunn/data/tv/support_data/paytv_get_dm_nv_vip");
+			Set<String> setId = UserStatus.getSetUserCancel("/home/tunn/data/tv/support_data/UserCancel");
 			for (String id : setId) {
 				System.out.println(id);
 			}
@@ -160,8 +168,58 @@ public class UserStatus {
 			return root;
 		}
 	}
-	
-	public static 
+
+	public static Set<String> getSetUserCancel(String filePath)
+			throws JsonIOException, JsonSyntaxException, FileNotFoundException {
+		UserCancelApi api = new Gson().fromJson(new JsonReader(new FileReader(filePath)), UserCancelApi.class);
+		List<UserCancelApi.Root.Item> listItem = api.getRoot().getListItem();
+		Set<String> result = new HashSet<>();
+		for (UserCancelApi.Root.Item item : listItem) {
+			result.add(item.getCustomerId());
+		}
+		return result;
+	}
+
+	class UserCancelApi {
+		class Root {
+			class Item {
+				@SerializedName("Contract")
+				String contract;
+
+				public String getContract() {
+					return contract;
+				}
+
+				@SerializedName("CustomerID")
+				String customerID;
+
+				public String getCustomerId() {
+					return customerID;
+				}
+
+				@SerializedName("Status")
+				String status;
+
+				public String getStatus() {
+					return status;
+				}
+			}
+
+			@SerializedName("item")
+			List<Item> list_item;
+
+			public List<Item> getListItem() {
+				return list_item;
+			}
+		}
+
+		@SerializedName("Root")
+		Root root;
+
+		public Root getRoot() {
+			return root;
+		}
+	}
 
 	class UserRegis {
 		class Root {
@@ -208,45 +266,4 @@ public class UserStatus {
 		}
 	}
 
-	class UserCancel{
-		class Root {
-			class Item {
-				@SerializedName("Contract")
-				String contract;
-
-				public String getContract() {
-					return contract;
-				}
-
-				@SerializedName("CustomerID")
-				String customerID;
-
-				public String getCustomerId() {
-					return customerID;
-				}
-
-				@SerializedName("Status")
-				String status;
-
-				public String getStatus() {
-					return status;
-				}
-			}
-
-			@SerializedName("item")
-			List<Item> list_item;
-
-			public List<Item> getListItem() {
-				return list_item;
-			}
-		}
-
-		@SerializedName("Root")
-		Root root;
-
-		public Root getRoot() {
-			return root;
-		}
-	}
-	
 }

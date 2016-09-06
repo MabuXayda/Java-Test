@@ -14,19 +14,17 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
 
 import com.fpt.ftel.core.config.CommonConfig;
-import com.fpt.ftel.core.config.PayTVConfig;
 import com.fpt.ftel.core.utils.DateTimeUtils;
 import com.fpt.ftel.core.utils.FileUtils;
 import com.fpt.ftel.core.utils.NumberUtils;
 import com.fpt.ftel.core.utils.StringUtils;
 import com.fpt.ftel.hdfs.HdfsIO;
+import com.fpt.ftel.paytv.utils.PayTVConfig;
 import com.fpt.ftel.paytv.utils.PayTVUtils;
 import com.fpt.ftel.paytv.utils.StatisticUtils;
 
@@ -40,12 +38,6 @@ public class UserUsage {
 	private static Set<String> setLogId;
 
 	public static void main(String[] args) throws IOException {
-		long start = System.currentTimeMillis();
-		UserUsage usageStatistic = new UserUsage();
-		PayTVUtils.LOG_INFO.info("=============== Start job total at: " + start);
-		usageStatistic.processStatistic();
-		PayTVUtils.LOG_INFO.info("=============== Done job total at: " + (System.currentTimeMillis() - start));
-		// usageStatistic.test();
 	}
 
 	public void reset() {
@@ -56,12 +48,6 @@ public class UserUsage {
 		mapUserReturnUse = null;
 		mapUserVectorDays = null;
 		setLogId = null;
-	}
-
-	public void test() throws IOException {
-		List<String> listFilePathInput = getListLogPathHdfsStatistic(
-				PayTVUtils.FORMAT_DATE_TIME_SIMPLE.parseDateTime("2016-06-01"), new HdfsIO());
-		System.out.println(listFilePathInput.get(0));
 	}
 
 	public Map<String, Map<String, Integer>> getMapUserVectorApp() {
@@ -100,7 +86,7 @@ public class UserUsage {
 		long start = System.currentTimeMillis();
 		int countTotal = 0;
 		int countTime = 0;
-//		int countLogId = 0;
+		// int countLogId = 0;
 		Map<String, String> mapUserContract = new HashMap<>();
 		Map<String, Set<String>> mapCheckDupSMM = new HashMap<>();
 		Map<String, DateTime> mapCheckValidSMM = new HashMap<>();
@@ -121,79 +107,80 @@ public class UserUsage {
 		}
 		while (line != null) {
 			String[] arr = line.split(",");
-//			if (arr.length == PayTVUtils.NUMBER_OF_FIELDS) {
-				String customerId = arr[0];
-				String contract = arr[1];
-				String logId = arr[2];
-				String appName = arr[3];
-				Double realTimePlaying = PayTVUtils.parseRealTimePlaying(arr[5]);
-				String unparseSMM = arr[6];
-				DateTime sessionMainMenu = PayTVUtils.parseSessionMainMenu(arr[6]);
-				DateTime received_at = PayTVUtils.parseReceived_at(arr[8]);
-				int secondsSMM = 0;
-				int secondsRTP = 0;
-				boolean willProcessCountLogId = false;
-				boolean willProcessSMM = false;
-				boolean willProcessRTP = false;
+			// if (arr.length == PayTVUtils.NUMBER_OF_FIELDS) {
+			String customerId = arr[0];
+			String contract = arr[1];
+			String logId = arr[2];
+			String appName = arr[3];
+			Double realTimePlaying = PayTVUtils.parseRealTimePlaying(arr[5]);
+			String unparseSMM = arr[6];
+			DateTime sessionMainMenu = PayTVUtils.parseSessionMainMenu(arr[6]);
+			DateTime received_at = PayTVUtils.parseReceived_at(arr[8]);
+			int secondsSMM = 0;
+			int secondsRTP = 0;
+			boolean willProcessCountLogId = false;
+			boolean willProcessSMM = false;
+			boolean willProcessRTP = false;
 
-				if (StringUtils.isNumeric(customerId) && received_at != null
-						&& PayTVUtils.SET_APP_NAME_FULL.contains(appName) && StringUtils.isNumeric(logId)) {
-					willProcessCountLogId = true;
-					if (logId.equals("12") || logId.equals("18")) {
-						if (sessionMainMenu != null) {
-							willProcessSMM = StatisticUtils.willProcessSessionMainMenu(customerId, unparseSMM,
-									sessionMainMenu, received_at, mapCheckDupSMM, mapCheckValidSMM);
-							if (willProcessSMM) {
-								secondsSMM = (int) new Duration(sessionMainMenu, received_at).getStandardSeconds();
-								if (secondsSMM <= 0 || secondsSMM > 12 * 3600) {
-									willProcessSMM = false;
-								}
+			if (StringUtils.isNumeric(customerId) && received_at != null
+					&& PayTVUtils.SET_APP_NAME_FULL.contains(appName) && StringUtils.isNumeric(logId)) {
+				willProcessCountLogId = true;
+				if (logId.equals("12") || logId.equals("18")) {
+					if (sessionMainMenu != null) {
+						willProcessSMM = StatisticUtils.willProcessSessionMainMenu(customerId, unparseSMM,
+								sessionMainMenu, received_at, mapCheckDupSMM, mapCheckValidSMM);
+						if (willProcessSMM) {
+							secondsSMM = (int) new Duration(sessionMainMenu, received_at).getStandardSeconds();
+							if (secondsSMM <= 0 || secondsSMM > 12 * 3600) {
+								willProcessSMM = false;
 							}
 						}
-						willProcessCountLogId = willProcessSMM;
-					} else if (PayTVUtils.SET_APP_NAME_RTP.contains(appName)
-							&& PayTVUtils.SET_LOG_ID_RTP.contains(logId)) {
-						willProcessRTP = StatisticUtils.willProcessRealTimePlaying(customerId, received_at,
-								realTimePlaying, mapCheckValidRTP);
-						if (willProcessRTP) {
-							secondsRTP = (int) Math.round(realTimePlaying);
-							if (secondsRTP <= 0 || secondsRTP > 3 * 3600) {
-								willProcessRTP = false;
-							}
+					}
+					willProcessCountLogId = willProcessSMM;
+				} else if (PayTVUtils.SET_APP_NAME_RTP.contains(appName) && PayTVUtils.SET_LOG_ID_RTP.contains(logId)) {
+					willProcessRTP = StatisticUtils.willProcessRealTimePlaying(customerId, received_at, realTimePlaying,
+							mapCheckValidRTP);
+					if (willProcessRTP) {
+						secondsRTP = (int) Math.round(realTimePlaying);
+						if (secondsRTP <= 0 || secondsRTP > 3 * 3600) {
+							willProcessRTP = false;
 						}
-						willProcessCountLogId = willProcessRTP;
 					}
-
-					if (!mapUserContract.containsKey(customerId)) {
-						mapUserVectorHourly.put(customerId, new ConcurrentHashMap<>());
-						mapUserVectorApp.put(customerId, new ConcurrentHashMap<>());
-//						mapUserLogIdCount.put(customerId, new ConcurrentHashMap<>());
-						mapUserContract.put(customerId, contract);
-					}
+					willProcessCountLogId = willProcessRTP;
 				}
 
-				if (willProcessRTP) {
-					countTime++;
-					Map<Integer, Integer> mapHourly = mapUserVectorHourly.get(customerId);
-					StatisticUtils.updateHourly(mapHourly, received_at, secondsRTP);
-					mapUserVectorHourly.put(customerId, mapHourly);
-
-					Map<String, Integer> mapApp = mapUserVectorApp.get(customerId);
-					StatisticUtils.updateApp(mapApp, appName, secondsRTP);
-					mapUserVectorApp.put(customerId, mapApp);
+				if (!mapUserContract.containsKey(customerId)) {
+					mapUserVectorHourly.put(customerId, new ConcurrentHashMap<>());
+					mapUserVectorApp.put(customerId, new ConcurrentHashMap<>());
+					// mapUserLogIdCount.put(customerId, new
+					// ConcurrentHashMap<>());
+					mapUserContract.put(customerId, contract);
 				}
-//				if (willProcessCountLogId) {
-//					countLogId++;
-//					setLogId.add(logId);
-//					Map<String, Integer> mapLogId = mapUserLogIdCount.get(customerId);
-//					StatisticUtils.updateLogIdCount(mapLogId, logId);
-//					mapUserLogIdCount.put(customerId, mapLogId);
-//				}
+			}
 
-				countTotal++;
-//			} else {
-//				PayTVUtils.LOG_ERROR.error("Parsed log error: " + line);
-//			}
+			if (willProcessRTP) {
+				countTime++;
+				Map<Integer, Integer> mapHourly = mapUserVectorHourly.get(customerId);
+				StatisticUtils.updateHourly(mapHourly, received_at, secondsRTP);
+				mapUserVectorHourly.put(customerId, mapHourly);
+
+				Map<String, Integer> mapApp = mapUserVectorApp.get(customerId);
+				StatisticUtils.updateApp(mapApp, appName, secondsRTP);
+				mapUserVectorApp.put(customerId, mapApp);
+			}
+			// if (willProcessCountLogId) {
+			// countLogId++;
+			// setLogId.add(logId);
+			// Map<String, Integer> mapLogId =
+			// mapUserLogIdCount.get(customerId);
+			// StatisticUtils.updateLogIdCount(mapLogId, logId);
+			// mapUserLogIdCount.put(customerId, mapLogId);
+			// }
+
+			countTotal++;
+			// } else {
+			// PayTVUtils.LOG_ERROR.error("Parsed log error: " + line);
+			// }
 
 			try {
 				line = br.readLine();
@@ -212,14 +199,16 @@ public class UserUsage {
 				+ " | Total: " + countTotal + " | validTime: " + countTime + " | Time: "
 				+ (System.currentTimeMillis() - start));
 		System.out.println("Done calculate user usage: " + filePath.split("/")[filePath.split("/").length - 1]
-				+ " | Total: " + countTotal + " | validTime: " + countTime + " | Time: " + (System.currentTimeMillis() - start));
+				+ " | Total: " + countTotal + " | validTime: " + countTime + " | Time: "
+				+ (System.currentTimeMillis() - start));
 		return mapUserContract;
 	}
 
 	public void processStatistic() throws IOException {
-		HdfsIO hdfsIOSimple = new HdfsIO();
+		HdfsIO hdfsIOSimple = new HdfsIO(CommonConfig.get(PayTVConfig.HDFS_CORE_SITE),
+				CommonConfig.get(PayTVConfig.HDFS_SITE));
 		Map<String, DateTime> mapUserDateCondition = getMapUserDateConditionLocalStatistic();
-		
+
 		List<String> listFilePathInput2 = getListLogPathHdfsStatistic(
 				PayTVUtils.FORMAT_DATE_TIME_SIMPLE.parseDateTime("2016-02-01"), hdfsIOSimple);
 		List<String> listFilePathInput3 = getListLogPathHdfsStatistic(
@@ -246,20 +235,23 @@ public class UserUsage {
 	}
 
 	private Map<String, DateTime> getMapUserDateConditionLocalStatistic() throws IOException {
-		Map<String, DateTime> mapChurn_t2 = UserStatus.getMapUserChurnDateCondition(
-				CommonConfig.get(PayTVConfig.SUPPORT_DATA_DIR) + "/userChurn_t2.csv");
-		Map<String, DateTime> mapChurn_t3 = UserStatus.getMapUserChurnDateCondition(
-				CommonConfig.get(PayTVConfig.SUPPORT_DATA_DIR) + "/userChurn_t3.csv");
-		Map<String, DateTime> mapChurn_t4 = UserStatus.getMapUserChurnDateCondition(
-				CommonConfig.get(PayTVConfig.SUPPORT_DATA_DIR) + "/userChurn_t4.csv");
-		Map<String, DateTime> mapChurn_t5 = UserStatus.getMapUserChurnDateCondition(
-				CommonConfig.get(PayTVConfig.SUPPORT_DATA_DIR) + "/userChurn_t5.csv");
-		Map<String, DateTime> mapChurn_t6 = UserStatus.getMapUserChurnDateCondition(
-				CommonConfig.get(PayTVConfig.SUPPORT_DATA_DIR) + "/userChurn_t6.csv");
+		Map<String, DateTime> mapChurn_t2 = UserStatus
+				.getMapUserChurnDateCondition(CommonConfig.get(PayTVConfig.SUPPORT_DATA_DIR) + "/userChurn_t2.csv");
+		Map<String, DateTime> mapChurn_t3 = UserStatus
+				.getMapUserChurnDateCondition(CommonConfig.get(PayTVConfig.SUPPORT_DATA_DIR) + "/userChurn_t3.csv");
+		Map<String, DateTime> mapChurn_t4 = UserStatus
+				.getMapUserChurnDateCondition(CommonConfig.get(PayTVConfig.SUPPORT_DATA_DIR) + "/userChurn_t4.csv");
+		Map<String, DateTime> mapChurn_t5 = UserStatus
+				.getMapUserChurnDateCondition(CommonConfig.get(PayTVConfig.SUPPORT_DATA_DIR) + "/userChurn_t5.csv");
+		Map<String, DateTime> mapChurn_t6 = UserStatus
+				.getMapUserChurnDateCondition(CommonConfig.get(PayTVConfig.SUPPORT_DATA_DIR) + "/userChurn_t6.csv");
 
-//		Map<String, DateTime> mapActive_t6 = UserStatus.getMapUserActiveDateCondition(
-//				PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-07-01 00:00:00"), UserStatus.getMapUserActive(
-//						CommonConfig.getInstance().get(CommonConfig.SUPPORT_DATA_DIR) + "/userActive_t6.csv"));
+		// Map<String, DateTime> mapActive_t6 =
+		// UserStatus.getMapUserActiveDateCondition(
+		// PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-07-01 00:00:00"),
+		// UserStatus.getMapUserActive(
+		// CommonConfig.getInstance().get(CommonConfig.SUPPORT_DATA_DIR) +
+		// "/userActive_t6.csv"));
 
 		Map<String, DateTime> mapUserDateCondition = new HashMap<>();
 		mapUserDateCondition.putAll(mapChurn_t2);
@@ -267,7 +259,7 @@ public class UserUsage {
 		mapUserDateCondition.putAll(mapChurn_t4);
 		mapUserDateCondition.putAll(mapChurn_t5);
 		mapUserDateCondition.putAll(mapChurn_t6);
-//		mapUserDateCondition.putAll(mapActive_t6);
+		// mapUserDateCondition.putAll(mapActive_t6);
 
 		return mapUserDateCondition;
 	}
@@ -405,103 +397,104 @@ public class UserUsage {
 
 					while (line != null) {
 						String[] arr = line.split(",");
-//						if (arr.length == PayTVUtils.NUMBER_OF_FIELDS) {
-							String customerId = arr[0];
-							String logId = arr[2];
-							String appName = arr[3];
-							Double realTimePlaying = PayTVUtils.parseRealTimePlaying(arr[5]);
-							String unparseSMM = arr[6];
-							DateTime sessionMainMenu = PayTVUtils.parseSessionMainMenu(arr[6]);
-							DateTime received_at = PayTVUtils.parseReceived_at(arr[8]);
-							int secondsSMM = 0;
-							int secondsRTP = 0;
-							boolean willProcessCountLogId = false;
-							boolean willProcessSMM = false;
-							boolean willProcessRTP = false;
-							int dayDuration = 0;
+						// if (arr.length == PayTVUtils.NUMBER_OF_FIELDS) {
+						String customerId = arr[0];
+						String logId = arr[2];
+						String appName = arr[3];
+						Double realTimePlaying = PayTVUtils.parseRealTimePlaying(arr[5]);
+						String unparseSMM = arr[6];
+						DateTime sessionMainMenu = PayTVUtils.parseSessionMainMenu(arr[6]);
+						DateTime received_at = PayTVUtils.parseReceived_at(arr[8]);
+						int secondsSMM = 0;
+						int secondsRTP = 0;
+						boolean willProcessCountLogId = false;
+						boolean willProcessSMM = false;
+						boolean willProcessRTP = false;
+						int dayDuration = 0;
 
-							if (mapUserDateCondition.containsKey(customerId) && received_at != null
-									&& PayTVUtils.SET_APP_NAME_FULL.contains(appName) && StringUtils.isNumeric(logId)) {
-								dayDuration = DateTimeUtils.getDayDuration(received_at,
-										mapUserDateCondition.get(customerId));
-								if (dayDuration >= 0 && dayDuration <= 27) {
-									willProcessCountLogId = true;
-									if (logId.equals("12") || logId.equals("18")) {
-										if (sessionMainMenu != null) {
-											willProcessSMM = StatisticUtils.willProcessSessionMainMenu(customerId,
-													unparseSMM, sessionMainMenu, received_at, mapCheckDupSMM,
-													mapCheckValidSMM);
-											if (willProcessSMM) {
-												secondsSMM = (int) new Duration(sessionMainMenu, received_at)
-														.getStandardSeconds();
-												if (secondsSMM <= 0 || secondsSMM > 12 * 3600) {
-													willProcessSMM = false;
-												}
+						if (mapUserDateCondition.containsKey(customerId) && received_at != null
+								&& PayTVUtils.SET_APP_NAME_FULL.contains(appName) && StringUtils.isNumeric(logId)) {
+							dayDuration = DateTimeUtils.getDayDuration(received_at,
+									mapUserDateCondition.get(customerId));
+							if (dayDuration >= 0 && dayDuration <= 27) {
+								willProcessCountLogId = true;
+								if (logId.equals("12") || logId.equals("18")) {
+									if (sessionMainMenu != null) {
+										willProcessSMM = StatisticUtils.willProcessSessionMainMenu(customerId,
+												unparseSMM, sessionMainMenu, received_at, mapCheckDupSMM,
+												mapCheckValidSMM);
+										if (willProcessSMM) {
+											secondsSMM = (int) new Duration(sessionMainMenu, received_at)
+													.getStandardSeconds();
+											if (secondsSMM <= 0 || secondsSMM > 12 * 3600) {
+												willProcessSMM = false;
 											}
 										}
-										willProcessCountLogId = willProcessSMM;
-									} else if (PayTVUtils.SET_APP_NAME_RTP.contains(appName)
-											&& PayTVUtils.SET_LOG_ID_RTP.contains(logId)) {
-										willProcessRTP = StatisticUtils.willProcessRealTimePlaying(customerId,
-												received_at, realTimePlaying, mapCheckValidRTP);
-										if (willProcessRTP) {
-											secondsRTP = (int) Math.round(realTimePlaying);
-											if (secondsRTP <= 0 || secondsRTP > 3 * 3600) {
-												willProcessRTP = false;
-											}
-										}
-										willProcessCountLogId = willProcessRTP;
 									}
+									willProcessCountLogId = willProcessSMM;
+								} else if (PayTVUtils.SET_APP_NAME_RTP.contains(appName)
+										&& PayTVUtils.SET_LOG_ID_RTP.contains(logId)) {
+									willProcessRTP = StatisticUtils.willProcessRealTimePlaying(customerId, received_at,
+											realTimePlaying, mapCheckValidRTP);
+									if (willProcessRTP) {
+										secondsRTP = (int) Math.round(realTimePlaying);
+										if (secondsRTP <= 0 || secondsRTP > 3 * 3600) {
+											willProcessRTP = false;
+										}
+									}
+									willProcessCountLogId = willProcessRTP;
 								}
 							}
+						}
 
-							if (willProcessRTP) {
-								countTime++;
-								if (processHourly) {
-									Map<Integer, Integer> mapHourly = mapUserVectorHourly.get(customerId);
-									StatisticUtils.updateHourly(mapHourly, received_at, secondsRTP);
-									mapUserVectorHourly.put(customerId, mapHourly);
-								}
-								if (processDaily) {
-									Map<String, Integer> mapDaily = mapUserVectorDaily.get(customerId);
-									StatisticUtils.updateDaily(mapDaily, received_at, secondsRTP);
-									mapUserVectorDaily.put(customerId, mapDaily);
-								}
-								if (processApp) {
-									Map<String, Integer> mapApp = mapUserVectorApp.get(customerId);
-									StatisticUtils.updateApp(mapApp, appName, secondsRTP);
-									mapUserVectorApp.put(customerId, mapApp);
-								}
-								if (processReturnUse) {
-									Map<Integer, Integer> mapReuse = mapUserReturnUse.get(customerId);
-									StatisticUtils.updateReturnUse(mapReuse, dayDuration);
-									mapUserReturnUse.put(customerId, mapReuse);
-								}
-								if (processDays) {
-									Map<Integer, Integer> mapDays = mapUserVectorDays.get(customerId);
-									StatisticUtils.updateDays(mapDays, dayDuration, secondsRTP);
-									mapUserVectorDays.put(customerId, mapDays);
-								}
+						if (willProcessRTP) {
+							countTime++;
+							if (processHourly) {
+								Map<Integer, Integer> mapHourly = mapUserVectorHourly.get(customerId);
+								StatisticUtils.updateHourly(mapHourly, received_at, secondsRTP);
+								mapUserVectorHourly.put(customerId, mapHourly);
 							}
-							if (willProcessCountLogId) {
-								countLogId++;
-								if (processLogId) {
-									setLogId.add(logId);
-									Map<String, Integer> mapLogId = mapUserLogIdCount.get(customerId);
-									StatisticUtils.updateLogIdCount(mapLogId, logId);
-									mapUserLogIdCount.put(customerId, mapLogId);
-								}
+							if (processDaily) {
+								Map<String, Integer> mapDaily = mapUserVectorDaily.get(customerId);
+								StatisticUtils.updateDaily(mapDaily, received_at, secondsRTP);
+								mapUserVectorDaily.put(customerId, mapDaily);
 							}
+							if (processApp) {
+								Map<String, Integer> mapApp = mapUserVectorApp.get(customerId);
+								StatisticUtils.updateApp(mapApp, appName, secondsRTP);
+								mapUserVectorApp.put(customerId, mapApp);
+							}
+							if (processReturnUse) {
+								Map<Integer, Integer> mapReuse = mapUserReturnUse.get(customerId);
+								StatisticUtils.updateReturnUse(mapReuse, dayDuration);
+								mapUserReturnUse.put(customerId, mapReuse);
+							}
+							if (processDays) {
+								Map<Integer, Integer> mapDays = mapUserVectorDays.get(customerId);
+								StatisticUtils.updateDays(mapDays, dayDuration, secondsRTP);
+								mapUserVectorDays.put(customerId, mapDays);
+							}
+						}
+						if (willProcessCountLogId) {
+							countLogId++;
+							if (processLogId) {
+								setLogId.add(logId);
+								Map<String, Integer> mapLogId = mapUserLogIdCount.get(customerId);
+								StatisticUtils.updateLogIdCount(mapLogId, logId);
+								mapUserLogIdCount.put(customerId, mapLogId);
+							}
+						}
 
-							countTotal++;
-							// if (countTotal % 1000000 == 0) {
-							// System.out.println(filePath.toString() + " |
-							// Total: " + countTotal + " | validTime: "
-							// + countTime + " | validLogId: " + countLogId);
-							// }
-//						} else {
-//							PayTVUtils.LOG_ERROR.error("Parsed log error: " + line);
-//						}
+						countTotal++;
+						// if (countTotal % 1000000 == 0) {
+						// System.out.println(filePath.toString() + " |
+						// Total: " + countTotal + " | validTime: "
+						// + countTime + " | validLogId: " + countLogId);
+						// }
+						// } else {
+						// PayTVUtils.LOG_ERROR.error("Parsed log error: " +
+						// line);
+						// }
 						try {
 							line = br.readLine();
 						} catch (IOException e) {
@@ -528,22 +521,22 @@ public class UserUsage {
 		while (!executorService.isTerminated()) {
 		}
 
-		printUserUsageStatistic(outputFolderPath, processHourly, processDaily, processApp, processLogId, processReturnUse,
-				processDays);
+		printUserUsageStatistic(outputFolderPath, processHourly, processDaily, processApp, processLogId,
+				processReturnUse, processDays);
 
 	}
-	
+
 	private void calculateVectorDaysBefore(Map<String, DateTime> mapUserDateCondition, List<String> listFileLogPath,
-			String outputFolderPath, HdfsIO hdfsIOSimple) throws UnsupportedEncodingException, IOException{
-		Map<String, Map<Integer, Integer>> mapDays_48 =  new ConcurrentHashMap<>();
-		for(String customerId : mapUserDateCondition.keySet()){
+			String outputFolderPath, HdfsIO hdfsIOSimple) throws UnsupportedEncodingException, IOException {
+		Map<String, Map<Integer, Integer>> mapDays_48 = new ConcurrentHashMap<>();
+		for (String customerId : mapUserDateCondition.keySet()) {
 			mapDays_48.put(customerId, new ConcurrentHashMap<>());
 		}
 		ExecutorService executorService = Executors.newFixedThreadPool(4);
-		
+
 		for (final String filePath : listFileLogPath) {
 			executorService.execute(new Runnable() {
-				
+
 				@Override
 				public void run() {
 					Map<String, Set<String>> mapCheckDupSMM = new HashMap<>();
@@ -555,7 +548,7 @@ public class UserUsage {
 					long start = System.currentTimeMillis();
 					int countTotal = 0;
 					int countTime = 0;
-					
+
 					BufferedReader br = null;
 					String line = null;
 					try {
@@ -570,10 +563,9 @@ public class UserUsage {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					
-					while (line != null){
-						
-						
+
+					while (line != null) {
+
 						String[] arr = line.split(",");
 						String customerId = arr[0];
 						String logId = arr[2];
@@ -596,7 +588,8 @@ public class UserUsage {
 									willProcessSMM = StatisticUtils.willProcessSessionMainMenu(customerId, unparseSMM,
 											sessionMainMenu, received_at, mapCheckDupSMM, mapCheckValidSMM);
 									if (willProcessSMM) {
-										secondsSMM = (int) new Duration(sessionMainMenu, received_at).getStandardSeconds();
+										secondsSMM = (int) new Duration(sessionMainMenu, received_at)
+												.getStandardSeconds();
 										if (secondsSMM <= 0 || secondsSMM > 12 * 3600) {
 											willProcessSMM = false;
 										}
@@ -616,7 +609,7 @@ public class UserUsage {
 								willProcessCountLogId = willProcessRTP;
 							}
 						}
-						
+
 						if (willProcessRTP) {
 							dayDuration = DateTimeUtils.getDayDuration(received_at,
 									mapUserDateCondition.get(customerId).minusDays(5));
@@ -635,13 +628,14 @@ public class UserUsage {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						
+
 					}
-					PayTVUtils.LOG_INFO.info("Done process total: " + filePath.split("/")[filePath.split("/").length - 1]
+					PayTVUtils.LOG_INFO.info("Done process total: "
+							+ filePath.split("/")[filePath.split("/").length - 1] + " | Total: " + countTotal
+							+ " |ValidTime: " + countTime + " | Time: " + (System.currentTimeMillis() - start));
+					System.out.println("Done process total: " + filePath.split("/")[filePath.split("/").length - 1]
 							+ " | Total: " + countTotal + " |ValidTime: " + countTime + " | Time: "
 							+ (System.currentTimeMillis() - start));
-					System.out.println("Done process total: " + filePath.split("/")[filePath.split("/").length - 1]
-							+ " | Total: " + countTotal + " |ValidTime: " + countTime + " | Time: " + (System.currentTimeMillis() - start));
 					try {
 						br.close();
 					} catch (IOException e) {

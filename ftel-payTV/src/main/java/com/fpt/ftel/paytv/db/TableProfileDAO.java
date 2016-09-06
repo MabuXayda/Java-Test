@@ -40,16 +40,16 @@ public class TableProfileDAO {
 		}
 	}
 
-	public static final String SQL_CREATE_TABLE_PROFILE_SUM = "CREATE TABLE profile_sum (contract VARCHAR(22), customer_id VARCHAR(22), "
+	private static final String SQL_CREATE_TABLE_PROFILE_SUM = "CREATE TABLE profile_sum (contract VARCHAR(22), customer_id VARCHAR(22), "
 			+ "h_00 INT, h_01 INT, h_02 INT, h_03 INT, h_04 INT, h_05 INT, h_06 INT, h_07 INT, h_08 INT, h_09 INT, "
 			+ "h_10 INT, h_11 INT, h_12 INT, h_13 INT, h_14 INT, h_15 INT, h_16 INT, h_17 INT, h_18 INT, h_19 INT, "
 			+ "h_20 INT, h_21 INT, h_22 INT, h_23 INT, "
 			+ "a_iptv INT, a_vod INT, a_sport INT, a_child INT, a_relax INT, a_service INT, a_bhd INT, a_fims INT, "
 			+ "d_mon INT, d_tue INT, d_wed INT, d_thu INT, d_fri INT, d_sat INT, d_sun INT, "
-			+ "hourly_ml7 TEXT, daily_ml7 TEXT, app_ml7 TEXT, " + "hourly_ml28 TEXT, daily_ml28 TEXT, app_ml28 TEXT, days_ml28 TEXT, "
-			+ "PRIMARY KEY(customer_id));";
+			+ "hourly_ml7 TEXT, daily_ml7 TEXT, app_ml7 TEXT, "
+			+ "hourly_ml28 TEXT, daily_ml28 TEXT, app_ml28 TEXT, days_ml28 TEXT, " + "PRIMARY KEY(customer_id));";
 
-	public static final String SQL_CREATE_TABLE_PROFILE_WEEK = "CREATE TABLE profile_week (contract VARCHAR(22), customer_id VARCHAR(22), week VARCHAR(10), "
+	private static final String SQL_CREATE_TABLE_PROFILE_WEEK = "CREATE TABLE profile_week (contract VARCHAR(22), customer_id VARCHAR(22), week VARCHAR(10), "
 			+ "h_00 INT, h_01 INT, h_02 INT, h_03 INT, h_04 INT, h_05 INT, h_06 INT, h_07 INT, h_08 INT, h_09 INT, "
 			+ "h_10 INT, h_11 INT, h_12 INT, h_13 INT, h_14 INT, h_15 INT, h_16 INT, h_17 INT, h_18 INT, h_19 INT, "
 			+ "h_20 INT, h_21 INT, h_22 INT, h_23 INT, "
@@ -57,7 +57,7 @@ public class TableProfileDAO {
 			+ "d_mon INT, d_tue INT, d_wed INT, d_thu INT, d_fri INT, d_sat INT, d_sun INT, "
 			+ "PRIMARY KEY(customer_id, week));";
 
-	public static final String SQL_CREATE_TABLE_PROFILE_MONTH = "CREATE TABLE profile_month (contract VARCHAR(22), customer_id VARCHAR(22), month VARCHAR(10), "
+	private static final String SQL_CREATE_TABLE_PROFILE_MONTH = "CREATE TABLE profile_month (contract VARCHAR(22), customer_id VARCHAR(22), month VARCHAR(10), "
 			+ "h_00 INT, h_01 INT, h_02 INT, h_03 INT, h_04 INT, h_05 INT, h_06 INT, h_07 INT, h_08 INT, h_09 INT, "
 			+ "h_10 INT, h_11 INT, h_12 INT, h_13 INT, h_14 INT, h_15 INT, h_16 INT, h_17 INT, h_18 INT, h_19 INT, "
 			+ "h_20 INT, h_21 INT, h_22 INT, h_23 INT, "
@@ -105,10 +105,9 @@ public class TableProfileDAO {
 				+ weekIndex + "') DO INSTEAD INSERT INTO " + partition + " VALUES (NEW.*);";
 		System.out.println(sqlRule);
 		PostgreSQL.executeUpdateSQL(connection, sqlRule);
-		// String sqlIndex = "CREATE INDEX IF NOT EXISTS " + partitionIndex + "
-		// ON " + partition + " (customer_id, week);";
-		// System.out.println(sqlIndex);
-		// PostgreSQL.executeUpdateSQL(connection, sqlIndex);
+		String sqlIndex = "CREATE INDEX IF NOT EXISTS " + partitionIndex + " ON " + partition + " (customer_id, week);";
+		System.out.println(sqlIndex);
+		PostgreSQL.executeUpdateSQL(connection, sqlIndex);
 	}
 
 	public void createPartitionMonth(Connection connection, String dateString) throws SQLException {
@@ -127,11 +126,10 @@ public class TableProfileDAO {
 				+ monthIndex + "') DO INSTEAD INSERT INTO " + partition + " VALUES (NEW.*);";
 		System.out.println(sqlRule);
 		PostgreSQL.executeUpdateSQL(connection, sqlRule);
-		// String sqlIndex = "CREATE INDEX IF NOT EXISTS " + partitionIndex + "
-		// ON " + partition
-		// + " (customer_id, month);";
-		// System.out.println(sqlIndex);
-		// PostgreSQL.executeUpdateSQL(connection, sqlIndex);
+		String sqlIndex = "CREATE INDEX IF NOT EXISTS " + partitionIndex + " ON " + partition
+				+ " (customer_id, month);";
+		System.out.println(sqlIndex);
+		PostgreSQL.executeUpdateSQL(connection, sqlIndex);
 	}
 
 	public Map<String, String> queryUserContract(Connection connection, String dateString) throws SQLException {
@@ -151,9 +149,9 @@ public class TableProfileDAO {
 		return result;
 	}
 
-	public void updateUserUsageMultipleML(Connection connection, Map<String, Map<String, String>> mapUserUsage,
-			Map<String, String> mapUserContract) throws SQLException {
-		String sql = generatedSQLUpdateUserUsageMultipleML(mapUserUsage, mapUserContract);
+	public void updateUserUsageMultipleML(Connection connection, Map<String, Map<String, String>> mapUserUsage)
+			throws SQLException {
+		String sql = generatedSQLUpdateUserUsageMultipleML(mapUserUsage);
 		PostgreSQL.executeUpdateSQL(connection, sql);
 	}
 
@@ -188,6 +186,34 @@ public class TableProfileDAO {
 		String sqlConfig = "SET constraint_exclusion = on;";
 		statement.execute(sqlConfig);
 		String sqlSelect = "SELECT *, daily.sum FROM daily WHERE date = '" + dateString + "';";
+		ResultSet resultSet = statement.executeQuery(sqlSelect);
+		while (resultSet.next()) {
+			String customer_id = resultSet.getString("customer_id");
+			Map<String, Integer> mapInfo = new HashMap<>();
+			for (int i = 0; i < 24; i++) {
+				String key = PayTVDBUtils.VECTOR_HOURLY_PREFIX + NumberUtils.get2CharNumber(i);
+				mapInfo.put(key, resultSet.getInt(key));
+			}
+			for (String app : PayTVUtils.SET_APP_NAME_RTP) {
+				String key = PayTVDBUtils.VECTOR_APP_PREFIX + app.toLowerCase();
+				mapInfo.put(key, resultSet.getInt(key));
+			}
+			mapInfo.put("sum", resultSet.getInt("sum"));
+			mapUserUsage.put(customer_id, mapInfo);
+		}
+		resultSet.close();
+		statement.close();
+		return mapUserUsage;
+	}
+
+	public Map<String, Map<String, Integer>> queryUserUsageDaily(Connection connection, String dateString,
+			Set<String> setUser) throws SQLException {
+		Map<String, Map<String, Integer>> mapUserUsage = new HashMap<>();
+		Statement statement = connection.createStatement();
+		String sqlConfig = "SET constraint_exclusion = on;";
+		statement.execute(sqlConfig);
+		String sqlSelect = "SELECT *, daily.sum FROM daily WHERE date = '" + dateString + "' AND customer_id IN ('"
+				+ StringUtils.join(setUser, "','") + "');";
 		ResultSet resultSet = statement.executeQuery(sqlSelect);
 		while (resultSet.next()) {
 			String customer_id = resultSet.getString("customer_id");
@@ -427,34 +453,32 @@ public class TableProfileDAO {
 		return col;
 	}
 
-	private String generatedSQLUpdateUserUsageMultipleML(Map<String, Map<String, String>> mapUserUsageML,
-			Map<String, String> mapUserContract) {
+	private String generatedSQLUpdateUserUsageMultipleML(Map<String, Map<String, String>> mapUserUsageML) {
 		String sql = "UPDATE profile_sum AS t " + generatedStringSetCommandML() + " FROM (VALUES ";
 		for (String customerId : mapUserUsageML.keySet()) {
-			String val = generatedStringValueMLUpdate(customerId, mapUserContract.get(customerId),
-					mapUserUsageML.get(customerId));
+			String val = generatedStringValueMLUpdate(customerId, mapUserUsageML.get(customerId));
 			sql = sql + val + ",";
 		}
 		return sql.substring(0, sql.length() - 1) + ") AS c" + generatedStringColumnMLUpdate()
 				+ "WHERE c.customer_id = t.customer_id;";
 	}
 
-	private String generatedStringValueMLUpdate(String customer_id, String contract, Map<String, String> mapUsageML) {
-		String value = "('" + contract + "','" + customer_id + "','" + mapUsageML.get("hourly_ml7") + "','"
-				+ mapUsageML.get("app_ml7") + "','" + mapUsageML.get("daily_ml7") + "','"
-				+ mapUsageML.get("hourly_ml28") + "','" + mapUsageML.get("app_ml28") + "','"
-				+ mapUsageML.get("daily_ml28") + "','" + mapUsageML.get("days_ml28") + "')";
+	private String generatedStringValueMLUpdate(String customer_id, Map<String, String> mapUsageML) {
+		String value = "('" + customer_id + "','" + mapUsageML.get("hourly_ml7") + "','" + mapUsageML.get("app_ml7")
+				+ "','" + mapUsageML.get("daily_ml7") + "','" + mapUsageML.get("hourly_ml28") + "','"
+				+ mapUsageML.get("app_ml28") + "','" + mapUsageML.get("daily_ml28") + "','"
+				+ mapUsageML.get("days_ml28") + "')";
 		return value;
 	}
 
 	private String generatedStringColumnMLUpdate() {
-		String col = "(contract,customer_id, hourly_ml7, app_ml7, daily_ml7, hourly_ml28, app_ml28, daily_ml28, days_ml28)";
+		String col = "(customer_id, hourly_ml7, app_ml7, daily_ml7, hourly_ml28, app_ml28, daily_ml28, days_ml28)";
 		return col;
 	}
 
 	private String generatedStringSetCommandML() {
 		String setCommand = "SET hourly_ml7 = c.hourly_ml7, app_ml7 = c.app_ml7, daily_ml7 = c.daily_ml7, "
-				+ "hourly.ml28 = c.hourly_ml28, app_ml28 = c.app_ml28, daily_ml28 = c.daily_ml28, days.ml28 = c.days_ml28";
+				+ "hourly_ml28 = c.hourly_ml28, app_ml28 = c.app_ml28, daily_ml28 = c.daily_ml28, days_ml28 = c.days_ml28";
 		return setCommand;
 	}
 

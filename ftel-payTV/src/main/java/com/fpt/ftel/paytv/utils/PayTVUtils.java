@@ -29,11 +29,6 @@ public class PayTVUtils {
 	public static final Logger LOG_INFO = Logger.getLogger("InfoLog");
 	public static final Logger LOG_ERROR = Logger.getLogger("ErrorLog");
 
-//	static {
-//		PropertyConfigurator.configure(CommonConfig.getInstance().get(CommonConfig.LOG4J_CONFIG_DIR));
-//	}
-	
-
 	public static Double parseRealTimePlaying(String realTimePlaying) {
 		Double time = null;
 		try {

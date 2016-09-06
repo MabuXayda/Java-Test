@@ -11,17 +11,17 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeComparator;
 
 import com.fpt.ftel.core.config.CommonConfig;
-import com.fpt.ftel.core.config.PayTVConfig;
 import com.fpt.ftel.paytv.db.TableDailyDAO;
+import com.fpt.ftel.paytv.utils.PayTVConfig;
 import com.fpt.ftel.paytv.utils.PayTVUtils;
 import com.fpt.ftel.paytv.utils.ServiceUtils;
 import com.fpt.ftel.postgresql.ConnectionFactory;
 
-public class TableDailyService {
+public class ServiceTableDailyProfileChurn {
 	TableDailyDAO tableDailyDAO;
 
 	public static void main(String[] args) throws IOException {
-		TableDailyService tableDailyService = new TableDailyService();
+		ServiceTableDailyProfileChurn tableDailyService = new ServiceTableDailyProfileChurn();
 		if (args[0].equals("create table") && args.length == 1) {
 			System.out.println("Start create table daily ..........");
 			try {
@@ -42,7 +42,7 @@ public class TableDailyService {
 		System.out.println("DONE " + args[0] + " job");
 	}
 
-	public TableDailyService() {
+	public ServiceTableDailyProfileChurn() {
 		PropertyConfigurator
 				.configure(CommonConfig.get(PayTVConfig.LOG4J_CONFIG_DIR) + "/log4j_TableDailyService.properties");
 		tableDailyDAO = new TableDailyDAO();
@@ -61,11 +61,7 @@ public class TableDailyService {
 
 		for (String date : listDateString) {
 			currentDateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(date);
-			String currentDateSimple = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(currentDateTime);
-			String dropDateSimple = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(currentDateTime.minusDays(
-					Integer.parseInt(CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_TABLE_DAILY_TIMETOLIVE))));
-			tableDailyDAO.dropPartition(connection, dropDateSimple);
-			tableDailyDAO.createPartition(connection, currentDateSimple);
+			
 
 			boolean willProcess = false;
 			int wait = 0;
@@ -91,7 +87,7 @@ public class TableDailyService {
 			}
 			System.out.println("Will process: " + willProcess);
 			if (willProcess) {
-				tableDailyDAO.insertFromTable(connection, currentDateSimple);
+				processDaily(connection, currentDateTime);
 			} else {
 				listMissing.add(date);
 			}
@@ -109,5 +105,14 @@ public class TableDailyService {
 				CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_USER_PASSWORD));
 		tableDailyDAO.createTable(connection);
 		ConnectionFactory.closeConnection(connection);
+	}
+	
+	private void processDaily(Connection connection, DateTime dateTime) throws SQLException{
+		String currentDateSimple = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime);
+		String dropDateSimple = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime.minusDays(
+				Integer.parseInt(CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_TABLE_DAILY_TIMETOLIVE))));
+		tableDailyDAO.dropPartition(connection, dropDateSimple);
+		tableDailyDAO.createPartition(connection, currentDateSimple);
+		tableDailyDAO.insertFromTable(connection, currentDateSimple);
 	}
 }

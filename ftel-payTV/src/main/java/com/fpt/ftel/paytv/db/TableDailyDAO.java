@@ -47,9 +47,9 @@ public class TableDailyDAO {
 				+ " VALUES (NEW.*);";
 		System.out.println(sqlRule);
 		PostgreSQL.executeUpdateSQL(connection, sqlRule);
-//		String sqlIndex = "CREATE INDEX IF NOT EXISTS " + partitionIndex + " ON " + partition + " (customer_id, date);";
-//		System.out.println(sqlIndex);
-//		PostgreSQL.executeUpdateSQL(connection, sqlIndex);
+		String sqlIndex = "CREATE INDEX IF NOT EXISTS " + partitionIndex + " ON " + partition + " (customer_id, date);";
+		System.out.println(sqlIndex);
+		PostgreSQL.executeUpdateSQL(connection, sqlIndex);
 	}
 
 	public void dropPartition(Connection connection, String dateString) throws SQLException {

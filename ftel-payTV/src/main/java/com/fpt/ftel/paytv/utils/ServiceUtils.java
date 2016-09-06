@@ -11,14 +11,13 @@ import java.util.List;
 import org.joda.time.DateTime;
 
 import com.fpt.ftel.core.config.CommonConfig;
-import com.fpt.ftel.core.config.PayTVConfig;
 import com.fpt.ftel.core.utils.FileUtils;
 
 public class ServiceUtils {
 	public static final String PARSE_LOG_SERVICE_MISSING = "/ParseLogService_missing";
 	public static final String TABLE_NOW_SERVICE_MISSING = "/TableNowService_missing";
 	public static final String TABLE_DAILY_SERVICE_MISSING = "/TableDailyService_missing";
-	public static final String TABLE_PROFILE_SERVICE_MISSING = "/TableProfileService_missing";
+//	public static final String TABLE_PROFILE_SERVICE_MISSING = "/TableProfileService_missing";
 	
 	public static List<String> getListProcessMissing(String file) throws IOException {
 		List<String> listMissing = new ArrayList<>();
