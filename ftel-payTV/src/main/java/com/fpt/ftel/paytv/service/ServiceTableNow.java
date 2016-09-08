@@ -180,9 +180,9 @@ public class ServiceTableNow {
 		}
 
 		PayTVUtils.LOG_INFO.info("Done update table now: Update: " + countUpdate + " | Insert: " + countInsert
-				+ " | Time: " + (System.currentTimeMillis() - start));
+				+ " | Time: " + (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis());
 		System.out.println("Done update table now: Update: " + countUpdate + " | Insert: " + countInsert + " | Time: "
-				+ (System.currentTimeMillis() - start));
+				+ (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis());
 	}
 
 }

@@ -8,7 +8,7 @@ public class PostgreSQL {
 
 	public static void executeSQL(Connection connection, String sql) throws SQLException {
 		Statement statement = connection.createStatement();
-		statement.executeUpdate(sql);
+		statement.execute(sql);
 		statement.close();
 		connection.commit();
 	}
@@ -18,6 +18,16 @@ public class PostgreSQL {
 		statement.executeUpdate(sql);
 		statement.close();
 		connection.commit();
+	}
+
+	public static void setConstraintExclusion(Connection connection, boolean b) throws SQLException {
+		String sql;
+		if (b) {
+			sql = "SET constraint_exclusion = on";
+		} else {
+			sql = "SET constraint_exclusion = off";
+		}
+		executeSQL(connection, sql);
 	}
 
 }

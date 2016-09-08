@@ -7,12 +7,13 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
+import org.joda.time.Duration;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 public class PayTVUtils {
-//	public static final int NUMBER_OF_FIELDS = 10;
-	
+	// public static final int NUMBER_OF_FIELDS = 10;
+
 	public static final Set<String> SET_APP_NAME_FULL = new HashSet<String>(Arrays.asList("HOME", "IPTV", "VOD",
 			"SPORT", "CHILD", "RELAX", "SERVICE", "BHD", "FIMs", "FIRMWARE", "LOGIN", "PARENTAL CONTROL"));
 	public static final Set<String> SET_APP_NAME_RTP = new HashSet<String>(
@@ -28,6 +29,11 @@ public class PayTVUtils {
 
 	public static final Logger LOG_INFO = Logger.getLogger("InfoLog");
 	public static final Logger LOG_ERROR = Logger.getLogger("ErrorLog");
+
+	public static void main(String[] args) {
+		DateTime date1 = FORMAT_DATE_TIME.parseDateTime("2016-09-05 01:01:00");
+		System.out.println(new Duration(date1.minusDays(2), date1).getStandardDays());
+	}
 
 	public static Double parseRealTimePlaying(String realTimePlaying) {
 		Double time = null;

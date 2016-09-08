@@ -16,7 +16,7 @@ import com.fpt.ftel.paytv.utils.PayTVUtils;
 import com.fpt.ftel.postgresql.PostgreSQL;
 
 public class TableNowDAO {
-	private static final String SQL_CREATE_TABLE_NOW = "CREATE TABLE now (contract VARCHAR(22), customer_id VARCHAR(22), date DATE, "
+	private static final String SQL_CREATE_TABLE_NOW = "CREATE TABLE IF NOT EXISTS now (contract VARCHAR(22), customer_id VARCHAR(22), date DATE, "
 			+ "h_00 INT, h_01 INT, h_02 INT, h_03 INT, h_04 INT, h_05 INT, h_06 INT, h_07 INT, h_08 INT, h_09 INT, "
 			+ "h_10 INT, h_11 INT, h_12 INT, h_13 INT, h_14 INT, h_15 INT, h_16 INT, h_17 INT, h_18 INT, h_19 INT, "
 			+ "h_20 INT, h_21 INT, h_22 INT, h_23 INT, "
@@ -32,22 +32,21 @@ public class TableNowDAO {
 		PostgreSQL.executeUpdateSQL(connection, sql);
 	}
 
-	public void insertUserUsageMultiple(Connection connection, 
-			Map<String, Map<String, Integer>> mapUserUsage, Map<String, String> mapUserContract, String date)
-			throws SQLException {
+	public void insertUserUsageMultiple(Connection connection, Map<String, Map<String, Integer>> mapUserUsage,
+			Map<String, String> mapUserContract, String date) throws SQLException {
 		String sql = generatedSQLInsertUserUsageMultiple(mapUserUsage, mapUserContract, date);
 		PostgreSQL.executeUpdateSQL(connection, sql);
 	}
 
-	public void updateUserUsageMultiple(Connection connection, 
-			Map<String, Map<String, Integer>> mapUserUsage, Map<String, String> mapUserContract, String date)
-			throws SQLException {
+	public void updateUserUsageMultiple(Connection connection, Map<String, Map<String, Integer>> mapUserUsage,
+			Map<String, String> mapUserContract, String date) throws SQLException {
 		String sql = generatedSQLUpdateUserUsageMultiple(mapUserUsage, mapUserContract, date);
 		PostgreSQL.executeUpdateSQL(connection, sql);
 	}
 
 	public Map<String, Map<String, Integer>> queryUserUsage(Connection connection, String date, Set<String> setUser)
 			throws SQLException {
+		PostgreSQL.setConstraintExclusion(connection, true);
 		Map<String, Map<String, Integer>> mapUserUsage = new HashMap<>();
 		String sql = "SELECT * FROM now WHERE date = '" + date + "' AND customer_id IN ('"
 				+ StringUtils.join(setUser, "','") + "');";

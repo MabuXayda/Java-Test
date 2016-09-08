@@ -4,6 +4,8 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.joda.time.DateTime;
+
 import com.fpt.ftel.core.utils.DateTimeUtils;
 import com.fpt.ftel.core.utils.NumberUtils;
 import com.google.gson.Gson;
@@ -30,6 +32,23 @@ public class PayTVDBUtils {
 		for (String id : resultMap.keySet()) {
 			System.out.print("|" + id + ":" + resultMap.get(id));
 		}
+	}
+	
+	public static Map<String, Map<String, Integer>> convertSumToDaily(Map<String, Map<String, Integer>> mapUserUsageDaily,
+			DateTime date) {
+		Map<String, Map<String, Integer>> result = new HashMap<>();
+		String dayOfWeek = PayTVDBUtils.VECTOR_DAILY_PREFIX + DateTimeUtils.getDayOfWeek(date).toLowerCase();
+		for (String customerId : mapUserUsageDaily.keySet()) {
+			Map<String, Integer> mapUsageNew = new HashMap<>();
+			mapUsageNew.putAll(mapUserUsageDaily.get(customerId));
+			for (String day : DateTimeUtils.LIST_DAY_OF_WEEK) {
+				mapUsageNew.put(PayTVDBUtils.VECTOR_DAILY_PREFIX + day.toLowerCase(), 0);
+			}
+			mapUsageNew.put(dayOfWeek, mapUsageNew.get("sum"));
+			mapUsageNew.remove("sum");
+			result.put(customerId, mapUsageNew);
+		}
+		return result;
 	}
 
 	@SuppressWarnings("rawtypes")

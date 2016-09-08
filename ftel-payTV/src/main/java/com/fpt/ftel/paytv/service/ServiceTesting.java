@@ -9,10 +9,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.joda.time.DateTime;
-
 import com.fpt.ftel.core.utils.FileUtils;
-import com.fpt.ftel.core.utils.StringUtils;
 import com.fpt.ftel.paytv.object.raw.Fields;
 import com.fpt.ftel.paytv.object.raw.Source;
 import com.fpt.ftel.paytv.utils.PayTVUtils;
@@ -20,17 +17,15 @@ import com.google.gson.Gson;
 
 public class ServiceTesting {
 	public static void main(String[] args) throws IOException {
-		
-		ServiceTesting.testParseLog(args[0], args[1], args[2]);
-//		String dateNow = "2016-09-04 17:01:00";
-//		String dateDaily = "2016-09-05 04:01:00";
-//		String dateProfile = "2016-09-05 07:01:00";
+
+		String dateNow = "2016-09-07 17:01:00";
+		String dateDaily = "2016-09-08 01:01:00";
 
 		// createNow();
-		// processNow(dateNow);
-		// createDaily();
-		// processDaily(dateDaily);
-//		processProfile(dateProfile);
+//		processNow(dateNow);
+		// createTable();
+		updateTable(dateDaily);
+		// processProfile(dateProfile);
 
 		// createProfile();
 	}
@@ -57,10 +52,10 @@ public class ServiceTesting {
 		}
 	}
 
-	public static void createDaily() {
-		ServiceTableDailyProfileChurn tableDailyService = new ServiceTableDailyProfileChurn();
+	public static void createTable() {
+		ServiceDaily tableDailyService = new ServiceDaily();
 		try {
-			tableDailyService.processTableDailyCreateTable();
+			tableDailyService.processCreateTable();
 			System.out.println("============> DONE CREATE DAILY");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -68,34 +63,12 @@ public class ServiceTesting {
 		}
 	}
 
-	public static void processDaily(String dateString) {
-		ServiceTableDailyProfileChurn tableDailyService = new ServiceTableDailyProfileChurn();
+	public static void updateTable(String dateString) {
+		ServiceDaily tableDailyService = new ServiceDaily();
 		try {
-			tableDailyService.processTableDailyReal(dateString);
+			tableDailyService.processTableReal(dateString);
 			System.out.println("============> DONE PROCESS TABLE DAILY");
 		} catch (IOException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	public static void createProfile() {
-		TableProfile tableProfileService = new TableProfile();
-		try {
-			tableProfileService.processTableProfileCreateTable();
-			System.out.println("============> DONE CREATE PROFILE");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	public static void processProfile(String dateString) {
-		TableProfile tableProfileService = new TableProfile();
-		try {
-			tableProfileService.processTableProfileReal(dateString);
-			System.out.println("============> DONE PROCESS TABLE PROFILE");
-		} catch (SQLException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

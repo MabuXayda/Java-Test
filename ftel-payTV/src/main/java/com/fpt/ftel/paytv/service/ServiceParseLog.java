@@ -183,7 +183,7 @@ public class ServiceParseLog {
 		countPrint = printLogParsed(dateTime.getYear(), dateTime.getMonthOfYear(), dateTime.getDayOfMonth(),
 				dateTime.getHourOfDay(), listLog, countPrint);
 		PayTVUtils.LOG_INFO.info("Done file: " + filePath + " | Print: " + countPrint + " | Total: " + countTotal
-				+ " | Time: " + (System.currentTimeMillis() - start));
+				+ " | Time: " + (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis());
 	}
 
 	private int printLogParsed(int year, int month, int day, int hour, List<String> listLog, int count)
