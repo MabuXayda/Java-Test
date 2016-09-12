@@ -18,13 +18,13 @@ import com.google.gson.Gson;
 public class ServiceTesting {
 	public static void main(String[] args) throws IOException {
 
-		String dateNow = "2016-09-07 17:01:00";
+		String dateNow = "2016-09-09 01:01:00";
 		String dateDaily = "2016-09-08 01:01:00";
 
 		// createNow();
-//		processNow(dateNow);
+		processNow(dateNow);
 		// createTable();
-		updateTable(dateDaily);
+//		updateTable(dateDaily);
 		// processProfile(dateProfile);
 
 		// createProfile();

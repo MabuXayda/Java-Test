@@ -120,7 +120,8 @@ public class StatisticUtils {
 			double avg = 0;
 
 			for (int i = 1; i <= 27; i++) {
-				if (i < 27 && mapUse.get(i) == 1) {
+				
+				if (i < 27 && (mapUse.get(i) == null ? 0 : mapUse.get(i)) == 1) {
 					count += 1;
 					sum = sum + (i - start);
 					max = Math.max(max, i - start);

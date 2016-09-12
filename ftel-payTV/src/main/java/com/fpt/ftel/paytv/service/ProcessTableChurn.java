@@ -27,7 +27,7 @@ public class ProcessTableChurn {
 	public void updateTable(Connection connection)
 			throws JsonIOException, JsonSyntaxException, FileNotFoundException, SQLException {
 		long start = System.currentTimeMillis();
-		Set<String> setUserCancel = UserStatus.getSetUserCancel(CommonConfig.get(PayTVConfig.USER_CANCEL_FILE));
+		Set<String> setUserCancel = UserStatus.getSetUserCancelFromFile(CommonConfig.get(PayTVConfig.USER_CANCEL_FILE));
 		tableChurnDAO.insertChurnDaily(connection, setUserCancel);
 		tableChurnDAO.insertChurnProfileSum(connection, setUserCancel);
 		tableChurnDAO.insertChurnProfileWeek(connection, setUserCancel);

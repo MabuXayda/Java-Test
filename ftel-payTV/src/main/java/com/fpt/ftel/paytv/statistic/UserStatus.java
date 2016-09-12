@@ -5,16 +5,25 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.io.IOUtils;
 import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 
+import com.fpt.ftel.core.config.CommonConfig;
+import com.fpt.ftel.core.utils.DateTimeUtils;
 import com.fpt.ftel.core.utils.StringUtils;
+import com.fpt.ftel.paytv.utils.PayTVConfig;
 import com.fpt.ftel.paytv.utils.PayTVUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
@@ -25,24 +34,37 @@ import com.google.gson.stream.JsonReader;
 public class UserStatus {
 
 	public static void main(String[] args) throws UnsupportedEncodingException, IOException {
-		// URL url = new URL("http://127.0.0.1:8080");
-		//
-		// try (BufferedReader reader = new BufferedReader(new
-		// InputStreamReader(url.openStream(), "UTF-8"))) {
-		// for (String line; (line = reader.readLine()) != null;) {
-		// System.out.println(line);
+		DateTime date = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-07-31 05:00:00");
+		System.out.println(date.withTimeAtStartOfDay());
+		
+		
+		
+		// try {
+		// Set<String> setId =
+		// UserStatus.getSetUserCancel("/home/tunn/data/tv/support_data/UserCancel");
+		// for (String id : setId) {
+		// System.out.println(id);
 		// }
+		// } catch (JsonIOException | JsonSyntaxException |
+		// FileNotFoundException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
 		// }
+	}
 
-		try {
-			Set<String> setId = UserStatus.getSetUserCancel("/home/tunn/data/tv/support_data/UserCancel");
-			for (String id : setId) {
-				System.out.println(id);
+	public static Map<String, DateTime> getMapUserChurnDateCondition(DateTime dateTime) throws IOException {
+		LocalDate localDate = dateTime.toLocalDate();
+		Map<String, DateTime> result = new HashMap<>();
+		List<String> listDate = DateTimeUtils.getListDateInMonth(localDate);
+		for (String dateString : listDate) {
+			URL url = new URL(CommonConfig.get(PayTVConfig.GET_USER_CHURN_API) + dateString);
+			String content = IOUtils.toString(url, "UTF-8");
+			Set<String> setUser = getSetUserCancelFromString(content);
+			for (String user : setUser) {
+				result.put(user, PayTVUtils.FORMAT_DATE_TIME_SIMPLE.parseDateTime(dateString));
 			}
-		} catch (JsonIOException | JsonSyntaxException | FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
+		return result;
 	}
 
 	public static Map<String, DateTime> getMapUserDateCondition(String fileUserActive, String dateCondition,
@@ -169,7 +191,17 @@ public class UserStatus {
 		}
 	}
 
-	public static Set<String> getSetUserCancel(String filePath)
+	public static Set<String> getSetUserCancelFromString(String str) {
+		UserCancelApi api = new Gson().fromJson(str, UserCancelApi.class);
+		List<UserCancelApi.Root.Item> listItem = api.getRoot().getListItem();
+		Set<String> result = new HashSet<>();
+		for (UserCancelApi.Root.Item item : listItem) {
+			result.add(item.getCustomerId());
+		}
+		return result;
+	}
+
+	public static Set<String> getSetUserCancelFromFile(String filePath)
 			throws JsonIOException, JsonSyntaxException, FileNotFoundException {
 		UserCancelApi api = new Gson().fromJson(new JsonReader(new FileReader(filePath)), UserCancelApi.class);
 		List<UserCancelApi.Root.Item> listItem = api.getRoot().getListItem();
