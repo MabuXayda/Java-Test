@@ -3,6 +3,7 @@ package com.fpt.ftel.paytv.utils;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import java.util.Set;
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
 
+import com.fpt.ftel.core.config.CommonConfig;
 import com.fpt.ftel.core.utils.DateTimeUtils;
 import com.fpt.ftel.core.utils.MapUtils;
 import com.fpt.ftel.core.utils.NumberUtils;
@@ -25,7 +27,7 @@ public class StatisticUtils {
 				mapCheckValidRTP.put(customerId, received_at);
 				willProcess = true;
 			} else if (realTimePlaying < new Duration(mapCheckValidRTP.get(customerId), received_at)
-					.getStandardSeconds()) {
+					.getStandardSeconds() + Integer.parseInt(CommonConfig.get(PayTVConfig.DELAY_ALLOW_RTP))) {
 				mapCheckValidRTP.put(customerId, received_at);
 				willProcess = true;
 			}
@@ -59,27 +61,27 @@ public class StatisticUtils {
 		return willProcess;
 	}
 
-	public static void printDays(PrintWriter pr, Map<String, Map<Integer, Integer>> totalMapDays) {
-		pr.print("CustomerId");
-		for (int i = 0; i <= 27; i++) {
+	public static void printDetailApp(PrintWriter pr,
+			Map<String, Map<String, Map<Integer, Integer>>> mapUserAppDetailHourly) {
+		pr.print("CustomerId,AppName");
+		for (int i = 0; i < 24; i++) {
 			pr.print("," + i);
 		}
 		pr.println();
-		for (String customerId : totalMapDays.keySet()) {
-			pr.print(customerId);
-			Map<Integer, Integer> mapDays = totalMapDays.get(customerId);
-			for (int i = 0; i <= 27; i++) {
-				Integer value = mapDays.get(i);
-				if (value == null) {
-					value = 0;
+		for (String customerId : mapUserAppDetailHourly.keySet()) {
+			Map<String, Map<Integer, Integer>> mapDetail = mapUserAppDetailHourly.get(customerId);
+			for (String app : mapDetail.keySet()) {
+				Map<Integer, Integer> mapUsage = mapDetail.get(app);
+				pr.print(customerId + "," + app);
+				for (int i = 0; i < 24; i++) {
+					pr.print("," + (mapUsage.get(i) == null ? 0 : mapUsage.get(i)));
 				}
-				pr.print("," + value);
+				pr.println();
 			}
-			pr.println();
 		}
 		pr.close();
 	}
-	
+
 	public static void printDays48(PrintWriter pr, Map<String, Map<Integer, Integer>> totalMapDays) {
 		pr.print("CustomerId");
 		for (int i = 0; i <= 47; i++) {
@@ -101,11 +103,49 @@ public class StatisticUtils {
 		pr.close();
 	}
 
-	public static void updateDays(Map<Integer, Integer> mapDays, int day, int seconds) {
+	public static void printDays(PrintWriter pr, Map<String, Map<Integer, Integer>> totalMapDays) {
+		pr.print("CustomerId");
+		for (int i = 0; i <= 27; i++) {
+			pr.print("," + i);
+		}
+		pr.println();
+		for (String customerId : totalMapDays.keySet()) {
+			pr.print(customerId);
+			Map<Integer, Integer> mapDays = totalMapDays.get(customerId);
+			for (int i = 0; i <= 27; i++) {
+				Integer value = mapDays.get(i);
+				if (value == null) {
+					value = 0;
+				}
+				pr.print("," + value);
+			}
+			pr.println();
+		}
+		pr.close();
+	}
+
+	public static void updateDays(Map<Integer, Integer> mapDays, int day, int seconds, DateTime received_at, int max) {
+		DateTime dateTimeAtStartOfDate = received_at.withTimeAtStartOfDay();
+		int availableSeconds = (int) new Duration(dateTimeAtStartOfDate, received_at).getStandardSeconds();
+		int validSeconds = seconds;
+		int remainSeconds = 0;
+		int previousDay = 0;
+		if (seconds > availableSeconds) {
+			validSeconds = availableSeconds;
+			remainSeconds = seconds - validSeconds;
+			previousDay = day + 1;
+		}
 		if (mapDays.containsKey(day)) {
-			mapDays.put(day, mapDays.get(day) + seconds);
+			mapDays.put(day, mapDays.get(day) + validSeconds);
 		} else {
-			mapDays.put(day, seconds);
+			mapDays.put(day, validSeconds);
+		}
+		if (remainSeconds > 0 && previousDay <= max) {
+			if (mapDays.containsKey(previousDay)) {
+				mapDays.put(previousDay, mapDays.get(previousDay) + remainSeconds);
+			} else {
+				mapDays.put(previousDay, remainSeconds);
+			}
 		}
 	}
 
@@ -120,7 +160,7 @@ public class StatisticUtils {
 			double avg = 0;
 
 			for (int i = 1; i <= 27; i++) {
-				
+
 				if (i < 27 && (mapUse.get(i) == null ? 0 : mapUse.get(i)) == 1) {
 					count += 1;
 					sum = sum + (i - start);
@@ -138,12 +178,43 @@ public class StatisticUtils {
 			}
 			pr.println(customerId + "," + count + "," + sum + "," + NumberUtils.FORMAT_DOUBLE.format(avg) + "," + max);
 		}
-
 		pr.close();
 	}
 
-	public static void updateReturnUse(Map<Integer, Integer> mapReuse, int dayDuration) {
-		mapReuse.put(dayDuration, 1);
+	public static Map<String, Map<String, Double>> calculateReturnUse(Map<String, Map<Integer, Integer>> vectorDays) {
+		Map<String, Map<String, Double>> result = new HashMap<>();
+		for (String customerId : vectorDays.keySet()) {
+			Map<Integer, Integer> mapUse = vectorDays.get(customerId);
+			Map<String, Double> mapReuseInfo = new HashMap<>();
+			int count = 0;
+			int sum = 0;
+			int max = 0;
+			int start = 0;
+			double avg = 0;
+
+			for (int i = 1; i <= 27; i++) {
+
+				if (i < 27 && (mapUse.get(i) == null ? 0 : mapUse.get(i)) >= 1) {
+					count += 1;
+					sum = sum + (i - start);
+					max = Math.max(max, i - start);
+					start = i;
+				} else if (i == 27) {
+					sum = sum + (i - start);
+					max = Math.max(max, i - start);
+				}
+			}
+			if (count == 0) {
+				avg = sum;
+			} else {
+				avg = sum / ((double) count + 1);
+			}
+			mapReuseInfo.put("ReuseCount", (double) count);
+			mapReuseInfo.put("ReuseAvg", avg);
+			mapReuseInfo.put("ReuseMax", (double) max);
+			result.put(customerId, mapReuseInfo);
+		}
+		return result;
 	}
 
 	public static void printLogIdCount(PrintWriter pr, Set<String> setItem,

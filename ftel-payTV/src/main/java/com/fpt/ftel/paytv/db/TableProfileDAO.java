@@ -25,7 +25,9 @@ public class TableProfileDAO {
 			+ "a_iptv INT, a_vod INT, a_sport INT, a_child INT, a_relax INT, a_service INT, a_bhd INT, a_fims INT, "
 			+ "d_mon INT, d_tue INT, d_wed INT, d_thu INT, d_fri INT, d_sat INT, d_sun INT, "
 			+ "hourly_ml7 TEXT, daily_ml7 TEXT, app_ml7 TEXT, "
-			+ "hourly_ml28 TEXT, daily_ml28 TEXT, app_ml28 TEXT, days_ml28 TEXT, " + "PRIMARY KEY(customer_id));";
+			+ "hourly_ml28 TEXT, daily_ml28 TEXT, app_ml28 TEXT, days_ml28 TEXT, "
+			+ "reuse_avg_ml28 DOUBLE PRECISION, reuse_max_ml28 INT, use_count_ml28 INT, "
+			+ "PRIMARY KEY(customer_id));";
 
 	private static final String SQL_CREATE_TABLE_PROFILE_WEEK = "CREATE TABLE IF NOT EXISTS profile_week (contract VARCHAR(22), customer_id VARCHAR(22), week VARCHAR(10), "
 			+ "h_00 INT, h_01 INT, h_02 INT, h_03 INT, h_04 INT, h_05 INT, h_06 INT, h_07 INT, h_08 INT, h_09 INT, "

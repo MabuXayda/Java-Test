@@ -25,21 +25,19 @@ import com.fpt.ftel.core.utils.FileUtils;
 import com.fpt.ftel.core.utils.NumberUtils;
 import com.fpt.ftel.core.utils.StringUtils;
 import com.fpt.ftel.hdfs.HdfsIO;
-import com.fpt.ftel.paytv.object.raw.Fields;
-import com.fpt.ftel.paytv.object.raw.Source;
+import com.fpt.ftel.paytv.object.RawLog;
 import com.fpt.ftel.paytv.statistic.UserStatus;
 import com.fpt.ftel.paytv.utils.PayTVConfig;
 import com.fpt.ftel.paytv.utils.PayTVUtils;
 import com.fpt.ftel.paytv.utils.ServiceUtils;
 import com.google.gson.Gson;
-import com.google.gson.JsonIOException;
-import com.google.gson.JsonSyntaxException;
 
 public class ServiceParseLog {
 	private HdfsIO hdfsIO;
 	private Set<String> setUserSpecial;
+	private static String status;
 
-	public static void main(String[] args) throws JsonIOException, JsonSyntaxException, IOException {
+	public static void main(String[] args) throws IOException {
 		ServiceParseLog parseLogService = new ServiceParseLog();
 		if (args[0].equals("fix") && args.length == 3) {
 			System.out.println("Start parse log fix ..........");
@@ -47,6 +45,9 @@ public class ServiceParseLog {
 		} else if (args[0].equals("real") && args.length == 2) {
 			System.out.println("Start parse log real ..........");
 			parseLogService.processParseLogReal(args[1]);
+		} else {
+			System.out.println("- Fix command: java -jar .jar fix yyyy-mm-dd_HH yyyy-mm-dd_HH");
+			System.out.println("note: fix [from hour HH date1 to hour HH date2] ");
 		}
 		System.out.println("DONE " + args[0] + " job");
 	}
@@ -104,12 +105,11 @@ public class ServiceParseLog {
 		String day = arr[arr.length - 3];
 		String month = arr[arr.length - 4];
 		String year = arr[arr.length - 5];
-
 		return PayTVUtils.FORMAT_DATE_TIME
 				.parseDateTime(year + "-" + month + "-" + day + " " + hour + ":" + minute + ":00").plusMinutes(1);
 	}
 
-	public String getFilePathFromDateTime(DateTime date) {
+	private String getFilePathFromDateTime(DateTime date) {
 		int year = date.getYear();
 		int month = date.getMonthOfYear();
 		int day = date.getDayOfMonth();
@@ -134,7 +134,7 @@ public class ServiceParseLog {
 		List<DateTime> listDateFix = new ArrayList<>();
 		DateTime beginDate = PayTVUtils.FORMAT_DATE_TIME_HOUR.parseDateTime(fromDate);
 		DateTime endDate = PayTVUtils.FORMAT_DATE_TIME_HOUR.parseDateTime(toDate);
-		while (new Duration(beginDate, endDate).getStandardSeconds() > 0) {
+		while (new Duration(beginDate, endDate).getStandardSeconds() >= 0) {
 			listDateFix.add(beginDate);
 			beginDate = beginDate.plusHours(1);
 		}
@@ -152,10 +152,10 @@ public class ServiceParseLog {
 		while (line != null) {
 			if (!line.isEmpty()) {
 				try {
-					Source source = new Gson().fromJson(line, Source.class);
+					RawLog.Source source = new Gson().fromJson(line, RawLog.Source.class);
 					String received_at_string = source.getReceived_at();
 					DateTime received_at = PayTVUtils.parseReceived_at(received_at_string);
-					Fields fields = source.getFields();
+					RawLog.Source.Fields fields = source.getFields();
 					String customerId = fields.getCustomerId();
 					String contract = fields.getContract();
 					String logId = fields.getLogId();
@@ -165,11 +165,15 @@ public class ServiceParseLog {
 					String sessionMainMenu = fields.getSessionMainMenu();
 					String boxTime = fields.getBoxTime();
 					String ip_wan = fields.getIp_wan();
+					String firmware = fields.getFirmware();
+					String sessionSubMenu = fields.getSessionSubMenu();
+					String screen = fields.getScreen();
+
 					if (StringUtils.isNumeric(customerId) && logId != null && appName != null && received_at != null
 							&& !setUserSpecial.contains(customerId)) {
 						String writeLog = customerId + "," + contract + "," + logId + "," + appName + "," + itemId + ","
 								+ realTimePlaying + "," + sessionMainMenu + "," + boxTime + "," + received_at_string
-								+ "," + ip_wan;
+								+ "," + ip_wan + "," + firmware + "," + sessionSubMenu + "," + screen;
 						listLog.add(writeLog);
 					}
 				} catch (Exception e) {
@@ -180,23 +184,24 @@ public class ServiceParseLog {
 			countTotal++;
 		}
 		br.close();
-		countPrint = printLogParsed(dateTime.getYear(), dateTime.getMonthOfYear(), dateTime.getDayOfMonth(),
-				dateTime.getHourOfDay(), listLog, countPrint);
-		PayTVUtils.LOG_INFO.info("Done file: " + filePath + " | Print: " + countPrint + " | Total: " + countTotal
-				+ " | Time: " + (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis());
+		countPrint = printLogParsed(dateTime, listLog, countPrint);
+		status = "Done parse file: " + filePath + " | Time index: " + PayTVUtils.FORMAT_DATE_TIME.print(dateTime)
+				+ " | Total: " + countTotal + " | Print: " + countPrint + " | Time: "
+				+ (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis();
+		PayTVUtils.LOG_INFO.info(status);
 	}
 
-	private int printLogParsed(int year, int month, int day, int hour, List<String> listLog, int count)
-			throws IOException {
-		String path = CommonConfig.get(PayTVConfig.PARSED_LOG_HDFS_DIR) + "/" + year;
-		String monthString = NumberUtils.get2CharNumber(month);
-		String dayString = NumberUtils.get2CharNumber(day);
-		String hourString = NumberUtils.get2CharNumber(hour);
+	private int printLogParsed(DateTime dateTime, List<String> listLog, int count) throws IOException {
+		String path = CommonConfig.get(PayTVConfig.PARSED_LOG_HDFS_DIR) + "/" + dateTime.getYear();
+		String monthString = NumberUtils.get2CharNumber(dateTime.getMonthOfYear());
+		String dayString = NumberUtils.get2CharNumber(dateTime.getDayOfMonth());
+		String hourString = NumberUtils.get2CharNumber(dateTime.getHourOfDay());
 		path = path + "/" + monthString + "/" + dayString + "/" + hourString;
 		if (!hdfsIO.isExist(path)) {
 			hdfsIO.createFolder(path);
 		}
-		path = path + "/" + year + "-" + monthString + "-" + dayString + "_" + hourString + "_log_parsed.csv";
+		path = path + "/" + dateTime.getYear() + "-" + monthString + "-" + dayString + "_" + hourString
+				+ "_log_parsed.csv";
 		if (listLog.size() > 0) {
 			System.out.println("Push data to : " + path);
 			BufferedWriter bw;
@@ -211,6 +216,9 @@ public class ServiceParseLog {
 				count++;
 			}
 			bw.close();
+
+			status = "=== Write parsed log to: " + path;
+			PayTVUtils.LOG_INFO.info(status);
 		}
 		return count;
 	}

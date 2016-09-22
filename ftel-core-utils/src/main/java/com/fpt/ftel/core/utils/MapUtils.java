@@ -1,24 +1,30 @@
 package com.fpt.ftel.core.utils;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class MapUtils {
-	
-	public static Map<String, Integer> plusMapStringIntegerEasyLeft(Map<String, Integer> map1, Map<String, Integer> map2){
+
+	public static Map<String, Integer> plusMapStringIntegerEasyLeft(Map<String, Integer> map1,
+			Map<String, Integer> map2) {
 		Map<String, Integer> result = new HashMap<>();
-		for(String key : map1.keySet()){
+		for (String key : map1.keySet()) {
 			Integer val1 = map1.get(key);
 			Integer val2 = map2.get(key) == null ? 0 : map2.get(key);
 			result.put(key, val1 + val2);
 		}
 		return result;
 	}
-	
-	public static Map<String, Integer> plusMapStringIntegerHard(Map<String, Integer> map1, Map<String, Integer> map2){
+
+	public static Map<String, Integer> plusMapStringIntegerEasy(Map<String, Integer> map1, Map<String, Integer> map2) {
 		Map<String, Integer> result = new HashMap<>();
-		for(String key : map1.keySet()){
-			result.put(key, map1.get(key) + map2.get(key));
+		Set<String> setKey = new HashSet<>();
+		setKey.addAll(map1.keySet());
+		setKey.addAll(map2.keySet());
+		for (String key : setKey) {
+			result.put(key, (map1.get(key) == null ? 0 : map1.get(key)) + (map2.get(key) == null ? 0 : map2.get(key)));
 		}
 		return result;
 	}

@@ -17,6 +17,7 @@ public class ServiceUtils {
 	public static final String PARSE_LOG_SERVICE_MISSING = "/ParseLogService_missing";
 	public static final String TABLE_NOW_SERVICE_MISSING = "/TableNowService_missing";
 	public static final String DAILY_SERVICE_MISSING = "/ServiceDaily_missing";
+	public static final String TABLE_APP_SERVICE_MISSING = "/TableAppService_missing";
 	// public static final String TABLE_DAILY_SERVICE_MISSING =
 	// "/TableDailyService_missing";
 	// public static final String TABLE_PROFILE_SERVICE_MISSING =

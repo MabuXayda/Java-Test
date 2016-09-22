@@ -20,8 +20,10 @@ public class PayTVUtils {
 			Arrays.asList("IPTV", "VOD", "SPORT", "CHILD", "RELAX", "SERVICE", "BHD", "FIMs"));
 	public static final List<String> LIST_APP_NAME_RTP = Arrays.asList("IPTV", "VOD", "SPORT", "CHILD", "RELAX",
 			"SERVICE", "BHD", "FIMs");
+//	public static final Set<String> SET_LOG_ID_RTP = new HashSet<String>(
+//			Arrays.asList("42", "44", "451", "461", "415", "416", "52", "63", "681", "82", "133", "152"));
 	public static final Set<String> SET_LOG_ID_RTP = new HashSet<String>(
-			Arrays.asList("42", "44", "451", "461", "415", "416", "52", "63", "681", "82", "133", "152"));
+			Arrays.asList("42", "44", "52", "63", "82", "133", "152"));
 
 	public static final DateTimeFormatter FORMAT_DATE_TIME_SIMPLE = DateTimeFormat.forPattern("yyyy-MM-dd");
 	public static final DateTimeFormatter FORMAT_DATE_TIME = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");

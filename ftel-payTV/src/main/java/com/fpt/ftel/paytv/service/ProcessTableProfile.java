@@ -21,7 +21,8 @@ import com.fpt.ftel.paytv.utils.PayTVDBUtils;
 import com.fpt.ftel.paytv.utils.PayTVUtils;
 
 public class ProcessTableProfile {
-	TableProfileDAO tableProfileDAO;
+	private TableProfileDAO tableProfileDAO;
+	private static String status;
 
 	public ProcessTableProfile() {
 		tableProfileDAO = new TableProfileDAO();
@@ -68,7 +69,7 @@ public class ProcessTableProfile {
 					setUser, currentDateSimple);
 			if (mapUserUsageWeekUpdate.size() > 0) {
 				for (String customerId : mapUserUsageWeekUpdate.keySet()) {
-					Map<String, Integer> mapInfo = MapUtils.plusMapStringIntegerHard(
+					Map<String, Integer> mapInfo = MapUtils.plusMapStringIntegerEasy(
 							mapUserUsageWeekUpdate.get(customerId), mapUserUsageDaily.get(customerId));
 					mapUserUsageWeekUpdate.put(customerId, mapInfo);
 				}
@@ -89,10 +90,10 @@ public class ProcessTableProfile {
 			}
 		}
 
-		System.out.println("Done update profile WEEK: " + countUpdate + " | insert week: " + countInsert + " | time: "
-				+ (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis());
-		PayTVUtils.LOG_INFO.info("Done update profile WEEK: " + countUpdate + " | insert week: " + countInsert
-				+ " | time: " + (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis());
+		status = "Done update profile WEEK: " + countUpdate + " | insert: " + countInsert + " | time: "
+				+ (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis();
+		PayTVUtils.LOG_INFO.info(status);
+		System.out.println(status);
 
 	}
 
@@ -112,7 +113,7 @@ public class ProcessTableProfile {
 					setUser, currentDateSimple);
 			if (mapUserUsageMonthUpdate.size() > 0) {
 				for (String customerId : mapUserUsageMonthUpdate.keySet()) {
-					Map<String, Integer> mapInfo = MapUtils.plusMapStringIntegerHard(
+					Map<String, Integer> mapInfo = MapUtils.plusMapStringIntegerEasy(
 							mapUserUsageMonthUpdate.get(customerId), mapUserUsageDaily.get(customerId));
 					mapUserUsageMonthUpdate.put(customerId, mapInfo);
 				}
@@ -133,11 +134,10 @@ public class ProcessTableProfile {
 			}
 		}
 
-		System.out.println("Done update profile MONTH: " + countUpdate + " | insert month: " + countInsert + " | time: "
-				+ (System.currentTimeMillis() - start));
-		PayTVUtils.LOG_INFO.info("Done update profile MONTH: " + countUpdate + " | insert month: " + countInsert
-				+ " | time: " + (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis());
-
+		status = "Done update profile MONTH: " + countUpdate + " | insert: " + countInsert + " | time: "
+				+ (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis();
+		PayTVUtils.LOG_INFO.info(status);
+		System.out.println(status);
 	}
 
 	private void updateProfileSum(Connection connection, Map<String, Map<String, Integer>> mapUserUsageDaily,
@@ -151,7 +151,7 @@ public class ProcessTableProfile {
 					setUser);
 			if (mapUserUsageSumUpdate.size() > 0) {
 				for (String customerId : mapUserUsageSumUpdate.keySet()) {
-					Map<String, Integer> mapInfo = MapUtils.plusMapStringIntegerHard(
+					Map<String, Integer> mapInfo = MapUtils.plusMapStringIntegerEasy(
 							mapUserUsageSumUpdate.get(customerId), mapUserUsageDaily.get(customerId));
 					mapUserUsageSumUpdate.put(customerId, mapInfo);
 				}
@@ -169,11 +169,10 @@ public class ProcessTableProfile {
 				countInsert += mapUserUsageSumInsert.size();
 			}
 		}
-
-		System.out.println("Done update profile SUM:" + countUpdate + " | insert: " + countInsert + " | time: "
-				+ (System.currentTimeMillis() - start));
-		PayTVUtils.LOG_INFO.info("Done update profile SUM:" + countUpdate + " | insert: " + countInsert + " | time: "
-				+ (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis());
+		status = "Done update profile SUM: " + countUpdate + " | insert: " + countInsert + " | time: "
+				+ (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis();
+		PayTVUtils.LOG_INFO.info(status);
+		System.out.println(status);
 	}
 
 	private void updateProfileML(Connection connection, Map<String, Map<String, Integer>> mapUserUsageDailyOld,
@@ -192,7 +191,6 @@ public class ProcessTableProfile {
 				tableProfileDAO.queryUserUsageML(connection), 500);
 
 		for (Map<String, Map<String, String>> mapUserUsageML : listMapUserUsageML) {
-			long start = System.currentTimeMillis();
 			Map<String, Map<String, Integer>> mapUserUsageML7 = getML7(mapUserUsageML);
 			Map<String, Map<String, Integer>> mapUserUsageML28 = getML28(mapUserUsageML);
 			Map<String, Map<String, Integer>> mapUserVectorDays = getMLDays(mapUserUsageML);
@@ -232,11 +230,12 @@ public class ProcessTableProfile {
 				mapUserUsageML.put(customerId, mapMLUpdate);
 			}
 			tableProfileDAO.updateUserUsageMultipleML(connection, mapUserUsageML);
-			System.out.println("Done sub update profile ML with time: " + (System.currentTimeMillis() - start));
 		}
 
-		PayTVUtils.LOG_INFO.info("Done big update profile ML with time: " + (System.currentTimeMillis() - startM)
-				+ " | At: " + System.currentTimeMillis());
+		status = "Done big update profile ML with time: " + (System.currentTimeMillis() - startM) + " | At: "
+				+ System.currentTimeMillis();
+		PayTVUtils.LOG_INFO.info(status);
+		System.out.println(status);
 	}
 
 	private List<Map<String, Map<String, String>>> splitMap(Map<String, Map<String, String>> bigMap, int splitSize) {

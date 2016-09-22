@@ -9,31 +9,30 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.joda.time.DateTime;
+
 import com.fpt.ftel.core.utils.FileUtils;
-import com.fpt.ftel.paytv.object.raw.Fields;
-import com.fpt.ftel.paytv.object.raw.Source;
+import com.fpt.ftel.paytv.object.RawLog;
 import com.fpt.ftel.paytv.utils.PayTVUtils;
 import com.google.gson.Gson;
 
-public class ServiceTesting {
+public class Testing {
 	public static void main(String[] args) throws IOException {
-
-		String dateNow = "2016-09-09 01:01:00";
-		String dateDaily = "2016-09-08 01:01:00";
-
-		// createNow();
-		processNow(dateNow);
-		// createTable();
-//		updateTable(dateDaily);
-		// processProfile(dateProfile);
-
-		// createProfile();
+		DateTime time = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-09-19 01:06:00");
+//		createApp();
+//		processApp(PayTVUtils.FORMAT_DATE_TIME.print(time));
+		
+		processNowFix("2016-09-18_00", "2016-09-18_23");
+//		for (int i = 0; i < 24; i++) {
+//			String date = PayTVUtils.FORMAT_DATE_TIME.print(time.plusHours(i));
+//			processNow(date);
+//		}
 	}
 
 	public static void createNow() {
 		ServiceTableNow tableNowService = new ServiceTableNow();
 		try {
-			tableNowService.processTableNowCreateTable();
+			tableNowService.processCreateTable();
 			System.out.println("============> DONE CREATE NOW");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -44,15 +43,26 @@ public class ServiceTesting {
 	public static void processNow(String dateString) {
 		ServiceTableNow tableNowService = new ServiceTableNow();
 		try {
-			tableNowService.processTableNowReal(dateString);
+			tableNowService.processTableReal(dateString);
 			System.out.println("============> DONE PROCESS TABLE NOW");
 		} catch (NumberFormatException | IOException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+	
+	public static void processNowFix(String fromDate, String toDate) {
+		ServiceTableNow tableNowService = new ServiceTableNow();
+		try {
+			tableNowService.processTableFix(fromDate, toDate);
+			System.out.println("============> DONE PROCESS TABLE NOW FIX");
+		} catch (NumberFormatException | IOException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
-	public static void createTable() {
+	public static void createDaily() {
 		ServiceDaily tableDailyService = new ServiceDaily();
 		try {
 			tableDailyService.processCreateTable();
@@ -63,7 +73,7 @@ public class ServiceTesting {
 		}
 	}
 
-	public static void updateTable(String dateString) {
+	public static void processDaily(String dateString) {
 		ServiceDaily tableDailyService = new ServiceDaily();
 		try {
 			tableDailyService.processTableReal(dateString);
@@ -72,6 +82,26 @@ public class ServiceTesting {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public static void createApp(){
+		ServiceTableApp service = new ServiceTableApp();
+		try {
+			service.processCreateTable();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void processApp(String dateString){
+		ServiceTableApp service = new ServiceTableApp();
+			try {
+				service.processTableReal(dateString);
+			} catch (IOException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 
 	public static void testParseLog(String folderPath, String output, String idCheck) throws IOException {
@@ -83,8 +113,8 @@ public class ServiceTesting {
 			while (line != null) {
 				if (!line.isEmpty()) {
 					try {
-						Source source = new Gson().fromJson(line, Source.class);
-						Fields fields = source.getFields();
+						RawLog.Source source = new Gson().fromJson(line, RawLog.Source.class);
+						RawLog.Source.Fields fields = source.getFields();
 						String customerId = fields.getCustomerId();
 						if (customerId.equals(idCheck)) {
 							pr.println(line);

@@ -22,7 +22,7 @@ public class ServiceDaily {
 	ProcessTableProfile processTableProfile;
 	ProcessTableChurn processTableChurn;
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		ServiceDaily serviceDaily = new ServiceDaily();
 		if (args[0].equals("create table") && args.length == 1) {
 			System.out.println("Start create table ..........");
@@ -36,10 +36,21 @@ public class ServiceDaily {
 			System.out.println("Start real job ..........");
 			try {
 				serviceDaily.processTableReal(args[1]);
-			} catch (SQLException e) {
+			} catch (SQLException | IOException e) {
 				PayTVUtils.LOG_ERROR.error(e.getMessage());
 				e.printStackTrace();
 			}
+		} else if (args[0].equals("fix") && args.length == 3) {
+			System.out.println("Start table now fix job ..........");
+			try {
+				serviceDaily.processTableFix(args[1], args[2]);
+			} catch (SQLException | IOException e) {
+				PayTVUtils.LOG_ERROR.error(e.getMessage());
+				e.printStackTrace();
+			}
+		} else {
+			System.out.println("- Fix command: java -jar .jar fix yyyy-mm-dd_HH yyyy-mm-dd_HH");
+			System.out.println("note: fix [from day dd date1 to day dd date2] ");
 		}
 		System.out.println("DONE " + args[0] + " job");
 	}
@@ -90,16 +101,22 @@ public class ServiceDaily {
 			if (willProcess) {
 				processTableDaily.updateTable(connection, currentDateTime);
 				processTableProfile.updateTable(connection, currentDateTime);
+				processTableChurn.updateTable(connection, currentDateTime);
 			} else {
 				listMissing.add(date);
-			}
-			DateTime now = new DateTime();
-			if (new Duration(currentDateTime, now).getStandardDays() == 1) {
-				processTableChurn.updateTable(connection);
 			}
 		}
 		ServiceUtils.printListProcessMissing(listMissing, ServiceUtils.DAILY_SERVICE_MISSING);
 		ConnectionFactory.closeConnection(connection);
+	}
+
+	public void processTableFix(String fromDate, String toDate) throws IOException, SQLException {
+		DateTime beginDate = PayTVUtils.FORMAT_DATE_TIME_HOUR.parseDateTime(fromDate);
+		DateTime endDate = PayTVUtils.FORMAT_DATE_TIME_HOUR.parseDateTime(toDate);
+		while (new Duration(beginDate, endDate).getStandardSeconds() >= 0) {
+			processTableReal(PayTVUtils.FORMAT_DATE_TIME.print(beginDate));
+			beginDate = beginDate.plusDays(1);
+		}
 	}
 
 	public void processCreateTable() throws SQLException {

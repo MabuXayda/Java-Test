@@ -5,11 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.sql.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -23,12 +20,13 @@ import org.joda.time.LocalDate;
 import com.fpt.ftel.core.config.CommonConfig;
 import com.fpt.ftel.core.utils.DateTimeUtils;
 import com.fpt.ftel.core.utils.StringUtils;
+import com.fpt.ftel.paytv.object.UserCancelApi;
+import com.fpt.ftel.paytv.object.UserTestApi;
 import com.fpt.ftel.paytv.utils.PayTVConfig;
 import com.fpt.ftel.paytv.utils.PayTVUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 
 public class UserStatus {
@@ -36,35 +34,7 @@ public class UserStatus {
 	public static void main(String[] args) throws UnsupportedEncodingException, IOException {
 		DateTime date = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-07-31 05:00:00");
 		System.out.println(date.withTimeAtStartOfDay());
-		
-		
-		
-		// try {
-		// Set<String> setId =
-		// UserStatus.getSetUserCancel("/home/tunn/data/tv/support_data/UserCancel");
-		// for (String id : setId) {
-		// System.out.println(id);
-		// }
-		// } catch (JsonIOException | JsonSyntaxException |
-		// FileNotFoundException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-	}
 
-	public static Map<String, DateTime> getMapUserChurnDateCondition(DateTime dateTime) throws IOException {
-		LocalDate localDate = dateTime.toLocalDate();
-		Map<String, DateTime> result = new HashMap<>();
-		List<String> listDate = DateTimeUtils.getListDateInMonth(localDate);
-		for (String dateString : listDate) {
-			URL url = new URL(CommonConfig.get(PayTVConfig.GET_USER_CHURN_API) + dateString);
-			String content = IOUtils.toString(url, "UTF-8");
-			Set<String> setUser = getSetUserCancelFromString(content);
-			for (String user : setUser) {
-				result.put(user, PayTVUtils.FORMAT_DATE_TIME_SIMPLE.parseDateTime(dateString));
-			}
-		}
-		return result;
 	}
 
 	public static Map<String, DateTime> getMapUserDateCondition(String fileUserActive, String dateCondition,
@@ -82,21 +52,36 @@ public class UserStatus {
 		return mapUserDateCondition;
 	}
 
-	public static Map<String, DateTime> getMapUserChurnDateCondition(String fileUserChurn) throws IOException {
-		Map<String, Map<String, DateTime>> mapUserChurn = getMapUserChurn(fileUserChurn);
-		Map<String, DateTime> mapUserDateCondition = new HashMap<>();
-		for (String customerId : mapUserChurn.keySet()) {
-			mapUserDateCondition.put(customerId, mapUserChurn.get(customerId).get("StopDate"));
-		}
-		return mapUserDateCondition;
-	}
-
 	public static Map<String, DateTime> getMapUserActiveDateCondition(String fileUserActive, DateTime dateCondition)
 			throws IOException {
 		Map<String, DateTime> mapUserActive = getMapUserActive(fileUserActive);
 		Map<String, DateTime> mapUserDateCondition = new HashMap<>();
 		for (String customerId : mapUserActive.keySet()) {
 			mapUserDateCondition.put(customerId, dateCondition);
+		}
+		return mapUserDateCondition;
+	}
+
+	public static Map<String, DateTime> getMapUserChurnDateCondition(DateTime dateTime) throws IOException {
+		LocalDate localDate = dateTime.toLocalDate();
+		Map<String, DateTime> result = new HashMap<>();
+		List<String> listDate = DateTimeUtils.getListDateInMonth(localDate);
+		for (String dateString : listDate) {
+			URL url = new URL(CommonConfig.get(PayTVConfig.GET_USER_CHURN_API) + dateString);
+			String content = IOUtils.toString(url, "UTF-8");
+			Set<String> setUser = getSetUserCancelFromString(content);
+			for (String user : setUser) {
+				result.put(user, PayTVUtils.FORMAT_DATE_TIME_SIMPLE.parseDateTime(dateString));
+			}
+		}
+		return result;
+	}
+
+	public static Map<String, DateTime> getMapUserChurnDateCondition(String fileUserChurn) throws IOException {
+		Map<String, Map<String, DateTime>> mapUserChurn = getMapUserChurn(fileUserChurn);
+		Map<String, DateTime> mapUserDateCondition = new HashMap<>();
+		for (String customerId : mapUserChurn.keySet()) {
+			mapUserDateCondition.put(customerId, mapUserChurn.get(customerId).get("StopDate"));
 		}
 		return mapUserDateCondition;
 	}
@@ -155,40 +140,13 @@ public class UserStatus {
 
 	public static Set<String> getSetUserSpecial(String filePath)
 			throws JsonIOException, JsonSyntaxException, FileNotFoundException {
-		UserSpecialApi api = new Gson().fromJson(new JsonReader(new FileReader(filePath)), UserSpecialApi.class);
-		List<UserSpecialApi.Root.CustomerID> listCustomerId = api.getRoot().getListCustomer();
+		UserTestApi api = new Gson().fromJson(new JsonReader(new FileReader(filePath)), UserTestApi.class);
+		List<UserTestApi.Root.CustomerID> listCustomerId = api.getRoot().getListCustomer();
 		Set<String> result = new HashSet<>();
-		for (UserSpecialApi.Root.CustomerID id : listCustomerId) {
+		for (UserTestApi.Root.CustomerID id : listCustomerId) {
 			result.add(id.getCustomerId());
 		}
 		return result;
-	}
-
-	class UserSpecialApi {
-		class Root {
-			class CustomerID {
-				@SerializedName("CustomerID")
-				String customerID;
-
-				public String getCustomerId() {
-					return customerID;
-				}
-			}
-
-			@SerializedName("List_Customer")
-			List<CustomerID> list_Customer;
-
-			public List<CustomerID> getListCustomer() {
-				return list_Customer;
-			}
-		}
-
-		@SerializedName("Root")
-		Root root;
-
-		public Root getRoot() {
-			return root;
-		}
 	}
 
 	public static Set<String> getSetUserCancelFromString(String str) {
@@ -210,92 +168,6 @@ public class UserStatus {
 			result.add(item.getCustomerId());
 		}
 		return result;
-	}
-
-	class UserCancelApi {
-		class Root {
-			class Item {
-				@SerializedName("Contract")
-				String contract;
-
-				public String getContract() {
-					return contract;
-				}
-
-				@SerializedName("CustomerID")
-				String customerID;
-
-				public String getCustomerId() {
-					return customerID;
-				}
-
-				@SerializedName("Status")
-				String status;
-
-				public String getStatus() {
-					return status;
-				}
-			}
-
-			@SerializedName("item")
-			List<Item> list_item;
-
-			public List<Item> getListItem() {
-				return list_item;
-			}
-		}
-
-		@SerializedName("Root")
-		Root root;
-
-		public Root getRoot() {
-			return root;
-		}
-	}
-
-	class UserRegis {
-		class Root {
-			class Item {
-				@SerializedName("Contract")
-				String contract;
-
-				public String getContract() {
-					return contract;
-				}
-
-				@SerializedName("CustomerID")
-				String customerID;
-
-				public String getCustomerId() {
-					return customerID;
-				}
-
-				@SerializedName("ServiceID")
-				String serviceID;
-
-				public String getServiceId() {
-					return serviceID;
-				}
-				// @SerializedName("ServiceName")
-				// String serviceName;
-				// @SerializedName("Location")
-				// String location;
-			}
-
-			@SerializedName("item")
-			List<Item> list_item;
-
-			public List<Item> getListItem() {
-				return list_item;
-			}
-		}
-
-		@SerializedName("Root")
-		Root root;
-
-		public Root getRoot() {
-			return root;
-		}
 	}
 
 }

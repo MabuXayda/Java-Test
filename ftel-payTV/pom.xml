@@ -18,9 +18,9 @@
 	</dependencies>
 	<build>
 		<!-- <finalName>ftel_payTV_ParseLogService</finalName> -->
-		<finalName>ftel_payTV_TableNowService</finalName>
+		<!-- <finalName>ftel_payTV_TableNowService</finalName> -->
 		<!-- <finalName>ftel_payTV_ServiceDaily</finalName> -->
-<!-- 		<finalName>ftel_payTV_UserUsage</finalName> -->
+		<finalName>ftel_payTV_UserUsage</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -48,8 +48,9 @@
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
 							<!-- <mainClass>com.fpt.ftel.paytv.service.ServiceParseLog</mainClass> -->
-							<mainClass>com.fpt.ftel.paytv.service.ServiceTableNow</mainClass>
-<!-- 							<mainClass>com.fpt.ftel.paytv.statistic.UserUsage</mainClass> -->
+							<!-- <mainClass>com.fpt.ftel.paytv.service.ServiceTableNow</mainClass> -->
+							<!-- <mainClass>com.fpt.ftel.paytv.service.ServiceDaily</mainClass> -->
+							<mainClass>com.fpt.ftel.paytv.statistic.UserUsage</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
