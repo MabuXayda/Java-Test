@@ -188,7 +188,7 @@ public class ProcessTableProfile {
 		}
 
 		List<Map<String, Map<String, String>>> listMapUserUsageML = splitMap(
-				tableProfileDAO.queryUserUsageML(connection), 500);
+				tableProfileDAO.queryUserUsageML(connection), 200);
 
 		for (Map<String, Map<String, String>> mapUserUsageML : listMapUserUsageML) {
 			Map<String, Map<String, Integer>> mapUserUsageML7 = getML7(mapUserUsageML);

@@ -18,6 +18,9 @@ import com.fpt.ftel.core.utils.MapUtils;
 import com.fpt.ftel.core.utils.NumberUtils;
 
 public class StatisticUtils {
+	public static String REUSE_AVG_KEY = "reuse_avg";
+	public static String REUSE_MAX_KEY = "reuse_max";
+	public static String REUSE_COUNT_KEY = "reuse_count";
 
 	public static boolean willProcessRealTimePlaying(String customerId, DateTime received_at, Double realTimePlaying,
 			Map<String, DateTime> mapCheckValidRTP) {
@@ -149,43 +152,10 @@ public class StatisticUtils {
 		}
 	}
 
-	public static void printReturnUse(PrintWriter pr, Map<String, Map<Integer, Integer>> totalMapReturnUse) {
+	public static void printReturnUse(PrintWriter pr, Map<String, Map<Integer, Integer>> totalMapVectorDays) {
 		pr.println("CustomerId,ReuseCount,ReuseSum,ReuseAvg,ReuseMax");
-		for (String customerId : totalMapReturnUse.keySet()) {
-			Map<Integer, Integer> mapUse = totalMapReturnUse.get(customerId);
-			int count = 0;
-			int sum = 0;
-			int max = 0;
-			int start = 0;
-			double avg = 0;
-
-			for (int i = 1; i <= 27; i++) {
-
-				if (i < 27 && (mapUse.get(i) == null ? 0 : mapUse.get(i)) == 1) {
-					count += 1;
-					sum = sum + (i - start);
-					max = Math.max(max, i - start);
-					start = i;
-				} else if (i == 27) {
-					sum = sum + (i - start);
-					max = Math.max(max, i - start);
-				}
-			}
-			if (count == 0) {
-				avg = sum;
-			} else {
-				avg = sum / ((double) count + 1);
-			}
-			pr.println(customerId + "," + count + "," + sum + "," + NumberUtils.FORMAT_DOUBLE.format(avg) + "," + max);
-		}
-		pr.close();
-	}
-
-	public static Map<String, Map<String, Double>> calculateReturnUse(Map<String, Map<Integer, Integer>> vectorDays) {
-		Map<String, Map<String, Double>> result = new HashMap<>();
-		for (String customerId : vectorDays.keySet()) {
-			Map<Integer, Integer> mapUse = vectorDays.get(customerId);
-			Map<String, Double> mapReuseInfo = new HashMap<>();
+		for (String customerId : totalMapVectorDays.keySet()) {
+			Map<Integer, Integer> mapUse = totalMapVectorDays.get(customerId);
 			int count = 0;
 			int sum = 0;
 			int max = 0;
@@ -209,12 +179,38 @@ public class StatisticUtils {
 			} else {
 				avg = sum / ((double) count + 1);
 			}
-			mapReuseInfo.put("ReuseCount", (double) count);
-			mapReuseInfo.put("ReuseAvg", avg);
-			mapReuseInfo.put("ReuseMax", (double) max);
-			result.put(customerId, mapReuseInfo);
+			pr.println(customerId + "," + count + "," + sum + "," + NumberUtils.FORMAT_DOUBLE.format(avg) + "," + max);
 		}
-		return result;
+		pr.close();
+	}
+
+	public static Map<String, Double> calculateReturnUse(Map<Integer, Integer> vectorDays) {
+		Map<String, Double> mapReuseInfo = new HashMap<>();
+		int count = 0;
+		int sum = 0;
+		int max = 0;
+		int start = 0;
+		double avg = 0;
+		for (int i = 1; i <= 27; i++) {
+			if (i < 27 && (vectorDays.get(i) == null ? 0 : vectorDays.get(i)) >= 1) {
+				count += 1;
+				sum = sum + (i - start);
+				max = Math.max(max, i - start);
+				start = i;
+			} else if (i == 27) {
+				sum = sum + (i - start);
+				max = Math.max(max, i - start);
+			}
+		}
+		if (count == 0) {
+			avg = sum;
+		} else {
+			avg = sum / ((double) count + 1);
+		}
+		mapReuseInfo.put(REUSE_COUNT_KEY, (double) count);
+		mapReuseInfo.put(REUSE_AVG_KEY, avg);
+		mapReuseInfo.put(REUSE_MAX_KEY, (double) max);
+		return mapReuseInfo;
 	}
 
 	public static void printLogIdCount(PrintWriter pr, Set<String> setItem,

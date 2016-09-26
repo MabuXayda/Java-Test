@@ -38,6 +38,8 @@ public class ServiceParseLog {
 	private static String status;
 
 	public static void main(String[] args) throws IOException {
+		System.out.println("- Fix command: java -jar .jar fix yyyy-mm-dd_HH yyyy-mm-dd_HH");
+		System.out.println("note: fix [from hour HH date1 to hour HH date2] ");
 		ServiceParseLog parseLogService = new ServiceParseLog();
 		if (args[0].equals("fix") && args.length == 3) {
 			System.out.println("Start parse log fix ..........");
@@ -45,9 +47,6 @@ public class ServiceParseLog {
 		} else if (args[0].equals("real") && args.length == 2) {
 			System.out.println("Start parse log real ..........");
 			parseLogService.processParseLogReal(args[1]);
-		} else {
-			System.out.println("- Fix command: java -jar .jar fix yyyy-mm-dd_HH yyyy-mm-dd_HH");
-			System.out.println("note: fix [from hour HH date1 to hour HH date2] ");
 		}
 		System.out.println("DONE " + args[0] + " job");
 	}

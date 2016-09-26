@@ -34,6 +34,8 @@ public class ServiceTableApp {
 	private static String status;
 
 	public static void main(String[] args) throws IOException {
+		System.out.println("- Fix command: java -jar .jar fix yyyy-mm-dd_HH yyyy-mm-dd_HH");
+		System.out.println("note: fix [from day dd date1 to day dd date2] ");
 		ServiceTableApp serviceTableApp = new ServiceTableApp();
 		if (args[0].equals("create table") && args.length == 1) {
 			System.out.println("Start create table ..........");
@@ -59,9 +61,6 @@ public class ServiceTableApp {
 				PayTVUtils.LOG_ERROR.error(e.getMessage());
 				e.printStackTrace();
 			}
-		} else {
-			System.out.println("- Fix command: java -jar .jar fix yyyy-mm-dd_HH yyyy-mm-dd_HH");
-			System.out.println("note: fix [from day dd date1 to day dd date2] ");
 		}
 		System.out.println("DONE " + args[0] + " job");
 	}

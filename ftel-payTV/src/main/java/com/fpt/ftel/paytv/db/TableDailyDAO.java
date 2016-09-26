@@ -63,7 +63,7 @@ public class TableDailyDAO {
 	}
 
 	public void insertFromTable(Connection connection, String dateString) throws SQLException {
-		String sql = "INSERT INTO daily SELECT * from now WHERE date = '" + dateString + "';";
+		String sql = "INSERT INTO daily SELECT * FROM now WHERE date = '" + dateString + "';";
 		System.out.println(sql);
 		PostgreSQL.executeUpdateSQL(connection, sql);
 	}

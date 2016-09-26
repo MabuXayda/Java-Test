@@ -44,10 +44,9 @@ public class TableAppDAO {
 				+ "') DO INSTEAD INSERT INTO " + partition + " VALUES (NEW.*);";
 		System.out.println(sqlRule);
 		PostgreSQL.executeUpdateSQL(connection, sqlRule);
-		// String sqlIndex = "CREATE INDEX IF NOT EXISTS " + partitionIndex + "
-		// ON " + partition + " (customer_id, app);";
-		// System.out.println(sqlIndex);
-		// PostgreSQL.executeUpdateSQL(connection, sqlIndex);
+		String sqlIndex = "CREATE INDEX IF NOT EXISTS " + partitionIndex + " ON " + partition + " (customer_id, app);";
+		System.out.println(sqlIndex);
+		PostgreSQL.executeUpdateSQL(connection, sqlIndex);
 	}
 
 	public void insertUserUsageMultiple(Connection connection, Map<String, Map<String, Integer>> mapUserUsage,

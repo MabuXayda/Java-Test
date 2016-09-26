@@ -33,9 +33,9 @@ public class PayTVDBUtils {
 			System.out.print("|" + id + ":" + resultMap.get(id));
 		}
 	}
-	
-	public static Map<String, Map<String, Integer>> convertSumToDaily(Map<String, Map<String, Integer>> mapUserUsageDaily,
-			DateTime date) {
+
+	public static Map<String, Map<String, Integer>> convertSumToDaily(
+			Map<String, Map<String, Integer>> mapUserUsageDaily, DateTime date) {
 		Map<String, Map<String, Integer>> result = new HashMap<>();
 		String dayOfWeek = PayTVDBUtils.VECTOR_DAILY_PREFIX + DateTimeUtils.getDayOfWeek(date).toLowerCase();
 		for (String customerId : mapUserUsageDaily.keySet()) {
@@ -200,6 +200,15 @@ public class PayTVDBUtils {
 		Map<String, Integer> temp = new HashMap<>();
 		for (String key : vectorApp.keySet()) {
 			temp.put(VECTOR_APP_PREFIX + key.toLowerCase(), vectorApp.get(key));
+		}
+		return temp;
+	}
+
+	public static Map<Integer, Integer> formatVectorDaysFromDB(Map<String, Integer> vectorDaysDB) {
+		Map<Integer, Integer> temp = new HashMap<>();
+		for (String key : vectorDaysDB.keySet()) {
+			int newKey = Integer.parseInt(key.substring(3));
+			temp.put(newKey, vectorDaysDB.get(key));
 		}
 		return temp;
 	}

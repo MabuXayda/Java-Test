@@ -22,7 +22,10 @@ public class Testing {
 //		createApp();
 //		processApp(PayTVUtils.FORMAT_DATE_TIME.print(time));
 		
-		processNowFix("2016-09-18_00", "2016-09-18_23");
+//		processNowFix("2016-09-18_00", "2016-09-18_23");
+//		createDaily();
+		processDailyFix("2016-09-18_00", "2016-09-18_23");
+		
 //		for (int i = 0; i < 24; i++) {
 //			String date = PayTVUtils.FORMAT_DATE_TIME.print(time.plusHours(i));
 //			processNow(date);
@@ -78,6 +81,17 @@ public class Testing {
 		try {
 			tableDailyService.processTableReal(dateString);
 			System.out.println("============> DONE PROCESS TABLE DAILY");
+		} catch (IOException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void processDailyFix(String fromDate, String toDate) {
+		ServiceDaily tableDailyService = new ServiceDaily();
+		try {
+			tableDailyService.processTableFix(fromDate, toDate);
+			System.out.println("============> DONE PROCESS TABLE DAILY FIX");
 		} catch (IOException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

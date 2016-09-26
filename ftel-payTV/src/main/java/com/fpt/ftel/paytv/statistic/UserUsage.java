@@ -353,8 +353,9 @@ public class UserUsage {
 			line = br.readLine();
 		}
 		br.close();
-		status = "Done calculate user usage: " + filePath.split("/")[filePath.split("/").length - 1] + " | Total: "
-				+ countTotal + " | validTime: " + countTime + " | Time: " + (System.currentTimeMillis() - start);
+		status = "======= Done calculate user usage: " + filePath.split("/")[filePath.split("/").length - 1]
+				+ " | Total: " + countTotal + " | validTime: " + countTime + " | Time: "
+				+ (System.currentTimeMillis() - start);
 		PayTVUtils.LOG_INFO.info(status);
 		System.out.println(status);
 	}

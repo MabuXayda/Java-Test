@@ -42,8 +42,8 @@ public class UserUsageStatistic {
 	private static Set<String> setLogId;
 
 	public static void main(String[] args) throws IOException {
-//		UserUsageStatistic userUsage = new UserUsageStatistic();
-//		userUsage.processStatistic();
+		// UserUsageStatistic userUsage = new UserUsageStatistic();
+		// userUsage.processStatistic();
 		DateTime beginDate = PayTVUtils.FORMAT_DATE_TIME_HOUR.parseDateTime("2016-09-16_00");
 		DateTime endDate = PayTVUtils.FORMAT_DATE_TIME_HOUR.parseDateTime("2016-09-16_00");
 		while (new Duration(beginDate, endDate).getStandardSeconds() >= 0) {
@@ -146,6 +146,8 @@ public class UserUsageStatistic {
 		if (processDays) {
 			PrintWriter pr = new PrintWriter(new File(outputFolderPath + "/vectorDays.csv"));
 			StatisticUtils.printDays(pr, mapUserVectorDays);
+			pr = new PrintWriter(new File(outputFolderPath + "/reuseInfo.csv"));
+			StatisticUtils.printReturnUse(pr, mapUserVectorDays);
 		}
 
 	}

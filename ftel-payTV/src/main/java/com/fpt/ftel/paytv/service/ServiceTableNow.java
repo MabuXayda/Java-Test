@@ -34,6 +34,8 @@ public class ServiceTableNow {
 	private static String status;
 
 	public static void main(String[] args) {
+		System.out.println("- Fix command: java -jar .jar fix yyyy-mm-dd_HH yyyy-mm-dd_HH");
+		System.out.println("note: fix [from hour HH date1 to hour HH date2] ");
 		ServiceTableNow tableNowService = new ServiceTableNow();
 		if (args[0].equals("create table") && args.length == 1) {
 			System.out.println("Start create table now ..........");
@@ -59,9 +61,6 @@ public class ServiceTableNow {
 				PayTVUtils.LOG_ERROR.error(e.getMessage());
 				e.printStackTrace();
 			}
-		} else {
-			System.out.println("- Fix command: java -jar .jar fix yyyy-mm-dd_HH yyyy-mm-dd_HH");
-			System.out.println("note: fix [from hour HH date1 to hour HH date2] ");
 		}
 		System.out.println("DONE " + args[0] + " job");
 	}

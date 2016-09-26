@@ -23,6 +23,8 @@ public class ServiceDaily {
 	ProcessTableChurn processTableChurn;
 
 	public static void main(String[] args) {
+		System.out.println("- Fix command: java -jar .jar fix yyyy-mm-dd_HH yyyy-mm-dd_HH");
+		System.out.println("note: fix [from day dd date1 to day dd date2] ");
 		ServiceDaily serviceDaily = new ServiceDaily();
 		if (args[0].equals("create table") && args.length == 1) {
 			System.out.println("Start create table ..........");
@@ -48,9 +50,6 @@ public class ServiceDaily {
 				PayTVUtils.LOG_ERROR.error(e.getMessage());
 				e.printStackTrace();
 			}
-		} else {
-			System.out.println("- Fix command: java -jar .jar fix yyyy-mm-dd_HH yyyy-mm-dd_HH");
-			System.out.println("note: fix [from day dd date1 to day dd date2] ");
 		}
 		System.out.println("DONE " + args[0] + " job");
 	}
@@ -111,8 +110,8 @@ public class ServiceDaily {
 	}
 
 	public void processTableFix(String fromDate, String toDate) throws IOException, SQLException {
-		DateTime beginDate = PayTVUtils.FORMAT_DATE_TIME_HOUR.parseDateTime(fromDate);
-		DateTime endDate = PayTVUtils.FORMAT_DATE_TIME_HOUR.parseDateTime(toDate);
+		DateTime beginDate = PayTVUtils.FORMAT_DATE_TIME_HOUR.parseDateTime(fromDate).plusDays(1);
+		DateTime endDate = PayTVUtils.FORMAT_DATE_TIME_HOUR.parseDateTime(toDate).plusDays(1);
 		while (new Duration(beginDate, endDate).getStandardSeconds() >= 0) {
 			processTableReal(PayTVUtils.FORMAT_DATE_TIME.print(beginDate));
 			beginDate = beginDate.plusDays(1);

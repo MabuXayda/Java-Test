@@ -15,6 +15,7 @@ import com.fpt.ftel.core.utils.DateTimeUtils;
 import com.fpt.ftel.core.utils.NumberUtils;
 import com.fpt.ftel.paytv.utils.PayTVDBUtils;
 import com.fpt.ftel.paytv.utils.PayTVUtils;
+import com.fpt.ftel.paytv.utils.StatisticUtils;
 import com.fpt.ftel.postgresql.PostgreSQL;
 
 public class TableProfileDAO {
@@ -26,7 +27,7 @@ public class TableProfileDAO {
 			+ "d_mon INT, d_tue INT, d_wed INT, d_thu INT, d_fri INT, d_sat INT, d_sun INT, "
 			+ "hourly_ml7 TEXT, daily_ml7 TEXT, app_ml7 TEXT, "
 			+ "hourly_ml28 TEXT, daily_ml28 TEXT, app_ml28 TEXT, days_ml28 TEXT, "
-			+ "reuse_avg_ml28 DOUBLE PRECISION, reuse_max_ml28 INT, use_count_ml28 INT, "
+			+ "reuse_avg_ml28 DOUBLE PRECISION, reuse_max_ml28 INT, reuse_count_ml28 INT, "
 			+ "PRIMARY KEY(customer_id));";
 
 	private static final String SQL_CREATE_TABLE_PROFILE_WEEK = "CREATE TABLE IF NOT EXISTS profile_week (contract VARCHAR(22), customer_id VARCHAR(22), week VARCHAR(10), "
@@ -344,6 +345,7 @@ public class TableProfileDAO {
 	private String generatedSQLUpdateUserUsageMultipleML(Map<String, Map<String, String>> mapUserUsageML) {
 		String sql = "UPDATE profile_sum AS t " + generatedStringSetCommandML() + " FROM (VALUES ";
 		for (String customerId : mapUserUsageML.keySet()) {
+
 			String val = generatedStringValueMLUpdate(customerId, mapUserUsageML.get(customerId));
 			sql = sql + val + ",";
 		}
@@ -445,10 +447,14 @@ public class TableProfileDAO {
 	}
 
 	private String generatedStringValueMLUpdate(String customer_id, Map<String, String> mapUsageML) {
+		Map<String, Double> mapReuse = StatisticUtils.calculateReturnUse(
+				PayTVDBUtils.formatVectorDaysFromDB(PayTVDBUtils.getVectorDaysFromJson(mapUsageML.get("days_ml28"))));
 		String value = "('" + customer_id + "','" + mapUsageML.get("hourly_ml7") + "','" + mapUsageML.get("app_ml7")
 				+ "','" + mapUsageML.get("daily_ml7") + "','" + mapUsageML.get("hourly_ml28") + "','"
 				+ mapUsageML.get("app_ml28") + "','" + mapUsageML.get("daily_ml28") + "','"
-				+ mapUsageML.get("days_ml28") + "')";
+				+ mapUsageML.get("days_ml28") + "'," + mapReuse.get(StatisticUtils.REUSE_AVG_KEY) + ","
+				+ mapReuse.get(StatisticUtils.REUSE_MAX_KEY).intValue() + ","
+				+ mapReuse.get(StatisticUtils.REUSE_COUNT_KEY).intValue() + ")";
 		return value;
 	}
 
@@ -470,7 +476,7 @@ public class TableProfileDAO {
 				+ PayTVDBUtils.generatedJsonEmptyVectorApp() + "','" + PayTVDBUtils.generatedJsonEmptyVectorDaily()
 				+ "','" + PayTVDBUtils.generatedJsonEmptyVectorHourly() + "','"
 				+ PayTVDBUtils.generatedJsonEmptyVectorApp() + "','" + PayTVDBUtils.generatedJsonEmptyVectorDaily()
-				+ "','" + PayTVDBUtils.generatedJsonEmptyVectorDays() + "')";
+				+ "','" + PayTVDBUtils.generatedJsonEmptyVectorDays() + "'," + 0.0 + "," + 0 + "," + 0 + ")";
 		return value;
 	}
 
@@ -505,7 +511,8 @@ public class TableProfileDAO {
 	}
 
 	private String generatedStringColumnMLUpdate() {
-		String col = "(customer_id, hourly_ml7, app_ml7, daily_ml7, hourly_ml28, app_ml28, daily_ml28, days_ml28)";
+		String col = "(customer_id, hourly_ml7, app_ml7, daily_ml7, hourly_ml28, app_ml28, daily_ml28, days_ml28, "
+				+ "reuse_avg_ml28, reuse_max_ml28, reuse_count_ml28)";
 		return col;
 	}
 
@@ -520,7 +527,8 @@ public class TableProfileDAO {
 		for (String day : DateTimeUtils.LIST_DAY_OF_WEEK) {
 			col = col + "," + PayTVDBUtils.VECTOR_DAILY_PREFIX + day.toLowerCase();
 		}
-		col = col + ", hourly_ml7, app_ml7, daily_ml7, hourly_ml28, app_ml28, daily_ml28, days_ml28)";
+		col = col + ", hourly_ml7, app_ml7, daily_ml7, hourly_ml28, app_ml28, daily_ml28, days_ml28, "
+				+ "reuse_avg_ml28, reuse_max_ml28, reuse_count_ml28)";
 		return col;
 	}
 
@@ -543,7 +551,8 @@ public class TableProfileDAO {
 
 	private String generatedStringSetCommandML() {
 		String setCommand = "SET hourly_ml7 = c.hourly_ml7, app_ml7 = c.app_ml7, daily_ml7 = c.daily_ml7, "
-				+ "hourly_ml28 = c.hourly_ml28, app_ml28 = c.app_ml28, daily_ml28 = c.daily_ml28, days_ml28 = c.days_ml28";
+				+ "hourly_ml28 = c.hourly_ml28, app_ml28 = c.app_ml28, daily_ml28 = c.daily_ml28, days_ml28 = c.days_ml28, "
+				+ "reuse_avg_ml28 = c.reuse_avg_ml28, reuse_max_ml28 = c.reuse_max_ml28, reuse_count_ml28 = c.reuse_count_ml28 ";
 		return setCommand;
 	}
 
