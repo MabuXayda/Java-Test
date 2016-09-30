@@ -72,6 +72,9 @@ public class ServiceParseLog {
 			currentDateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(date);
 			if (FileUtils.isExistFile(getFilePathFromDateTime(currentDateTime.plusMinutes(5)))) {
 				if (markDate == null || DateTimeUtils.compareToHour(markDate, currentDateTime) == -1) {
+					status = "Start process day: " + currentDateTime;
+					PayTVUtils.LOG_INFO.info(status);
+					System.out.println(status);
 					parseLog(currentDateTime);
 				} else {
 					listMissing.add(date);

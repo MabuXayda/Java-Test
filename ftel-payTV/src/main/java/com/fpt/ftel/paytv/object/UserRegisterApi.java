@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 
-public class UserRegisApi {
+public class UserRegisterApi {
 	public class Root {
 		public class Item {
 			@SerializedName("Contract")
@@ -27,10 +27,21 @@ public class UserRegisApi {
 			public String getServiceId() {
 				return serviceID;
 			}
-			// @SerializedName("ServiceName")
-			// String serviceName;
-			// @SerializedName("Location")
-			// String location;
+
+			@SerializedName("ServiceName")
+			String serviceName;
+
+			public String getServiceName() {
+				return serviceName;
+			}
+
+			@SerializedName("Location")
+			String location;
+
+			public String getLocation() {
+				return location;
+			}
+
 		}
 
 		@SerializedName("item")

@@ -109,6 +109,9 @@ public class ServiceTableNow {
 					}
 				}
 				if (willProcess) {
+					status = "Start process day: " + currentDateTime;
+					PayTVUtils.LOG_INFO.info(status);
+					System.out.println(status);
 					updateUserUsage(currentDateTime, connection);
 				} else {
 					listMissing.add(date);
@@ -158,6 +161,7 @@ public class ServiceTableNow {
 			throws UnsupportedEncodingException, IOException, SQLException {
 		String filePath = getFilePathFromDateTime(dateTime);
 		// ================== FIRST UPDATE
+		userUsage.initExtra();
 		userUsage.initMap();
 		userUsage.statisticUserUsage(filePath, hdfsIO);
 		Map<String, String> mapUserContract = userUsage.getMapUserContract();
@@ -165,6 +169,7 @@ public class ServiceTableNow {
 		Map<String, Map<String, Integer>> mapUserVectorApp = userUsage.getMapUserVectorApp();
 		updateDB(dateTime, connection, mapUserContract, mapUserVectorHourly, mapUserVectorApp);
 		// ================== EXTRA UPDATE
+		userUsage.initMap();
 		userUsage.statisticUserUsageExtra();
 		mapUserContract = userUsage.getMapUserContract();
 		mapUserVectorHourly = userUsage.getMapUserVectorHourly();
@@ -208,7 +213,7 @@ public class ServiceTableNow {
 				countInsert += mapUserUsageInsert.size();
 			}
 		}
-		status = "===> Done update table now: Update: " + countUpdate + " | Insert: " + countInsert + " | Time: "
+		status = "Done update table now: Update: " + countUpdate + " | Insert: " + countInsert + " | Time: "
 				+ (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis();
 		PayTVUtils.LOG_INFO.info(status);
 		System.out.println(status);

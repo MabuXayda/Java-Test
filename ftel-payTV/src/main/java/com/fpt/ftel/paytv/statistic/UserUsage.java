@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,14 +19,11 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 import com.fpt.ftel.core.config.CommonConfig;
-import com.fpt.ftel.core.utils.FileUtils;
 import com.fpt.ftel.core.utils.StringUtils;
 import com.fpt.ftel.hdfs.HdfsIO;
-import com.fpt.ftel.paytv.object.RawLog;
 import com.fpt.ftel.paytv.utils.PayTVConfig;
 import com.fpt.ftel.paytv.utils.PayTVUtils;
 import com.fpt.ftel.paytv.utils.StatisticUtils;
-import com.google.gson.Gson;
 
 public class UserUsage {
 	private List<String> listExtra = new ArrayList<>();
@@ -54,71 +50,17 @@ public class UserUsage {
 
 	public static void main(String[] args) throws IOException {
 		UserUsage userUsageService = UserUsage.getInstance();
-
-		// userUsageService.statisticUserUsageCheck("/data/payTV/log_parsed/2016/09/17/",
-		// "/home/tunn/data/tv");
-
 		userUsageService.dumpCheck();
-		// userUsageService.bigDumpCheck();
-
-		// System.out.println(new
-		// Duration(PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-07-16
-		// 20:20:49"),
-		// PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-07-16
-		// 20:21:14")).getStandardSeconds());
-
-	}
-
-	public void bigDumpCheck() throws IOException {
-		List<String> listFile = FileUtils.getListFilePath(new File("/data/fbox/logs/2016/09/18/"));
-		PrintWriter pr = new PrintWriter(new FileWriter("/build/payTV/18.txt", true));
-		for (String file : listFile) {
-			BufferedReader br = new BufferedReader(new FileReader(file));
-			String line = br.readLine();
-			while (line != null) {
-				if (!line.isEmpty()) {
-					try {
-						RawLog.Source source = new Gson().fromJson(line, RawLog.Source.class);
-						String received_at_string = source.getReceived_at();
-						DateTime received_at = PayTVUtils.parseReceived_at(received_at_string);
-						RawLog.Source.Fields fields = source.getFields();
-						String customerId = fields.getCustomerId();
-						String contract = fields.getContract();
-						String logId = fields.getLogId();
-						String appName = fields.getAppName();
-						String itemId = fields.getItemId();
-						String realTimePlaying = fields.getRealTimePlaying();
-						String sessionMainMenu = fields.getSessionMainMenu();
-						String boxTime = fields.getBoxTime();
-						// String ip_wan = fields.getIp_wan();
-						// String firmware = fields.getFirmware();
-						// String sessionSubMenu = fields.getSessionSubMenu();
-						// String screen = fields.getScreen();
-
-						if (customerId.equals("574744") && logId != null && appName != null && received_at != null) {
-							String writeLog = customerId + "," + contract + "," + logId + "," + appName + "," + itemId
-									+ "," + realTimePlaying + "," + sessionMainMenu + "," + boxTime + ","
-									+ received_at_string;
-							pr.println(writeLog);
-						}
-					} catch (Exception e) {
-						PayTVUtils.LOG_ERROR.error("Error parse json: " + line);
-					}
-				}
-				line = br.readLine();
-			}
-			br.close();
-			System.out.println("Done file: " + file);
-		}
-		pr.close();
+		// userUsageService.statisticUserUsageCheck("/data/payTV/log_parsed/2016/09/18/",
+		// "/home/tunn/data/tv");
 	}
 
 	public void dumpCheck() throws IOException {
 		Map<String, Set<String>> mapCheckDupSMM = new HashMap<>();
 		Map<String, DateTime> mapCheckValidSMM = new HashMap<>();
 		Map<String, DateTime> mapCheckValidRTP = new HashMap<>();
-		BufferedReader br = new BufferedReader(new FileReader("/home/tunn/data/tv/CHECK_BIG/18.csv"));
-		PrintWriter pr = new PrintWriter(new FileWriter("/home/tunn/data/tv/CHECK_BIG/18_flag.csv"));
+		BufferedReader br = new BufferedReader(new FileReader("/home/tunn/data/tv/617915.csv"));
+		PrintWriter pr = new PrintWriter(new FileWriter("/home/tunn/data/tv/617915_flag.csv"));
 		String line = br.readLine();
 		while (line != null) {
 			String[] arr = line.split(",");
@@ -164,7 +106,9 @@ public class UserUsage {
 					// willProcessCountLogId = willProcessRTP;
 				}
 			}
-			pr.println(line + "," + willProcessRTP);
+			pr.println(customerId + "," + logId + "," + appName + "," + arr[4] + "," + realTimePlaying + ","
+					+ PayTVUtils.FORMAT_DATE_TIME.print(sessionMainMenu) + ","
+					+ PayTVUtils.FORMAT_DATE_TIME.print(received_at) + "," + willProcessRTP);
 			line = br.readLine();
 		}
 		br.close();
@@ -191,9 +135,12 @@ public class UserUsage {
 		mapUserVectorApp = new ConcurrentHashMap<>();
 	}
 
+	public void initExtra() {
+		listExtra = new ArrayList<>();
+	}
+
 	public void statisticUserUsageExtra() {
 		System.out.println("List extra log size:" + listExtra.size());
-		initMap();
 		long start = System.currentTimeMillis();
 		int countTime = 0;
 		Map<String, Set<String>> mapCheckDupSMM = new HashMap<>();

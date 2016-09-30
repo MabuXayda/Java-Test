@@ -22,6 +22,8 @@ public class PayTVUtils {
 			"SERVICE", "BHD", "FIMs");
 //	public static final Set<String> SET_LOG_ID_RTP = new HashSet<String>(
 //			Arrays.asList("42", "44", "451", "461", "415", "416", "52", "63", "681", "82", "133", "152"));
+//	public static final Set<String> SET_LOG_ID_RTP = new HashSet<String>(
+//			Arrays.asList("42", "44", "52", "63", "133", "152"));
 	public static final Set<String> SET_LOG_ID_RTP = new HashSet<String>(
 			Arrays.asList("42", "44", "52", "63", "82", "133", "152"));
 

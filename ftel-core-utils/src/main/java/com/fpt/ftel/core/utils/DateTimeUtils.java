@@ -27,7 +27,8 @@ public class DateTimeUtils {
 	}
 
 	public static int getDayDuration(DateTime dateBefore, DateTime dateAfter) {
-		Duration duration = new Duration(dateBefore, dateAfter);
+		DateTime dayCheck = dateBefore.withTimeAtStartOfDay();
+		Duration duration = new Duration(dayCheck, dateAfter);
 		return (int) Math.ceil(duration.getStandardHours() / 24.0) - 1;
 	}
 

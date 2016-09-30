@@ -90,8 +90,8 @@ public class ServiceTableApp {
 	}
 
 	public void processTableFix(String fromDate, String toDate) throws IOException, SQLException {
-		DateTime beginDate = PayTVUtils.FORMAT_DATE_TIME_HOUR.parseDateTime(fromDate).plusHours(1);
-		DateTime endDate = PayTVUtils.FORMAT_DATE_TIME_HOUR.parseDateTime(toDate).plusHours(1);
+		DateTime beginDate = PayTVUtils.FORMAT_DATE_TIME_HOUR.parseDateTime(fromDate).plusDays(1);
+		DateTime endDate = PayTVUtils.FORMAT_DATE_TIME_HOUR.parseDateTime(toDate).plusDays(1);
 		while (new Duration(beginDate, endDate).getStandardSeconds() >= 0) {
 			processTableReal(PayTVUtils.FORMAT_DATE_TIME.print(beginDate));
 			beginDate = beginDate.plusDays(1);
@@ -134,6 +134,9 @@ public class ServiceTableApp {
 				}
 			}
 			if (willProcess) {
+				status = "Start process day: " + currentDateTime;
+				PayTVUtils.LOG_INFO.info(status);
+				System.out.println(status);
 				updateUserUsage(currentDateTime, connection);
 			} else {
 				listMissing.add(date);
@@ -164,8 +167,123 @@ public class ServiceTableApp {
 				.getMapUserAppDetailHourly();
 		Map<String, Map<String, Map<String, Integer>>> mapUserUsageDetailDaily = userUsageDetailApp
 				.getMapUserAppDetailDaily();
-		updateDB(connection, mapUserContract, mapUserUsageDetailHourly, mapUserUsageDetailDaily);
+		updateDB(connection, mapUserContract, mapUserUsageDetailHourly, mapUserUsageDetailDaily, dateTime);
 	}
+	
+	private void updateDB(Connection connection, Map<String, String> mapUserContract,
+			Map<String, Map<String, Map<Integer, Integer>>> mapUserUsageDetailHourly,
+			Map<String, Map<String, Map<String, Integer>>> mapUserUsageDetailDaily, DateTime dateTime) throws SQLException {
+		String currentDateSimple = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime);
+		String dropDateSimple = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime.minusDays(
+				Integer.parseInt(CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_TABLE_PROFILE_WEEK_TIMETOLIVE))));
+		tableAppDAO.dropPartitionWeek(connection, dropDateSimple);
+		tableAppDAO.createPartitionWeek(connection, currentDateSimple);
+		dropDateSimple = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime.minusDays(
+				Integer.parseInt(CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_TABLE_PROFILE_MONTH_TIMETOLIVE))));
+		tableAppDAO.dropPartitionMonth(connection, dropDateSimple);
+		tableAppDAO.createPartitionMonth(connection, currentDateSimple);
+		
+		int countUpdate = 0;
+		int countInsert = 0;
+		int countUpdateWeek = 0;
+		int countInsertWeek = 0;
+		int countUpdateMonth = 0;
+		int countInsertMonth = 0;
+		long start = System.currentTimeMillis();
+		List<Set<String>> listSetUser = ListUtils.splitSetToSmallerSet(mapUserUsageDetailHourly.keySet(), 500);
+
+		for (Set<String> subSetUser : listSetUser) {
+			Map<String, Map<String, Map<String, Integer>>> mapApp = joinMap(subSetUser, mapUserUsageDetailHourly,
+					mapUserUsageDetailDaily);
+
+			for (String app : PayTVUtils.LIST_APP_NAME_RTP) {
+				Map<String, Map<String, Integer>> mapUserUsage = mapApp.get(app);
+				Set<String> setUser = mapUserUsage.keySet();
+				// PROCESS SUM
+				Map<String, Map<String, Integer>> mapUserUsageUpdate = tableAppDAO.queryUserUsage(connection, app,
+						setUser);
+				if (mapUserUsageUpdate.size() > 0) {
+					for (String customerId : mapUserUsageUpdate.keySet()) {
+						Map<String, Integer> mapInfo = MapUtils.plusMapStringIntegerEasy(mapUserUsage.get(customerId),
+								mapUserUsageUpdate.get(customerId));
+						mapUserUsageUpdate.put(customerId, mapInfo);
+					}
+					tableAppDAO.updateUserUsageMultiple(connection, mapUserUsageUpdate, mapUserContract, app);
+					countUpdate += mapUserUsageUpdate.size();
+				}
+
+				Map<String, Map<String, Integer>> mapUserUsageInsert = new HashMap<>();
+				for (String customerId : setUser) {
+					if (!mapUserUsageUpdate.containsKey(customerId)) {
+						mapUserUsageInsert.put(customerId, mapUserUsage.get(customerId));
+					}
+				}
+				if (mapUserUsageInsert.size() > 0) {
+					tableAppDAO.insertUserUsageMultiple(connection, mapUserUsageInsert, mapUserContract, app);
+					countInsert += mapUserUsageInsert.size();
+				}
+				
+				//PROCESS WEEK
+				mapUserUsageUpdate = tableAppDAO.queryUserUsage(connection, app, setUser, currentDateSimple, "week");
+				if (mapUserUsageUpdate.size() > 0) {
+					for (String customerId : mapUserUsageUpdate.keySet()) {
+						Map<String, Integer> mapInfo = MapUtils.plusMapStringIntegerEasy(mapUserUsage.get(customerId),
+								mapUserUsageUpdate.get(customerId));
+						mapUserUsageUpdate.put(customerId, mapInfo);
+					}
+					tableAppDAO.updateUserUsageMultiple(connection, mapUserUsageUpdate, mapUserContract, app, currentDateSimple, "week");
+					countUpdateWeek += mapUserUsageUpdate.size();
+				}
+
+				mapUserUsageInsert = new HashMap<>();
+				for (String customerId : setUser) {
+					if (!mapUserUsageUpdate.containsKey(customerId)) {
+						mapUserUsageInsert.put(customerId, mapUserUsage.get(customerId));
+					}
+				}
+				if (mapUserUsageInsert.size() > 0) {
+					tableAppDAO.insertUserUsageMultiple(connection, mapUserUsageInsert, mapUserContract, app, currentDateSimple, "week");
+					countInsertWeek += mapUserUsageInsert.size();
+				}
+				
+				//PROCESS MONTH
+				mapUserUsageUpdate = tableAppDAO.queryUserUsage(connection, app, setUser, currentDateSimple, "month");
+				if (mapUserUsageUpdate.size() > 0) {
+					for (String customerId : mapUserUsageUpdate.keySet()) {
+						Map<String, Integer> mapInfo = MapUtils.plusMapStringIntegerEasy(mapUserUsage.get(customerId),
+								mapUserUsageUpdate.get(customerId));
+						mapUserUsageUpdate.put(customerId, mapInfo);
+					}
+					tableAppDAO.updateUserUsageMultiple(connection, mapUserUsageUpdate, mapUserContract, app, currentDateSimple, "month");
+					countUpdateMonth += mapUserUsageUpdate.size();
+				}
+
+				mapUserUsageInsert = new HashMap<>();
+				for (String customerId : setUser) {
+					if (!mapUserUsageUpdate.containsKey(customerId)) {
+						mapUserUsageInsert.put(customerId, mapUserUsage.get(customerId));
+					}
+				}
+				if (mapUserUsageInsert.size() > 0) {
+					tableAppDAO.insertUserUsageMultiple(connection, mapUserUsageInsert, mapUserContract, app, currentDateSimple, "month");
+					countInsertMonth += mapUserUsageInsert.size();
+				}
+			}
+		}
+		status = "Done update table app SUM: Update: " + countUpdate + " | Insert: " + countInsert;
+		PayTVUtils.LOG_INFO.info(status);
+		System.out.println(status);
+		status = "Done update table app WEEK: Update: " + countUpdateWeek + " | Insert: " + countInsertWeek;
+		PayTVUtils.LOG_INFO.info(status);
+		System.out.println(status);
+		status = "Done update table app MONTH: Update: " + countUpdateMonth + " | Insert: " + countInsertMonth;
+		PayTVUtils.LOG_INFO.info(status);
+		System.out.println(status);
+		status = "====== Done update profile_app witn Time: " + (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis();
+		PayTVUtils.LOG_INFO.info(status);
+		System.out.println(status);
+	}
+	
 
 	private void updateDB(Connection connection, Map<String, String> mapUserContract,
 			Map<String, Map<String, Map<Integer, Integer>>> mapUserUsageDetailHourly,
@@ -174,10 +292,8 @@ public class ServiceTableApp {
 		int countInsert = 0;
 		long start = System.currentTimeMillis();
 		List<Set<String>> listSetUser = ListUtils.splitSetToSmallerSet(mapUserUsageDetailHourly.keySet(), 500);
-		int time = 1;
 
 		for (Set<String> subSetUser : listSetUser) {
-			time++;
 			Map<String, Map<String, Map<String, Integer>>> mapApp = joinMap(subSetUser, mapUserUsageDetailHourly,
 					mapUserUsageDetailDaily);
 

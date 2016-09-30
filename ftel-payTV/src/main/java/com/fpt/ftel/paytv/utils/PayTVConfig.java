@@ -17,6 +17,7 @@ public class PayTVConfig {
 
 	public static final String DELAY_ALLOW_RTP = "DELAY_ALLOW_RTP";
 	public static final String GET_USER_CHURN_API = "GET_USER_CHURN_API";
+	public static final String GET_USER_REGISTER_API = "GET_USER_REGISTER_API";
 
 	public static final String POSTGRESQL_PAYTV_HOST = "POSTGRESQL_PAYTV_HOST";
 	public static final String POSTGRESQL_PAYTV_PORT = "POSTGRESQL_PAYTV_PORT";

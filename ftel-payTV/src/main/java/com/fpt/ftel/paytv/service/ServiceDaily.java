@@ -18,9 +18,10 @@ import com.fpt.ftel.paytv.utils.ServiceUtils;
 import com.fpt.ftel.postgresql.ConnectionFactory;
 
 public class ServiceDaily {
-	ProcessTableDaily processTableDaily;
-	ProcessTableProfile processTableProfile;
-	ProcessTableChurn processTableChurn;
+	private ProcessTableDaily processTableDaily;
+	private ProcessTableProfile processTableProfile;
+	private ProcessTableChurn processTableChurn;
+	private static String status;
 
 	public static void main(String[] args) {
 		System.out.println("- Fix command: java -jar .jar fix yyyy-mm-dd_HH yyyy-mm-dd_HH");
@@ -98,6 +99,9 @@ public class ServiceDaily {
 				}
 			}
 			if (willProcess) {
+				status = "Start process day: " + currentDateTime;
+				PayTVUtils.LOG_INFO.info(status);
+				System.out.println(status);
 				processTableDaily.updateTable(connection, currentDateTime);
 				processTableProfile.updateTable(connection, currentDateTime);
 				processTableChurn.updateTable(connection, currentDateTime);

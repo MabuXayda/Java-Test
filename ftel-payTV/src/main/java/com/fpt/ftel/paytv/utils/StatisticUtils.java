@@ -29,10 +29,13 @@ public class StatisticUtils {
 			if (!mapCheckValidRTP.containsKey(customerId)) {
 				mapCheckValidRTP.put(customerId, received_at);
 				willProcess = true;
-			} else if (realTimePlaying < new Duration(mapCheckValidRTP.get(customerId), received_at)
-					.getStandardSeconds() + Integer.parseInt(CommonConfig.get(PayTVConfig.DELAY_ALLOW_RTP))) {
-				mapCheckValidRTP.put(customerId, received_at);
-				willProcess = true;
+			} else {
+				int duration = (int) (new Duration(mapCheckValidRTP.get(customerId), received_at).getStandardSeconds()
+						+ Integer.parseInt(CommonConfig.get(PayTVConfig.DELAY_ALLOW_RTP)));
+				if (realTimePlaying < duration) {
+					mapCheckValidRTP.put(customerId, received_at);
+					willProcess = true;
+				}
 			}
 		}
 		return willProcess;

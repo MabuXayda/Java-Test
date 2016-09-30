@@ -21,6 +21,7 @@ import com.fpt.ftel.core.config.CommonConfig;
 import com.fpt.ftel.core.utils.DateTimeUtils;
 import com.fpt.ftel.core.utils.StringUtils;
 import com.fpt.ftel.paytv.object.UserCancelApi;
+import com.fpt.ftel.paytv.object.UserRegisterApi;
 import com.fpt.ftel.paytv.object.UserTestApi;
 import com.fpt.ftel.paytv.utils.PayTVConfig;
 import com.fpt.ftel.paytv.utils.PayTVUtils;
@@ -30,6 +31,17 @@ import com.google.gson.JsonSyntaxException;
 import com.google.gson.stream.JsonReader;
 
 public class UserStatus {
+	public static final String CONTRACT = "CONTRACT";
+	public static final String CUSTOMER_ID = "CUSTOMER_ID";
+	public static final String SERVICE_ID = "SERVICE_ID";
+	public static final String SERVICE_NAME = "SERVICE_NAME";
+	public static final String LOCATION = "LOCATION";
+	public static final String STATUS_ID = "STATUS_ID";
+	public static final String START_DATE = "START_DATE";
+	public static final String STOP_DATE = "STOP_DATE";
+	public static final String LAST_ACTIVE = "LAST_ACTIVE";
+	
+	
 
 	public static void main(String[] args) throws UnsupportedEncodingException, IOException {
 		DateTime date = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-07-31 05:00:00");
@@ -159,14 +171,39 @@ public class UserStatus {
 		return result;
 	}
 
-	public static Set<String> getSetUserCancelFromFile(String filePath)
-			throws JsonIOException, JsonSyntaxException, FileNotFoundException {
-		UserCancelApi api = new Gson().fromJson(new JsonReader(new FileReader(filePath)), UserCancelApi.class);
-		List<UserCancelApi.Root.Item> listItem = api.getRoot().getListItem();
-		Set<String> result = new HashSet<>();
-		for (UserCancelApi.Root.Item item : listItem) {
-			result.add(item.getCustomerId());
+//	public static Set<String> getSetUserCancelFromFile(String filePath)
+//			throws JsonIOException, JsonSyntaxException, FileNotFoundException {
+//		UserCancelApi api = new Gson().fromJson(new JsonReader(new FileReader(filePath)), UserCancelApi.class);
+//		List<UserCancelApi.Root.Item> listItem = api.getRoot().getListItem();
+//		Set<String> result = new HashSet<>();
+//		for (UserCancelApi.Root.Item item : listItem) {
+//			result.add(item.getCustomerId());
+//		}
+//		return result;
+//	}
+	
+	public static Map<String, Map<String, String>> getSetUserChurnInfo(DateTime dateTime) throws IOException{
+		Map<String, Map<String, String>> result = new HashMap<>();
+		
+		URL url = new URL(CommonConfig.get(PayTVConfig.GET_USER_CHURN_API) + PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime));
+		UserCancelApi apiCancel = new Gson().fromJson(IOUtils.toString(url, "UTF-8"), UserCancelApi.class);
+		for(UserCancelApi.Root.Item item : apiCancel.getRoot().getListItem()){
+			Map<String, String> newInfo = new HashMap<>();
+			newInfo.put(STATUS_ID, item.getStatus());
+			newInfo.put(STOP_DATE, PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime));
+			result.put(item.getCustomerId(), newInfo);
 		}
+		
+		url = new URL(CommonConfig.get(PayTVConfig.GET_USER_REGISTER_API) + PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime));
+		UserRegisterApi apiRegister = new Gson().fromJson(IOUtils.toString(url, "UTF-8"), UserRegisterApi.class);
+		for(UserRegisterApi.Root.Item item : apiRegister.getRoot().getListItem()){
+			Map<String, String> newInfo = new HashMap<>();
+			newInfo.put(CONTRACT, item.getContract());
+			newInfo.put(STATUS_ID, "1");
+			newInfo.put(LOCATION, item.getLocation());
+			result.put(item.getCustomerId(), newInfo);
+		}
+		
 		return result;
 	}
 
