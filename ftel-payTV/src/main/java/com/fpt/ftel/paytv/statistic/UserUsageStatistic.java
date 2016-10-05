@@ -207,7 +207,7 @@ public class UserUsageStatistic {
 			String dateString = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(beginDate);
 			URL url = new URL(CommonConfig.get(PayTVConfig.GET_USER_CHURN_API) + dateString);
 			String content = IOUtils.toString(url, "UTF-8");
-			Set<String> setUserCancel = UserStatus.getSetUserCancelFromString(content);
+			Set<String> setUserCancel = UserStatus.getSetUserChurnApi(content);
 			for(String id: setUserCancel){
 				mapChurn.put(id, beginDate);
 			}

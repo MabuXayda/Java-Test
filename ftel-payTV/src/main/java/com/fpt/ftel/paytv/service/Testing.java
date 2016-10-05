@@ -9,8 +9,6 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.joda.time.DateTime;
-
 import com.fpt.ftel.core.utils.FileUtils;
 import com.fpt.ftel.paytv.object.RawLog;
 import com.fpt.ftel.paytv.utils.PayTVUtils;
@@ -18,7 +16,6 @@ import com.google.gson.Gson;
 
 public class Testing {
 	public static void main(String[] args) throws IOException {
-		DateTime time = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-09-19 01:06:00");
 //		createApp();
 //		processApp(PayTVUtils.FORMAT_DATE_TIME.print(time));
 		

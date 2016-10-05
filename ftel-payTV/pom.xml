@@ -20,9 +20,10 @@
 		<!-- <finalName>ftel_payTV_ParseLogService</finalName> -->
 		<!-- <finalName>ftel_payTV_TableNowService</finalName> -->
 		<!-- <finalName>ftel_payTV_ServiceDaily</finalName> -->
-<!-- 		<finalName>ftel_payTV_TableAppService</finalName> -->
+		<!-- <finalName>ftel_payTV_TableAppService</finalName> -->
+		<finalName>ftel_payTV_TableInfoService</finalName>
 
-		<finalName>ftel_payTV_UserUsage</finalName>
+		<!-- <finalName>ftel_payTV_UserUsage</finalName> -->
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -52,9 +53,10 @@
 							<!-- <mainClass>com.fpt.ftel.paytv.service.ServiceParseLog</mainClass> -->
 							<!-- <mainClass>com.fpt.ftel.paytv.service.ServiceTableNow</mainClass> -->
 							<!-- <mainClass>com.fpt.ftel.paytv.service.ServiceDaily</mainClass> -->
-<!-- 							<mainClass>com.fpt.ftel.paytv.service.ServiceTableApp</mainClass> -->
+							<!-- <mainClass>com.fpt.ftel.paytv.service.ServiceTableApp</mainClass> -->
+							<mainClass>com.fpt.ftel.paytv.service.ServiceTableInfo</mainClass>
 
-							<mainClass>com.fpt.ftel.paytv.statistic.UserUsageStatistic</mainClass>
+							<!-- <mainClass>com.fpt.ftel.paytv.statistic.UserUsageStatistic</mainClass> -->
 						</manifest>
 					</archive>
 				</configuration>

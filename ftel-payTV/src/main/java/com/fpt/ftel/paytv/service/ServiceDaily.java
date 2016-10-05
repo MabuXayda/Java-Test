@@ -71,11 +71,11 @@ public class ServiceDaily {
 				CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_USER_PASSWORD));
 		List<String> listDateString = ServiceUtils.getListProcessMissing(ServiceUtils.DAILY_SERVICE_MISSING);
 		List<String> listMissing = new ArrayList<>();
-		DateTime currentDateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(dateString);
-		listDateString.add(PayTVUtils.FORMAT_DATE_TIME.print(currentDateTime.minusDays(1)));
+		listDateString.add(
+				PayTVUtils.FORMAT_DATE_TIME.print(PayTVUtils.FORMAT_DATE_TIME.parseDateTime(dateString).minusDays(1)));
 
 		for (String date : listDateString) {
-			currentDateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(date);
+			DateTime currentDateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(date);
 			boolean willProcess = false;
 			int wait = 0;
 			while (willProcess == false && wait < 4) {

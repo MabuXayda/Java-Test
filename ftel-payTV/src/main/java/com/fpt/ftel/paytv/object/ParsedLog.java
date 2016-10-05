@@ -1,12 +1,8 @@
 package com.fpt.ftel.paytv.object;
 
-import java.sql.Date;
-
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-
-import com.fpt.ftel.paytv.utils.PayTVUtils;
 
 public class ParsedLog {
 	String customerId;

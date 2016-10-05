@@ -64,24 +64,24 @@ public class ServiceParseLog {
 	public void processParseLogReal(String dateString) throws IOException {
 		List<String> listDateString = ServiceUtils.getListProcessMissing(ServiceUtils.PARSE_LOG_SERVICE_MISSING);
 		List<String> listMissing = new ArrayList<>();
-		DateTime currentDateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(dateString);
-		listDateString.add(PayTVUtils.FORMAT_DATE_TIME.print(currentDateTime.minusMinutes(5)));
+		listDateString.add(PayTVUtils.FORMAT_DATE_TIME
+				.print(PayTVUtils.FORMAT_DATE_TIME.parseDateTime(dateString).minusMinutes(5)));
 
 		DateTime markDate = null;
 		for (String date : listDateString) {
-			currentDateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(date);
-			if (FileUtils.isExistFile(getFilePathFromDateTime(currentDateTime.plusMinutes(5)))) {
-				if (markDate == null || DateTimeUtils.compareToHour(markDate, currentDateTime) == -1) {
-					status = "Start process day: " + currentDateTime;
+			DateTime processDateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(date);
+			if (FileUtils.isExistFile(getFilePathFromDateTime(processDateTime.plusMinutes(5)))) {
+				if (markDate == null || DateTimeUtils.compareToHour(markDate, processDateTime) == -1) {
+					status = "Start process day: " + processDateTime;
 					PayTVUtils.LOG_INFO.info(status);
 					System.out.println(status);
-					parseLog(currentDateTime);
+					parseLog(processDateTime);
 				} else {
 					listMissing.add(date);
 				}
 			} else {
 				listMissing.add(date);
-				markDate = currentDateTime;
+				markDate = processDateTime;
 			}
 		}
 

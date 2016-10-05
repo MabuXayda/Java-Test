@@ -35,33 +35,36 @@ public class UserStatus {
 	public static final String CUSTOMER_ID = "CUSTOMER_ID";
 	public static final String SERVICE_ID = "SERVICE_ID";
 	public static final String SERVICE_NAME = "SERVICE_NAME";
+	public static final String LOCATION_ID = "LOCATION_ID";
 	public static final String LOCATION = "LOCATION";
+	public static final String REGION = "REGION";
 	public static final String STATUS_ID = "STATUS_ID";
 	public static final String START_DATE = "START_DATE";
 	public static final String STOP_DATE = "STOP_DATE";
 	public static final String LAST_ACTIVE = "LAST_ACTIVE";
-	
-	
 
 	public static void main(String[] args) throws UnsupportedEncodingException, IOException {
-		DateTime date = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-07-31 05:00:00");
-		System.out.println(date.withTimeAtStartOfDay());
-
-	}
-
-	public static Map<String, DateTime> getMapUserDateCondition(String fileUserActive, String dateCondition,
-			String fileUserChurn) throws IOException {
-		Map<String, DateTime> mapUserDateCondition = new HashMap<>();
-		Map<String, DateTime> mapUserActive = getMapUserActive(fileUserActive);
-		for (String customerId : mapUserActive.keySet()) {
-			mapUserDateCondition.put(customerId, PayTVUtils.FORMAT_DATE_TIME.parseDateTime(dateCondition));
+//		PrintWriter pr = new PrintWriter(new FileWriter("/home/tunn/data/tv/temp/check_3009.csv"));
+//		pr.println("Contract,CustomerID,StatusID,Location");
+//		UserRegisterApi apiRegister = new Gson().fromJson(new JsonReader(new FileReader("/home/tunn/data/tv/temp/uRegister_3009")), UserRegisterApi.class);
+//		for (UserRegisterApi.Root.Item item : apiRegister.getRoot().getListItem()) {
+//			pr.println(item.getContract() + "," + item.getCustomerId() + ",1," + item.getLocation());
+//		}
+//		UserCancelApi apiCancel = new Gson().fromJson(new JsonReader(new FileReader("/home/tunn/data/tv/temp/uChurn_3009")), UserCancelApi.class);
+//		for (UserCancelApi.Root.Item item : apiCancel.getRoot().getListItem()) {
+//			pr.println(item.getContract()+ "," + item.getCustomerId() + "," + item.getStatus() + ",");
+//		}
+//		pr.close();
+		
+		Map<String, Map<String, String>> location = UserStatus.getMapLocation();
+		for(String loc : location.keySet()){
+			System.out.print(loc);
+			for(String key : location.get(loc).keySet()){
+				System.out.print(" | " + location.get(loc).get(key));
+			}
+			System.out.println();
 		}
-
-		Map<String, Map<String, DateTime>> mapUserChurn = getMapUserChurn(fileUserChurn);
-		for (String customerId : mapUserChurn.keySet()) {
-			mapUserDateCondition.put(customerId, mapUserChurn.get(customerId).get("StopDate"));
-		}
-		return mapUserDateCondition;
+		System.out.println(location.size());
 	}
 
 	public static Map<String, DateTime> getMapUserActiveDateCondition(String fileUserActive, DateTime dateCondition)
@@ -81,7 +84,7 @@ public class UserStatus {
 		for (String dateString : listDate) {
 			URL url = new URL(CommonConfig.get(PayTVConfig.GET_USER_CHURN_API) + dateString);
 			String content = IOUtils.toString(url, "UTF-8");
-			Set<String> setUser = getSetUserCancelFromString(content);
+			Set<String> setUser = getSetUserChurnApi(content);
 			for (String user : setUser) {
 				result.put(user, PayTVUtils.FORMAT_DATE_TIME_SIMPLE.parseDateTime(dateString));
 			}
@@ -98,7 +101,7 @@ public class UserStatus {
 		return mapUserDateCondition;
 	}
 
-	public static Map<String, DateTime> getMapUserActive(String filePath) throws IOException {
+	private static Map<String, DateTime> getMapUserActive(String filePath) throws IOException {
 		Map<String, DateTime> mapUserActive = new HashMap<>();
 		int count = 0;
 		File file = new File(filePath);
@@ -122,7 +125,7 @@ public class UserStatus {
 		return mapUserActive;
 	}
 
-	public static Map<String, Map<String, DateTime>> getMapUserChurn(String filePath) throws IOException {
+	private static Map<String, Map<String, DateTime>> getMapUserChurn(String filePath) throws IOException {
 		Map<String, Map<String, DateTime>> mapUserChurn = new HashMap<>();
 		int count = 0;
 		File file = new File(filePath);
@@ -161,8 +164,8 @@ public class UserStatus {
 		return result;
 	}
 
-	public static Set<String> getSetUserCancelFromString(String str) {
-		UserCancelApi api = new Gson().fromJson(str, UserCancelApi.class);
+	public static Set<String> getSetUserChurnApi(String content) {
+		UserCancelApi api = new Gson().fromJson(content, UserCancelApi.class);
 		List<UserCancelApi.Root.Item> listItem = api.getRoot().getListItem();
 		Set<String> result = new HashSet<>();
 		for (UserCancelApi.Root.Item item : listItem) {
@@ -171,39 +174,53 @@ public class UserStatus {
 		return result;
 	}
 
-//	public static Set<String> getSetUserCancelFromFile(String filePath)
-//			throws JsonIOException, JsonSyntaxException, FileNotFoundException {
-//		UserCancelApi api = new Gson().fromJson(new JsonReader(new FileReader(filePath)), UserCancelApi.class);
-//		List<UserCancelApi.Root.Item> listItem = api.getRoot().getListItem();
-//		Set<String> result = new HashSet<>();
-//		for (UserCancelApi.Root.Item item : listItem) {
-//			result.add(item.getCustomerId());
-//		}
-//		return result;
-//	}
-	
-	public static Map<String, Map<String, String>> getSetUserChurnInfo(DateTime dateTime) throws IOException{
+	public static Map<String, Map<String, String>> getMapUserChurnApi(String content, DateTime dateTime) {
 		Map<String, Map<String, String>> result = new HashMap<>();
-		
-		URL url = new URL(CommonConfig.get(PayTVConfig.GET_USER_CHURN_API) + PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime));
-		UserCancelApi apiCancel = new Gson().fromJson(IOUtils.toString(url, "UTF-8"), UserCancelApi.class);
-		for(UserCancelApi.Root.Item item : apiCancel.getRoot().getListItem()){
+		UserCancelApi apiCancel = new Gson().fromJson(content, UserCancelApi.class);
+		for (UserCancelApi.Root.Item item : apiCancel.getRoot().getListItem()) {
 			Map<String, String> newInfo = new HashMap<>();
 			newInfo.put(STATUS_ID, item.getStatus());
 			newInfo.put(STOP_DATE, PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime));
 			result.put(item.getCustomerId(), newInfo);
 		}
-		
-		url = new URL(CommonConfig.get(PayTVConfig.GET_USER_REGISTER_API) + PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime));
-		UserRegisterApi apiRegister = new Gson().fromJson(IOUtils.toString(url, "UTF-8"), UserRegisterApi.class);
-		for(UserRegisterApi.Root.Item item : apiRegister.getRoot().getListItem()){
+		return result;
+	}
+
+	public static Map<String, Map<String, String>> getMapUserRegisterApi(String content, DateTime dateTime)
+			throws IOException {
+		Map<String, Map<String, String>> result = new HashMap<>();
+		Map<String, Map<String, String>> mapLocation = getMapLocation();
+		UserRegisterApi apiRegister = new Gson().fromJson(content, UserRegisterApi.class);
+		for (UserRegisterApi.Root.Item item : apiRegister.getRoot().getListItem()) {
 			Map<String, String> newInfo = new HashMap<>();
 			newInfo.put(CONTRACT, item.getContract());
 			newInfo.put(STATUS_ID, "1");
 			newInfo.put(LOCATION, item.getLocation());
+			String location_code = item.getContract().substring(0, 2); 
+			newInfo.put(LOCATION_ID, mapLocation.get(location_code).get(LOCATION_ID));
+			newInfo.put(LOCATION, mapLocation.get(location_code).get(LOCATION));
+			newInfo.put(REGION, mapLocation.get(location_code).get(REGION));
+			newInfo.put(START_DATE, PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime));
 			result.put(item.getCustomerId(), newInfo);
 		}
-		
+		return result;
+	}
+
+	public static Map<String, Map<String, String>> getMapLocation() throws IOException {
+		Map<String, Map<String, String>> result = new HashMap<>();
+		BufferedReader br = new BufferedReader(new FileReader(CommonConfig.get(PayTVConfig.LOCATION_MAPPING)));
+		String line = br.readLine();
+		line = br.readLine();
+		while (line != null) {
+			Map<String, String> mapInfo = new HashMap<>();
+			String[] arr = line.split(",");
+			mapInfo.put(LOCATION_ID, arr[0]);
+			mapInfo.put(LOCATION, arr[2]);
+			mapInfo.put(REGION, arr[3]);
+			result.put(arr[1], mapInfo);
+			line = br.readLine();
+		}
+		br.close();
 		return result;
 	}
 

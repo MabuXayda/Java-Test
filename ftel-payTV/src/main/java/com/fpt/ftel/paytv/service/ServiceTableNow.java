@@ -87,32 +87,31 @@ public class ServiceTableNow {
 
 		List<String> listDateString = ServiceUtils.getListProcessMissing(ServiceUtils.TABLE_NOW_SERVICE_MISSING);
 		List<String> listMissing = new ArrayList<>();
-		DateTime currentDateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(dateString);
-		listDateString.add(PayTVUtils.FORMAT_DATE_TIME.print(currentDateTime.minusHours(1)));
+		listDateString.add(PayTVUtils.FORMAT_DATE_TIME.print(PayTVUtils.FORMAT_DATE_TIME.parseDateTime(dateString).minusHours(1)));
 
 		for (String date : listDateString) {
-			currentDateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(date);
+			DateTime processDateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(date);
 
-			if (currentDateTime.getHourOfDay() == 12) {
+			if (processDateTime.getHourOfDay() == 12) {
 				tableNowDAO.deleteOldRecords(connection,
 						Integer.parseInt(CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_TABLE_NOW_TIMETOLIVE)));
 			}
 
-			if (hdfsIO.isExist(getFilePathFromDateTime(currentDateTime.plusHours(1)))) {
+			if (hdfsIO.isExist(getFilePathFromDateTime(processDateTime.plusHours(1)))) {
 				boolean willProcess = true;
 				List<DateTime> listDateTimePreServiceUnprocessed = ServiceUtils
 						.getListDateProcessMissing(ServiceUtils.PARSE_LOG_SERVICE_MISSING);
 				for (DateTime dateTimeUnprocessed : listDateTimePreServiceUnprocessed) {
-					if (DateTimeUtils.compareToHour(dateTimeUnprocessed, currentDateTime) == 0) {
+					if (DateTimeUtils.compareToHour(dateTimeUnprocessed, processDateTime) == 0) {
 						willProcess = false;
 						break;
 					}
 				}
 				if (willProcess) {
-					status = "Start process day: " + currentDateTime;
+					status = "Start process day: " + processDateTime;
 					PayTVUtils.LOG_INFO.info(status);
 					System.out.println(status);
-					updateUserUsage(currentDateTime, connection);
+					updateUserUsage(processDateTime, connection);
 				} else {
 					listMissing.add(date);
 				}

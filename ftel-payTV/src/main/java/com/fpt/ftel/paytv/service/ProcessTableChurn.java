@@ -34,7 +34,7 @@ public class ProcessTableChurn {
 		String dateString = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime);
 		URL url = new URL(CommonConfig.get(PayTVConfig.GET_USER_CHURN_API) + dateString);
 		String content = IOUtils.toString(url, "UTF-8");
-		Set<String> setUserCancel = UserStatus.getSetUserCancelFromString(content);
+		Set<String> setUserCancel = UserStatus.getSetUserChurnApi(content);
 		PayTVUtils.LOG_INFO.info("User churn " + dateString + ": " + setUserCancel.size());
 		
 		tableChurnDAO.insertChurnDaily(connection, setUserCancel);

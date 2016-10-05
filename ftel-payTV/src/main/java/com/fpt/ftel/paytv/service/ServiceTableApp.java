@@ -106,11 +106,11 @@ public class ServiceTableApp {
 				CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_USER_PASSWORD));
 		List<String> listDateString = ServiceUtils.getListProcessMissing(ServiceUtils.TABLE_APP_SERVICE_MISSING);
 		List<String> listMissing = new ArrayList<>();
-		DateTime currentDateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(dateString);
-		listDateString.add(PayTVUtils.FORMAT_DATE_TIME.print(currentDateTime.minusDays(1)));
+		listDateString.add(
+				PayTVUtils.FORMAT_DATE_TIME.print(PayTVUtils.FORMAT_DATE_TIME.parseDateTime(dateString).minusDays(1)));
 
 		for (String date : listDateString) {
-			currentDateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(date);
+			DateTime processDateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(date);
 			boolean willProcess = false;
 			int wait = 0;
 			while (willProcess == false && wait < 4) {
@@ -118,7 +118,7 @@ public class ServiceTableApp {
 				List<DateTime> listDateTimePreServiceUnprocessed = ServiceUtils
 						.getListDateProcessMissing(ServiceUtils.TABLE_NOW_SERVICE_MISSING);
 				for (DateTime dateTimeUnprocessed : listDateTimePreServiceUnprocessed) {
-					if (DateTimeComparator.getDateOnlyInstance().compare(dateTimeUnprocessed, currentDateTime) == 0) {
+					if (DateTimeComparator.getDateOnlyInstance().compare(dateTimeUnprocessed, processDateTime) == 0) {
 						willProcess = false;
 						break;
 					}
@@ -134,10 +134,10 @@ public class ServiceTableApp {
 				}
 			}
 			if (willProcess) {
-				status = "Start process day: " + currentDateTime;
+				status = "Start process day: " + processDateTime;
 				PayTVUtils.LOG_INFO.info(status);
 				System.out.println(status);
-				updateUserUsage(currentDateTime, connection);
+				updateUserUsage(processDateTime, connection);
 			} else {
 				listMissing.add(date);
 			}
@@ -169,10 +169,11 @@ public class ServiceTableApp {
 				.getMapUserAppDetailDaily();
 		updateDB(connection, mapUserContract, mapUserUsageDetailHourly, mapUserUsageDetailDaily, dateTime);
 	}
-	
+
 	private void updateDB(Connection connection, Map<String, String> mapUserContract,
 			Map<String, Map<String, Map<Integer, Integer>>> mapUserUsageDetailHourly,
-			Map<String, Map<String, Map<String, Integer>>> mapUserUsageDetailDaily, DateTime dateTime) throws SQLException {
+			Map<String, Map<String, Map<String, Integer>>> mapUserUsageDetailDaily, DateTime dateTime)
+			throws SQLException {
 		String currentDateSimple = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime);
 		String dropDateSimple = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime.minusDays(
 				Integer.parseInt(CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_TABLE_PROFILE_WEEK_TIMETOLIVE))));
@@ -182,7 +183,7 @@ public class ServiceTableApp {
 				Integer.parseInt(CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_TABLE_PROFILE_MONTH_TIMETOLIVE))));
 		tableAppDAO.dropPartitionMonth(connection, dropDateSimple);
 		tableAppDAO.createPartitionMonth(connection, currentDateSimple);
-		
+
 		int countUpdate = 0;
 		int countInsert = 0;
 		int countUpdateWeek = 0;
@@ -222,8 +223,8 @@ public class ServiceTableApp {
 					tableAppDAO.insertUserUsageMultiple(connection, mapUserUsageInsert, mapUserContract, app);
 					countInsert += mapUserUsageInsert.size();
 				}
-				
-				//PROCESS WEEK
+
+				// PROCESS WEEK
 				mapUserUsageUpdate = tableAppDAO.queryUserUsage(connection, app, setUser, currentDateSimple, "week");
 				if (mapUserUsageUpdate.size() > 0) {
 					for (String customerId : mapUserUsageUpdate.keySet()) {
@@ -231,7 +232,8 @@ public class ServiceTableApp {
 								mapUserUsageUpdate.get(customerId));
 						mapUserUsageUpdate.put(customerId, mapInfo);
 					}
-					tableAppDAO.updateUserUsageMultiple(connection, mapUserUsageUpdate, mapUserContract, app, currentDateSimple, "week");
+					tableAppDAO.updateUserUsageMultiple(connection, mapUserUsageUpdate, mapUserContract, app,
+							currentDateSimple, "week");
 					countUpdateWeek += mapUserUsageUpdate.size();
 				}
 
@@ -242,11 +244,12 @@ public class ServiceTableApp {
 					}
 				}
 				if (mapUserUsageInsert.size() > 0) {
-					tableAppDAO.insertUserUsageMultiple(connection, mapUserUsageInsert, mapUserContract, app, currentDateSimple, "week");
+					tableAppDAO.insertUserUsageMultiple(connection, mapUserUsageInsert, mapUserContract, app,
+							currentDateSimple, "week");
 					countInsertWeek += mapUserUsageInsert.size();
 				}
-				
-				//PROCESS MONTH
+
+				// PROCESS MONTH
 				mapUserUsageUpdate = tableAppDAO.queryUserUsage(connection, app, setUser, currentDateSimple, "month");
 				if (mapUserUsageUpdate.size() > 0) {
 					for (String customerId : mapUserUsageUpdate.keySet()) {
@@ -254,7 +257,8 @@ public class ServiceTableApp {
 								mapUserUsageUpdate.get(customerId));
 						mapUserUsageUpdate.put(customerId, mapInfo);
 					}
-					tableAppDAO.updateUserUsageMultiple(connection, mapUserUsageUpdate, mapUserContract, app, currentDateSimple, "month");
+					tableAppDAO.updateUserUsageMultiple(connection, mapUserUsageUpdate, mapUserContract, app,
+							currentDateSimple, "month");
 					countUpdateMonth += mapUserUsageUpdate.size();
 				}
 
@@ -265,7 +269,8 @@ public class ServiceTableApp {
 					}
 				}
 				if (mapUserUsageInsert.size() > 0) {
-					tableAppDAO.insertUserUsageMultiple(connection, mapUserUsageInsert, mapUserContract, app, currentDateSimple, "month");
+					tableAppDAO.insertUserUsageMultiple(connection, mapUserUsageInsert, mapUserContract, app,
+							currentDateSimple, "month");
 					countInsertMonth += mapUserUsageInsert.size();
 				}
 			}
@@ -279,53 +284,8 @@ public class ServiceTableApp {
 		status = "Done update table app MONTH: Update: " + countUpdateMonth + " | Insert: " + countInsertMonth;
 		PayTVUtils.LOG_INFO.info(status);
 		System.out.println(status);
-		status = "====== Done update profile_app witn Time: " + (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis();
-		PayTVUtils.LOG_INFO.info(status);
-		System.out.println(status);
-	}
-	
-
-	private void updateDB(Connection connection, Map<String, String> mapUserContract,
-			Map<String, Map<String, Map<Integer, Integer>>> mapUserUsageDetailHourly,
-			Map<String, Map<String, Map<String, Integer>>> mapUserUsageDetailDaily) throws SQLException {
-		int countUpdate = 0;
-		int countInsert = 0;
-		long start = System.currentTimeMillis();
-		List<Set<String>> listSetUser = ListUtils.splitSetToSmallerSet(mapUserUsageDetailHourly.keySet(), 500);
-
-		for (Set<String> subSetUser : listSetUser) {
-			Map<String, Map<String, Map<String, Integer>>> mapApp = joinMap(subSetUser, mapUserUsageDetailHourly,
-					mapUserUsageDetailDaily);
-
-			for (String app : PayTVUtils.LIST_APP_NAME_RTP) {
-				Map<String, Map<String, Integer>> mapUserUsage = mapApp.get(app);
-				Set<String> setUser = mapUserUsage.keySet();
-				Map<String, Map<String, Integer>> mapUserUsageUpdate = tableAppDAO.queryUserUsage(connection, app,
-						setUser);
-				if (mapUserUsageUpdate.size() > 0) {
-					for (String customerId : mapUserUsageUpdate.keySet()) {
-						Map<String, Integer> mapInfo = MapUtils.plusMapStringIntegerEasy(mapUserUsage.get(customerId),
-								mapUserUsageUpdate.get(customerId));
-						mapUserUsageUpdate.put(customerId, mapInfo);
-					}
-					tableAppDAO.updateUserUsageMultiple(connection, mapUserUsageUpdate, mapUserContract, app);
-					countUpdate += mapUserUsageUpdate.size();
-				}
-
-				Map<String, Map<String, Integer>> mapUserUsageInsert = new HashMap<>();
-				for (String customerId : setUser) {
-					if (!mapUserUsageUpdate.containsKey(customerId)) {
-						mapUserUsageInsert.put(customerId, mapUserUsage.get(customerId));
-					}
-				}
-				if (mapUserUsageInsert.size() > 0) {
-					tableAppDAO.insertUserUsageMultiple(connection, mapUserUsageInsert, mapUserContract, app);
-					countInsert += mapUserUsageInsert.size();
-				}
-			}
-		}
-		status = "Done update table app: Update: " + countUpdate + " | Insert: " + countInsert + " | Time: "
-				+ (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis();
+		status = "====== Done update profile_app witn Time: " + (System.currentTimeMillis() - start) + " | At: "
+				+ System.currentTimeMillis();
 		PayTVUtils.LOG_INFO.info(status);
 		System.out.println(status);
 	}
