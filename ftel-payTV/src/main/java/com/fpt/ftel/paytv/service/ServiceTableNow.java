@@ -87,7 +87,8 @@ public class ServiceTableNow {
 
 		List<String> listDateString = ServiceUtils.getListProcessMissing(ServiceUtils.TABLE_NOW_SERVICE_MISSING);
 		List<String> listMissing = new ArrayList<>();
-		listDateString.add(PayTVUtils.FORMAT_DATE_TIME.print(PayTVUtils.FORMAT_DATE_TIME.parseDateTime(dateString).minusHours(1)));
+		listDateString.add(
+				PayTVUtils.FORMAT_DATE_TIME.print(PayTVUtils.FORMAT_DATE_TIME.parseDateTime(dateString).minusHours(1)));
 
 		for (String date : listDateString) {
 			DateTime processDateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(date);
@@ -173,7 +174,9 @@ public class ServiceTableNow {
 		mapUserContract = userUsage.getMapUserContract();
 		mapUserVectorHourly = userUsage.getMapUserVectorHourly();
 		mapUserVectorApp = userUsage.getMapUserVectorApp();
-		updateDB(dateTime.minusDays(1), connection, mapUserContract, mapUserVectorHourly, mapUserVectorApp);
+		if (mapUserContract != null && mapUserContract.size() > 0) {
+			updateDB(dateTime.minusDays(1), connection, mapUserContract, mapUserVectorHourly, mapUserVectorApp);
+		}
 	}
 
 	private void updateDB(DateTime dateTime, Connection connection, Map<String, String> mapUserContract,

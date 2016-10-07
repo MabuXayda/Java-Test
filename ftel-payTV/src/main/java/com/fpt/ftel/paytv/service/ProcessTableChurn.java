@@ -36,11 +36,12 @@ public class ProcessTableChurn {
 		String content = IOUtils.toString(url, "UTF-8");
 		Set<String> setUserCancel = UserStatus.getSetUserChurnApi(content);
 		PayTVUtils.LOG_INFO.info("User churn " + dateString + ": " + setUserCancel.size());
-		
-		tableChurnDAO.insertChurnDaily(connection, setUserCancel);
-		tableChurnDAO.insertChurnProfileSum(connection, setUserCancel);
-		tableChurnDAO.insertChurnProfileWeek(connection, setUserCancel);
-		tableChurnDAO.insertChurnProfileMonth(connection, setUserCancel);
+		if (setUserCancel != null && setUserCancel.size() > 0) {
+			tableChurnDAO.insertChurnDaily(connection, setUserCancel);
+			tableChurnDAO.insertChurnProfileSum(connection, setUserCancel);
+			tableChurnDAO.insertChurnProfileWeek(connection, setUserCancel);
+			tableChurnDAO.insertChurnProfileMonth(connection, setUserCancel);
+		}
 		PayTVUtils.LOG_INFO.info("Done update CHURN with Time: " + (System.currentTimeMillis() - start) + " | At: "
 				+ System.currentTimeMillis());
 	}

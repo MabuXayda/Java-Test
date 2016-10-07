@@ -48,13 +48,6 @@ public class UserUsage {
 		return instance;
 	}
 
-	public static void main(String[] args) throws IOException {
-		UserUsage userUsageService = UserUsage.getInstance();
-		userUsageService.dumpCheck();
-		// userUsageService.statisticUserUsageCheck("/data/payTV/log_parsed/2016/09/18/",
-		// "/home/tunn/data/tv");
-	}
-
 	public void dumpCheck() throws IOException {
 		Map<String, Set<String>> mapCheckDupSMM = new HashMap<>();
 		Map<String, DateTime> mapCheckValidSMM = new HashMap<>();

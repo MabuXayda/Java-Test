@@ -11,6 +11,8 @@ import java.util.Set;
 
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import com.fpt.ftel.core.config.CommonConfig;
 import com.fpt.ftel.core.utils.DateTimeUtils;
@@ -88,16 +90,25 @@ public class StatisticUtils {
 		pr.close();
 	}
 
-	public static void printDays48(PrintWriter pr, Map<String, Map<Integer, Integer>> totalMapDays) {
+	public static void printDays(PrintWriter pr, Map<String, Map<Integer, Integer>> totalMapDays, DateTime dateTime) {
+		DateTimeFormatter dtf = DateTimeFormat.forPattern("MM-dd");
+		List<String> listDay = new ArrayList<>();
+		DateTime firstDay = dateTime.withDayOfMonth(1);
+		DateTime nextMonthFirstDay = firstDay.plusMonths(1);
+		while (firstDay.isBefore(nextMonthFirstDay)) {
+			listDay.add(dtf.print(firstDay));
+			firstDay = firstDay.plusDays(1);
+		}
 		pr.print("CustomerId");
-		for (int i = 0; i <= 47; i++) {
-			pr.print("," + i);
+		int total = listDay.size();
+		for (int i = 0; i < total; i++) {
+			pr.print("," + listDay.get(total - i - 1));
 		}
 		pr.println();
 		for (String customerId : totalMapDays.keySet()) {
 			pr.print(customerId);
 			Map<Integer, Integer> mapDays = totalMapDays.get(customerId);
-			for (int i = 0; i <= 47; i++) {
+			for (int i = 0; i < total; i++) {
 				Integer value = mapDays.get(i);
 				if (value == null) {
 					value = 0;

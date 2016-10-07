@@ -118,7 +118,9 @@ public class ServiceTableInfo {
 				+ PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime));
 		String content = IOUtils.toString(url, "UTF-8");
 		Map<String, Map<String, String>> mapRegister = UserStatus.getMapUserRegisterApi(content, dateTime);
-		tableInfoDAO.insertNewUser(connection, mapRegister);
+		if (mapRegister != null && mapRegister.size() > 0) {
+			tableInfoDAO.insertNewUser(connection, mapRegister);
+		}
 		status = "Done insert user REGISTER at day: " + PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime)
 				+ " | Count: " + mapRegister.size();
 		System.out.println(status);
@@ -130,7 +132,9 @@ public class ServiceTableInfo {
 				CommonConfig.get(PayTVConfig.GET_USER_CHURN_API) + PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime));
 		String content = IOUtils.toString(url, "UTF-8");
 		Map<String, Map<String, String>> mapChurn = UserStatus.getMapUserChurnApi(content, dateTime);
-		tableInfoDAO.updateChurnStatus(connection, mapChurn);
+		if (mapChurn != null && mapChurn.size() > 0) {
+			tableInfoDAO.updateChurnStatus(connection, mapChurn);
+		}
 		status = "Done update user CHURN at day: " + PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime) + " | Count: "
 				+ mapChurn.size();
 		System.out.println(status);
@@ -140,13 +144,15 @@ public class ServiceTableInfo {
 	private void updateLastActive(Connection connection, DateTime dateTime) throws SQLException {
 		String dateString = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime);
 		Map<String, String> mapLastActive = tableInfoDAO.getLastActive(connection, dateString);
-		List<Set<String>> listSetUser = ListUtils.splitSetToSmallerSet(mapLastActive.keySet(), 500);
-		for (Set<String> setUser : listSetUser) {
-			Map<String, String> smallerMap = new HashMap<>();
-			for (String id : setUser) {
-				smallerMap.put(id, mapLastActive.get(id));
+		if (mapLastActive != null && mapLastActive.size() > 0) {
+			List<Set<String>> listSetUser = ListUtils.splitSetToSmallerSet(mapLastActive.keySet(), 500);
+			for (Set<String> setUser : listSetUser) {
+				Map<String, String> smallerMap = new HashMap<>();
+				for (String id : setUser) {
+					smallerMap.put(id, mapLastActive.get(id));
+				}
+				tableInfoDAO.updateLastActive(connection, smallerMap);
 			}
-			tableInfoDAO.updateLastActive(connection, smallerMap);
 		}
 		status = "Done update user LAST ACTIVE at day: " + PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime)
 				+ " | Count: " + mapLastActive.size();

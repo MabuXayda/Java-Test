@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.HashMap;
@@ -44,27 +46,43 @@ public class UserStatus {
 	public static final String LAST_ACTIVE = "LAST_ACTIVE";
 
 	public static void main(String[] args) throws UnsupportedEncodingException, IOException {
-//		PrintWriter pr = new PrintWriter(new FileWriter("/home/tunn/data/tv/temp/check_3009.csv"));
-//		pr.println("Contract,CustomerID,StatusID,Location");
+		PrintWriter pr = new PrintWriter(new FileWriter("/home/tunn/data/tv/temp/check_0110.csv"));
+		pr.println("Contract,CustomerID,StatusID,Location");
 //		UserRegisterApi apiRegister = new Gson().fromJson(new JsonReader(new FileReader("/home/tunn/data/tv/temp/uRegister_3009")), UserRegisterApi.class);
 //		for (UserRegisterApi.Root.Item item : apiRegister.getRoot().getListItem()) {
 //			pr.println(item.getContract() + "," + item.getCustomerId() + ",1," + item.getLocation());
 //		}
-//		UserCancelApi apiCancel = new Gson().fromJson(new JsonReader(new FileReader("/home/tunn/data/tv/temp/uChurn_3009")), UserCancelApi.class);
-//		for (UserCancelApi.Root.Item item : apiCancel.getRoot().getListItem()) {
-//			pr.println(item.getContract()+ "," + item.getCustomerId() + "," + item.getStatus() + ",");
-//		}
-//		pr.close();
-		
-		Map<String, Map<String, String>> location = UserStatus.getMapLocation();
-		for(String loc : location.keySet()){
-			System.out.print(loc);
-			for(String key : location.get(loc).keySet()){
-				System.out.print(" | " + location.get(loc).get(key));
-			}
-			System.out.println();
+		UserCancelApi apiCancel = new Gson().fromJson(new JsonReader(new FileReader("/home/tunn/data/tv/temp/uChurn_0110")), UserCancelApi.class);
+		for (UserCancelApi.Root.Item item : apiCancel.getRoot().getListItem()) {
+			pr.println(item.getContract()+ "," + item.getCustomerId() + "," + item.getStatus() + ",");
 		}
-		System.out.println(location.size());
+		apiCancel = new Gson().fromJson(new JsonReader(new FileReader("/home/tunn/data/tv/temp/uChurn_0210")), UserCancelApi.class);
+		for (UserCancelApi.Root.Item item : apiCancel.getRoot().getListItem()) {
+			pr.println(item.getContract()+ "," + item.getCustomerId() + "," + item.getStatus() + ",");
+		}
+		apiCancel = new Gson().fromJson(new JsonReader(new FileReader("/home/tunn/data/tv/temp/uChurn_0310")), UserCancelApi.class);
+		for (UserCancelApi.Root.Item item : apiCancel.getRoot().getListItem()) {
+			pr.println(item.getContract()+ "," + item.getCustomerId() + "," + item.getStatus() + ",");
+		}
+		apiCancel = new Gson().fromJson(new JsonReader(new FileReader("/home/tunn/data/tv/temp/uChurn_0410")), UserCancelApi.class);
+		for (UserCancelApi.Root.Item item : apiCancel.getRoot().getListItem()) {
+			pr.println(item.getContract()+ "," + item.getCustomerId() + "," + item.getStatus() + ",");
+		}
+		apiCancel = new Gson().fromJson(new JsonReader(new FileReader("/home/tunn/data/tv/temp/uChurn_0510")), UserCancelApi.class);
+		for (UserCancelApi.Root.Item item : apiCancel.getRoot().getListItem()) {
+			pr.println(item.getContract()+ "," + item.getCustomerId() + "," + item.getStatus() + ",");
+		}
+		pr.close();
+		
+//		Map<String, Map<String, String>> location = UserStatus.getMapLocation();
+//		for(String loc : location.keySet()){
+//			System.out.print(loc);
+//			for(String key : location.get(loc).keySet()){
+//				System.out.print(" | " + location.get(loc).get(key));
+//			}
+//			System.out.println();
+//		}
+//		System.out.println(location.size());
 	}
 
 	public static Map<String, DateTime> getMapUserActiveDateCondition(String fileUserActive, DateTime dateCondition)
