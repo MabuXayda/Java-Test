@@ -134,7 +134,7 @@ public class ServiceTableApp {
 				}
 			}
 			if (willProcess) {
-				status = "Start process day: " + processDateTime;
+				status = "Start process date: " + PayTVUtils.FORMAT_DATE_TIME.print(processDateTime);
 				PayTVUtils.LOG_INFO.info(status);
 				System.out.println(status);
 				updateUserUsage(processDateTime, connection);
@@ -162,15 +162,14 @@ public class ServiceTableApp {
 		for (String filePath : listFilePath) {
 			userUsageDetailApp.statisticUserUsageDetail(filePath, hdfsIO);
 		}
-		Map<String, String> mapUserContract = userUsageDetailApp.getMapUserContract();
 		Map<String, Map<String, Map<Integer, Integer>>> mapUserUsageDetailHourly = userUsageDetailApp
 				.getMapUserAppDetailHourly();
 		Map<String, Map<String, Map<String, Integer>>> mapUserUsageDetailDaily = userUsageDetailApp
 				.getMapUserAppDetailDaily();
-		updateDB(connection, mapUserContract, mapUserUsageDetailHourly, mapUserUsageDetailDaily, dateTime);
+		updateDB(connection, mapUserUsageDetailHourly, mapUserUsageDetailDaily, dateTime);
 	}
 
-	private void updateDB(Connection connection, Map<String, String> mapUserContract,
+	private void updateDB(Connection connection,
 			Map<String, Map<String, Map<Integer, Integer>>> mapUserUsageDetailHourly,
 			Map<String, Map<String, Map<String, Integer>>> mapUserUsageDetailDaily, DateTime dateTime)
 			throws SQLException {
@@ -181,7 +180,7 @@ public class ServiceTableApp {
 		tableAppDAO.createPartitionWeek(connection, currentDateSimple);
 		dropDateSimple = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime.minusDays(
 				Integer.parseInt(CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_TABLE_PROFILE_MONTH_TIMETOLIVE))));
-		tableAppDAO.dropPartitionMonth(connection, dropDateSimple);
+		// tableAppDAO.dropPartitionMonth(connection, dropDateSimple);
 		tableAppDAO.createPartitionMonth(connection, currentDateSimple);
 
 		int countUpdate = 0;
@@ -209,7 +208,7 @@ public class ServiceTableApp {
 								mapUserUsageUpdate.get(customerId));
 						mapUserUsageUpdate.put(customerId, mapInfo);
 					}
-					tableAppDAO.updateUserUsageMultiple(connection, mapUserUsageUpdate, mapUserContract, app);
+					tableAppDAO.updateUserUsageMultiple(connection, mapUserUsageUpdate, app);
 					countUpdate += mapUserUsageUpdate.size();
 				}
 
@@ -220,7 +219,7 @@ public class ServiceTableApp {
 					}
 				}
 				if (mapUserUsageInsert.size() > 0) {
-					tableAppDAO.insertUserUsageMultiple(connection, mapUserUsageInsert, mapUserContract, app);
+					tableAppDAO.insertUserUsageMultiple(connection, mapUserUsageInsert, app);
 					countInsert += mapUserUsageInsert.size();
 				}
 
@@ -232,8 +231,7 @@ public class ServiceTableApp {
 								mapUserUsageUpdate.get(customerId));
 						mapUserUsageUpdate.put(customerId, mapInfo);
 					}
-					tableAppDAO.updateUserUsageMultiple(connection, mapUserUsageUpdate, mapUserContract, app,
-							currentDateSimple, "week");
+					tableAppDAO.updateUserUsageMultiple(connection, mapUserUsageUpdate, app, currentDateSimple, "week");
 					countUpdateWeek += mapUserUsageUpdate.size();
 				}
 
@@ -244,8 +242,7 @@ public class ServiceTableApp {
 					}
 				}
 				if (mapUserUsageInsert.size() > 0) {
-					tableAppDAO.insertUserUsageMultiple(connection, mapUserUsageInsert, mapUserContract, app,
-							currentDateSimple, "week");
+					tableAppDAO.insertUserUsageMultiple(connection, mapUserUsageInsert, app, currentDateSimple, "week");
 					countInsertWeek += mapUserUsageInsert.size();
 				}
 
@@ -257,8 +254,8 @@ public class ServiceTableApp {
 								mapUserUsageUpdate.get(customerId));
 						mapUserUsageUpdate.put(customerId, mapInfo);
 					}
-					tableAppDAO.updateUserUsageMultiple(connection, mapUserUsageUpdate, mapUserContract, app,
-							currentDateSimple, "month");
+					tableAppDAO.updateUserUsageMultiple(connection, mapUserUsageUpdate, app, currentDateSimple,
+							"month");
 					countUpdateMonth += mapUserUsageUpdate.size();
 				}
 
@@ -269,23 +266,22 @@ public class ServiceTableApp {
 					}
 				}
 				if (mapUserUsageInsert.size() > 0) {
-					tableAppDAO.insertUserUsageMultiple(connection, mapUserUsageInsert, mapUserContract, app,
-							currentDateSimple, "month");
+					tableAppDAO.insertUserUsageMultiple(connection, mapUserUsageInsert, app, currentDateSimple,
+							"month");
 					countInsertMonth += mapUserUsageInsert.size();
 				}
 			}
 		}
-		status = "Done update table app SUM: Update: " + countUpdate + " | Insert: " + countInsert;
+		status = "------> Done updateDB APP | Update: " + countUpdate + " | Insert: " + countInsert;
 		PayTVUtils.LOG_INFO.info(status);
 		System.out.println(status);
-		status = "Done update table app WEEK: Update: " + countUpdateWeek + " | Insert: " + countInsertWeek;
+		status = "------> Done updateDB APP_WEEK | Update: " + countUpdateWeek + " | Insert: " + countInsertWeek;
 		PayTVUtils.LOG_INFO.info(status);
 		System.out.println(status);
-		status = "Done update table app MONTH: Update: " + countUpdateMonth + " | Insert: " + countInsertMonth;
+		status = "------> Done updateDB APP_MONTH | Update: " + countUpdateMonth + " | Insert: " + countInsertMonth;
 		PayTVUtils.LOG_INFO.info(status);
 		System.out.println(status);
-		status = "====== Done update profile_app witn Time: " + (System.currentTimeMillis() - start) + " | At: "
-				+ System.currentTimeMillis();
+		status = "| totalTime: " + (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis();
 		PayTVUtils.LOG_INFO.info(status);
 		System.out.println(status);
 	}

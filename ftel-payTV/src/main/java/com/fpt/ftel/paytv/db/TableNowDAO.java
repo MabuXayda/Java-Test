@@ -16,7 +16,8 @@ import com.fpt.ftel.paytv.utils.PayTVUtils;
 import com.fpt.ftel.postgresql.PostgreSQL;
 
 public class TableNowDAO {
-	private static final String SQL_CREATE_TABLE_NOW = "CREATE TABLE IF NOT EXISTS now (contract VARCHAR(22), customer_id VARCHAR(22), date DATE, "
+	private static final String SQL_CREATE_TABLE_NOW = "CREATE TABLE IF NOT EXISTS now "
+			+ "(customer_id VARCHAR(22), date DATE, "
 			+ "h_00 INT, h_01 INT, h_02 INT, h_03 INT, h_04 INT, h_05 INT, h_06 INT, h_07 INT, h_08 INT, h_09 INT, "
 			+ "h_10 INT, h_11 INT, h_12 INT, h_13 INT, h_14 INT, h_15 INT, h_16 INT, h_17 INT, h_18 INT, h_19 INT, "
 			+ "h_20 INT, h_21 INT, h_22 INT, h_23 INT, "
@@ -33,14 +34,14 @@ public class TableNowDAO {
 	}
 
 	public void insertUserUsageMultiple(Connection connection, Map<String, Map<String, Integer>> mapUserUsage,
-			Map<String, String> mapUserContract, String date) throws SQLException {
-		String sql = generatedSQLInsertUserUsageMultiple(mapUserUsage, mapUserContract, date);
+			String date) throws SQLException {
+		String sql = generatedSQLInsertUserUsageMultiple(mapUserUsage, date);
 		PostgreSQL.executeUpdateSQL(connection, sql);
 	}
 
 	public void updateUserUsageMultiple(Connection connection, Map<String, Map<String, Integer>> mapUserUsage,
-			Map<String, String> mapUserContract, String date) throws SQLException {
-		String sql = generatedSQLUpdateUserUsageMultiple(mapUserUsage, mapUserContract, date);
+			String date) throws SQLException {
+		String sql = generatedSQLUpdateUserUsageMultiple(mapUserUsage, date);
 		PostgreSQL.executeUpdateSQL(connection, sql);
 	}
 
@@ -91,12 +92,10 @@ public class TableNowDAO {
 	// return sql;
 	// }
 
-	private String generatedSQLUpdateUserUsageMultiple(Map<String, Map<String, Integer>> mapUserUsage,
-			Map<String, String> mapUserContract, String date) {
+	private String generatedSQLUpdateUserUsageMultiple(Map<String, Map<String, Integer>> mapUserUsage, String date) {
 		String sql = "UPDATE now AS t " + generatedStringSetCommand() + " FROM (VALUES ";
 		for (String customerId : mapUserUsage.keySet()) {
-			String val = generatedStringValue(customerId, mapUserContract.get(customerId), mapUserUsage.get(customerId),
-					date);
+			String val = generatedStringValue(customerId, mapUserUsage.get(customerId), date);
 			sql = sql + val + ",";
 		}
 		return sql.substring(0, sql.length() - 1) + ") AS c" + generatedStringColumn()
@@ -104,20 +103,18 @@ public class TableNowDAO {
 	}
 
 	// private String generatedSQLInsertUserUsageSingle(String table, String
-	// customer_id, String contract,
-	// Map<String, Integer> mapUsage, String date) {
+	// customer_id, Map<String, Integer> mapUsage,
+	// String date) {
 	// String sql = "INSERT INTO " + table + " " + generatedStringColumn() + "
 	// VALUES "
-	// + generatedStringValue(customer_id, contract, mapUsage, date) + ";";
+	// + generatedStringValue(customer_id, mapUsage, date) + ";";
 	// return sql;
 	// }
 
-	private String generatedSQLInsertUserUsageMultiple(Map<String, Map<String, Integer>> mapUserUsage,
-			Map<String, String> mapUserContract, String date) {
+	private String generatedSQLInsertUserUsageMultiple(Map<String, Map<String, Integer>> mapUserUsage, String date) {
 		String sql = "INSERT INTO now " + generatedStringColumn() + " VALUES ";
 		for (String customerId : mapUserUsage.keySet()) {
-			sql = sql + generatedStringValue(customerId, mapUserContract.get(customerId), mapUserUsage.get(customerId),
-					date) + ",";
+			sql = sql + generatedStringValue(customerId, mapUserUsage.get(customerId), date) + ",";
 		}
 		sql = sql.substring(0, sql.length() - 1);
 		sql = sql + ";";
@@ -137,9 +134,8 @@ public class TableNowDAO {
 		return setCommand.substring(0, setCommand.length() - 1);
 	}
 
-	private String generatedStringValue(String customer_id, String contract, Map<String, Integer> mapUsage,
-			String date) {
-		String value = "('" + contract + "','" + customer_id + "','" + date + "'";
+	private String generatedStringValue(String customer_id, Map<String, Integer> mapUsage, String date) {
+		String value = "('" + customer_id + "','" + date + "'";
 		for (int i = 0; i < 24; i++) {
 			String key = PayTVDBUtils.VECTOR_HOURLY_PREFIX + NumberUtils.get2CharNumber(i);
 			value = value + "," + (mapUsage.get(key) == null ? 0 : mapUsage.get(key));
@@ -153,7 +149,7 @@ public class TableNowDAO {
 	}
 
 	private String generatedStringColumn() {
-		String col = "(contract,customer_id,date";
+		String col = "(customer_id,date";
 		for (int i = 0; i < 24; i++) {
 			col = col + "," + PayTVDBUtils.VECTOR_HOURLY_PREFIX + NumberUtils.get2CharNumber(i);
 		}

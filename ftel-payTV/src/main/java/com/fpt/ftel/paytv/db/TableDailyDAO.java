@@ -11,7 +11,8 @@ import com.fpt.ftel.paytv.utils.PayTVUtils;
 import com.fpt.ftel.postgresql.PostgreSQL;
 
 public class TableDailyDAO {
-	private static final String SQL_CREATE_TABLE_DAILY = "CREATE TABLE IF NOT EXISTS daily (contract VARCHAR(22), customer_id VARCHAR(22), date DATE, "
+	private static final String SQL_CREATE_TABLE_DAILY = "CREATE TABLE IF NOT EXISTS daily "
+			+ "(customer_id VARCHAR(22), date DATE, "
 			+ "h_00 INT, h_01 INT, h_02 INT, h_03 INT, h_04 INT, h_05 INT, h_06 INT, h_07 INT, h_08 INT, h_09 INT, "
 			+ "h_10 INT, h_11 INT, h_12 INT, h_13 INT, h_14 INT, h_15 INT, h_16 INT, h_17 INT, h_18 INT, h_19 INT, "
 			+ "h_20 INT, h_21 INT, h_22 INT, h_23 INT, "

@@ -99,7 +99,7 @@ public class ServiceDaily {
 				}
 			}
 			if (willProcess) {
-				status = "Start process day: " + currentDateTime;
+				status = "Start process date: " + PayTVUtils.FORMAT_DATE_TIME.print(currentDateTime);
 				PayTVUtils.LOG_INFO.info(status);
 				System.out.println(status);
 				processTableDaily.updateTable(connection, currentDateTime);

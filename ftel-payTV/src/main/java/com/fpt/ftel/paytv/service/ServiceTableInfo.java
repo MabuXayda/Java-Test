@@ -121,7 +121,7 @@ public class ServiceTableInfo {
 		if (mapRegister != null && mapRegister.size() > 0) {
 			tableInfoDAO.insertNewUser(connection, mapRegister);
 		}
-		status = "Done insert user REGISTER at day: " + PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime)
+		status = "------> Done updateDB INFO_REGISTER at day: " + PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime)
 				+ " | Count: " + mapRegister.size();
 		System.out.println(status);
 		PayTVUtils.LOG_INFO.info(status);
@@ -135,8 +135,8 @@ public class ServiceTableInfo {
 		if (mapChurn != null && mapChurn.size() > 0) {
 			tableInfoDAO.updateChurnStatus(connection, mapChurn);
 		}
-		status = "Done update user CHURN at day: " + PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime) + " | Count: "
-				+ mapChurn.size();
+		status = "------> Done updateDB INFO_CHURN at day: " + PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime)
+				+ " | Count: " + mapChurn.size();
 		System.out.println(status);
 		PayTVUtils.LOG_INFO.info(status);
 	}
@@ -154,7 +154,7 @@ public class ServiceTableInfo {
 				tableInfoDAO.updateLastActive(connection, smallerMap);
 			}
 		}
-		status = "Done update user LAST ACTIVE at day: " + PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime)
+		status = "------> Done updateDB INFO_LAST_ACTIVE at day: " + PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime)
 				+ " | Count: " + mapLastActive.size();
 		System.out.println(status);
 		PayTVUtils.LOG_INFO.info(status);

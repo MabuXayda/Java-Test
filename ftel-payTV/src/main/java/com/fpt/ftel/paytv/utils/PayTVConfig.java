@@ -1,5 +1,7 @@
 package com.fpt.ftel.paytv.utils;
 
+import com.fpt.ftel.core.config.CommonConfig;
+
 public class PayTVConfig {
 	public static final String LOG4J_CONFIG_DIR = "LOG4J_CONFIG_DIR";
 	public static final String SERVICE_MONITOR_DIR = "SERVICE_MONITOR_DIR";
@@ -14,10 +16,12 @@ public class PayTVConfig {
 	public static final String USER_SPECIAL_FILE = "USER_SPECIAL_FILE";
 	public static final String USER_INFO_FIRST_LOAD_FILE = "USER_INFO_FIRST_LOAD_FILE";
 	public static final String LOCATION_MAPPING = "LOCATION_MAPPING";
-	
+
 	public static final String USER_CANCEL_FILE = "USER_CANCEL_FILE";
 	public static final String USER_REGISTER_FILE = "USER_REGISTER_FILE";
 
+	public static final String RTP_MAX = "RTP_MAX";
+	public static final String SMM_MAX = "SMM_MAX";
 	public static final String DELAY_ALLOW_RTP = "DELAY_ALLOW_RTP";
 	public static final String GET_USER_CHURN_API = "GET_USER_CHURN_API";
 	public static final String GET_USER_REGISTER_API = "GET_USER_REGISTER_API";
@@ -33,4 +37,11 @@ public class PayTVConfig {
 	public static final String POSTGRESQL_PAYTV_TABLE_PROFILE_WEEK_TIMETOLIVE = "POSTGRESQL_PAYTV_TABLE_PROFILE_WEEK_TIMETOLIVE";
 	public static final String POSTGRESQL_PAYTV_TABLE_PROFILE_MONTH_TIMETOLIVE = "POSTGRESQL_PAYTV_TABLE_PROFILE_MONTH_TIMETOLIVE";
 
+	public static int getRTPMax() {
+		return Integer.parseInt(CommonConfig.get(RTP_MAX)) * 3600;
+	}
+
+	public static int getSMMMax() {
+		return Integer.parseInt(CommonConfig.get(SMM_MAX)) * 3600;
+	}
 }

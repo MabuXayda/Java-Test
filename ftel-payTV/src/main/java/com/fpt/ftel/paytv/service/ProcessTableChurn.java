@@ -38,11 +38,12 @@ public class ProcessTableChurn {
 		PayTVUtils.LOG_INFO.info("User churn " + dateString + ": " + setUserCancel.size());
 		if (setUserCancel != null && setUserCancel.size() > 0) {
 			tableChurnDAO.insertChurnDaily(connection, setUserCancel);
-			tableChurnDAO.insertChurnProfileSum(connection, setUserCancel);
-			tableChurnDAO.insertChurnProfileWeek(connection, setUserCancel);
-			tableChurnDAO.insertChurnProfileMonth(connection, setUserCancel);
+			tableChurnDAO.insertChurnProfileSumWeek(connection, setUserCancel);
+			tableChurnDAO.insertChurnProfileSumMonth(connection, setUserCancel);
+			tableChurnDAO.insertChurnProfileAppWeek(connection, setUserCancel);
+			tableChurnDAO.insertChurnProfileAppMonth(connection, setUserCancel);
 		}
-		PayTVUtils.LOG_INFO.info("Done update CHURN with Time: " + (System.currentTimeMillis() - start) + " | At: "
-				+ System.currentTimeMillis());
+		PayTVUtils.LOG_INFO.info("------> Done updateDB CHURN | time: " + (System.currentTimeMillis() - start)
+				+ " | at: " + System.currentTimeMillis());
 	}
 }

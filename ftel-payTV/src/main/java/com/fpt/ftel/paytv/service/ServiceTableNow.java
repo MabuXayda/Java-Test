@@ -109,7 +109,7 @@ public class ServiceTableNow {
 					}
 				}
 				if (willProcess) {
-					status = "Start process day: " + processDateTime;
+					status = "Start process date: " + PayTVUtils.FORMAT_DATE_TIME.print(processDateTime);
 					PayTVUtils.LOG_INFO.info(status);
 					System.out.println(status);
 					updateUserUsage(processDateTime, connection);
@@ -164,22 +164,22 @@ public class ServiceTableNow {
 		userUsage.initExtra();
 		userUsage.initMap();
 		userUsage.statisticUserUsage(filePath, hdfsIO);
-		Map<String, String> mapUserContract = userUsage.getMapUserContract();
 		Map<String, Map<Integer, Integer>> mapUserVectorHourly = userUsage.getMapUserVectorHourly();
 		Map<String, Map<String, Integer>> mapUserVectorApp = userUsage.getMapUserVectorApp();
-		updateDB(dateTime, connection, mapUserContract, mapUserVectorHourly, mapUserVectorApp);
+		updateDB(dateTime, connection, mapUserVectorHourly, mapUserVectorApp);
 		// ================== EXTRA UPDATE
-		userUsage.initMap();
-		userUsage.statisticUserUsageExtra();
-		mapUserContract = userUsage.getMapUserContract();
-		mapUserVectorHourly = userUsage.getMapUserVectorHourly();
-		mapUserVectorApp = userUsage.getMapUserVectorApp();
-		if (mapUserContract != null && mapUserContract.size() > 0) {
-			updateDB(dateTime.minusDays(1), connection, mapUserContract, mapUserVectorHourly, mapUserVectorApp);
+		if (userUsage.getListExtra().size() > 0) {
+			userUsage.initMap();
+			userUsage.statisticUserUsageExtra();
+			mapUserVectorHourly = userUsage.getMapUserVectorHourly();
+			mapUserVectorApp = userUsage.getMapUserVectorApp();
+			if (mapUserVectorHourly != null && mapUserVectorHourly.size() > 0) {
+				updateDB(dateTime.minusDays(1), connection, mapUserVectorHourly, mapUserVectorApp);
+			}
 		}
 	}
 
-	private void updateDB(DateTime dateTime, Connection connection, Map<String, String> mapUserContract,
+	private void updateDB(DateTime dateTime, Connection connection,
 			Map<String, Map<Integer, Integer>> mapUserVectorHourly, Map<String, Map<String, Integer>> mapUserVectorApp)
 			throws SQLException {
 		int countUpdate = 0;
@@ -198,7 +198,7 @@ public class ServiceTableNow {
 							mapUserUsageUpdate.get(customerId));
 					mapUserUsageUpdate.put(customerId, mapInfo);
 				}
-				tableNowDAO.updateUserUsageMultiple(connection, mapUserUsageUpdate, mapUserContract,
+				tableNowDAO.updateUserUsageMultiple(connection, mapUserUsageUpdate,
 						PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime));
 				countUpdate += mapUserUsageUpdate.size();
 			}
@@ -210,13 +210,13 @@ public class ServiceTableNow {
 				}
 			}
 			if (mapUserUsageInsert.size() > 0) {
-				tableNowDAO.insertUserUsageMultiple(connection, mapUserUsageInsert, mapUserContract,
+				tableNowDAO.insertUserUsageMultiple(connection, mapUserUsageInsert,
 						PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime));
 				countInsert += mapUserUsageInsert.size();
 			}
 		}
-		status = "Done update table now: Update: " + countUpdate + " | Insert: " + countInsert + " | Time: "
-				+ (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis();
+		status = "-------> Done updateDB NOW | update: " + countUpdate + " | insert: " + countInsert + " | time: "
+				+ (System.currentTimeMillis() - start) + " | at: " + System.currentTimeMillis();
 		PayTVUtils.LOG_INFO.info(status);
 		System.out.println(status);
 	}

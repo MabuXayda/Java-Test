@@ -23,9 +23,9 @@ import com.fpt.ftel.paytv.utils.StatisticUtils;
 public class UserUsageDetailApp {
 	private Map<String, Map<String, Map<Integer, Integer>>> mapUserAppDetailHourly;
 	private Map<String, Map<String, Map<String, Integer>>> mapUserAppDetailDaily;
-	private Map<String, String> mapUserContract;
 	private static UserUsageDetailApp instance;
 	private static String status;
+	private static Set<String> setUser;
 
 	private UserUsageDetailApp() {
 	}
@@ -62,7 +62,7 @@ public class UserUsageDetailApp {
 	}
 
 	public void initMap() {
-		mapUserContract = new ConcurrentHashMap<>();
+		setUser = ConcurrentHashMap.newKeySet();
 		mapUserAppDetailHourly = new ConcurrentHashMap<>();
 		mapUserAppDetailDaily = new ConcurrentHashMap<>();
 	}
@@ -80,7 +80,6 @@ public class UserUsageDetailApp {
 			countTotal++;
 			String[] arr = line.split(",");
 			String customerId = arr[0];
-			String contract = arr[1];
 			String logId = arr[2];
 			String appName = arr[3];
 			Double realTimePlaying = PayTVUtils.parseRealTimePlaying(arr[5]);
@@ -101,7 +100,7 @@ public class UserUsageDetailApp {
 								sessionMainMenu, received_at, mapCheckDupSMM, mapCheckValidSMM);
 						if (willProcessSMM) {
 							secondsSMM = (int) new Duration(sessionMainMenu, received_at).getStandardSeconds();
-							if (secondsSMM <= 0 || secondsSMM > 12 * 3600) {
+							if (secondsSMM <= 0 || secondsSMM > PayTVConfig.getSMMMax()) {
 								willProcessSMM = false;
 							}
 						}
@@ -112,7 +111,7 @@ public class UserUsageDetailApp {
 							mapCheckValidRTP);
 					if (willProcessRTP) {
 						secondsRTP = (int) Math.round(realTimePlaying);
-						if (secondsRTP <= 0 || secondsRTP > 3 * 3600) {
+						if (secondsRTP <= 0 || secondsRTP > PayTVConfig.getRTPMax()) {
 							willProcessRTP = false;
 						}
 					}
@@ -120,8 +119,8 @@ public class UserUsageDetailApp {
 				}
 			}
 			if (willProcessRTP) {
-				if (!mapUserContract.containsKey(customerId)) {
-					mapUserContract.put(customerId, contract);
+				if (!setUser.contains(customerId)) {
+					setUser.add(customerId);
 					mapUserAppDetailHourly.put(customerId, new ConcurrentHashMap<>());
 					mapUserAppDetailDaily.put(customerId, new ConcurrentHashMap<>());
 				}
@@ -165,7 +164,7 @@ public class UserUsageDetailApp {
 		return mapUserAppDetailDaily;
 	}
 
-	public Map<String, String> getMapUserContract() {
-		return mapUserContract;
+	public Set<String> getSetUser() {
+		return setUser;
 	}
 }

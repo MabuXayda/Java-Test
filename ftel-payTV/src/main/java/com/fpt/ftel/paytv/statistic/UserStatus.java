@@ -4,9 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.HashMap;
@@ -46,43 +44,46 @@ public class UserStatus {
 	public static final String LAST_ACTIVE = "LAST_ACTIVE";
 
 	public static void main(String[] args) throws UnsupportedEncodingException, IOException {
-		PrintWriter pr = new PrintWriter(new FileWriter("/home/tunn/data/tv/temp/check_0110.csv"));
-		pr.println("Contract,CustomerID,StatusID,Location");
-//		UserRegisterApi apiRegister = new Gson().fromJson(new JsonReader(new FileReader("/home/tunn/data/tv/temp/uRegister_3009")), UserRegisterApi.class);
-//		for (UserRegisterApi.Root.Item item : apiRegister.getRoot().getListItem()) {
-//			pr.println(item.getContract() + "," + item.getCustomerId() + ",1," + item.getLocation());
-//		}
-		UserCancelApi apiCancel = new Gson().fromJson(new JsonReader(new FileReader("/home/tunn/data/tv/temp/uChurn_0110")), UserCancelApi.class);
-		for (UserCancelApi.Root.Item item : apiCancel.getRoot().getListItem()) {
-			pr.println(item.getContract()+ "," + item.getCustomerId() + "," + item.getStatus() + ",");
+		Map<String, DateTime> user_t3 = getMapUserDateCondition(
+				"/home/tunn/data/tv/data_support/active_churn/total_t3.csv",
+				PayTVUtils.FORMAT_DATE_TIME_SIMPLE.parseDateTime("2016-04-01"));
+		// for (String id : user_t3.keySet()) {
+		// if (new
+		// Duration(PayTVUtils.FORMAT_DATE_TIME_SIMPLE.parseDateTime("2016-04-01"),
+		// user_t3.get(id))
+		// .getStandardSeconds() != 0) {
+		// System.out.println(id + " | " +
+		// PayTVUtils.FORMAT_DATE_TIME.print(user_t3.get(id)));
+		// }
+		// }
+		System.out.println(user_t3.size());
+		System.out.println("DONE");
+	}
+
+	public static Map<String, DateTime> getMapUserDateCondition(String fileTotalUser, DateTime dateCondition)
+			throws IOException {
+		Map<String, DateTime> result = new HashMap<>();
+		BufferedReader br = new BufferedReader(new FileReader(fileTotalUser));
+		String line = br.readLine();
+		line = br.readLine();
+		while (line != null) {
+			String[] arr = line.split(",");
+			String customerId = arr[1];
+			int lifeTime = Integer.parseInt(arr[5]);
+			if (lifeTime >= 28) {
+				boolean churn = new Boolean(arr[6]);
+				DateTime contDate;
+				if (churn == true) {
+					contDate = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(arr[4].substring(0, 19));
+				} else {
+					contDate = dateCondition;
+				}
+				result.put(customerId, contDate);
+			}
+			line = br.readLine();
 		}
-		apiCancel = new Gson().fromJson(new JsonReader(new FileReader("/home/tunn/data/tv/temp/uChurn_0210")), UserCancelApi.class);
-		for (UserCancelApi.Root.Item item : apiCancel.getRoot().getListItem()) {
-			pr.println(item.getContract()+ "," + item.getCustomerId() + "," + item.getStatus() + ",");
-		}
-		apiCancel = new Gson().fromJson(new JsonReader(new FileReader("/home/tunn/data/tv/temp/uChurn_0310")), UserCancelApi.class);
-		for (UserCancelApi.Root.Item item : apiCancel.getRoot().getListItem()) {
-			pr.println(item.getContract()+ "," + item.getCustomerId() + "," + item.getStatus() + ",");
-		}
-		apiCancel = new Gson().fromJson(new JsonReader(new FileReader("/home/tunn/data/tv/temp/uChurn_0410")), UserCancelApi.class);
-		for (UserCancelApi.Root.Item item : apiCancel.getRoot().getListItem()) {
-			pr.println(item.getContract()+ "," + item.getCustomerId() + "," + item.getStatus() + ",");
-		}
-		apiCancel = new Gson().fromJson(new JsonReader(new FileReader("/home/tunn/data/tv/temp/uChurn_0510")), UserCancelApi.class);
-		for (UserCancelApi.Root.Item item : apiCancel.getRoot().getListItem()) {
-			pr.println(item.getContract()+ "," + item.getCustomerId() + "," + item.getStatus() + ",");
-		}
-		pr.close();
-		
-//		Map<String, Map<String, String>> location = UserStatus.getMapLocation();
-//		for(String loc : location.keySet()){
-//			System.out.print(loc);
-//			for(String key : location.get(loc).keySet()){
-//				System.out.print(" | " + location.get(loc).get(key));
-//			}
-//			System.out.println();
-//		}
-//		System.out.println(location.size());
+		br.close();
+		return result;
 	}
 
 	public static Map<String, DateTime> getMapUserActiveDateCondition(String fileUserActive, DateTime dateCondition)
@@ -214,7 +215,7 @@ public class UserStatus {
 			newInfo.put(CONTRACT, item.getContract());
 			newInfo.put(STATUS_ID, "1");
 			newInfo.put(LOCATION, item.getLocation());
-			String location_code = item.getContract().substring(0, 2); 
+			String location_code = item.getContract().substring(0, 2);
 			newInfo.put(LOCATION_ID, mapLocation.get(location_code).get(LOCATION_ID));
 			newInfo.put(LOCATION, mapLocation.get(location_code).get(LOCATION));
 			newInfo.put(REGION, mapLocation.get(location_code).get(REGION));

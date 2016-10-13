@@ -33,120 +33,38 @@ public class ProcessTableProfile {
 	}
 
 	public void updateTable(Connection connection, DateTime dateTime) throws SQLException {
-		Map<String, String> mapUserContract = tableProfileDAO.queryUserContract(connection,
-				PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime));
 		Map<String, Map<String, Integer>> mapUserUsageDailyOld = tableProfileDAO.queryUserUsageDaily(connection,
 				PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime));
 		Map<String, Map<String, Integer>> mapUserUsageDailyNew = PayTVDBUtils.convertSumToDaily(mapUserUsageDailyOld,
 				dateTime);
-		updateProfile(connection, mapUserContract, mapUserUsageDailyOld, mapUserUsageDailyNew, dateTime);
+		updateProfile(connection, mapUserUsageDailyNew, dateTime);
 		updateProfileML(connection, mapUserUsageDailyOld, mapUserUsageDailyNew, dateTime);
 	}
 
-	private void updateProfile(Connection connection, Map<String, String> mapUserContract,
-			Map<String, Map<String, Integer>> mapUserUsageDailyOld,
-			Map<String, Map<String, Integer>> mapUserUsageDailyNew, DateTime date) throws SQLException {
-		List<Set<String>> listSetUser = ListUtils.splitSetToSmallerSet(mapUserContract.keySet(), 500);
-		updateProfileSum(connection, mapUserUsageDailyNew, mapUserContract, listSetUser);
-		updateProfileWeek(connection, mapUserUsageDailyNew, mapUserContract, date, listSetUser);
-		updateProfileMonth(connection, mapUserUsageDailyNew, mapUserContract, date, listSetUser);
-		listSetUser = null;
-	}
-
-	private void updateProfileWeek(Connection connection, Map<String, Map<String, Integer>> mapUserUsageDaily,
-			Map<String, String> mapUserContract, DateTime date, List<Set<String>> listSetUser) throws SQLException {
-		String currentDateSimple = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(date);
-		String dropDateSimple = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(date.minusDays(
+	private void updateProfile(Connection connection, Map<String, Map<String, Integer>> mapUserUsageDaily,
+			DateTime dateTime) throws SQLException {
+		String currentDateSimple = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime);
+		String dropDateSimple = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime.minusDays(
 				Integer.parseInt(CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_TABLE_PROFILE_WEEK_TIMETOLIVE))));
 		tableProfileDAO.dropPartitionWeek(connection, dropDateSimple);
 		tableProfileDAO.createPartitionWeek(connection, currentDateSimple);
-
-		long start = System.currentTimeMillis();
-		int countUpdate = 0;
-		int countInsert = 0;
-		for (Set<String> setUser : listSetUser) {
-			Map<String, Map<String, Integer>> mapUserUsageWeekUpdate = tableProfileDAO.queryUserUsageWeek(connection,
-					setUser, currentDateSimple);
-			if (mapUserUsageWeekUpdate.size() > 0) {
-				for (String customerId : mapUserUsageWeekUpdate.keySet()) {
-					Map<String, Integer> mapInfo = MapUtils.plusMapStringIntegerEasy(
-							mapUserUsageWeekUpdate.get(customerId), mapUserUsageDaily.get(customerId));
-					mapUserUsageWeekUpdate.put(customerId, mapInfo);
-				}
-				tableProfileDAO.updateUserUsageMultiple(connection, mapUserUsageWeekUpdate, mapUserContract,
-						currentDateSimple, "week");
-				countUpdate += mapUserUsageWeekUpdate.size();
-			}
-			Map<String, Map<String, Integer>> mapUserUsageWeekInsert = new HashMap<>();
-			for (String customerId : setUser) {
-				if (!mapUserUsageWeekUpdate.containsKey(customerId)) {
-					mapUserUsageWeekInsert.put(customerId, mapUserUsageDaily.get(customerId));
-				}
-			}
-			if (mapUserUsageWeekInsert.size() > 0) {
-				tableProfileDAO.insertUserUsageMultiple(connection, mapUserUsageWeekInsert, mapUserContract,
-						currentDateSimple, "week");
-				countInsert += mapUserUsageWeekInsert.size();
-			}
-		}
-
-		status = "Done update profile WEEK: " + countUpdate + " | insert: " + countInsert + " | time: "
-				+ (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis();
-		PayTVUtils.LOG_INFO.info(status);
-		System.out.println(status);
-
-	}
-
-	private void updateProfileMonth(Connection connection, Map<String, Map<String, Integer>> mapUserUsageDaily,
-			Map<String, String> mapUserContract, DateTime date, List<Set<String>> listSetUser) throws SQLException {
-		String currentDateSimple = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(date);
-		String dropDateSimple = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(date.minusDays(
+		dropDateSimple = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime.minusDays(
 				Integer.parseInt(CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_TABLE_PROFILE_MONTH_TIMETOLIVE))));
-		tableProfileDAO.dropPartitionMonth(connection, dropDateSimple);
+		// tableProfileDAO.dropPartitionMonth(connection, dropDateSimple);
 		tableProfileDAO.createPartitionMonth(connection, currentDateSimple);
-
+		Set<String> totalUser = tableProfileDAO.querySetUser(connection,
+				PayTVUtils.FORMAT_DATE_TIME_SIMPLE.print(dateTime));
+		List<Set<String>> listSetUser = ListUtils.splitSetToSmallerSet(totalUser, 500);
 		long start = System.currentTimeMillis();
 		int countUpdate = 0;
 		int countInsert = 0;
-		for (Set<String> setUser : listSetUser) {
-			Map<String, Map<String, Integer>> mapUserUsageMonthUpdate = tableProfileDAO.queryUserUsageMonth(connection,
-					setUser, currentDateSimple);
-			if (mapUserUsageMonthUpdate.size() > 0) {
-				for (String customerId : mapUserUsageMonthUpdate.keySet()) {
-					Map<String, Integer> mapInfo = MapUtils.plusMapStringIntegerEasy(
-							mapUserUsageMonthUpdate.get(customerId), mapUserUsageDaily.get(customerId));
-					mapUserUsageMonthUpdate.put(customerId, mapInfo);
-				}
-				tableProfileDAO.updateUserUsageMultiple(connection, mapUserUsageMonthUpdate, mapUserContract,
-						currentDateSimple, "month");
-				countUpdate += mapUserUsageMonthUpdate.size();
-			}
-			Map<String, Map<String, Integer>> mapUserUsageMonthInsert = new HashMap<>();
-			for (String customerId : setUser) {
-				if (!mapUserUsageMonthUpdate.containsKey(customerId)) {
-					mapUserUsageMonthInsert.put(customerId, mapUserUsageDaily.get(customerId));
-				}
-			}
-			if (mapUserUsageMonthInsert.size() > 0) {
-				tableProfileDAO.insertUserUsageMultiple(connection, mapUserUsageMonthInsert, mapUserContract,
-						currentDateSimple, "month");
-				countInsert += mapUserUsageMonthInsert.size();
-			}
-		}
-
-		status = "Done update profile MONTH: " + countUpdate + " | insert: " + countInsert + " | time: "
-				+ (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis();
-		PayTVUtils.LOG_INFO.info(status);
-		System.out.println(status);
-	}
-
-	private void updateProfileSum(Connection connection, Map<String, Map<String, Integer>> mapUserUsageDaily,
-			Map<String, String> mapUserContract, List<Set<String>> listSetUser) throws SQLException {
-		long start = System.currentTimeMillis();
-		int countUpdate = 0;
-		int countInsert = 0;
+		int countUpdateWeek = 0;
+		int countInsertWeek = 0;
+		int countUpdateMonth = 0;
+		int countInsertMonth = 0;
 
 		for (Set<String> setUser : listSetUser) {
+			// PROCESS SUM
 			Map<String, Map<String, Integer>> mapUserUsageSumUpdate = tableProfileDAO.queryUserUsageSum(connection,
 					setUser);
 			if (mapUserUsageSumUpdate.size() > 0) {
@@ -155,9 +73,10 @@ public class ProcessTableProfile {
 							mapUserUsageSumUpdate.get(customerId), mapUserUsageDaily.get(customerId));
 					mapUserUsageSumUpdate.put(customerId, mapInfo);
 				}
-				tableProfileDAO.updateUserUsageMultiple(connection, mapUserUsageSumUpdate, mapUserContract);
+				tableProfileDAO.updateUserUsageMultiple(connection, mapUserUsageSumUpdate);
 				countUpdate += mapUserUsageSumUpdate.size();
 			}
+
 			Map<String, Map<String, Integer>> mapUserUsageSumInsert = new HashMap<>();
 			for (String customerId : setUser) {
 				if (!mapUserUsageSumUpdate.containsKey(customerId)) {
@@ -165,14 +84,74 @@ public class ProcessTableProfile {
 				}
 			}
 			if (mapUserUsageSumInsert.size() > 0) {
-				tableProfileDAO.insertUserUsageMultiple(connection, mapUserUsageSumInsert, mapUserContract);
+				tableProfileDAO.insertUserUsageMultiple(connection, mapUserUsageSumInsert);
 				countInsert += mapUserUsageSumInsert.size();
 			}
+
+			// PROCESS WEEK
+			Map<String, Map<String, Integer>> mapUserUsageWeekUpdate = tableProfileDAO.queryUserUsageWeek(connection,
+					setUser, currentDateSimple);
+			if (mapUserUsageWeekUpdate.size() > 0) {
+				for (String customerId : mapUserUsageWeekUpdate.keySet()) {
+					Map<String, Integer> mapInfo = MapUtils.plusMapStringIntegerEasy(
+							mapUserUsageWeekUpdate.get(customerId), mapUserUsageDaily.get(customerId));
+					mapUserUsageWeekUpdate.put(customerId, mapInfo);
+				}
+				tableProfileDAO.updateUserUsageMultiple(connection, mapUserUsageWeekUpdate, currentDateSimple, "week");
+				countUpdateWeek += mapUserUsageWeekUpdate.size();
+			}
+
+			Map<String, Map<String, Integer>> mapUserUsageWeekInsert = new HashMap<>();
+			for (String customerId : setUser) {
+				if (!mapUserUsageWeekUpdate.containsKey(customerId)) {
+					mapUserUsageWeekInsert.put(customerId, mapUserUsageDaily.get(customerId));
+				}
+			}
+			if (mapUserUsageWeekInsert.size() > 0) {
+				tableProfileDAO.insertUserUsageMultiple(connection, mapUserUsageWeekInsert, currentDateSimple, "week");
+				countInsertWeek += mapUserUsageWeekInsert.size();
+			}
+
+			// PROCESS MONTH
+			Map<String, Map<String, Integer>> mapUserUsageMonthUpdate = tableProfileDAO.queryUserUsageMonth(connection,
+					setUser, currentDateSimple);
+			if (mapUserUsageMonthUpdate.size() > 0) {
+				for (String customerId : mapUserUsageMonthUpdate.keySet()) {
+					Map<String, Integer> mapInfo = MapUtils.plusMapStringIntegerEasy(
+							mapUserUsageMonthUpdate.get(customerId), mapUserUsageDaily.get(customerId));
+					mapUserUsageMonthUpdate.put(customerId, mapInfo);
+				}
+				tableProfileDAO.updateUserUsageMultiple(connection, mapUserUsageMonthUpdate, currentDateSimple,
+						"month");
+				countUpdateMonth += mapUserUsageMonthUpdate.size();
+			}
+
+			Map<String, Map<String, Integer>> mapUserUsageMonthInsert = new HashMap<>();
+			for (String customerId : setUser) {
+				if (!mapUserUsageMonthUpdate.containsKey(customerId)) {
+					mapUserUsageMonthInsert.put(customerId, mapUserUsageDaily.get(customerId));
+				}
+			}
+			if (mapUserUsageMonthInsert.size() > 0) {
+				tableProfileDAO.insertUserUsageMultiple(connection, mapUserUsageMonthInsert, currentDateSimple,
+						"month");
+				countInsertMonth += mapUserUsageMonthInsert.size();
+			}
 		}
-		status = "Done update profile SUM: " + countUpdate + " | insert: " + countInsert + " | time: "
-				+ (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis();
+
+		status = "------> Done updateDB SUM | Update: " + countUpdate + " | Insert: " + countInsert;
 		PayTVUtils.LOG_INFO.info(status);
 		System.out.println(status);
+		status = "------> Done updateDB SUM_WEEK | Update: " + countUpdateWeek + " | Insert: " + countInsertWeek;
+		PayTVUtils.LOG_INFO.info(status);
+		System.out.println(status);
+		status = "------> Done updateDB SUM_MONTH | Update: " + countUpdateMonth + " | Insert: " + countInsertMonth;
+		PayTVUtils.LOG_INFO.info(status);
+		System.out.println(status);
+		status = "| totalTime: " + (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis();
+		PayTVUtils.LOG_INFO.info(status);
+		System.out.println(status);
+
 	}
 
 	private void updateProfileML(Connection connection, Map<String, Map<String, Integer>> mapUserUsageDailyOld,
@@ -232,7 +211,7 @@ public class ProcessTableProfile {
 			tableProfileDAO.updateUserUsageMultipleML(connection, mapUserUsageML);
 		}
 
-		status = "Done big update profile ML with time: " + (System.currentTimeMillis() - startM) + " | At: "
+		status = "------> Done updateDB PROFILE_SUM_ML | time: " + (System.currentTimeMillis() - startM) + " | at: "
 				+ System.currentTimeMillis();
 		PayTVUtils.LOG_INFO.info(status);
 		System.out.println(status);

@@ -72,7 +72,7 @@ public class ServiceParseLog {
 			DateTime processDateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(date);
 			if (FileUtils.isExistFile(getFilePathFromDateTime(processDateTime.plusMinutes(5)))) {
 				if (markDate == null || DateTimeUtils.compareToHour(markDate, processDateTime) == -1) {
-					status = "Start process day: " + processDateTime;
+					status = "Start process date: " + PayTVUtils.FORMAT_DATE_TIME.print(processDateTime);
 					PayTVUtils.LOG_INFO.info(status);
 					System.out.println(status);
 					parseLog(processDateTime);
@@ -187,9 +187,8 @@ public class ServiceParseLog {
 		}
 		br.close();
 		countPrint = printLogParsed(dateTime, listLog, countPrint);
-		status = "Done parse file: " + filePath + " | Time index: " + PayTVUtils.FORMAT_DATE_TIME.print(dateTime)
-				+ " | Total: " + countTotal + " | Print: " + countPrint + " | Time: "
-				+ (System.currentTimeMillis() - start) + " | At: " + System.currentTimeMillis();
+		status = "Done parse " + filePath + " | total: " + countTotal + " | print: " + countPrint + " | time: "
+				+ (System.currentTimeMillis() - start) + " | at: " + System.currentTimeMillis();
 		PayTVUtils.LOG_INFO.info(status);
 	}
 
@@ -219,7 +218,7 @@ public class ServiceParseLog {
 			}
 			bw.close();
 
-			status = "=== Write parsed log to: " + path;
+			status = "write to: " + path;
 			PayTVUtils.LOG_INFO.info(status);
 		}
 		return count;

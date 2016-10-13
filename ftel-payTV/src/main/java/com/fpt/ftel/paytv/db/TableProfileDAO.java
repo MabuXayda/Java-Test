@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -19,8 +20,12 @@ import com.fpt.ftel.paytv.utils.StatisticUtils;
 import com.fpt.ftel.postgresql.PostgreSQL;
 
 public class TableProfileDAO {
-	private static final String SQL_CREATE_TABLE_PROFILE_SUM = "CREATE TABLE IF NOT EXISTS profile_sum "
-			+ "(contract VARCHAR(22), customer_id VARCHAR(22), "
+	private static final String TABLE_PROFILE_SUM = "profile_sum";
+	private static final String TABLE_PROFILE_SUM_WEEK = "profile_sum_week";
+	private static final String TABLE_PROFILE_SUM_MONTH = "profile_sum_month";
+
+	private static final String SQL_CREATE_TABLE_PROFILE_SUM = "CREATE TABLE IF NOT EXISTS " + TABLE_PROFILE_SUM
+			+ " (customer_id VARCHAR(22), "
 			+ "h_00 INT, h_01 INT, h_02 INT, h_03 INT, h_04 INT, h_05 INT, h_06 INT, h_07 INT, h_08 INT, h_09 INT, "
 			+ "h_10 INT, h_11 INT, h_12 INT, h_13 INT, h_14 INT, h_15 INT, h_16 INT, h_17 INT, h_18 INT, h_19 INT, "
 			+ "h_20 INT, h_21 INT, h_22 INT, h_23 INT, "
@@ -31,8 +36,8 @@ public class TableProfileDAO {
 			+ "reuse_avg_ml28 DOUBLE PRECISION, reuse_max_ml28 INT, reuse_count_ml28 INT, "
 			+ "PRIMARY KEY(customer_id));";
 
-	private static final String SQL_CREATE_TABLE_PROFILE_WEEK = "CREATE TABLE IF NOT EXISTS profile_week "
-			+ "(contract VARCHAR(22), customer_id VARCHAR(22), week VARCHAR(10), "
+	private static final String SQL_CREATE_TABLE_PROFILE_WEEK = "CREATE TABLE IF NOT EXISTS " + TABLE_PROFILE_SUM_WEEK
+			+ " (customer_id VARCHAR(22), week VARCHAR(10), "
 			+ "h_00 INT, h_01 INT, h_02 INT, h_03 INT, h_04 INT, h_05 INT, h_06 INT, h_07 INT, h_08 INT, h_09 INT, "
 			+ "h_10 INT, h_11 INT, h_12 INT, h_13 INT, h_14 INT, h_15 INT, h_16 INT, h_17 INT, h_18 INT, h_19 INT, "
 			+ "h_20 INT, h_21 INT, h_22 INT, h_23 INT, "
@@ -40,8 +45,8 @@ public class TableProfileDAO {
 			+ "d_mon INT, d_tue INT, d_wed INT, d_thu INT, d_fri INT, d_sat INT, d_sun INT, "
 			+ "PRIMARY KEY(customer_id, week));";
 
-	private static final String SQL_CREATE_TABLE_PROFILE_MONTH = "CREATE TABLE IF NOT EXISTS profile_month "
-			+ "(contract VARCHAR(22), customer_id VARCHAR(22), month VARCHAR(10), "
+	private static final String SQL_CREATE_TABLE_PROFILE_MONTH = "CREATE TABLE IF NOT EXISTS " + TABLE_PROFILE_SUM_MONTH
+			+ " (customer_id VARCHAR(22), month VARCHAR(10), "
 			+ "h_00 INT, h_01 INT, h_02 INT, h_03 INT, h_04 INT, h_05 INT, h_06 INT, h_07 INT, h_08 INT, h_09 INT, "
 			+ "h_10 INT, h_11 INT, h_12 INT, h_13 INT, h_14 INT, h_15 INT, h_16 INT, h_17 INT, h_18 INT, h_19 INT, "
 			+ "h_20 INT, h_21 INT, h_22 INT, h_23 INT, "
@@ -62,7 +67,8 @@ public class TableProfileDAO {
 		DateTime date = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.parseDateTime(dateString);
 		int year = date.getYear();
 		int week = date.getWeekOfWeekyear();
-		String sqlDropPartition = "DROP TABLE IF EXISTS " + "profile_week_y" + year + "_w" + week + " CASCADE;";
+		String sqlDropPartition = "DROP TABLE IF EXISTS " + TABLE_PROFILE_SUM_WEEK + "_y" + year + "_w" + week
+				+ " CASCADE;";
 		System.out.println(sqlDropPartition);
 		PostgreSQL.executeUpdateSQL(connection, sqlDropPartition);
 	}
@@ -71,7 +77,8 @@ public class TableProfileDAO {
 		DateTime date = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.parseDateTime(dateString);
 		int year = date.getYear();
 		int month = date.getWeekOfWeekyear();
-		String sqlDropPartition = "DROP TABLE IF EXISTS " + "profile_month_y" + year + "_m" + month + " CASCADE;";
+		String sqlDropPartition = "DROP TABLE IF EXISTS " + TABLE_PROFILE_SUM_MONTH + "_y" + year + "_m" + month
+				+ " CASCADE;";
 		System.out.println(sqlDropPartition);
 		PostgreSQL.executeUpdateSQL(connection, sqlDropPartition);
 	}
@@ -80,16 +87,16 @@ public class TableProfileDAO {
 		DateTime date = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.parseDateTime(dateString);
 		int year = date.getYear();
 		int week = date.getWeekOfWeekyear();
-		String partition = "profile_week_y" + year + "_w" + week;
-		String partitionRule = "profile_week_insert_y" + year + "_w" + week;
+		String partition = TABLE_PROFILE_SUM_WEEK + "_y" + year + "_w" + week;
+		String partitionRule = TABLE_PROFILE_SUM_WEEK + "_insert_y" + year + "_w" + week;
 		String partitionIndex = partition + "_index";
 		String weekIndex = "y" + year + "_w" + week;
 		String sqlCreate = "CREATE TABLE IF NOT EXISTS " + partition + " (CHECK (week = '" + weekIndex
-				+ "')) INHERITS (profile_week);";
+				+ "')) INHERITS (" + TABLE_PROFILE_SUM_WEEK + ");";
 		System.out.println(sqlCreate);
 		PostgreSQL.executeUpdateSQL(connection, sqlCreate);
-		String sqlRule = "CREATE OR REPLACE RULE " + partitionRule + " AS ON INSERT TO profile_week WHERE (week = '"
-				+ weekIndex + "') DO INSTEAD INSERT INTO " + partition + " VALUES (NEW.*);";
+		String sqlRule = "CREATE OR REPLACE RULE " + partitionRule + " AS ON INSERT TO " + TABLE_PROFILE_SUM_WEEK
+				+ " WHERE (week = '" + weekIndex + "') DO INSTEAD INSERT INTO " + partition + " VALUES (NEW.*);";
 		System.out.println(sqlRule);
 		PostgreSQL.executeUpdateSQL(connection, sqlRule);
 		String sqlIndex = "CREATE INDEX IF NOT EXISTS " + partitionIndex + " ON " + partition + " (customer_id, week);";
@@ -101,16 +108,16 @@ public class TableProfileDAO {
 		DateTime date = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.parseDateTime(dateString);
 		int year = date.getYear();
 		int month = date.getMonthOfYear();
-		String partition = "profile_month_y" + year + "_m" + month;
-		String partitionRule = "profile_month_insert_y" + year + "_m" + month;
+		String partition = TABLE_PROFILE_SUM_MONTH + "_y" + year + "_m" + month;
+		String partitionRule = TABLE_PROFILE_SUM_MONTH + "_insert_y" + year + "_m" + month;
 		String partitionIndex = partition + "_index";
 		String monthIndex = "y" + year + "_m" + month;
 		String sqlCreate = "CREATE TABLE IF NOT EXISTS " + partition + " (CHECK (month = '" + monthIndex
-				+ "')) INHERITS (profile_month);";
+				+ "')) INHERITS (" + TABLE_PROFILE_SUM_MONTH + ");";
 		System.out.println(sqlCreate);
 		PostgreSQL.executeUpdateSQL(connection, sqlCreate);
-		String sqlRule = "CREATE OR REPLACE RULE " + partitionRule + " AS ON INSERT TO profile_month WHERE (month = '"
-				+ monthIndex + "') DO INSTEAD INSERT INTO " + partition + " VALUES (NEW.*);";
+		String sqlRule = "CREATE OR REPLACE RULE " + partitionRule + " AS ON INSERT TO " + TABLE_PROFILE_SUM_MONTH
+				+ " WHERE (month = '" + monthIndex + "') DO INSTEAD INSERT INTO " + partition + " VALUES (NEW.*);";
 		System.out.println(sqlRule);
 		PostgreSQL.executeUpdateSQL(connection, sqlRule);
 		String sqlIndex = "CREATE INDEX IF NOT EXISTS " + partitionIndex + " ON " + partition
@@ -119,16 +126,14 @@ public class TableProfileDAO {
 		PostgreSQL.executeUpdateSQL(connection, sqlIndex);
 	}
 
-	public Map<String, String> queryUserContract(Connection connection, String dateString) throws SQLException {
+	public Set<String> querySetUser(Connection connection, String dateString) throws SQLException {
 		PostgreSQL.setConstraintExclusion(connection, true);
-		Map<String, String> result = new HashMap<>();
+		Set<String> result = new HashSet<>();
 		Statement statement = connection.createStatement();
-		String sqlSelect = "SELECT DISTINCT(customer_id), contract FROM daily WHERE date = '" + dateString + "';";
+		String sqlSelect = "SELECT customer_id FROM daily WHERE date = '" + dateString + "';";
 		ResultSet resultSet = statement.executeQuery(sqlSelect);
 		while (resultSet.next()) {
-			String customer_id = resultSet.getString("customer_id");
-			String contract = resultSet.getString("contract");
-			result.put(customer_id, contract);
+			result.add(resultSet.getString("customer_id"));
 		}
 		resultSet.close();
 		statement.close();
@@ -141,27 +146,27 @@ public class TableProfileDAO {
 		PostgreSQL.executeUpdateSQL(connection, sql);
 	}
 
-	public void updateUserUsageMultiple(Connection connection, Map<String, Map<String, Integer>> mapUserUsage,
-			Map<String, String> mapUserContract) throws SQLException {
-		String sql = generatedSQLUpdateUserUsageMultiple(mapUserUsage, mapUserContract);
+	public void updateUserUsageMultiple(Connection connection, Map<String, Map<String, Integer>> mapUserUsage)
+			throws SQLException {
+		String sql = generatedSQLUpdateUserUsageMultiple(mapUserUsage);
 		PostgreSQL.executeUpdateSQL(connection, sql);
 	}
 
 	public void updateUserUsageMultiple(Connection connection, Map<String, Map<String, Integer>> mapUserUsage,
-			Map<String, String> mapUserContract, String dateString, String type) throws SQLException {
-		String sql = generatedSQLUpdateUserUsageMultiple(mapUserUsage, mapUserContract, dateString, type);
+			String dateString, String type) throws SQLException {
+		String sql = generatedSQLUpdateUserUsageMultiple(mapUserUsage, dateString, type);
+		PostgreSQL.executeUpdateSQL(connection, sql);
+	}
+
+	public void insertUserUsageMultiple(Connection connection, Map<String, Map<String, Integer>> mapUserUsage)
+			throws SQLException {
+		String sql = generatedSQLInsertUserUsageMultiple(mapUserUsage);
 		PostgreSQL.executeUpdateSQL(connection, sql);
 	}
 
 	public void insertUserUsageMultiple(Connection connection, Map<String, Map<String, Integer>> mapUserUsage,
-			Map<String, String> mapUserContract) throws SQLException {
-		String sql = generatedSQLInsertUserUsageMultiple(mapUserUsage, mapUserContract);
-		PostgreSQL.executeUpdateSQL(connection, sql);
-	}
-
-	public void insertUserUsageMultiple(Connection connection, Map<String, Map<String, Integer>> mapUserUsage,
-			Map<String, String> mapUserContract, String dateString, String type) throws SQLException {
-		String sql = generatedSQLInsertUserUsageMultiple(mapUserUsage, mapUserContract, dateString, type);
+			String dateString, String type) throws SQLException {
+		String sql = generatedSQLInsertUserUsageMultiple(mapUserUsage, dateString, type);
 		PostgreSQL.executeUpdateSQL(connection, sql);
 	}
 
@@ -225,8 +230,8 @@ public class TableProfileDAO {
 		DateTime date = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.parseDateTime(dateString);
 		String weekIndex = "y" + date.getYear() + "_w" + date.getWeekOfWeekyear();
 		Statement statement = connection.createStatement();
-		String sql = "SELECT * FROM profile_week WHERE week = '" + weekIndex + "' AND customer_id IN ('"
-				+ StringUtils.join(setUser, "','") + "');";
+		String sql = "SELECT * FROM " + TABLE_PROFILE_SUM_WEEK + " WHERE week = '" + weekIndex
+				+ "' AND customer_id IN ('" + StringUtils.join(setUser, "','") + "');";
 		ResultSet resultSet = statement.executeQuery(sql);
 		while (resultSet.next()) {
 			String customer_id = resultSet.getString("customer_id");
@@ -257,8 +262,8 @@ public class TableProfileDAO {
 		DateTime date = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.parseDateTime(dateString);
 		String monthIndex = "y" + date.getYear() + "_m" + date.getMonthOfYear();
 		Statement statement = connection.createStatement();
-		String sql = "SELECT * FROM profile_month WHERE month = '" + monthIndex + "' AND customer_id IN ('"
-				+ StringUtils.join(setUser, "','") + "');";
+		String sql = "SELECT * FROM " + TABLE_PROFILE_SUM_MONTH + " WHERE month = '" + monthIndex
+				+ "' AND customer_id IN ('" + StringUtils.join(setUser, "','") + "');";
 		ResultSet resultSet = statement.executeQuery(sql);
 		while (resultSet.next()) {
 			String customer_id = resultSet.getString("customer_id");
@@ -286,7 +291,7 @@ public class TableProfileDAO {
 			throws SQLException {
 		Map<String, Map<String, Integer>> mapUserUsage = new HashMap<>();
 		String sql = "SELECT customer_id," + generatedColSelectHourly() + "," + generatedColSelectApp() + ","
-				+ generatedColSelectDaily() + " FROM profile_sum WHERE customer_id IN ('"
+				+ generatedColSelectDaily() + " FROM " + TABLE_PROFILE_SUM + " WHERE customer_id IN ('"
 				+ StringUtils.join(setUser, "','") + "');";
 		Statement statement = connection.createStatement();
 		ResultSet resultSet = statement.executeQuery(sql);
@@ -318,7 +323,7 @@ public class TableProfileDAO {
 				+ ",daily" + PayTVDBUtils.MACHINE_LEARNING_7_SUBFIX + ",hourly"
 				+ PayTVDBUtils.MACHINE_LEARNING_28_SUBFIX + ",app" + PayTVDBUtils.MACHINE_LEARNING_28_SUBFIX + ",daily"
 				+ PayTVDBUtils.MACHINE_LEARNING_28_SUBFIX + ",days" + PayTVDBUtils.MACHINE_LEARNING_28_SUBFIX;
-		String sql = "SELECT customer_id," + col + " FROM profile_sum;";
+		String sql = "SELECT customer_id," + col + " FROM " + TABLE_PROFILE_SUM + ";";
 		Statement statement = connection.createStatement();
 		ResultSet resultSet = statement.executeQuery(sql);
 		while (resultSet.next()) {
@@ -346,7 +351,7 @@ public class TableProfileDAO {
 	}
 
 	private String generatedSQLUpdateUserUsageMultipleML(Map<String, Map<String, String>> mapUserUsageML) {
-		String sql = "UPDATE profile_sum AS t " + generatedStringSetCommandML() + " FROM (VALUES ";
+		String sql = "UPDATE " + TABLE_PROFILE_SUM + " AS t " + generatedStringSetCommandML() + " FROM (VALUES ";
 		for (String customerId : mapUserUsageML.keySet()) {
 
 			String val = generatedStringValueMLUpdate(customerId, mapUserUsageML.get(customerId));
@@ -356,12 +361,10 @@ public class TableProfileDAO {
 				+ "WHERE c.customer_id = t.customer_id;";
 	}
 
-	private String generatedSQLUpdateUserUsageMultiple(Map<String, Map<String, Integer>> mapUserUsage,
-			Map<String, String> mapUserContract) {
-		String sql = "UPDATE profile_sum AS t " + generatedStringSetCommand() + " FROM (VALUES ";
+	private String generatedSQLUpdateUserUsageMultiple(Map<String, Map<String, Integer>> mapUserUsage) {
+		String sql = "UPDATE " + TABLE_PROFILE_SUM + " AS t " + generatedStringSetCommand() + " FROM (VALUES ";
 		for (String customerId : mapUserUsage.keySet()) {
-			String val = generatedStringValue(customerId, mapUserContract.get(customerId),
-					mapUserUsage.get(customerId));
+			String val = generatedStringValue(customerId, mapUserUsage.get(customerId));
 			sql = sql + val + ",";
 		}
 		return sql.substring(0, sql.length() - 1) + ") AS c" + generatedStringColumn()
@@ -369,23 +372,26 @@ public class TableProfileDAO {
 	}
 
 	private String generatedSQLUpdateUserUsageMultiple(Map<String, Map<String, Integer>> mapUserUsage,
-			Map<String, String> mapUserContract, String dateString, String type) {
-		String sql = "UPDATE profile_" + type + " AS t " + generatedStringSetCommand() + " FROM (VALUES ";
+			String dateString, String type) {
+		String table = null;
+		if (type.equals("week")) {
+			table = TABLE_PROFILE_SUM_WEEK;
+		} else if (type.equals("month")) {
+			table = TABLE_PROFILE_SUM_MONTH;
+		}
+		String sql = "UPDATE " + table + " AS t " + generatedStringSetCommand() + " FROM (VALUES ";
 		for (String customerId : mapUserUsage.keySet()) {
-			String val = generatedStringValue(customerId, mapUserContract.get(customerId), mapUserUsage.get(customerId),
-					dateString, type);
+			String val = generatedStringValue(customerId, mapUserUsage.get(customerId), dateString, type);
 			sql = sql + val + ",";
 		}
 		return sql.substring(0, sql.length() - 1) + ") AS c" + generatedStringColumn(type)
 				+ "WHERE c.customer_id = t.customer_id AND c." + type + " = t." + type + ";";
 	}
 
-	private String generatedSQLInsertUserUsageMultiple(Map<String, Map<String, Integer>> mapUserUsage,
-			Map<String, String> mapUserContract) {
-		String sql = "INSERT INTO profile_sum " + generatedStringColumnMLInsert() + "" + " VALUES ";
+	private String generatedSQLInsertUserUsageMultiple(Map<String, Map<String, Integer>> mapUserUsage) {
+		String sql = "INSERT INTO " + TABLE_PROFILE_SUM + " " + generatedStringColumnMLInsert() + "" + " VALUES ";
 		for (String customerId : mapUserUsage.keySet()) {
-			sql = sql + generatedStringValueMLInsert(customerId, mapUserContract.get(customerId),
-					mapUserUsage.get(customerId)) + ",";
+			sql = sql + generatedStringValueMLInsert(customerId, mapUserUsage.get(customerId)) + ",";
 		}
 		sql = sql.substring(0, sql.length() - 1);
 		sql = sql + ";";
@@ -393,19 +399,24 @@ public class TableProfileDAO {
 	}
 
 	private String generatedSQLInsertUserUsageMultiple(Map<String, Map<String, Integer>> mapUserUsage,
-			Map<String, String> mapUserContract, String dateString, String type) {
-		String sql = "INSERT INTO profile_" + type + " " + generatedStringColumn(type) + " VALUES ";
+			String dateString, String type) {
+		String table = null;
+		if (type.equals("week")) {
+			table = TABLE_PROFILE_SUM_WEEK;
+		} else if (type.equals("month")) {
+			table = TABLE_PROFILE_SUM_MONTH;
+		}
+		String sql = "INSERT INTO " + table + " " + generatedStringColumn(type) + " VALUES ";
 		for (String customerId : mapUserUsage.keySet()) {
-			sql = sql + generatedStringValue(customerId, mapUserContract.get(customerId), mapUserUsage.get(customerId),
-					dateString, type) + ",";
+			sql = sql + generatedStringValue(customerId, mapUserUsage.get(customerId), dateString, type) + ",";
 		}
 		sql = sql.substring(0, sql.length() - 1);
 		sql = sql + ";";
 		return sql;
 	}
 
-	private String generatedStringValue(String customer_id, String contract, Map<String, Integer> mapUsage) {
-		String value = "('" + contract + "','" + customer_id + "'";
+	private String generatedStringValue(String customer_id, Map<String, Integer> mapUsage) {
+		String value = "('" + customer_id + "'";
 		for (int i = 0; i < 24; i++) {
 			String key = PayTVDBUtils.VECTOR_HOURLY_PREFIX + NumberUtils.get2CharNumber(i);
 			value = value + "," + (mapUsage.get(key) == null ? 0 : mapUsage.get(key));
@@ -422,8 +433,8 @@ public class TableProfileDAO {
 		return value;
 	}
 
-	private String generatedStringValue(String customer_id, String contract, Map<String, Integer> mapUsage,
-			String dateString, String type) {
+	private String generatedStringValue(String customer_id, Map<String, Integer> mapUsage, String dateString,
+			String type) {
 		String typeIndex = null;
 		DateTime date = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.parseDateTime(dateString);
 		if (type.equals("week")) {
@@ -432,7 +443,7 @@ public class TableProfileDAO {
 			typeIndex = "y" + date.getYear() + "_m" + date.getMonthOfYear();
 		}
 
-		String value = "('" + contract + "','" + customer_id + "','" + typeIndex + "'";
+		String value = "('" + customer_id + "','" + typeIndex + "'";
 		for (int i = 0; i < 24; i++) {
 			String key = PayTVDBUtils.VECTOR_HOURLY_PREFIX + NumberUtils.get2CharNumber(i);
 			value = value + "," + (mapUsage.get(key) == null ? 0 : mapUsage.get(key));
@@ -461,8 +472,8 @@ public class TableProfileDAO {
 		return value;
 	}
 
-	private String generatedStringValueMLInsert(String customer_id, String contract, Map<String, Integer> mapUsage) {
-		String value = "('" + contract + "','" + customer_id + "'";
+	private String generatedStringValueMLInsert(String customer_id, Map<String, Integer> mapUsage) {
+		String value = "('" + customer_id + "'";
 		for (int i = 0; i < 24; i++) {
 			String key = PayTVDBUtils.VECTOR_HOURLY_PREFIX + NumberUtils.get2CharNumber(i);
 			value = value + "," + (mapUsage.get(key) == null ? 0 : mapUsage.get(key));
@@ -484,7 +495,7 @@ public class TableProfileDAO {
 	}
 
 	private String generatedStringColumn() {
-		String col = "(contract,customer_id";
+		String col = "(customer_id";
 		for (int i = 0; i < 24; i++) {
 			col = col + "," + PayTVDBUtils.VECTOR_HOURLY_PREFIX + NumberUtils.get2CharNumber(i);
 		}
@@ -499,7 +510,7 @@ public class TableProfileDAO {
 	}
 
 	private String generatedStringColumn(String type) {
-		String col = "(contract,customer_id," + type;
+		String col = "(customer_id," + type;
 		for (int i = 0; i < 24; i++) {
 			col = col + "," + PayTVDBUtils.VECTOR_HOURLY_PREFIX + NumberUtils.get2CharNumber(i);
 		}
@@ -520,7 +531,7 @@ public class TableProfileDAO {
 	}
 
 	private String generatedStringColumnMLInsert() {
-		String col = "(contract,customer_id";
+		String col = "(customer_id";
 		for (int i = 0; i < 24; i++) {
 			col = col + "," + PayTVDBUtils.VECTOR_HOURLY_PREFIX + NumberUtils.get2CharNumber(i);
 		}

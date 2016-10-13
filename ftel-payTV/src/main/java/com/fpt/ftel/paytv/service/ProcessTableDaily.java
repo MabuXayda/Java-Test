@@ -29,7 +29,7 @@ public class ProcessTableDaily {
 		tableDailyDAO.dropPartition(connection, dropDateSimple);
 		tableDailyDAO.createPartition(connection, currentDateSimple);
 		tableDailyDAO.insertFromTable(connection, currentDateSimple);
-		PayTVUtils.LOG_INFO.info("Done insert DAILY - Time: " + (System.currentTimeMillis() - start) + " | At: "
-				+ System.currentTimeMillis());
+		PayTVUtils.LOG_INFO.info("------> Done updateDB DAILY | time: " + (System.currentTimeMillis() - start)
+				+ " | at: " + System.currentTimeMillis());
 	}
 }

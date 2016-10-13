@@ -19,7 +19,7 @@ import com.fpt.ftel.postgresql.PostgreSQL;
 
 public class TableAppDAO {
 	private static final String SQL_CREATE_TABLE_PROFILE_APP = "CREATE TABLE IF NOT EXISTS profile_app "
-			+ "(contract VARCHAR(22), customer_id VARCHAR(22), app VARCHAR(22), "
+			+ "(customer_id VARCHAR(22), app VARCHAR(22), "
 			+ "h_00 INT, h_01 INT, h_02 INT, h_03 INT, h_04 INT, h_05 INT, h_06 INT, h_07 INT, h_08 INT, h_09 INT, "
 			+ "h_10 INT, h_11 INT, h_12 INT, h_13 INT, h_14 INT, h_15 INT, h_16 INT, h_17 INT, h_18 INT, h_19 INT, "
 			+ "h_20 INT, h_21 INT, h_22 INT, h_23 INT, "
@@ -27,7 +27,7 @@ public class TableAppDAO {
 			+ "PRIMARY KEY(customer_id, app));";
 
 	private static final String SQL_CREATE_TABLE_PROFILE_APP_WEEK = "CREATE TABLE IF NOT EXISTS profile_app_week "
-			+ "(contract VARCHAR(22), customer_id VARCHAR(22), app VARCHAR(22), week VARCHAR(10), "
+			+ "(customer_id VARCHAR(22), app VARCHAR(22), week VARCHAR(10), "
 			+ "h_00 INT, h_01 INT, h_02 INT, h_03 INT, h_04 INT, h_05 INT, h_06 INT, h_07 INT, h_08 INT, h_09 INT, "
 			+ "h_10 INT, h_11 INT, h_12 INT, h_13 INT, h_14 INT, h_15 INT, h_16 INT, h_17 INT, h_18 INT, h_19 INT, "
 			+ "h_20 INT, h_21 INT, h_22 INT, h_23 INT, "
@@ -35,7 +35,7 @@ public class TableAppDAO {
 			+ "PRIMARY KEY(customer_id, app, week));";
 
 	private static final String SQL_CREATE_TABLE_PROFILE_APP_MONTH = "CREATE TABLE IF NOT EXISTS profile_app_month "
-			+ "(contract VARCHAR(22), customer_id VARCHAR(22), app VARCHAR(22), month VARCHAR(10), "
+			+ "(customer_id VARCHAR(22), app VARCHAR(22), month VARCHAR(10), "
 			+ "h_00 INT, h_01 INT, h_02 INT, h_03 INT, h_04 INT, h_05 INT, h_06 INT, h_07 INT, h_08 INT, h_09 INT, "
 			+ "h_10 INT, h_11 INT, h_12 INT, h_13 INT, h_14 INT, h_15 INT, h_16 INT, h_17 INT, h_18 INT, h_19 INT, "
 			+ "h_20 INT, h_21 INT, h_22 INT, h_23 INT, "
@@ -135,26 +135,26 @@ public class TableAppDAO {
 	}
 
 	public void updateUserUsageMultiple(Connection connection, Map<String, Map<String, Integer>> mapUserUsage,
-			Map<String, String> mapUserContract, String app) throws SQLException {
-		String sql = generatedSQLUpdateUserUsageMultiple(mapUserUsage, mapUserContract, app);
+			String app) throws SQLException {
+		String sql = generatedSQLUpdateUserUsageMultiple(mapUserUsage, app);
 		PostgreSQL.executeUpdateSQL(connection, sql);
 	}
 
 	public void updateUserUsageMultiple(Connection connection, Map<String, Map<String, Integer>> mapUserUsage,
-			Map<String, String> mapUserContract, String app, String dateString, String type) throws SQLException {
-		String sql = generatedSQLUpdateUserUsageMultiple(mapUserUsage, mapUserContract, app, dateString, type);
+			String app, String dateString, String type) throws SQLException {
+		String sql = generatedSQLUpdateUserUsageMultiple(mapUserUsage, app, dateString, type);
 		PostgreSQL.executeUpdateSQL(connection, sql);
 	}
 
 	public void insertUserUsageMultiple(Connection connection, Map<String, Map<String, Integer>> mapUserUsage,
-			Map<String, String> mapUserContract, String app) throws SQLException {
-		String sql = generatedSQLInsertUserUsageMultiple(mapUserUsage, mapUserContract, app);
+			String app) throws SQLException {
+		String sql = generatedSQLInsertUserUsageMultiple(mapUserUsage, app);
 		PostgreSQL.executeUpdateSQL(connection, sql);
 	}
 
 	public void insertUserUsageMultiple(Connection connection, Map<String, Map<String, Integer>> mapUserUsage,
-			Map<String, String> mapUserContract, String app, String dateString, String type) throws SQLException {
-		String sql = generatedSQLInsertUserUsageMultiple(mapUserUsage, mapUserContract, app, dateString, type);
+			String app, String dateString, String type) throws SQLException {
+		String sql = generatedSQLInsertUserUsageMultiple(mapUserUsage, app, dateString, type);
 		PostgreSQL.executeUpdateSQL(connection, sql);
 	}
 
@@ -220,10 +220,10 @@ public class TableAppDAO {
 	}
 
 	private String generatedSQLUpdateUserUsageMultiple(Map<String, Map<String, Integer>> mapUserUsage,
-			Map<String, String> mapUserContract, String app) {
+			String app) {
 		String sql = "UPDATE profile_app AS t " + generatedStringSetCommand() + " FROM (VALUES ";
 		for (String customerId : mapUserUsage.keySet()) {
-			String val = generatedStringValue(customerId, mapUserContract.get(customerId), mapUserUsage.get(customerId),
+			String val = generatedStringValue(customerId, mapUserUsage.get(customerId),
 					app);
 			sql = sql + val + ",";
 		}
@@ -232,10 +232,10 @@ public class TableAppDAO {
 	}
 
 	private String generatedSQLUpdateUserUsageMultiple(Map<String, Map<String, Integer>> mapUserUsage,
-			Map<String, String> mapUserContract, String app, String dateString, String type) {
+			String app, String dateString, String type) {
 		String sql = "UPDATE profile_app_" + type + " AS t " + generatedStringSetCommand() + " FROM (VALUES ";
 		for (String customerId : mapUserUsage.keySet()) {
-			String val = generatedStringValue(customerId, mapUserContract.get(customerId), mapUserUsage.get(customerId),
+			String val = generatedStringValue(customerId, mapUserUsage.get(customerId),
 					app, dateString, type);
 			sql = sql + val + ",";
 		}
@@ -244,12 +244,12 @@ public class TableAppDAO {
 	}
 
 	private String generatedSQLInsertUserUsageMultiple(Map<String, Map<String, Integer>> mapUserUsage,
-			Map<String, String> mapUserContract, String app) {
+			 String app) {
 		String sql = "INSERT INTO profile_app " + generatedStringColumn() + " VALUES ";
 		for (String customerId : mapUserUsage.keySet()) {
 
 			if (mapUserUsage.get(customerId) != null) {
-				sql = sql + generatedStringValue(customerId, mapUserContract.get(customerId),
+				sql = sql + generatedStringValue(customerId, 
 						mapUserUsage.get(customerId), app) + ",";
 			}
 		}
@@ -259,10 +259,10 @@ public class TableAppDAO {
 	}
 
 	private String generatedSQLInsertUserUsageMultiple(Map<String, Map<String, Integer>> mapUserUsage,
-			Map<String, String> mapUserContract, String app, String dateString, String type) {
+			String app, String dateString, String type) {
 		String sql = "INSERT INTO profile_app_" + type + " " + generatedStringColumn(type) + " VALUES ";
 		for (String customerId : mapUserUsage.keySet()) {
-			sql = sql + generatedStringValue(customerId, mapUserContract.get(customerId), mapUserUsage.get(customerId),
+			sql = sql + generatedStringValue(customerId, mapUserUsage.get(customerId),
 					app, dateString, type) + ",";
 		}
 		sql = sql.substring(0, sql.length() - 1);
@@ -283,9 +283,9 @@ public class TableAppDAO {
 		return setCommand.substring(0, setCommand.length() - 1);
 	}
 
-	private String generatedStringValue(String customer_id, String contract, Map<String, Integer> mapUsage,
+	private String generatedStringValue(String customer_id, Map<String, Integer> mapUsage,
 			String app) {
-		String value = "('" + contract + "','" + customer_id + "','" + app + "'";
+		String value = "('" + customer_id + "','" + app + "'";
 		for (int i = 0; i < 24; i++) {
 			String key = PayTVDBUtils.VECTOR_HOURLY_PREFIX + NumberUtils.get2CharNumber(i);
 			value = value + "," + (mapUsage.get(key) == null ? 0 : mapUsage.get(key));
@@ -298,7 +298,7 @@ public class TableAppDAO {
 		return value;
 	}
 
-	private String generatedStringValue(String customer_id, String contract, Map<String, Integer> mapUsage, String app,
+	private String generatedStringValue(String customer_id, Map<String, Integer> mapUsage, String app,
 			String dateString, String type) {
 		String typeIndex = null;
 		DateTime date = PayTVUtils.FORMAT_DATE_TIME_SIMPLE.parseDateTime(dateString);
@@ -308,7 +308,7 @@ public class TableAppDAO {
 			typeIndex = "y" + date.getYear() + "_m" + date.getMonthOfYear();
 		}
 
-		String value = "('" + contract + "','" + customer_id + "','" + app + "','" + typeIndex + "'";
+		String value = "('" + customer_id + "','" + app + "','" + typeIndex + "'";
 		for (int i = 0; i < 24; i++) {
 			String key = PayTVDBUtils.VECTOR_HOURLY_PREFIX + NumberUtils.get2CharNumber(i);
 			value = value + "," + (mapUsage.get(key) == null ? 0 : mapUsage.get(key));
@@ -322,7 +322,7 @@ public class TableAppDAO {
 	}
 
 	private String generatedStringColumn() {
-		String col = "(contract,customer_id,app";
+		String col = "(customer_id,app";
 		for (int i = 0; i < 24; i++) {
 			col = col + "," + PayTVDBUtils.VECTOR_HOURLY_PREFIX + NumberUtils.get2CharNumber(i);
 		}
@@ -334,7 +334,7 @@ public class TableAppDAO {
 	}
 
 	private String generatedStringColumn(String type) {
-		String col = "(contract,customer_id,app," + type;
+		String col = "(customer_id,app," + type;
 		for (int i = 0; i < 24; i++) {
 			col = col + "," + PayTVDBUtils.VECTOR_HOURLY_PREFIX + NumberUtils.get2CharNumber(i);
 		}

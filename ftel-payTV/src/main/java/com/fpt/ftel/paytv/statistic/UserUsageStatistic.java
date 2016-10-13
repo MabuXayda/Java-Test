@@ -43,7 +43,7 @@ public class UserUsageStatistic {
 
 	public static void main(String[] args) throws IOException {
 		UserUsageStatistic userUsage = new UserUsageStatistic();
-		userUsage.processSomethingDump();
+		userUsage.processStatistic();
 	}
 
 	private void initMap() {
@@ -55,258 +55,38 @@ public class UserUsageStatistic {
 		mapUserVectorDays = new ConcurrentHashMap<>();
 	}
 
-	public void processSomethingDump() throws IOException {
-		String mainOutput = CommonConfig.get(PayTVConfig.MAIN_DIR) + "/VERY_BIG/";
-		FileUtils.createFolder(mainOutput);
-		HdfsIO hdfsIOSimple = new HdfsIO(CommonConfig.get(PayTVConfig.HDFS_CORE_SITE),
-				CommonConfig.get(PayTVConfig.HDFS_SITE));
-		System.out.println("Start t2");
-		DateTime dateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-03-01 00:00:00").minusDays(1);
-		List<String> listFilePathInput = getListLogPathHdfsStatistic(dateTime, hdfsIOSimple);
-		String outputFolderPath = mainOutput + dateTime.getMonthOfYear();
-		FileUtils.createFolder(outputFolderPath);
-		statisticUserUsageBlind(dateTime, listFilePathInput, outputFolderPath, hdfsIOSimple);
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DONE T" + dateTime.getMonthOfYear() + " |");
-		System.out.println("Start t3");
-		dateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-04-01 00:00:00").minusDays(1);
-		listFilePathInput = getListLogPathHdfsStatistic(dateTime, hdfsIOSimple);
-		outputFolderPath = mainOutput + dateTime.getMonthOfYear();
-		FileUtils.createFolder(outputFolderPath);
-		statisticUserUsageBlind(dateTime, listFilePathInput, outputFolderPath, hdfsIOSimple);
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DONE T" + dateTime.getMonthOfYear() + " |");
-		System.out.println("Start t4");
-		dateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-05-01 00:00:00").minusDays(1);
-		listFilePathInput = getListLogPathHdfsStatistic(dateTime, hdfsIOSimple);
-		outputFolderPath = mainOutput + dateTime.getMonthOfYear();
-		FileUtils.createFolder(outputFolderPath);
-		statisticUserUsageBlind(dateTime, listFilePathInput, outputFolderPath, hdfsIOSimple);
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DONE T" + dateTime.getMonthOfYear() + " |");
-		System.out.println("Start t5");
-		dateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-06-01 00:00:00").minusDays(1);
-		listFilePathInput = getListLogPathHdfsStatistic(dateTime, hdfsIOSimple);
-		outputFolderPath = mainOutput + dateTime.getMonthOfYear();
-		FileUtils.createFolder(outputFolderPath);
-		statisticUserUsageBlind(dateTime, listFilePathInput, outputFolderPath, hdfsIOSimple);
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DONE T" + dateTime.getMonthOfYear() + " |");
-		System.out.println("Start t6");
-		dateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-07-01 00:00:00").minusDays(1);
-		listFilePathInput = getListLogPathHdfsStatistic(dateTime, hdfsIOSimple);
-		outputFolderPath = mainOutput + dateTime.getMonthOfYear();
-		FileUtils.createFolder(outputFolderPath);
-		statisticUserUsageBlind(dateTime, listFilePathInput, outputFolderPath, hdfsIOSimple);
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DONE T" + dateTime.getMonthOfYear() + " |");
-		System.out.println("Start t7");
-		dateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-08-01 00:00:00").minusDays(1);
-		listFilePathInput = getListLogPathHdfsStatistic(dateTime, hdfsIOSimple);
-		outputFolderPath = mainOutput + dateTime.getMonthOfYear();
-		FileUtils.createFolder(outputFolderPath);
-		statisticUserUsageBlind(dateTime, listFilePathInput, outputFolderPath, hdfsIOSimple);
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DONE T" + dateTime.getMonthOfYear() + " |");
-		System.out.println("Start t8");
-		dateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-09-01 00:00:00").minusDays(1);
-		listFilePathInput = getListLogPathHdfsStatistic(dateTime, hdfsIOSimple);
-		outputFolderPath = mainOutput + dateTime.getMonthOfYear();
-		FileUtils.createFolder(outputFolderPath);
-		statisticUserUsageBlind(dateTime, listFilePathInput, outputFolderPath, hdfsIOSimple);
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DONE T" + dateTime.getMonthOfYear() + " |");
-		System.out.println("Start t9");
-		dateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-10-01 00:00:00").minusDays(1);
-		listFilePathInput = getListLogPathHdfsStatistic(dateTime, hdfsIOSimple);
-		outputFolderPath = mainOutput + dateTime.getMonthOfYear();
-		FileUtils.createFolder(outputFolderPath);
-		statisticUserUsageBlind(dateTime, listFilePathInput, outputFolderPath, hdfsIOSimple);
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DONE T" + dateTime.getMonthOfYear() + " |");
-	}
-
 	public void processStatistic() throws IOException {
 		HdfsIO hdfsIOSimple = new HdfsIO(CommonConfig.get(PayTVConfig.HDFS_CORE_SITE),
 				CommonConfig.get(PayTVConfig.HDFS_SITE));
-		System.out.println("Start t3");
-		DateTime dateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-03-01 00:00:00");
-		Map<String, DateTime> mapChurn_t2 = UserStatus
-				.getMapUserChurnDateCondition(CommonConfig.get(PayTVConfig.SUPPORT_DATA_DIR) + "/userChurn_t2.csv");
-		Map<String, DateTime> mapChurn_t3 = UserStatus
-				.getMapUserChurnDateCondition(CommonConfig.get(PayTVConfig.SUPPORT_DATA_DIR) + "/userChurn_t3.csv");
-		Map<String, DateTime> mapAct_t3 = UserStatus.getMapUserActiveDateCondition(
-				CommonConfig.get(PayTVConfig.SUPPORT_DATA_DIR) + "/userActive_t3.csv",
-				PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-04-01 00:00:00"));
-		Map<String, DateTime> mapUserDateCondition = new HashMap<>();
-		mapUserDateCondition.putAll(mapChurn_t2);
-		mapUserDateCondition.putAll(mapChurn_t3);
-		mapUserDateCondition.putAll(mapAct_t3);
-		List<String> listFilePathInput = getListLogPathHdfsStatistic(dateTime.minusMonths(1), hdfsIOSimple);
-		listFilePathInput.addAll(getListLogPathHdfsStatistic(dateTime, hdfsIOSimple));
-		String outputFolderPath = CommonConfig.get(PayTVConfig.MAIN_DIR) + "/z_t3";
-		FileUtils.createFolder(outputFolderPath);
-		// statisticUserUsage(mapUserDateCondition, listFilePathInput,
-		// outputFolderPath, hdfsIOSimple, true, true, true,
-		// false, false);
-		// statisticUserUsage(mapUserDateCondition, listFilePathInput,
-		// outputFolderPath, hdfsIOSimple, false, false, false,
-		// true, false);
-		// statisticUserUsage(mapUserDateCondition, listFilePathInput,
-		// outputFolderPath, hdfsIOSimple, false, false, false,
-		// false, true);
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DONE T3 |");
+		String totalDir = CommonConfig.get(PayTVConfig.MAIN_DIR) + "/VERY_TOTAL";
+		FileUtils.createFolder(totalDir);
 
-		// System.out.println("Start t4");
-		// dateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-04-01
-		// 00:00:00");
-		// Map<String, DateTime> mapChurn_t4 = UserStatus
-		// .getMapUserChurnDateCondition(CommonConfig.get(PayTVConfig.SUPPORT_DATA_DIR)
-		// + "/userChurn_t4.csv");
-		// Map<String, DateTime> mapAct_t4 =
-		// UserStatus.getMapUserActiveDateCondition(
-		// CommonConfig.get(PayTVConfig.SUPPORT_DATA_DIR) +
-		// "/userActive_t4.csv",
-		// PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-05-01 00:00:00"));
-		// mapUserDateCondition = new HashMap<>();
-		// mapUserDateCondition.putAll(mapChurn_t4);
-		// mapUserDateCondition.putAll(mapAct_t4);
-		// listFilePathInput =
-		// getListLogPathHdfsStatistic(dateTime.minusMonths(1), hdfsIOSimple);
-		// listFilePathInput.addAll(getListLogPathHdfsStatistic(dateTime,
-		// hdfsIOSimple));
-		// outputFolderPath = CommonConfig.get(PayTVConfig.MAIN_DIR) + "/z_t4";
-		// FileUtils.createFolder(outputFolderPath);
-		// statisticUserUsage(mapUserDateCondition, listFilePathInput,
-		// outputFolderPath, hdfsIOSimple, true, true, true,
-		// false, false);
-		// statisticUserUsage(mapUserDateCondition, listFilePathInput,
-		// outputFolderPath, hdfsIOSimple, false, false, false,
-		// true, false);
-		// statisticUserUsage(mapUserDateCondition, listFilePathInput,
-		// outputFolderPath, hdfsIOSimple, false, false, false,
-		// false, true);
-		// System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-		// DONE T4 |");
+		for (int i = 6; i < 10; i++) {
+			System.out.println("Start t" + i);
+			DateTime dateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-0" + i + "-01 00:00:00");
+			// mapCont
+			Map<String, DateTime> mapUserDateCondition = UserStatus.getMapUserDateCondition(
+					totalDir + "/total_t" + i + ".csv",
+					PayTVUtils.FORMAT_DATE_TIME_SIMPLE.parseDateTime("2016-0" + (i + 1) + "-01"));
+			// input
+			List<String> listFilePathInput = getListLogPathHdfsStatistic(dateTime.minusMonths(1), hdfsIOSimple);
+			listFilePathInput.addAll(getListLogPathHdfsStatistic(dateTime, hdfsIOSimple));
+			// output
+			String outputFolderPath = totalDir + "/feature_t" + i;
+			FileUtils.createFolder(outputFolderPath);
+			// calculate
+			statisticUserUsage(mapUserDateCondition, listFilePathInput, outputFolderPath, hdfsIOSimple, true, true,
+					true, false, false);
+			statisticUserUsage(mapUserDateCondition, listFilePathInput, outputFolderPath, hdfsIOSimple, false, false,
+					false, true, false);
+			statisticUserUsage(mapUserDateCondition, listFilePathInput, outputFolderPath, hdfsIOSimple, false, false,
+					false, false, true);
+			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DONE T" + i + " |");
+		}
 
-		// System.out.println("Start t5");
-		// dateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-05-01
-		// 00:00:00");
-		// Map<String, DateTime> mapChurn_t5 = UserStatus
-		// .getMapUserChurnDateCondition(CommonConfig.get(PayTVConfig.SUPPORT_DATA_DIR)
-		// + "/userChurn_t5.csv");
-		// Map<String, DateTime> mapAct_t5 =
-		// UserStatus.getMapUserActiveDateCondition(
-		// CommonConfig.get(PayTVConfig.SUPPORT_DATA_DIR) +
-		// "/userActive_t5.csv",
-		// PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-06-01 00:00:00"));
-		// mapUserDateCondition = new HashMap<>();
-		// mapUserDateCondition.putAll(mapChurn_t5);
-		// mapUserDateCondition.putAll(mapAct_t5);
-		// listFilePathInput =
-		// getListLogPathHdfsStatistic(dateTime.minusMonths(1), hdfsIOSimple);
-		// listFilePathInput.addAll(getListLogPathHdfsStatistic(dateTime,
-		// hdfsIOSimple));
-		// outputFolderPath = CommonConfig.get(PayTVConfig.MAIN_DIR) + "/z_t5";
-		// FileUtils.createFolder(outputFolderPath);
-		// statisticUserUsage(mapUserDateCondition, listFilePathInput,
-		// outputFolderPath, hdfsIOSimple, true, true, true,
-		// false, false);
-		// statisticUserUsage(mapUserDateCondition, listFilePathInput,
-		// outputFolderPath, hdfsIOSimple, false, false, false,
-		// true, false);
-		// statisticUserUsage(mapUserDateCondition, listFilePathInput,
-		// outputFolderPath, hdfsIOSimple, false, false, false,
-		// false, true);
-		// System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-		// DONE T5 |");
-
-		System.out.println("Start t6");
-		dateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-06-01 00:00:00");
-		Map<String, DateTime> mapChurn_t6 = UserStatus
-				.getMapUserChurnDateCondition(CommonConfig.get(PayTVConfig.SUPPORT_DATA_DIR) + "/userChurn_t6.csv");
-		Map<String, DateTime> mapAct_t6 = UserStatus.getMapUserActiveDateCondition(
-				CommonConfig.get(PayTVConfig.SUPPORT_DATA_DIR) + "/userActive_t6.csv",
-				PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-07-01 00:00:00"));
-		mapUserDateCondition = new HashMap<>();
-		mapUserDateCondition.putAll(mapChurn_t6);
-		mapUserDateCondition.putAll(mapAct_t6);
-		listFilePathInput = getListLogPathHdfsStatistic(dateTime.minusMonths(1), hdfsIOSimple);
-		listFilePathInput.addAll(getListLogPathHdfsStatistic(dateTime, hdfsIOSimple));
-		outputFolderPath = CommonConfig.get(PayTVConfig.MAIN_DIR) + "/z_t6";
-		FileUtils.createFolder(outputFolderPath);
-		// statisticUserUsage(mapUserDateCondition, listFilePathInput,
-		// outputFolderPath, hdfsIOSimple, true, true, true,
-		// false, false);
-		// statisticUserUsage(mapUserDateCondition, listFilePathInput,
-		// outputFolderPath, hdfsIOSimple, false, false, false,
-		// true, false);
-		// statisticUserUsage(mapUserDateCondition, listFilePathInput,
-		// outputFolderPath, hdfsIOSimple, false, false, true,
-		// false, true);
-		checkRawLog(mapUserDateCondition, listFilePathInput, hdfsIOSimple);
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DONE T6 |");
-
-		// System.out.println("Start t7");
-		// dateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-07-31
-		// 00:00:00");
-		// listFilePathInput =
-		// getListLogPathHdfsStatistic(dateTime.minusMonths(1), hdfsIOSimple);
-		// listFilePathInput.addAll(getListLogPathHdfsStatistic(dateTime,
-		// hdfsIOSimple));
-		// outputFolderPath = CommonConfig.get(PayTVConfig.MAIN_DIR) + "/z_t7";
-		// FileUtils.createFolder(outputFolderPath);
-		// Map<String, DateTime> mapUserChurnCondition = new HashMap<>();
-		// BufferedReader br = new BufferedReader(
-		// new FileReader(CommonConfig.get(PayTVConfig.SUPPORT_DATA_DIR) +
-		// "/userChurn_t7.csv"));
-		// String line = br.readLine();
-		// line = br.readLine();
-		// while (line != null) {
-		// mapUserChurnCondition.put(line.split(",")[0],
-		// PayTVUtils.FORMAT_DATE_TIME.parseDateTime(line.split(",")[1]));
-		// line = br.readLine();
-		// }
-		// br.close();
-		// statisticUserUsageBlind(mapUserChurnCondition, dateTime,
-		// listFilePathInput, outputFolderPath, hdfsIOSimple,
-		// true, true, true, false, false);
-		// statisticUserUsageBlind(mapUserChurnCondition, dateTime,
-		// listFilePathInput, outputFolderPath, hdfsIOSimple,
-		// false, false, false, true, false);
-		// statisticUserUsageBlind(mapUserChurnCondition, dateTime,
-		// listFilePathInput, outputFolderPath, hdfsIOSimple,
-		// false, false, false, false, true);
-		// System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-		// DONE T7 |");
-
-		// System.out.println("Start t8");
-		// dateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-08-31
-		// 00:00:00");
-		// listFilePathInput =
-		// getListLogPathHdfsStatistic(dateTime.minusMonths(1), hdfsIOSimple);
-		// listFilePathInput.addAll(getListLogPathHdfsStatistic(dateTime,
-		// hdfsIOSimple));
-		// outputFolderPath = CommonConfig.get(PayTVConfig.MAIN_DIR) + "/z_t8";
-		// FileUtils.createFolder(outputFolderPath);
-		// mapUserChurnCondition = new HashMap<>();
-		// br = new BufferedReader(new
-		// FileReader(CommonConfig.get(PayTVConfig.SUPPORT_DATA_DIR) +
-		// "/userChurn_t8.csv"));
-		// line = br.readLine();
-		// line = br.readLine();
-		// while (line != null) {
-		// mapUserChurnCondition.put(line.split(",")[0],
-		// PayTVUtils.FORMAT_DATE_TIME.parseDateTime(line.split(",")[1]));
-		// line = br.readLine();
-		// }
-		// br.close();
-		// statisticUserUsageBlind(mapUserChurnCondition, dateTime,
-		// listFilePathInput, outputFolderPath, hdfsIOSimple,
-		// true, true, true, false, false);
-		// statisticUserUsageBlind(mapUserChurnCondition, dateTime,
-		// listFilePathInput, outputFolderPath, hdfsIOSimple,
-		// false, false, false, true, false);
-		// statisticUserUsageBlind(mapUserChurnCondition, dateTime,
-		// listFilePathInput, outputFolderPath, hdfsIOSimple,
-		// false, false, false, false, true);
-		// System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-		// DONE T8 |");
 	}
 
-	public void imDoingSomethingDump() {
+	public void doingSomethingDump() {
 		List<String> listDay = new ArrayList<>();
 		LocalDate month = new LocalDate(2016, 2, 1);
 		LocalDate firstDay = month.withDayOfMonth(1);
@@ -722,8 +502,36 @@ public class UserUsageStatistic {
 	private void statisticUserUsage(Map<String, DateTime> mapUserDateCondition, List<String> listFileLogPath,
 			String outputFolderPath, HdfsIO hdfsIOSimple, boolean processHourly, boolean processDaily,
 			boolean processApp, boolean processLogId, boolean processDays) throws IOException {
-
 		initMap();
+		for (String id : mapUserDateCondition.keySet()) {
+			if (processHourly) {
+				if (!mapUserVectorHourly.containsKey(id)) {
+					mapUserVectorHourly.put(id, new ConcurrentHashMap<>());
+				}
+			}
+			if (processApp) {
+				if (!mapUserVectorApp.containsKey(id)) {
+					mapUserVectorApp.put(id, new ConcurrentHashMap<>());
+				}
+			}
+			if (processDaily) {
+				if (!mapUserVectorDaily.containsKey(id)) {
+					mapUserVectorDaily.put(id, new ConcurrentHashMap<>());
+				}
+			}
+			if (processDays) {
+				if (!mapUserVectorDays.containsKey(id)) {
+					mapUserVectorDays.put(id, new ConcurrentHashMap<>());
+				}
+			}
+			if (processLogId) {
+				if (!mapUserLogIdCount.containsKey(id)) {
+					mapUserLogIdCount.put(id, new ConcurrentHashMap<>());
+				}
+			}
+		}
+
+		
 		ExecutorService executorService = Executors.newFixedThreadPool(4);
 		for (final String filePath : listFileLogPath) {
 			executorService.execute(new Runnable() {
@@ -801,29 +609,26 @@ public class UserUsageStatistic {
 									}
 								}
 							}
+
 							if (willProcessRTP) {
 								countTime++;
 								if (processHourly) {
-									Map<Integer, Integer> mapHourly = mapUserVectorHourly.get(customerId) == null
-											? new ConcurrentHashMap<>() : mapUserVectorHourly.get(customerId);
+									Map<Integer, Integer> mapHourly = mapUserVectorHourly.get(customerId);
 									StatisticUtils.updateHourly(mapHourly, received_at, secondsRTP);
 									mapUserVectorHourly.put(customerId, mapHourly);
 								}
 								if (processDaily) {
-									Map<String, Integer> mapDaily = mapUserVectorDaily.get(customerId) == null
-											? new ConcurrentHashMap<>() : mapUserVectorDaily.get(customerId);
+									Map<String, Integer> mapDaily = mapUserVectorDaily.get(customerId);
 									StatisticUtils.updateDaily(mapDaily, received_at, secondsRTP);
 									mapUserVectorDaily.put(customerId, mapDaily);
 								}
 								if (processApp) {
-									Map<String, Integer> mapApp = mapUserVectorApp.get(customerId) == null
-											? new ConcurrentHashMap<>() : mapUserVectorApp.get(customerId);
+									Map<String, Integer> mapApp = mapUserVectorApp.get(customerId);
 									StatisticUtils.updateApp(mapApp, appName, secondsRTP);
 									mapUserVectorApp.put(customerId, mapApp);
 								}
 								if (processDays) {
-									Map<Integer, Integer> mapDays = mapUserVectorDays.get(customerId) == null
-											? new ConcurrentHashMap<>() : mapUserVectorDays.get(customerId);
+									Map<Integer, Integer> mapDays = mapUserVectorDays.get(customerId);
 									StatisticUtils.updateDays(mapDays, dayDuration, secondsRTP, received_at, 27);
 									mapUserVectorDays.put(customerId, mapDays);
 								}
@@ -832,8 +637,7 @@ public class UserUsageStatistic {
 								countLogId++;
 								if (processLogId) {
 									setLogId.add(logId);
-									Map<String, Integer> mapLogId = mapUserLogIdCount.get(customerId) == null
-											? new ConcurrentHashMap<>() : mapUserLogIdCount.get(customerId);
+									Map<String, Integer> mapLogId = mapUserLogIdCount.get(customerId);
 									StatisticUtils.updateLogIdCount(mapLogId, logId);
 									mapUserLogIdCount.put(customerId, mapLogId);
 								}
