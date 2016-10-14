@@ -61,13 +61,14 @@ public class UserUsageStatistic {
 		String totalDir = CommonConfig.get(PayTVConfig.MAIN_DIR) + "/VERY_TOTAL";
 		FileUtils.createFolder(totalDir);
 
-		for (int i = 6; i < 10; i++) {
+		for (int i = 9; i < 10; i++) {
 			System.out.println("Start t" + i);
-			DateTime dateTime = PayTVUtils.FORMAT_DATE_TIME.parseDateTime("2016-0" + i + "-01 00:00:00");
+			DateTime dateTime = PayTVUtils.FORMAT_DATE_TIME
+					.parseDateTime("2016-" + NumberUtils.get2CharNumber(i) + "-01 00:00:00");
 			// mapCont
-			Map<String, DateTime> mapUserDateCondition = UserStatus.getMapUserDateCondition(
-					totalDir + "/total_t" + i + ".csv",
-					PayTVUtils.FORMAT_DATE_TIME_SIMPLE.parseDateTime("2016-0" + (i + 1) + "-01"));
+			Map<String, DateTime> mapUserDateCondition = UserStatus
+					.getMapUserDateCondition(totalDir + "/total_t" + i + ".csv", PayTVUtils.FORMAT_DATE_TIME_SIMPLE
+							.parseDateTime("2016-" + NumberUtils.get2CharNumber(i + 1) + "-01"));
 			// input
 			List<String> listFilePathInput = getListLogPathHdfsStatistic(dateTime.minusMonths(1), hdfsIOSimple);
 			listFilePathInput.addAll(getListLogPathHdfsStatistic(dateTime, hdfsIOSimple));
@@ -531,7 +532,6 @@ public class UserUsageStatistic {
 			}
 		}
 
-		
 		ExecutorService executorService = Executors.newFixedThreadPool(4);
 		for (final String filePath : listFileLogPath) {
 			executorService.execute(new Runnable() {

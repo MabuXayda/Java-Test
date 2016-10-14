@@ -74,7 +74,7 @@ public class UserStatus {
 				boolean churn = new Boolean(arr[6]);
 				DateTime contDate;
 				if (churn == true) {
-					contDate = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(arr[4].substring(0, 19));
+					contDate = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(arr[4]);
 				} else {
 					contDate = dateCondition;
 				}

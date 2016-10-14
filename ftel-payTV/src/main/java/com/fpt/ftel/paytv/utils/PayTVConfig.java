@@ -16,9 +16,9 @@ public class PayTVConfig {
 	public static final String USER_SPECIAL_FILE = "USER_SPECIAL_FILE";
 	public static final String USER_INFO_FIRST_LOAD_FILE = "USER_INFO_FIRST_LOAD_FILE";
 	public static final String LOCATION_MAPPING = "LOCATION_MAPPING";
-
 	public static final String USER_CANCEL_FILE = "USER_CANCEL_FILE";
 	public static final String USER_REGISTER_FILE = "USER_REGISTER_FILE";
+	public static final String CALL_LOG_PURPOSE_FILE = "CALL_LOG_PURPOSE_FILE";
 
 	public static final String RTP_MAX = "RTP_MAX";
 	public static final String SMM_MAX = "SMM_MAX";
