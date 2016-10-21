@@ -22,23 +22,22 @@ public class UserCall {
 
 	private Map<String, Map<String, Integer>> mapContractCallCount;
 	private Map<String, Map<String, Integer>> mapContractCallDuration;
-	private Map<String, Double> mapContractReturnCallAvg;
+	private Map<String, Double> mapContractRecallAvg;
 
 	public void initMap() {
 		mapContractCallCount = new HashMap<>();
 		mapContractCallDuration = new HashMap<>();
-		mapContractReturnCallAvg = new HashMap<>();
-
+		mapContractRecallAvg = new HashMap<>();
 	}
 
 	public static void main(String[] args) throws IOException {
 		PrintWriter pr = new PrintWriter(new FileWriter("/home/tunn/data/tv/checkCall.csv"));
 		List<String> listPurpose = new ArrayList<>(TableCallLogDAO.getMapCallLogPurpose().keySet());
 		UserCall object = new UserCall();
-		object.loadRawLog();
+		object.processRawLog("");
 		Map<String, Map<String, Integer>> callCount = object.getMapContractCallCount();
 		Map<String, Map<String, Integer>> callDuration = object.getMapContractCallDuration();
-		Map<String, Double> reCall = object.getMapContractReturnCallAvg();
+		Map<String, Double> reCall = object.getMapContractRecallAvg();
 
 		pr.print("Contract");
 		for (int i = 0; i < listPurpose.size(); i++) {
@@ -73,13 +72,12 @@ public class UserCall {
 		System.out.println("DONE");
 	}
 
-	public void loadRawLog() throws IOException {
+	public void processRawLog(String path) throws IOException {
 		initMap();
 		Set<String> setPurpose = TableCallLogDAO.getMapCallLogPurpose().keySet();
 		Map<String, DateTime> mapContractCallDate = new HashMap<>();
 		Map<String, List<Integer>> mapContractRecallDuration = new HashMap<>();
-		BufferedReader br = new BufferedReader(
-				new FileReader("/home/tunn/data/tv/data_raw/metadata/CALL-LOG/call_log_2016-02.txt"));
+		BufferedReader br = new BufferedReader(new FileReader(path));
 		String line = br.readLine();
 		while (line != null) {
 			try {
@@ -104,10 +102,12 @@ public class UserCall {
 						mapContractCallDate.put(contract, date);
 					} else {
 						int dayDuration = DateTimeUtils.getDayDuration(mapContractCallDate.get(contract), date);
-						List<Integer> listRecallDuration = mapContractRecallDuration.get(contract) == null
-								? new ArrayList<>() : mapContractRecallDuration.get(contract);
-						listRecallDuration.add(dayDuration);
-						mapContractRecallDuration.put(contract, listRecallDuration);
+						if (dayDuration >= 1) {
+							List<Integer> listRecallDuration = mapContractRecallDuration.get(contract) == null
+									? new ArrayList<>() : mapContractRecallDuration.get(contract);
+							listRecallDuration.add(dayDuration);
+							mapContractRecallDuration.put(contract, listRecallDuration);
+						}
 					}
 				}
 			} catch (Exception e) {
@@ -123,7 +123,8 @@ public class UserCall {
 			for (int i = 0; i < listRecallDuration.size(); i++) {
 				sum += listRecallDuration.get(i);
 			}
-			mapContractReturnCallAvg.put(contract, (double) sum / listRecallDuration.size());
+			double val = Math.round((sum / listRecallDuration.size()) * 100.0) / 100.0;
+			mapContractRecallAvg.put(contract, val);
 		}
 
 	}
@@ -136,8 +137,8 @@ public class UserCall {
 		return mapContractCallDuration;
 	}
 
-	public Map<String, Double> getMapContractReturnCallAvg() {
-		return mapContractReturnCallAvg;
+	public Map<String, Double> getMapContractRecallAvg() {
+		return mapContractRecallAvg;
 	}
 
 }

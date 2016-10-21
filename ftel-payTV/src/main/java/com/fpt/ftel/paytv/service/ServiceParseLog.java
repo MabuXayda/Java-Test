@@ -170,12 +170,13 @@ public class ServiceParseLog {
 					String firmware = fields.getFirmware();
 					String sessionSubMenu = fields.getSessionSubMenu();
 					String screen = fields.getScreen();
+					String duration = fields.getDuration();
 
 					if (StringUtils.isNumeric(customerId) && logId != null && appName != null && received_at != null
 							&& !setUserSpecial.contains(customerId)) {
 						String writeLog = customerId + "," + contract + "," + logId + "," + appName + "," + itemId + ","
 								+ realTimePlaying + "," + sessionMainMenu + "," + boxTime + "," + received_at_string
-								+ "," + ip_wan + "," + firmware + "," + sessionSubMenu + "," + screen;
+								+ "," + ip_wan + "," + firmware + "," + sessionSubMenu + "," + screen + "," + duration;
 						listLog.add(writeLog);
 					}
 				} catch (Exception e) {

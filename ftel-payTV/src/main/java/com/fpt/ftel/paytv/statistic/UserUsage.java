@@ -175,7 +175,7 @@ public class UserUsage {
 				mapUserVectorApp.put(customerId, mapApp);
 			}
 		}
-		status = "Done calculate usage extra | validTime: " + countTime + " | time: "
+		status = "EXTRA calculate usage | validTime: " + countTime + " | time: "
 				+ (System.currentTimeMillis() - start);
 		PayTVUtils.LOG_INFO.info(status);
 		System.out.println(status);
@@ -271,7 +271,7 @@ public class UserUsage {
 			line = br.readLine();
 		}
 		br.close();
-		status = "Done calculate usage: " + filePath.split("/")[filePath.split("/").length - 1] + " | total: "
+		status = "CALCULATE usage: " + filePath.split("/")[filePath.split("/").length - 1] + " | total: "
 				+ countTotal + " | validTime: " + countTime + " | time: " + (System.currentTimeMillis() - start);
 		PayTVUtils.LOG_INFO.info(status);
 		System.out.println(status);

@@ -43,20 +43,13 @@ public class UserStatus {
 	public static final String STOP_DATE = "STOP_DATE";
 	public static final String LAST_ACTIVE = "LAST_ACTIVE";
 
+	private static String status;
+
 	public static void main(String[] args) throws UnsupportedEncodingException, IOException {
-		Map<String, DateTime> user_t3 = getMapUserDateCondition(
-				"/home/tunn/data/tv/data_support/active_churn/total_t3.csv",
-				PayTVUtils.FORMAT_DATE_TIME_SIMPLE.parseDateTime("2016-04-01"));
-		// for (String id : user_t3.keySet()) {
-		// if (new
-		// Duration(PayTVUtils.FORMAT_DATE_TIME_SIMPLE.parseDateTime("2016-04-01"),
-		// user_t3.get(id))
-		// .getStandardSeconds() != 0) {
-		// System.out.println(id + " | " +
-		// PayTVUtils.FORMAT_DATE_TIME.print(user_t3.get(id)));
-		// }
-		// }
-		System.out.println(user_t3.size());
+		Set<String> setUser = getSetUserSpecial("/home/tunn/data/tv/data_support/zz");
+		for (String id : setUser) {
+			System.out.println(id);
+		}
 		System.out.println("DONE");
 	}
 
@@ -174,11 +167,18 @@ public class UserStatus {
 
 	public static Set<String> getSetUserSpecial(String filePath)
 			throws JsonIOException, JsonSyntaxException, FileNotFoundException {
+		Set<String> result = new HashSet<>();
 		UserTestApi api = new Gson().fromJson(new JsonReader(new FileReader(filePath)), UserTestApi.class);
 		List<UserTestApi.Root.CustomerID> listCustomerId = api.getRoot().getListCustomer();
-		Set<String> result = new HashSet<>();
-		for (UserTestApi.Root.CustomerID id : listCustomerId) {
-			result.add(id.getCustomerId());
+		if (listCustomerId != null) {
+			for (UserTestApi.Root.CustomerID id : listCustomerId) {
+				result.add(id.getCustomerId());
+			}
+		} else {
+			status = "ERROR LOAD API USER CANCEL";
+			System.out.println(status);
+			PayTVUtils.LOG_ERROR.error(status);
+			PayTVUtils.LOG_INFO.info(status);
 		}
 		return result;
 	}

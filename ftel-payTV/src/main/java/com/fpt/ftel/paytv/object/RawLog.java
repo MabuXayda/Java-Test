@@ -29,8 +29,13 @@ public class RawLog {
 		// @SerializedName("@version")
 		// String version;
 		public class Fields {
-			// @SerializedName("Duration")
-			// Integer duration;
+			@SerializedName("Duration")
+			String duration;
+
+			public String getDuration() {
+				return duration;
+			}
+
 			// @SerializedName("ItemName")
 			// String itemName;
 			// @SerializedName("Key")
