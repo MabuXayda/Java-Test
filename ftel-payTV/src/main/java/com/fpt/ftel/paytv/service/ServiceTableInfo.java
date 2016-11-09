@@ -20,6 +20,7 @@ import org.joda.time.Duration;
 import com.fpt.ftel.core.config.CommonConfig;
 import com.fpt.ftel.core.utils.ListUtils;
 import com.fpt.ftel.paytv.db.TableInfoDAO;
+import com.fpt.ftel.paytv.db.TableInfoDAO.InfoWrapper;
 import com.fpt.ftel.paytv.statistic.UserStatus;
 import com.fpt.ftel.paytv.utils.PayTVConfig;
 import com.fpt.ftel.paytv.utils.PayTVUtils;
@@ -62,6 +63,22 @@ public class ServiceTableInfo {
 			System.out.println("Start table now fix job ..........");
 			try {
 				serviceTableInfo.processTableFix(args[1], args[2]);
+			} catch (SQLException | IOException e) {
+				PayTVUtils.LOG_ERROR.error(e.getMessage());
+				e.printStackTrace();
+			}
+		} else if (args[0].equals("update pop") && args.length == 1) {
+			System.out.println("Start table now update pop job ..........");
+			try {
+				serviceTableInfo.processUpdatePop();
+			} catch (SQLException | IOException e) {
+				PayTVUtils.LOG_ERROR.error(e.getMessage());
+				e.printStackTrace();
+			}
+		} else if (args[0].equals("update isc") && args.length == 1) {
+			System.out.println("Start table now update isc job ..........");
+			try {
+				serviceTableInfo.processUpdateIsc();
 			} catch (SQLException | IOException e) {
 				PayTVUtils.LOG_ERROR.error(e.getMessage());
 				e.printStackTrace();
@@ -160,6 +177,72 @@ public class ServiceTableInfo {
 		PayTVUtils.LOG_INFO.info(status);
 	}
 
+	public void processUpdatePop() throws IOException, SQLException {
+		Connection connection = ConnectionFactory.openConnection(CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_HOST),
+				Integer.parseInt(CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_PORT)),
+				CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_DATABASE),
+				CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_USER),
+				CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_USER_PASSWORD));
+
+		Map<String, Map<String, String>> mapPop = new HashMap<>();
+		BufferedReader br = new BufferedReader(new FileReader(CommonConfig.get(PayTVConfig.USER_INFO_UPDATE_POP_FILE)));
+		String line = br.readLine();
+		while (line != null) {
+			String[] arr = line.split(",");
+			Map<String, String> info = new HashMap<>();
+			info.put(UserStatus.POP, arr[1]);
+			info.put(UserStatus.TAP_DIEM, arr[2]);
+			mapPop.put(arr[0], info);
+			line = br.readLine();
+		}
+		br.close();
+		System.out.println("Done load Pop");
+		List<Set<String>> listSetUser = ListUtils.splitSetToSmallerSet(mapPop.keySet(), 500);
+		for (Set<String> setuser : listSetUser) {
+			Map<String, Map<String, String>> subMap = new HashMap<>();
+			for (String id : setuser) {
+				subMap.put(id, mapPop.get(id));
+			}
+			tableInfoDAO.updatePop(connection, subMap);
+		}
+		System.out.println("Done update pop: " + mapPop.size());
+
+		ConnectionFactory.closeConnection(connection);
+	}
+
+	public void processUpdateIsc() throws IOException, SQLException {
+		Connection connection = ConnectionFactory.openConnection(CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_HOST),
+				Integer.parseInt(CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_PORT)),
+				CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_DATABASE),
+				CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_USER),
+				CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_USER_PASSWORD));
+
+		Map<String, InfoWrapper> mapIsc = new HashMap<>();
+		BufferedReader br = new BufferedReader(new FileReader(CommonConfig.get(PayTVConfig.USER_INFO_UPDATE_ISC_FILE)));
+		String line = br.readLine();
+		line = br.readLine();
+		while (line != null) {
+			String[] arr = line.split("\t");
+			String customerId = arr[1];
+			InfoWrapper infoIsc = toInfo(arr);
+			mapIsc.put(customerId, infoIsc);
+			line = br.readLine();
+		}
+		br.close();
+		System.out.println("Done load Isc");
+		List<Set<String>> listSetUser = ListUtils.splitSetToSmallerSet(mapIsc.keySet(), 500);
+		for (Set<String> setUser : listSetUser) {
+			Map<String, InfoWrapper> subMap = new HashMap<>();
+			for (String id : setUser) {
+				subMap.put(id, mapIsc.get(id));
+			}
+			tableInfoDAO.updateIsc(connection, subMap);
+		}
+		System.out.println("Done update pop: " + mapIsc.size());
+
+		ConnectionFactory.closeConnection(connection);
+	}
+
 	public void processFirstLoad() throws IOException, SQLException {
 		Connection connection = ConnectionFactory.openConnection(CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_HOST),
 				Integer.parseInt(CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_PORT)),
@@ -224,6 +307,18 @@ public class ServiceTableInfo {
 				CommonConfig.get(PayTVConfig.POSTGRESQL_PAYTV_USER_PASSWORD));
 		tableInfoDAO.createTable(connection);
 		ConnectionFactory.closeConnection(connection);
+	}
+
+	private InfoWrapper toInfo(String[] arr) {
+		InfoWrapper info = new InfoWrapper();
+		info.setIsc_box_type(Integer.parseInt(arr[2]));
+		info.setIsc_promotion_id(Integer.parseInt(arr[3]));
+		info.setIsc_start_date(PayTVUtils.FORMAT_DATE_TIME.parseDateTime(arr[4]));
+		info.setIsc_active_date(PayTVUtils.FORMAT_DATE_TIME.parseDateTime(arr[5]));
+		info.setIsc_package(arr[6]);
+		info.setIsc_status_id(Integer.parseInt(arr[7]));
+		info.setIsc_status_date(PayTVUtils.FORMAT_DATE_TIME.parseDateTime(arr[8]));
+		return info;
 	}
 
 }

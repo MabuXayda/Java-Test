@@ -27,9 +27,8 @@ public class DateTimeUtils {
 	}
 
 	public static int getDayDuration(DateTime dateBefore, DateTime dateAfter) {
-		DateTime dayCheck = dateBefore.withTimeAtStartOfDay();
-		Duration duration = new Duration(dayCheck, dateAfter);
-		return (int) Math.ceil(duration.getStandardHours() / 24.0) - 1;
+		Duration duration = new Duration(dateBefore.withTimeAtStartOfDay(), dateAfter.withTimeAtStartOfDay());
+		return (int) duration.getStandardDays();
 	}
 
 	public static int getWeekIndexFromDuration(int duration) {

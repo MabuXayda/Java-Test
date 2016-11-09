@@ -20,10 +20,11 @@ public class PayTVUtils {
 			Arrays.asList("IPTV", "VOD", "SPORT", "CHILD", "RELAX", "SERVICE", "BHD", "FIMs"));
 	public static final List<String> LIST_APP_NAME_RTP = Arrays.asList("IPTV", "VOD", "SPORT", "CHILD", "RELAX",
 			"SERVICE", "BHD", "FIMs");
-//	public static final Set<String> SET_LOG_ID_RTP = new HashSet<String>(
-//			Arrays.asList("42", "44", "451", "461", "415", "416", "52", "63", "681", "82", "133", "152"));
-//	public static final Set<String> SET_LOG_ID_RTP = new HashSet<String>(
-//			Arrays.asList("42", "44", "52", "63", "133", "152"));
+	// public static final Set<String> SET_LOG_ID_RTP = new HashSet<String>(
+	// Arrays.asList("42", "44", "451", "461", "415", "416", "52", "63", "681",
+	// "82", "133", "152"));
+	// public static final Set<String> SET_LOG_ID_RTP = new HashSet<String>(
+	// Arrays.asList("42", "44", "52", "63", "133", "152"));
 	public static final Set<String> SET_LOG_ID_RTP = new HashSet<String>(
 			Arrays.asList("42", "44", "52", "63", "82", "133", "152"));
 
@@ -35,8 +36,14 @@ public class PayTVUtils {
 	public static final Logger LOG_ERROR = Logger.getLogger("ErrorLog");
 
 	public static void main(String[] args) {
-		DateTime date1 = FORMAT_DATE_TIME.parseDateTime("2016-09-05 01:01:00");
-		System.out.println(new Duration(date1.minusDays(2), date1).getStandardDays());
+		DateTime date1 = FORMAT_DATE_TIME.parseDateTime("2016-09-06 00:00:00");
+		DateTime date2 = FORMAT_DATE_TIME.parseDateTime("2016-09-06 04:00:00");
+		System.out.println(getDayDurationFromChurn(date1, date2));
+	}
+
+	public static int getDayDurationFromChurn(DateTime dateBefore, DateTime dateChurn) {
+		Duration duration = new Duration(dateBefore.withTimeAtStartOfDay(), dateChurn.withTimeAtStartOfDay());
+		return (int) duration.getStandardDays() - 1;
 	}
 
 	public static Double parseRealTimePlaying(String realTimePlaying) {

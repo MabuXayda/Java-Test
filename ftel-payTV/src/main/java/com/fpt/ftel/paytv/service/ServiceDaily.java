@@ -104,7 +104,7 @@ public class ServiceDaily {
 				System.out.println(status);
 				processTableDaily.updateTable(connection, currentDateTime);
 				processTableProfile.updateTable(connection, currentDateTime);
-				processTableChurn.updateTable(connection, currentDateTime);
+//				processTableChurn.updateTable(connection, currentDateTime);
 			} else {
 				listMissing.add(date);
 			}

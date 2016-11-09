@@ -1,7 +1,6 @@
 package com.fpt.ftel.paytv.statistic;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,11 +14,9 @@ import java.util.Set;
 
 import org.apache.commons.io.IOUtils;
 import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
+import org.joda.time.Duration;
 
 import com.fpt.ftel.core.config.CommonConfig;
-import com.fpt.ftel.core.utils.DateTimeUtils;
-import com.fpt.ftel.core.utils.StringUtils;
 import com.fpt.ftel.paytv.object.UserCancelApi;
 import com.fpt.ftel.paytv.object.UserRegisterApi;
 import com.fpt.ftel.paytv.object.UserTestApi;
@@ -42,15 +39,12 @@ public class UserStatus {
 	public static final String START_DATE = "START_DATE";
 	public static final String STOP_DATE = "STOP_DATE";
 	public static final String LAST_ACTIVE = "LAST_ACTIVE";
+	public static final String POP = "POP";
+	public static final String TAP_DIEM = "TAP_DIEN";
 
 	private static String status;
 
 	public static void main(String[] args) throws UnsupportedEncodingException, IOException {
-		Set<String> setUser = getSetUserSpecial("/home/tunn/data/tv/data_support/zz");
-		for (String id : setUser) {
-			System.out.println(id);
-		}
-		System.out.println("DONE");
 	}
 
 	public static Map<String, DateTime> getMapUserDateCondition(String fileTotalUser, DateTime dateCondition)
@@ -77,92 +71,6 @@ public class UserStatus {
 		}
 		br.close();
 		return result;
-	}
-
-	public static Map<String, DateTime> getMapUserActiveDateCondition(String fileUserActive, DateTime dateCondition)
-			throws IOException {
-		Map<String, DateTime> mapUserActive = getMapUserActive(fileUserActive);
-		Map<String, DateTime> mapUserDateCondition = new HashMap<>();
-		for (String customerId : mapUserActive.keySet()) {
-			mapUserDateCondition.put(customerId, dateCondition);
-		}
-		return mapUserDateCondition;
-	}
-
-	public static Map<String, DateTime> getMapUserChurnDateCondition(DateTime dateTime) throws IOException {
-		LocalDate localDate = dateTime.toLocalDate();
-		Map<String, DateTime> result = new HashMap<>();
-		List<String> listDate = DateTimeUtils.getListDateInMonth(localDate);
-		for (String dateString : listDate) {
-			URL url = new URL(CommonConfig.get(PayTVConfig.GET_USER_CHURN_API) + dateString);
-			String content = IOUtils.toString(url, "UTF-8");
-			Set<String> setUser = getSetUserChurnApi(content);
-			for (String user : setUser) {
-				result.put(user, PayTVUtils.FORMAT_DATE_TIME_SIMPLE.parseDateTime(dateString));
-			}
-		}
-		return result;
-	}
-
-	public static Map<String, DateTime> getMapUserChurnDateCondition(String fileUserChurn) throws IOException {
-		Map<String, Map<String, DateTime>> mapUserChurn = getMapUserChurn(fileUserChurn);
-		Map<String, DateTime> mapUserDateCondition = new HashMap<>();
-		for (String customerId : mapUserChurn.keySet()) {
-			mapUserDateCondition.put(customerId, mapUserChurn.get(customerId).get("StopDate"));
-		}
-		return mapUserDateCondition;
-	}
-
-	private static Map<String, DateTime> getMapUserActive(String filePath) throws IOException {
-		Map<String, DateTime> mapUserActive = new HashMap<>();
-		int count = 0;
-		File file = new File(filePath);
-		BufferedReader br = new BufferedReader(new FileReader(file));
-		String line = br.readLine();
-		while (line != null) {
-			String[] arr = line.split(",");
-			if (arr.length == 5) {
-				if (StringUtils.isNumeric(arr[0])) {
-					DateTime startDate = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(arr[2]);
-					if (startDate != null) {
-						mapUserActive.put(arr[0], startDate);
-						count++;
-					}
-				}
-			}
-			line = br.readLine();
-		}
-		br.close();
-		System.out.println("Load " + file.getName() + " : " + count);
-		return mapUserActive;
-	}
-
-	private static Map<String, Map<String, DateTime>> getMapUserChurn(String filePath) throws IOException {
-		Map<String, Map<String, DateTime>> mapUserChurn = new HashMap<>();
-		int count = 0;
-		File file = new File(filePath);
-		BufferedReader br = new BufferedReader(new FileReader(file));
-		String line = br.readLine();
-		while (line != null) {
-			String[] arr = line.split(",");
-			if (arr.length == 6) {
-				if (StringUtils.isNumeric(arr[0])) {
-					DateTime startDate = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(arr[2]);
-					DateTime stopDate = PayTVUtils.FORMAT_DATE_TIME.parseDateTime(arr[4]);
-					if (startDate != null && stopDate != null) {
-						Map<String, DateTime> mapDate = new HashMap<>();
-						mapDate.put("StartDate", startDate);
-						mapDate.put("StopDate", stopDate);
-						mapUserChurn.put(arr[0], mapDate);
-						count++;
-					}
-				}
-			}
-			line = br.readLine();
-		}
-		br.close();
-		System.out.println("Load " + file.getName() + " : " + count);
-		return mapUserChurn;
 	}
 
 	public static Set<String> getSetUserSpecial(String filePath)

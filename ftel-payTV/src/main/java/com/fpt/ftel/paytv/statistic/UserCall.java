@@ -1,7 +1,6 @@
 package com.fpt.ftel.paytv.statistic;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -108,6 +107,7 @@ public class UserCall {
 							listRecallDuration.add(dayDuration);
 							mapContractRecallDuration.put(contract, listRecallDuration);
 						}
+						mapContractCallDate.put(contract, date);
 					}
 				}
 			} catch (Exception e) {
